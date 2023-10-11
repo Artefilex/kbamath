@@ -1,7 +1,6 @@
 const Blog = require("../models/blog");
 const slugField = require("../middleware/slugify");
-const Skill = require("../models/skill");
-const Subscribe = require("../models/subscribe");
+
 const Portfolio = require("../models/portfolio");
 
 exports.blog_list = async (req, res) => {
@@ -80,87 +79,9 @@ exports.blog_delete = async (req, res) => {
   }
 };
 
-exports.panel_list = async (req, res) => {
-  try {
-    const skill = await Skill.findAll();
-    const subscribe = await Subscribe.findAll();
-    const portfoly = await Portfolio.findAll();
-    const data = {
-      skills: skill,
-      subscribes: subscribe,
-      portfolys: portfoly,
-    };
 
-    res.json(data);
-  } catch (err) {
-    console.log();
-  }
-};
 
-exports.skill_edit = async (req, res) => {
-  if (req.method === "GET") {
-    const skillid = req.params.skillid;
-    try {
-      const skill = await Skill.findOne({
-        where: {
-          id: skillid,
-        },
-      });
-      if (skill) {
-        res.json(skill);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  } else if (req.method === "POST") {
-    const form = req.body.form;
-    try {
-      const skill = await Skill.findOne({
-        where: {
-          id: form.id,
-        },
-      });
-      if (skill) {
-        (skill.skillName = form.skillName),
-          (skill.skillLevel = form.skillLevel);
-      }
-      skill.save();
-      res.send(`${form.id} update success`);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-};
-exports.skill_create = async (req, res) => {
-  const form = req.body.form;
-  console.log(form);
-  try {
-    await Skill.create({
-      skillName: form.skillName,
-      skillLevel: form.skillLevel,
-    });
-    res.send("skill Create");
-  } catch (err) {
-    console.log(err);
-  }
-};
-exports.skill_remove = async (req, res) => {
-  const deleteSkill = req.body.id;
 
-  try {
-    const skill = await Skill.findOne({
-      where: {
-        id: deleteSkill,
-      },
-    });
-    if (skill) {
-      await skill.destroy();
-      res.send(`${deleteSkill} delete success `);
-    }
-  } catch (err) {
-    console.log(err);
-  }
-};
 
 exports.portfoly_edit = async (req, res) => {
   if (req.method === "GET") {
@@ -246,5 +167,18 @@ exports.admin_login = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
+  }
+};
+
+exports.panel_list = async (req, res) => {
+  try {
+    const portfoly = await Portfolio.findAll();
+    const data = {
+      portfolys: portfoly,
+    };
+
+    res.json(data);
+  } catch (err) {
+    console.log();
   }
 };
