@@ -9,6 +9,7 @@ export default function Navbar() {
   const [isAdmin ,setIsAdmin] = useState(true)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 500)
   
+  // Mobile göre kontrol 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 500);
@@ -22,7 +23,7 @@ export default function Navbar() {
   }, []);
 
 
-
+//  kullanıcı linkleri 
   const mainLinks = [
     { href: "/", label: "Ana Sayfa " },
     { href: "/hakkımızda", label: "Hakkımızda" },
@@ -31,7 +32,7 @@ export default function Navbar() {
     { href: "/iletişim", label: "İletişim" },
   ];
   
-  console.log(isMobile)
+//  Admin Linkleri 
   const adminLinks = [
     { href: "/", label: "Admin Panel" },
     { href: "/hakkımızda", label: "Blog Panel" },
@@ -53,7 +54,7 @@ export default function Navbar() {
         </>
        ) }   
          
-         {isMobile && (
+      {isMobile && (
         <Menu >
         <Menu.Button onClick={() => setActive( !active)} >
 
@@ -73,8 +74,7 @@ export default function Navbar() {
         ))}
       </Menu> 
       )}
- 
-       
+
       </nav>
 
      
