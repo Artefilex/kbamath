@@ -10,7 +10,7 @@ export default function MainLayout(){
       document.documentElement.style.setProperty("--bg-secondary", appearance.theme.bgSecondary)
       document.documentElement.style.setProperty("--c-base", appearance.theme.base )
       document.documentElement.style.setProperty("--c-subbase", appearance.theme.subbase )
-      document.documentElement.style.setProperty("--box-hadow", appearance.theme.boxShadow )
+      document.documentElement.style.setProperty("--box-shadow", appearance.theme.boxShadow )
    },[appearance])
  return(
     <>
