@@ -1,12 +1,13 @@
 import AddBlog from "./addblog";
 import EditBlog from "./editblog";
 import DeleteBlog from "./deleteblog";
+import SectionMain from "../../../components/section-main";
 export default function AdminBlogs(){
     return (
-        <div>
+        <SectionMain>
             <AddBlog/>
             <EditBlog/>
             <DeleteBlog/>
-        </div>
+        </SectionMain>
     )
 }

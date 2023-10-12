@@ -1,7 +1,9 @@
+import SectionMain from "../../components/section-main"
+
 export default function About(){
     return (
-        <div>
+        <SectionMain>
             about
-        </div>
+        </SectionMain>
     )
 }

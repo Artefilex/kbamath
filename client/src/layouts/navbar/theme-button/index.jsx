@@ -7,7 +7,7 @@ export default function ThemeButton(){
     return (
       <>
          {theme?.name === "dark" ? (
-            <button type="button" className="w-7 h-7 my-2 rounded-full hover:bg-[color:var(--c-subbase)] flex items-center justify-center relative"
+            <button type="button" className="h-9 w-9 my-2   rounded-full hover:bg-[color:var(--c-subbase)] flex items-center justify-center "
               onClick={() => {
                 setTheme({
                   name: "light",
@@ -16,14 +16,14 @@ export default function ThemeButton(){
                   boxShadow:
                     "rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px",
                   base: "#000",
-                  subbase: "#71767b",
+                  subbase: "#c6cacd",
                 });
               }}
-            >
-              <BsSun />
+            >    
+            <BsSun/>         
             </button>
           ) : (
-            <button type="button" className="w-7 h-7  my-2 rounded-full hover:bg-[color:var(--c-subbase)] flex items-center justify-center relative"
+            <button type="button" className="h-9 w-9  my-2 rounded-full hover:bg-[color:var(--c-subbase)] flex items-center justify-center "
               onClick={() => {
                 setTheme({
                   name: "dark",

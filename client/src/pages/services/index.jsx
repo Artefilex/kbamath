@@ -1,7 +1,9 @@
+import SectionMain from "../../components/section-main";
+
 export default function Services(){
     return (
-        <div>
+        <SectionMain>
           servisec
-        </div>
+        </SectionMain>
     )
 }

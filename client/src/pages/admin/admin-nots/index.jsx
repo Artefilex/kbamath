@@ -1,3 +1,4 @@
+import SectionMain from "../../../components/section-main";
 import AddNote from "./addnote";
 import DeleteNote from "./deletenote";
 import EditNote from "./editnote";
@@ -5,10 +6,10 @@ import EditNote from "./editnote";
 
 export default function AdminNots (){
     return  (
-        <div>
+        <SectionMain>
            <AddNote/>
            <DeleteNote/>
            <EditNote/>
-        </div>
+        </SectionMain>
     )
 }

@@ -8,6 +8,7 @@ import Nots from "../pages/nots";
 import Admin from "../pages/admin";
 import AdminNots from "../pages/admin/admin-nots";
 import AdminBlogs from "../pages/admin/admin-blogs";
+import AdminLessons from "../pages/admin/add-lessons"
 const routes = createBrowserRouter([
 { path : "/",
 element: <MainLayout/>,
@@ -49,6 +50,10 @@ children:[
            {
             path: "/admin/blogs",
             element: <AdminBlogs/>
+           },
+           {
+            path: "/admin/ders-ekle",
+            element: <AdminLessons/>
            }
            
         ]

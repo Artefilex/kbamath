@@ -1,7 +1,9 @@
+import SectionMain from "../../components/section-main";
+
 export default function Home (){
     return (
-        <div>
+        <SectionMain>
         bla bla 
-    </div>
+    </SectionMain>
     )
 }

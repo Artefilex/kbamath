@@ -1,10 +1,14 @@
-import {  Outlet } from "react-router-dom";
 
+import SectionMain from "../../components/section-main";
 
 export default function Admin (){
     return (
-        <div> 
-          {Outlet}
-        </div>
+        <SectionMain> 
+          <form > 
+            <input type="text" />
+            <input type="text" />
+          </form>
+          
+        </SectionMain>
     )
 } 

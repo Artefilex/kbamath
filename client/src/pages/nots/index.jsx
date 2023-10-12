@@ -1,7 +1,9 @@
+import SectionMain from "../../components/section-main";
+
 export default function Nots (){
     return (
-        <div>
+        <SectionMain>
         nots
-        </div>
+        </SectionMain>
     )
 }

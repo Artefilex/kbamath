@@ -4,7 +4,7 @@ import ThemeButton from "./theme-button";
 
 export default function Navbar() {
   const [active, setActive] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 599);
 
   // Mobile göre kontrol
@@ -32,18 +32,19 @@ export default function Navbar() {
 
   //  Admin Linkleri
   const adminLinks = [
-    { href: "/", label: "Admin Panel" },
-    { href: "/hakkımızda", label: "Blog Panel" },
-    { href: "/hizmetler", label: "Not Panel" },
+   { href: "/", label: "Ana Sayfa" },
+    { href: "/admin/blogs", label: "Blog Panel" },
+    { href: "/admin/nots", label: "Not Panel" },
+    {href: "/admin/ders-ekle" , label: "Ders Ekle"}
   ];
   return (
-    <header className=" w-full flex items-center justify-center  bg-[color:var(--bg-secondary)] custom-box-shadow sticky top-0 ">
-      <nav className="flex item-center w-full justify-center flex-col bg-[color:var(--bg-secondary)]   font-bold my-2  mobile:flex-row mobile:justify-around laptop:max-w-[80%] ">
+    <header className=" w-full  flex items-center justify-center  bg-[color:var(--bg-secondary)] custom-box-shadow sticky top-0 transition-all duration-200">
+      <nav className="flex item-center  w-full justify-center flex-col  font-bold my-2  mobile:flex-row mobile:justify-around laptop:max-w-[80%] ">
         {!isMobile && (
-        <div className=" flex  items-center justify-center w-full"> 
+       <div className=" flex  items-center justify-center w-full"> 
            <img  className="h-10 rounded-full object-cover" src="https://pbs.twimg.com/profile_images/1663136976327811072/p2zKMWq2_bigger.jpg" alt="" /> 
         
-           <div className="flex-1  flex  item-center justify-end   gap-1  h-[2.75rem] w-full " >
+           <div className="flex-1  flex  item-center justify-end   gap-1  h-12 w-full  whitespace-nowrap " >
            {!isAdmin &&  mainLinks.map((link, i) => (  <NavLink className="transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex items-center justify-center" key={i} to={link.href} >{link.label} </NavLink>  ))}
             {isAdmin &&  adminLinks.map((link, i) => ( <NavLink  className="transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex items-center justify-center"  key={i} to={link.href} > {link.label} </NavLink> ))}
              <ThemeButton/>
@@ -53,7 +54,7 @@ export default function Navbar() {
 
         {isMobile && (
         <div className="flex items-center justify-center flex-row">
-       <img className="h-5 rounded-full object-cover" src="https://pbs.twimg.com/profile_images/1663136976327811072/p2zKMWq2_bigger.jpg" alt="" />
+       <img className="h-10 rounded-full object-cover" src="https://pbs.twimg.com/profile_images/1663136976327811072/p2zKMWq2_bigger.jpg" alt="" />
         <div className="flex-1 flex items-center justify-end  gap-3">
           <ThemeButton/>
             <div className="relative flex items-center justify-center">
