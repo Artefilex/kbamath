@@ -13,11 +13,11 @@ export default function MainLayout(){
       document.documentElement.style.setProperty("--box-shadow", appearance.theme.boxShadow )
    },[appearance])
  return(
-    <>
-    <Navbar/>
+    <div className="w-full flex flex-col items-center  min-h-[1000vh]">
+    <Navbar  />
      <Outlet/>
     <Footer/>
-    </>
+    </div>
  )
 
 }

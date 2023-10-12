@@ -9,4 +9,7 @@ body {
 .icon{
     @apply  bg-[color:var(--bg-primary)] text-[color:var(--c-base)]
 }
+.custom-box-shadow{
+    box-shadow:  var(--box-shadow);
+}
 /* @apply   bg-black  text-white */
