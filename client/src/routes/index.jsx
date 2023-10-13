@@ -3,12 +3,12 @@ import MainLayout from "../layouts";
 import Home from "../pages/home";
 import About from "../pages/about";
 import Services from "../pages/services";
-import Contact from "../pages/contact";
 import Nots from "../pages/nots";
 import Admin from "../pages/admin";
 import AdminNots from "../pages/admin/admin-nots";
 import AdminBlogs from "../pages/admin/admin-blogs";
 import AdminLessons from "../pages/admin/add-lessons"
+import Blogs from "../pages/blogs";
 const routes = createBrowserRouter([
 { path : "/",
 element: <MainLayout/>,
@@ -27,8 +27,8 @@ children:[
         element: <Services/>
     },
     {
-        path: "/iletişim",
-        element: <Contact/>
+        path: "/bloglar",
+        element: <Blogs/>
     },
     {
         path: "/notlar",

@@ -1,7 +1,12 @@
+import Contact from "../../pages/contact"
+
 export default function Footer (){
+    
     return(
         <footer>
-           footer
+           footer  
+           <Contact/>
+           
         </footer>
     )
 }

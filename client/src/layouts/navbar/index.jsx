@@ -4,7 +4,7 @@ import ThemeButton from "./theme-button";
 
 export default function Navbar() {
   const [active, setActive] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 599);
 
   // Mobile göre kontrol
@@ -27,7 +27,7 @@ export default function Navbar() {
     { href: "/hakkımızda", label: "Hakkımızda" },
     { href: "/hizmetler", label: "Hizmetler" },
     { href: "notlar", label: "Notlar" },
-    { href: "/iletişim", label: "İletişim" },
+    { href: "/bloglar", label: "Bloglar" },
   ];
 
   //  Admin Linkleri
