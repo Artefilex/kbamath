@@ -1,11 +1,20 @@
-import { NavLink } from "react-router-dom";
+import { NavLink , useNavigate} from "react-router-dom";
 import { useEffect, useState } from "react";
 import ThemeButton from "./theme-button";
-
+import Cookies from "universal-cookie";
 export default function Navbar() {
+  const cookies = new Cookies();
   const [active, setActive] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false  )  ;
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 599);
+  const navigate = useNavigate();
+   useEffect(()=>{
+    if(cookies.get("isAdmin")){
+      setIsAdmin(true)
+     } else{
+      setIsAdmin(false)
+     }
+   },[cookies])
 
   // Mobile göre kontrol
   useEffect(() => {
@@ -37,6 +46,11 @@ export default function Navbar() {
     { href: "/admin/nots", label: "Not Panel" },
     {href: "/admin/ders-ekle" , label: "Ders Ekle"}
   ];
+  const removeAdmin = () =>{
+    cookies.remove("isAdmin")
+    navigate("/admin")
+  }
+
   return (
     <header className=" w-full  flex items-center justify-center  bg-[color:var(--bg-secondary)] custom-box-shadow sticky top-0 transition-all duration-200">
       <nav className="flex item-center  w-full justify-center flex-col  font-bold my-2  mobile:flex-row mobile:justify-around laptop:max-w-[80%] ">
@@ -46,7 +60,8 @@ export default function Navbar() {
         
            <div className="flex-1  flex  item-center justify-end   gap-1  h-12 w-full  whitespace-nowrap " >
            {!isAdmin &&  mainLinks.map((link, i) => (  <NavLink className="transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex items-center justify-center" key={i} to={link.href} >{link.label} </NavLink>  ))}
-            {isAdmin &&  adminLinks.map((link, i) => ( <NavLink  className="transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex items-center justify-center"  key={i} to={link.href} > {link.label} </NavLink> ))}
+            {isAdmin &&  adminLinks.map((link, i) => (    <NavLink  className="transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex items-center justify-center"  key={i} to={link.href} > {link.label} </NavLink>  ))}
+             {isAdmin &&  <button onClick={removeAdmin}>  Çıkış Yap </button>}
              <ThemeButton/>
            </div>
           </div>
