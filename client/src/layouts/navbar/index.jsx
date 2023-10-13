@@ -59,9 +59,10 @@ export default function Navbar() {
            <img  className="h-10 rounded-full object-cover" src="https://pbs.twimg.com/profile_images/1663136976327811072/p2zKMWq2_bigger.jpg" alt="" /> 
         
            <div className="flex-1  flex  item-center justify-end   gap-1  h-12 w-full  whitespace-nowrap " >
-           {!isAdmin &&  mainLinks.map((link, i) => (  <NavLink className="transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex items-center justify-center" key={i} to={link.href} >{link.label} </NavLink>  ))}
-            {isAdmin &&  adminLinks.map((link, i) => (    <NavLink  className="transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex items-center justify-center"  key={i} to={link.href} > {link.label} </NavLink>  ))}
+           {!isAdmin &&  mainLinks.map((link, i) => (<NavLink className="transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex items-center justify-center" key={i} to={link.href} >{link.label} </NavLink>  ))}
+            {isAdmin &&  adminLinks.map((link, i) => (<NavLink  className="transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex items-center justify-center"  key={i} to={link.href} > {link.label} </NavLink>  ))}
              {isAdmin &&  <button onClick={removeAdmin}>  Çıkış Yap </button>}
+            
              <ThemeButton/>
            </div>
           </div>
