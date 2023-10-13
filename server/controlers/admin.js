@@ -152,7 +152,7 @@ exports.portfoly_remove = async (req, res) => {
 
 exports.admin_login = async (req, res) => {
   const admin = req.body.form;
-  console.log(admin);
+  console.log(admin  ,res.length);
   try {
     if (
       admin.name == process.env.ADMIN_NAME &&

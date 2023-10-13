@@ -32,9 +32,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   session({
+    key:  "adminİsLogin"  ,
     secret: process.env.SECRETKEY,
-    saveUninitialized: true,
-    cookie: { maxAge: 1000 * 60 * 60 * 24, httpOnly: true },
+    saveUninitialized: false,
+    // saveUninitialized: true,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 },
+    // cookie: { maxAge: 1000 * 60 * 60 * 24, httpOnly: true },
     resave: false,
   })
 );
