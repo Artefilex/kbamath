@@ -8,10 +8,10 @@ const auth = createSlice({
     name: "auth",
     initialState,
     reducers:{
-        login : (state,action) =>{
+        _login : (state,action) =>{
          state.user = action.payload
         },
-        _logout: (state, )=>{
+        _logout: (state)=>{
             state.user = false
         }
 

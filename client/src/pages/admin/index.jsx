@@ -1,8 +1,9 @@
-import { register , login } from "../../../firebase";
+import {  login } from "../../../firebase";
 import SectionMain from "../../components/section-main";
 import { useState ,useCallback } from "react";
 import {useNavigate} from "react-router-dom"
-// import Cookies from "universal-cookie";
+import { setLogin } from "../../store/auth/action";
+
 export default function Admin (){
   const navigate = useNavigate();
   const [form, setForm] = useState({
@@ -44,11 +45,16 @@ export default function Admin (){
     e.preventDefault()
 
     const user = await login(form.email, form.password)
-    if(user){
-     navigate("/")
-    }
-
-     console.log(user)
+   if(user){
+    setLogin(user)
+    navigate("/",{
+     replace : true
+   } )
+   setForm({
+    email: "",
+    password: "",
+   })
+   }
    }
     return (
         <SectionMain> 
@@ -79,7 +85,7 @@ export default function Admin (){
            <button type="submit" disabled={!form.email && !form.password}> Login</button>
           </div>
           </form>
-
+         
         </SectionMain>
     )
 } 

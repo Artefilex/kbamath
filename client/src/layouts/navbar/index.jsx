@@ -1,20 +1,25 @@
 import { NavLink , useNavigate} from "react-router-dom";
 import { useEffect, useState } from "react";
 import ThemeButton from "./theme-button";
-import Cookies from "universal-cookie";
+import { useUser } from "../../store/auth/hooks";
+import { logout  } from "../../../firebase";
+
+
 export default function Navbar() {
-  const cookies = new Cookies();
+  const {user} = useUser()
   const [active, setActive] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false  )  ;
+  const [isAdmin, setIsAdmin] = useState(false ) ;
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 599);
   const navigate = useNavigate();
-   useEffect(()=>{
-    if(cookies.get("isAdmin")){
-      setIsAdmin(true)
-     } else{
-      setIsAdmin(false)
-     }
-   },[cookies])
+  
+    useEffect(()=>{
+      if(user){
+        setIsAdmin(true)
+      }
+    },[user])
+console.log()
+console.log(isAdmin)
+// console.log(auth.currentUser.accessToken)   // bu önemli ha 
 
   // Mobile göre kontrol
   useEffect(() => {
@@ -46,9 +51,16 @@ export default function Navbar() {
     { href: "/admin/nots", label: "Not Panel" },
     {href: "/admin/ders-ekle" , label: "Ders Ekle"}
   ];
-  const removeAdmin = () =>{
-    cookies.remove("isAdmin")
-    navigate("/admin")
+
+
+  const removeAdmin = async () =>{
+   
+    await  logout()
+    
+       setIsAdmin(false)
+    navigate("/",{
+      replace : true
+    } )
   }
 
   return (

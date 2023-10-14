@@ -1,6 +1,7 @@
 const Blog = require("../models/blog");
 const slugField = require("../middleware/slugify");
-
+const jwt = require("jsonwebtoken")
+const bcrypt = require('bcryptjs');
 const Portfolio = require("../models/portfolio");
 
 exports.blog_list = async (req, res) => {
@@ -150,7 +151,7 @@ exports.portfoly_remove = async (req, res) => {
   }
 };
 
-exports.admin_login = async (req, res) => {
+exports.post_login = async (req, res) => {
   const admin = req.body.form;
   console.log(admin  ,res.length);
   try {
@@ -158,6 +159,26 @@ exports.admin_login = async (req, res) => {
       admin.name == process.env.ADMIN_NAME &&
       admin.password == process.env.ADMIN_PASSWORD
     ) {
+      req.session.isAdmin = true;
+      console.log("welcome boss");
+      res.redirect("/");
+    } else {
+      console.log(err);
+      res.status(500).send("Internal Server Error");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+exports.get_login = async (req, res) => {
+  const admin = req.body.form;
+  console.log(admin  ,res.length);
+  try {
+    if (
+      admin.name == process.env.ADMIN_NAME &&
+      admin.password == process.env.ADMIN_PASSWORD
+    ) {
+
       req.session.isAdmin = true;
       console.log("welcome boss");
       res.redirect("/");

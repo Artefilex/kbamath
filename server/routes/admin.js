@@ -10,7 +10,8 @@ dotenv.config({ path: "./config.env" });
 router.post("/blogs/create", adminController.blog_create);
 router.post("/blogs/delete/:BlogUrl", adminController.blog_delete);
 router.all("/blogs/:blogid", adminController.blog_edit);
-router.post("/login", adminController.admin_login);
+router.post("/login", adminController.post_login);
+router.get("/login", adminController.get_login);
 router.all("/blogs", adminController.blog_list);
 
 // ADMİN PANEL

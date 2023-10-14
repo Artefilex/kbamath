@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import {getAuth, createUserWithEmailAndPassword ,signInWithEmailAndPassword  ,signOut} from "firebase/auth"
+import {getAuth, createUserWithEmailAndPassword ,signInWithEmailAndPassword  ,signOut , onAuthStateChanged ,sendEmailVerification , updateEmail ,updatePassword, idto } from "firebase/auth"
+import { setLogin, setLogout } from "./src/store/auth/action";
 import { toast } from "react-hot-toast";
 const firebaseConfig = {
   apiKey:import.meta.env.VITE_APIKEY,
@@ -15,8 +16,8 @@ const firebaseConfig = {
 
 
 const app = initializeApp(firebaseConfig);
-
-const auth = getAuth();
+ 
+export const auth = getAuth();
 
 export const register = async (email ,password) => {
  try {
@@ -39,15 +40,48 @@ export const login = async (email , password) =>{
      }
         
 }
+export const emailVerify = async () =>{
+   try{
+     await  sendEmailVerification(auth.currentUser)
+     toast.success(`Doğrulama maili ${auth.currentUser.email}  adresine gönderildi , spam dahil mail kutunuzu kontrol edin`)
+   }
+   catch(error){
+      toast.error(error)
+   } 
+
+}
 
 export const logout = async () =>{
     try {
         await  signOut(auth )
+        toast.success("çıkış başarılı ")
      }
      catch(error){
         toast.error(error.message)
      }
 }
 
+onAuthStateChanged(auth , (user) =>{
+   if(user){
+     setLogin({
+      displayName: user.displayName,
+      email: user.email,
+      photoURL : user.photoURL,
+      uid: user.uid
+     })
+   }else{
+    setLogout()
+   }
+})
+
+export const resetPassword = async ( data) =>{
+   try{
+      await updatePassword(auth.currentUser, data)
+      toast.success("Porala güncellendi")
+   }
+   catch(error){
+      toast.error(error)
+   }
+}
 
 export default app 
