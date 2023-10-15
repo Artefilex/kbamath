@@ -3,7 +3,7 @@ import Navbar from "./navbar";
 import Footer from "./footer";
 import { useAppearance } from "../store/appearance/hooks";
 import { useEffect } from "react";
-import RightBar from "./rightbar";
+
 import {Toaster} from "react-hot-toast" 
 export default function MainLayout(){
    const appearance = useAppearance()
@@ -18,16 +18,10 @@ export default function MainLayout(){
  return(
     <div className="w-full flex flex-col items-center  min-h-[120vh]">
     <Navbar/>
-  
     <div className="min-h-[120vh] flex items-start w-full laptop:max-w-[80%]  gap-2 ">
     <Toaster position="top-right"/>
     <Outlet />
-    <RightBar/>
     </div>
-  
-
-  
-   
     <Footer/>
     </div>
  )

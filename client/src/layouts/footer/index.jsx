@@ -6,7 +6,7 @@ export default function Footer (){
         <footer>
            footer  
            <Contact/>
-           
+          
         </footer>
     )
 }

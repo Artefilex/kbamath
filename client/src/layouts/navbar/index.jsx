@@ -17,8 +17,7 @@ export default function Navbar() {
         setIsAdmin(true)
       }
     },[user])
-console.log()
-console.log(isAdmin)
+
 // console.log(auth.currentUser.accessToken)   // bu önemli ha 
 
   // Mobile göre kontrol

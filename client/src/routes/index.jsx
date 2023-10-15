@@ -9,6 +9,7 @@ import AdminNots from "../pages/admin/admin-nots";
 import AdminBlogs from "../pages/admin/admin-blogs";
 import AdminLessons from "../pages/admin/add-lessons"
 import Blogs from "../pages/blogs";
+import BlogDetails from "../pages/blogs/blog-details";
 const routes = createBrowserRouter([
 { path : "/",
 element: <MainLayout/>,
@@ -29,6 +30,10 @@ children:[
     {
         path: "/bloglar",
         element: <Blogs/>
+    },
+    {
+        path:"/bloglar/:url",
+        element: <BlogDetails/> 
     },
     {
         path: "/notlar",

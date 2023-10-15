@@ -15,7 +15,6 @@ export default function About(){
     })
  
 
-     console.log(arr)
     return (
         <SectionMain>
     

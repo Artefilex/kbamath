@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {getAuth, createUserWithEmailAndPassword ,signInWithEmailAndPassword  ,signOut , onAuthStateChanged ,sendEmailVerification , updateEmail ,updatePassword, idto } from "firebase/auth"
+import {getAuth, createUserWithEmailAndPassword ,signInWithEmailAndPassword  ,signOut , onAuthStateChanged ,sendEmailVerification , updateEmail ,updatePassword} from "firebase/auth"
 import { setLogin, setLogout } from "./src/store/auth/action";
 import { toast } from "react-hot-toast";
 const firebaseConfig = {
