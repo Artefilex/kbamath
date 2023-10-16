@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 
 export default function SectionMain ({children}){
     return(
-        <section className="w-full pt-3">
+        <section className="w-full pt-6">
             {children}
         </section>
     )

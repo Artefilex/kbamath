@@ -63,7 +63,7 @@ export default function Navbar() {
   }
 
   return (
-    <header className=" w-full  flex items-center justify-center  bg-[color:var(--bg-secondary)] custom-box-shadow sticky top-0 transition-all duration-200">
+    <header className=" w-full  flex items-center justify-center  bg-[color:var(--bg-secondary)] custom-box-shadow sticky top-0 transition-all duration-200 z-[30]">
       <nav className="flex item-center  w-full justify-center flex-col  font-bold my-2  mobile:flex-row mobile:justify-around laptop:max-w-[80%] ">
         {!isMobile && (
        <div className=" flex  items-center justify-center w-full"> 
@@ -91,7 +91,11 @@ export default function Navbar() {
               </button>
               {active && (
                 <div className={" absolute px-4 py-2 top-[4.25rem] right-[50%] rounded-md flex item-center  shadow-lg shadow-[color: var(--box-shadow)]  font-bold  gap-2 !flex-col justify-center transition-color  duration-700 transition-all bg-[color:var(--bg-secondary)]"}>
-                  {mainLinks.map((link, i) => ( <NavLink key={i} className="w-full mx-2  duration-200" to={link.href} >{link.label} </NavLink>))}
+                   {!isAdmin &&  mainLinks.map((link, i) => (<NavLink className="transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex items-center justify-center" key={i} to={link.href} >{link.label} </NavLink>  ))}
+                   {isAdmin &&  adminLinks.map((link, i) => (<NavLink  className="transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex items-center justify-center"  key={i} to={link.href} > {link.label} </NavLink>  ))}
+                    {isAdmin &&  <button onClick={removeAdmin}>  Çıkış Yap </button>}
+                 
+                  {/* {mainLinks.map((link, i) => ( <NavLink key={i} className="w-full mx-2  duration-200" to={link.href} >{link.label} </NavLink>))} */}
                 </div>
               )}
             </div>

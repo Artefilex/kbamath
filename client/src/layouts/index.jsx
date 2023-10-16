@@ -14,6 +14,7 @@ export default function MainLayout(){
       document.documentElement.style.setProperty("--c-base", appearance.theme.base )
       document.documentElement.style.setProperty("--c-subbase", appearance.theme.subbase )
       document.documentElement.style.setProperty("--box-shadow", appearance.theme.boxShadow )
+      document.documentElement.style.setProperty("--btn-dark-hover", appearance.theme.btnColor)
    },[appearance])
  return(
     <div className="w-full flex flex-col items-center  min-h-[120vh]">
