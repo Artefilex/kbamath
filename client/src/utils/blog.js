@@ -46,4 +46,4 @@ export const postData = async (bodyData) => {
     });
 
 }
-
+  

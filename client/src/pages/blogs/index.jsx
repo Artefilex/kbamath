@@ -15,13 +15,6 @@ export default function  Blogs (){
          
           fetchData();
     },[])
-
- 
-    
- 
-
-
-        
     return (
         <>
         <SectionMain>   

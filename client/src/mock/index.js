@@ -1,37 +1,37 @@
-export  const paket = [
+export  const pakets = [
     {
         title : "TYT MATEMATİK",
         price : "2000",
         img: "TYT Url ",
-        url: "https://....",
+        url: "bak",
         konular:  ""
     },
     {
         title : "1.Sınıf 5.sınıf",
         price : "2000",
         img: "",
-        url: "https://....",
+        url: "bakma",
         konular:  ""
     },
     {
         title : "Kpss Matematik",
         price : "2000",
         img: "",
-        url: "https://....",
+        url: "bakmasac",
         konular:  ""
     },
     {
         title : "özel ders",
         price : "2000",
         img: "",
-        url: "https://....",
+        url: "bakmaascasc2efc",
         konular:  ""
     },
     {
         title : "mülakat hazırlık",
         price : "2000",
         img: "",
-        url: "https://....",
+        url: "bakmasacascaewgrnds",
         konular:  ""
     },
 

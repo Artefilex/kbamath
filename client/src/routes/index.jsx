@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts";
 import Home from "../pages/home";
 import About from "../pages/about";
-import Services from "../pages/services";
+import Lessons from "../pages/dersler";
 import Nots from "../pages/nots";
 import Admin from "../pages/admin";
 import AdminNots from "../pages/admin/admin-nots";
@@ -14,6 +14,7 @@ import FirstClass from "../pages/nots/high-school/first";
 import SecondClass from "../pages/nots/high-school/second";
 import ThirthClass from "../pages/nots/high-school/thirth";
 import FourClass from "../pages/nots/high-school/four";
+import LessonsDetails from "../pages/dersler/lesson-details";
 const routes = createBrowserRouter([
 { path : "/",
 element: <MainLayout/>,
@@ -29,7 +30,11 @@ children:[
     },
     {
         path: "/dersler",
-        element: <Services/>
+        element: <Lessons/>
+    },
+    { 
+        path: "/dersler/:lessonid",
+        element: <LessonsDetails/>
     },
     {
         path: "/bloglar",
@@ -45,7 +50,7 @@ children:[
         children:[
             {
                 index: true,
-                element:  <Nots/>
+                element:  <FirstClass/>
             },
             {
                 path: "/notlar/1-sınıf",
