@@ -10,6 +10,10 @@ import AdminBlogs from "../pages/admin/admin-blogs";
 import AdminLessons from "../pages/admin/add-lessons"
 import Blogs from "../pages/blogs";
 import BlogDetails from "../pages/blogs/blog-details";
+import FirstClass from "../pages/nots/high-school/first";
+import SecondClass from "../pages/nots/high-school/second";
+import ThirthClass from "../pages/nots/high-school/thirth";
+import FourClass from "../pages/nots/high-school/four";
 const routes = createBrowserRouter([
 { path : "/",
 element: <MainLayout/>,
@@ -24,7 +28,7 @@ children:[
 
     },
     {
-        path: "/hizmetler",
+        path: "/dersler",
         element: <Services/>
     },
     {
@@ -37,7 +41,29 @@ children:[
     },
     {
         path: "/notlar",
-        element: <Nots/>
+        element: <Nots/>,
+        children:[
+            {
+                index: true,
+                element:  <Nots/>
+            },
+            {
+                path: "/notlar/1-sınıf",
+                element: <FirstClass/>
+            },
+            {
+                path: "/notlar/2-sınıf",
+                element: <SecondClass/>
+            },
+            {
+                path: "/notlar/3-sınıf",
+                element: <ThirthClass/>
+            },
+            {
+                path: "/notlar/4-sınıf",
+                element: <FourClass/>
+            }
+        ]
     },
     {
         path: "/admin",

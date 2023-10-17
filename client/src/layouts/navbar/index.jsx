@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import ThemeButton from "./theme-button";
 import { useUser } from "../../store/auth/hooks";
 import { logout  } from "../../../firebase";
-
+import { mainLinks , adminLinks } from "../../routes/links";
 
 export default function Navbar() {
   const {user} = useUser()
@@ -34,22 +34,7 @@ export default function Navbar() {
   }, []);
 
 
-  //  kullanıcı linkleri
-  const mainLinks = [
-    { href: "/", label: "Ana Sayfa " },
-    { href: "/hakkımızda", label: "Hakkımızda" },
-    { href: "/hizmetler", label: "Hizmetler" },
-    { href: "notlar", label: "Notlar" },
-    { href: "/bloglar", label: "Bloglar" },
-  ];
-
-  //  Admin Linkleri
-  const adminLinks = [
-   { href: "/", label: "Ana Sayfa" },
-    { href: "/admin/blogs", label: "Blog Panel" },
-    { href: "/admin/nots", label: "Not Panel" },
-    {href: "/admin/ders-ekle" , label: "Ders Ekle"}
-  ];
+ 
 
 
   const removeAdmin = async () =>{

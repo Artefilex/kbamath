@@ -3,7 +3,7 @@
 @tailwind utilities; 
 
 body {
-    @apply  bg-[color:var(--bg-primary)] text-[color:var(--c-base)]  
+    @apply  bg-[color:var(--bg-primary)] text-[color:var(--c-base)]   
 }
 
 .icon{

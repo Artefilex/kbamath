@@ -41,32 +41,38 @@ export const notlar = [
     {
         id: "14583521",
         type: "img",
-        desc : "Orta öğretim matematik ders notu"
+        desc : "Orta öğretim matematik ders notu",
+        konu: "mantık"
     },
     {
         id: "546540",
         type : "pdf",
         descr: "Kpss Math 1 ",
+        konu: "mantık"
     },
     {
         id: "65456sdvsdv885",
         type: "pdf",
-        desc: "TYT Matematik 2"
+        desc: "TYT Matematik 2",
+        konu: "kümeler"
     },
     {
         id: "65456885dsvsdvsdv",
         type: "pdf",
-        desc: "TYT Matematik 3"
+        desc: "TYT Matematik 3",
+        konu: "Denklemler ve Eşitsizlik"
     },
     {
         id: "6sdvsdv5456885",
         type: "pdf",
-        desc: "TYT Matematik 4"
+        desc: "TYT Matematik 4",
+        konu: "üçgenler"
     },
     {
         id: "65456885sdv",
         type: "pdf",
-        desc: "TYT Matematik 5"
+        desc: "TYT Matematik 5",
+        konu: "veri"
     }
 ]
 
