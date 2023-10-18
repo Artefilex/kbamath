@@ -11,12 +11,12 @@ export default function ThemeButton(){
               onClick={() => {
                 setTheme({
                   name: "light",
-                  bgPrimary: "#fff",
-                  bgSecondary: "#f7f7f7",
+                  bgPrimary: "#F1F1F1",
+                  bgSecondary: "#ffffff",
                   boxShadow:
                     "rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px",
                   base: "#000",
-                  subbase: "#c6cacd",
+                  subbase: "#e5e5e5",
                  btnColor: "#ffff"
                 });
               }}

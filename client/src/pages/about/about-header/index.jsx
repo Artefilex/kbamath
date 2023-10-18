@@ -1,6 +1,6 @@
 export default function AboutHeader () {
     return (
-        <header className=" w-full flex-col min-h-[15rem] flex items-center gap-4 px-2 mobile:flex-row mobile:items-start transition-all duration-300">
+        <header className=" py-2 w-full flex-col min-h-[15rem] flex items-center gap-4 px-2 mobile:flex-row mobile:items-start transition-all duration-300">
         <div className="flex items-center justify-cente w-full min-h-[10rem] ">
           <img
             src="../../../public/kba2.PNG"

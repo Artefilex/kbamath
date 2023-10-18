@@ -18,7 +18,7 @@ export default function  Blogs (){
     return (
         <>
         <SectionMain>   
-           <div  className=" grid  grid-rows-1 grid-cols-1  mobile:grid-rows-2 mobile:grid-cols-2 w-full gap-3 deskop:grid-rows-3 deskop:grid-cols-3">  
+           <div  className=" py-2 grid  grid-rows-1 grid-cols-1  mobile:grid-rows-2 mobile:grid-cols-2 w-full gap-3 deskop:grid-rows-3 deskop:grid-cols-3">  
      {
        blogs.map((blog) => (
         <div key={blog.id} className="flex items-center w-full justify-center">

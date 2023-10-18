@@ -1,14 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-    theme: {
-        name: "dark",
-        bgPrimary:  "#16181c",
-        bgSecondary: "#212327",
-        boxShadow: "rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px",
-        base: "#e7e9ea",
-        subbase: "#71767b",
-        btnColor: "#0000"
-      },
+    theme: JSON.parse(localStorage.getItem( "theme" )) || {
+      name: "light",
+      bgPrimary: "#fff",
+      bgSecondary: "#f7f7f7",
+      boxShadow:
+        "rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px",
+      base: "#000",
+      subbase: "#e5e5e5",
+      btnColor: "#ffff"
+    }   
       
      
 }
@@ -20,6 +21,7 @@ const  appearance = createSlice({
     reducers: {
       _setTheme: (state , action) => {
         state.theme = action.payload
+        localStorage.setItem("theme", JSON.stringify(action.payload))
       }
  
     }

@@ -6,7 +6,7 @@ export default function Lessons(){
 
     return (
         <SectionMain>
-              <div  className=" grid  grid-rows-1 grid-cols-1  mobile:grid-rows-2 mobile:grid-cols-2 w-full gap-3 deskop:grid-rows-3 deskop:grid-cols-3">  
+              <div  className="py-2 grid  grid-rows-1 grid-cols-1  mobile:grid-rows-2 mobile:grid-cols-2 w-full gap-3 deskop:grid-rows-3 deskop:grid-cols-3">  
      {
       pakets.map(( paket) => (
         <div key={ paket.id} className="flex items-center w-full justify-center">
