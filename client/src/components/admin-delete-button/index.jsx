@@ -1,7 +1,7 @@
 import {AiOutlineDelete} from "react-icons/ai"
 import PropTypes from "prop-types"
 import { useCallback } from "react";
-export default function DeleteButton({onSuccess , id}){
+export default function DeleteButton({onSuccess }){
     const deleteHandle = useCallback(async () => {
         // await fetch(
         //   `${process.env.REACT_APP_HOST_URL}/admin/panel/portfoly/delete/${id}`,
