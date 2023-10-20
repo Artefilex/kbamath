@@ -15,6 +15,7 @@ import SecondClass from "../pages/nots/high-school/second";
 import ThirthClass from "../pages/nots/high-school/thirth";
 import FourClass from "../pages/nots/high-school/four";
 import LessonsDetails from "../pages/dersler/lesson-details";
+import LessonMain from "../pages/dersler/lesson-main";
 const routes = createBrowserRouter([
 { path : "/",
 element: <MainLayout/>,
@@ -30,11 +31,17 @@ children:[
     },
     {
         path: "/dersler",
-        element: <Lessons/>
-    },
-    { 
-        path: "/dersler/:lessonid",
-        element: <LessonsDetails/>
+        element: <Lessons/>,
+        children:[
+            {
+                index: true,
+                element:  <LessonMain/>
+            },
+            { 
+                path: "/dersler/:lessonid",
+                element: <LessonsDetails/>
+            }
+        ]
     },
     {
         path: "/bloglar",

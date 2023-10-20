@@ -1,39 +1,37 @@
 export  const pakets = [
-    {
-        title : "TYT MATEMATİK",
-        price : "2000",
-        img: "TYT Url ",
-        url: "bak",
-        konular:  ""
-    },
-    {
-        title : "1.Sınıf 5.sınıf",
-        price : "2000",
-        img: "",
-        url: "bakma",
-        konular:  ""
-    },
-    {
-        title : "Kpss Matematik",
-        price : "2000",
-        img: "",
-        url: "bakmasac",
-        konular:  ""
-    },
-    {
-        title : "özel ders",
-        price : "2000",
-        img: "",
-        url: "bakmaascasc2efc",
-        konular:  ""
-    },
-    {
-        title : "mülakat hazırlık",
-        price : "2000",
-        img: "",
-        url: "bakmasacascaewgrnds",
-        konular:  ""
-    },
+  {
+    
+    title: "mülakat hazırlık",
+    price: "Sadece 200 TL",
+    img: "https://img2.bilgeyik.com/blog/770x480/1628077791_gzuttzn.jpg",
+    url: "435rge",
+    content:
+      '<p><span style="color: rgb(52, 53, 65);">Herkese merhaba arkadaşlar. Bugün sizlere deprem sonrasında hayata tutunma hikayemi anlatmak istiyorum.</span></p><p><br></p><p><span style="color: rgb(52, 53, 65);">Kendimden kısaca bahsetmek gerekirse, ben Barış Tunçdemir. 23 yaşındayım. 6 Şubat\'taki depremlerde ailemle birlikte Malatya\'da yakalandık.</span></p><p><br></p><p>İlk iki gün her şey çok taze ve bulanıktı. Bunların kötü bir rüya olduğunu ve sonunda uyanacağımı düşündüm. Sonraki üç gün hep şunu dedim kendime:<strong> "Şu an sıfır noktasındayız ancak her şey geçecek."</strong></p><p><br></p><p>Depremlerden sonra evimiz yıkıldığı için İstanbul\'a ablamın yanına yerleştik. İstanbul\'a geldikten sonra bir taraftan eğitimlerime devam ettim, bir taraftan da içi boş bir CV ile önüme gelen birçok Frontend ilanına başvuru yapmaya başladım.</p><p><br></p><p>Başvurular sonucunda olumlu bir geri dönüş alamayınca, kendime <strong>"Sen olsan kendini işe alır mısın?"</strong> diye bir soru yönelttim. Bu sorunun cevabından sonra başvurulara ara verdim.</p><p><br></p><p>Cevabı değiştirebilmek için kendimi eğitimlerime ve proje geliştirmeye odakladım. Yoğun geçen 6 aylık süreç içerisinde React, Nodejs ve SQL teknolojilerini öğrenerek projeler geliştirdim.</p><p><br></p><p>İbreyi sıfır noktasından ileriye çevirdim. Geleceğime olan inancım ve çalışma azmim sayesinde başardım. Bugün sizlere bu yazıyı, her şeyini kendi yaptığım portfolyo websitemin blog kısmından paylaşıyorum.</p>',
+  },
+  {
+    title: "1.sınf hazırlık",
+    price: "Sadece 100 TL",
+    img: "https://img2.bilgeyik.com/blog/770x480/1628077791_gzuttzn.jpg",
+    url: "tttttttt",
+    content:
+      '<p><span style="color: rgb(52, 53, 65);">Herkese merhaba arkadaşlar. Bugün sizlere deprem sonrasında hayata tutunma hikayemi anlatmak istiyorum.</span></p><p><br></p><p><span style="color: rgb(52, 53, 65);">Kendimden kısaca bahsetmek gerekirse, ben Barış Tunçdemir. 23 yaşındayım. 6 Şubat\'taki depremlerde ailemle birlikte Malatya\'da yakalandık.</span></p><p><br></p><p>İlk iki gün her şey çok taze ve bulanıktı. Bunların kötü bir rüya olduğunu ve sonunda uyanacağımı düşündüm. Sonraki üç gün hep şunu dedim kendime:<strong> "Şu an sıfır noktasındayız ancak her şey geçecek."</strong></p><p><br></p><p>Depremlerden sonra evimiz yıkıldığı için İstanbul\'a ablamın yanına yerleştik. İstanbul\'a geldikten sonra bir taraftan eğitimlerime devam ettim, bir taraftan da içi boş bir CV ile önüme gelen birçok Frontend ilanına başvuru yapmaya başladım.</p><p><br></p><p>Başvurular sonucunda olumlu bir geri dönüş alamayınca, kendime <strong>"Sen olsan kendini işe alır mısın?"</strong> diye bir soru yönelttim. Bu sorunun cevabından sonra başvurulara ara verdim.</p><p><br></p><p>Cevabı değiştirebilmek için kendimi eğitimlerime ve proje geliştirmeye odakladım. Yoğun geçen 6 aylık süreç içerisinde React, Nodejs ve SQL teknolojilerini öğrenerek projeler geliştirdim.</p><p><br></p><p>İbreyi sıfır noktasından ileriye çevirdim. Geleceğime olan inancım ve çalışma azmim sayesinde başardım. Bugün sizlere bu yazıyı, her şeyini kendi yaptığım portfolyo websitemin blog kısmından paylaşıyorum.</p>',
+  },
+  {
+    title: "2. sıbf hazırlık",
+    price: "Sadece 1000 TL",
+    img: "https://img2.bilgeyik.com/blog/770x480/1628077791_gzuttzn.jpg",
+    url: "t2324234",
+    content:
+      '<p><span style="color: rgb(52, 53, 65);">Herkese merhaba arkadaşlar. Bugün sizlere deprem sonrasında hayata tutunma hikayemi anlatmak istiyorum.</span></p><p><br></p><p><span style="color: rgb(52, 53, 65);">Kendimden kısaca bahsetmek gerekirse, ben Barış Tunçdemir. 23 yaşındayım. 6 Şubat\'taki depremlerde ailemle birlikte Malatya\'da yakalandık.</span></p><p><br></p><p>İlk iki gün her şey çok taze ve bulanıktı. Bunların kötü bir rüya olduğunu ve sonunda uyanacağımı düşündüm. Sonraki üç gün hep şunu dedim kendime:<strong> "Şu an sıfır noktasındayız ancak her şey geçecek."</strong></p><p><br></p><p>Depremlerden sonra evimiz yıkıldığı için İstanbul\'a ablamın yanına yerleştik. İstanbul\'a geldikten sonra bir taraftan eğitimlerime devam ettim, bir taraftan da içi boş bir CV ile önüme gelen birçok Frontend ilanına başvuru yapmaya başladım.</p><p><br></p><p>Başvurular sonucunda olumlu bir geri dönüş alamayınca, kendime <strong>"Sen olsan kendini işe alır mısın?"</strong> diye bir soru yönelttim. Bu sorunun cevabından sonra başvurulara ara verdim.</p><p><br></p><p>Cevabı değiştirebilmek için kendimi eğitimlerime ve proje geliştirmeye odakladım. Yoğun geçen 6 aylık süreç içerisinde React, Nodejs ve SQL teknolojilerini öğrenerek projeler geliştirdim.</p><p><br></p><p>İbreyi sıfır noktasından ileriye çevirdim. Geleceğime olan inancım ve çalışma azmim sayesinde başardım. Bugün sizlere bu yazıyı, her şeyini kendi yaptığım portfolyo websitemin blog kısmından paylaşıyorum.</p>',
+  },
+  {
+    title: "mülakat hazırlık",
+    price: "Sadece 20 TL",
+    img: "https://img2.bilgeyik.com/blog/770x480/1628077791_gzuttzn.jpg",
+    url: "234234253465345",
+    content:
+      '<p><span style="color: rgb(52, 53, 65);">Herkese merhaba arkadaşlar. Bugün sizlere deprem sonrasında hayata tutunma hikayemi anlatmak istiyorum.</span></p><p><br></p><p><span style="color: rgb(52, 53, 65);">Kendimden kısaca bahsetmek gerekirse, ben Barış Tunçdemir. 23 yaşındayım. 6 Şubat\'taki depremlerde ailemle birlikte Malatya\'da yakalandık.</span></p><p><br></p><p>İlk iki gün her şey çok taze ve bulanıktı. Bunların kötü bir rüya olduğunu ve sonunda uyanacağımı düşündüm. Sonraki üç gün hep şunu dedim kendime:<strong> "Şu an sıfır noktasındayız ancak her şey geçecek."</strong></p><p><br></p><p>Depremlerden sonra evimiz yıkıldığı için İstanbul\'a ablamın yanına yerleştik. İstanbul\'a geldikten sonra bir taraftan eğitimlerime devam ettim, bir taraftan da içi boş bir CV ile önüme gelen birçok Frontend ilanına başvuru yapmaya başladım.</p><p><br></p><p>Başvurular sonucunda olumlu bir geri dönüş alamayınca, kendime <strong>"Sen olsan kendini işe alır mısın?"</strong> diye bir soru yönelttim. Bu sorunun cevabından sonra başvurulara ara verdim.</p><p><br></p><p>Cevabı değiştirebilmek için kendimi eğitimlerime ve proje geliştirmeye odakladım. Yoğun geçen 6 aylık süreç içerisinde React, Nodejs ve SQL teknolojilerini öğrenerek projeler geliştirdim.</p><p><br></p><p>İbreyi sıfır noktasından ileriye çevirdim. Geleceğime olan inancım ve çalışma azmim sayesinde başardım. Bugün sizlere bu yazıyı, her şeyini kendi yaptığım portfolyo websitemin blog kısmından paylaşıyorum.</p>',
+  }
 
 ]
 
@@ -76,44 +74,3 @@ export const notlar = [
     }
 ]
 
-export const blog = [
-    // {
-    //     id: "124242424242242",
-    //     header: "Fonksiyonlar",
-    //     subtitle:"Nedir bu fonksiyonlar ",
-    //     content: " <h1>Lorem ipsum dolor sit.</h1> <br> <br> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores molestiae similique accusantium ipsum architecto, possimus iure impedit reiciendis nisi saepe.</p><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur nulla earum esse provident perferendis nesciunt. Alias ex eum ducimus itaque?</p>",
-    //     blogUrl: "https:www.kbamath.com/bloglar/fonksiyonlar",
-    //     headerimg: "https://img2.bilgeyik.com/blog/770x480/1628077791_gzuttzn.jpg",
-       
-    // },
-    {
-        id: "1242sdvs4242424224sdv2",
-        header: "Fonksiyonlar",
-        subtitle:"Nedir bu fonksiyonlar ",
-        content: "<h1>Lorem ipsum dolor sit.</h1> <br>  <br>  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores molestiae similique accusantium ipsum architecto, possimus iure impedit reiciendis nisi saepe.</p><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur nulla earum esse provident perferendis nesciunt. Alias ex eum ducimus itaque?</p>",
-        blogUrl: "https:www.kbamath.com/bloglar/fonksiyonlar",
-        headerimg: "https://img2.bilgeyik.com/blog/770x480/1628077791_gzuttzn.jpg",
-        img2 : "https://img.bilgeyik.com//2021/agustos/7/fast/684_image.png",
-        img3: "https://img.bilgeyik.com//2021/agustos/7/fast/684_image.png"
-    },
-    // {
-    //     id: "1242sdv2424sdv242242",
-    //     header: "Fonksiyonlar",
-    //     subtitle:"Nedir bu fonksiyonlar ",
-    //     content: " <br> İlkokulda sayılarla tanışırız ve ardından uzun yıllar çıkmamak üzere “X” girer hayatımıza. Yıllar geçtikçe ve soyut düşünme yeteneği arttıkça  “X”le daha çok uğraşırız, öyle ki, “Y” ekleniverir, “X2” ve “Y2” ler gelir. Gittikçe daha da zorlaşır işler, “X3” ve “Y3”ler görebiliriz. Sonunda, eğer bir sayısalcıysanız ve üniversite tercihinizi ona göre yapmışsanız, kaçınılmazdır Calculus dersiyle tanışmamak. Bugün, Calculus dersinin küçük bir içeriği hakkında konuşuyor olacağız. İlk önce çok değişkenli fonksiyonlar ve onların grafiklerinden ardından da ikinci yazıda bu fonksiyonların üzerinde türevden ve optimizasyon tekniklerinden bahsedeceğiz.",
-    //     blogUrl: "https:www.kbamath.com/bloglar/fonksiyonlar",
-    //     headerimg: "https://img2.bilgeyik.com/blog/770x480/1628077791_gzuttzn.jpg",
-    //     img2 : "https://img.bilgeyik.com//2021/agustos/7/fast/684_image.png",
-    //     img3: "https://img.bilgeyik.com//2021/agustos/7/fast/684_image.png"
-    // },
-    // {
-    //     id: "12424242dsvsdvs4242242",
-    //     header: "Fonksiyonlar",
-    //     subtitle:"Nedir bu fonksiyonlar ",
-    //     content: " <br> <br> İlkokulda sayılarla tanışırız ve ardından uzun yıllar çıkmamak üzere “X” girer hayatımıza. Yıllar geçtikçe ve soyut düşünme yeteneği arttıkça  “X”le daha çok uğraşırız, öyle ki, “Y” ekleniverir, “X2” ve “Y2” ler gelir. Gittikçe daha da zorlaşır işler, “X3” ve “Y3”ler görebiliriz. Sonunda, eğer bir sayısalcıysanız ve üniversite tercihinizi ona göre yapmışsanız, kaçınılmazdır Calculus dersiyle tanışmamak. Bugün, Calculus dersinin küçük bir içeriği hakkında konuşuyor olacağız. İlk önce çok değişkenli fonksiyonlar ve onların grafiklerinden ardından da ikinci yazıda bu fonksiyonların üzerinde türevden ve optimizasyon tekniklerinden bahsedeceğiz.",
-    //     blogUrl: "https:www.kbamath.com/bloglar/fonksiyonlar",
-    //     headerimg: "https://img2.bilgeyik.com/blog/770x480/1628077791_gzuttzn.jpg",
-    //     img2 : "https://img.bilgeyik.com//2021/agustos/7/fast/684_image.png",
-    //     img3: "https://img.bilgeyik.com//2021/agustos/7/fast/684_image.png"
-    // }
-]

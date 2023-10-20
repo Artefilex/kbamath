@@ -6,12 +6,14 @@ import HomeBlog from "./home-blogs";
 import { useEffect, useState } from "react";
 import HomeLessons from "./home-lessons";
 import HomeNots from "./home-nots";
+import Loading from "../../components/loading";
 export default function Home (){
 
   const [ lessons , setLessons] = useState([])
   const [blogs, setBlogs] = useState([])
     const {data :blogsData ,loading : blogsDataLoading} = DataProvider("blogs")
     const {data : lessonData ,loading : lessonDataLoading} = DataProvider("skills")
+    console.log(lessonDataLoading, blogsDataLoading)
     useEffect(() => {
           if (!lessonDataLoading && !blogsDataLoading) {
             const randomSkills = RandomDataProvider( lessonData , 5);
@@ -27,19 +29,30 @@ export default function Home (){
 
     return (
         <SectionMain>
+          <h4>Matematikte Başarının Anahtarı Burada</h4>
            <AboutHeader/>
-            <div>
-            { blogs.length > 0  && blogs.map((blog, i) => (
-                       <HomeBlog key={i}  blog={blog} />
-                    ))
-                }
-            </div>
-            <div>
-             {lessons.length > 0 && lessons.map((lesson)=>(
-                 <HomeLessons key={lesson.id} lesson={lesson} />
-             ))}
-              <HomeNots  />
-            </div>
+           <div className="w-full">
+        {blogsDataLoading ? (
+         <Loading/>
+        ) : (
+          blogs.length > 0 &&
+          blogs.map((blog , i ) => (
+            <HomeBlog key={i} blog={blog} />
+          ))
+        )}
+      </div>
+      <div className="grid    grid-cols-1  smobile:grid-cols-2 place-content-center  mobile:grid-cols-3 tablet:grid-cols-4 deskop:grid-cols-5  gap-4 ">
+        {lessonDataLoading ? (
+         <Loading/>
+        ) : (
+          lessons.length > 0 &&
+          lessons.map((lesson , i ) => (
+            <HomeLessons key={i} lesson={lesson} />
+          ))
+        )}
+       
+      </div>
+      <HomeNots />
     </SectionMain>
     )
 }

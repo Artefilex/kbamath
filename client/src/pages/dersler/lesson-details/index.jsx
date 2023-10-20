@@ -1,9 +1,13 @@
-import { useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import SectionMain from "../../../components/section-main";
 import { useEffect, useState } from "react";
+import { pakets } from "../../../mock";
 
 export default function LessonsDetails() {
+
   const { lessonid } = useParams();
+
+
   const [detail, setDetail] = useState({
     title: "mülakat hazırlık",
     price: "Sadece 2000 TL",
@@ -23,19 +27,26 @@ export default function LessonsDetails() {
       });
   }, [lessonid]);
 
+ 
   return (
     <SectionMain>
-      <div className="flex items-center  flex-col w-[90%] py-2 px-2">
-      <header className="flex flex-col justify-between gap-5 w-full mobile:flex-row pb-10">
-      <img src={detail.img} alt=""  className="max-w-[25rem]" />
-        <div className="flex items-start flex-col w-full gap-16" >
-         <h1 className="uppercase text-[2rem] font-bold "> {detail.title}</h1>
-        <div className="uppercase text-[2rem] font-semibold  "> {detail.price} </div>
+ 
+   {
+      pakets.filter((paket)=> paket.url === lessonid).map((detail) => (
+        <div key={detail.url} className="flex items-center  flex-col w-[90%] py-2 px-2">
+        <header className="flex flex-col justify-between gap-5 w-full mobile:flex-row pb-10">
+        <img src={detail.img} alt=""  className="max-w-[25rem]" />
+          <div className="flex items-start flex-col w-full gap-16" >
+           <h1 className="uppercase text-[2rem] font-bold "> {detail.title}</h1>
+          <div className="uppercase text-[2rem] font-semibold  "> {detail.price} </div>
+          </div>
+        </header>
+          <div className="text-justify flex  gap-1 flex-col w-full text-[color:var(--c-base)]" dangerouslySetInnerHTML={{ __html: detail.content }}></div>
         </div>
-      </header>
-        <div className="text-justify flex  gap-1 flex-col w-full text-[color:var(--c-base)]" dangerouslySetInnerHTML={{ __html: detail.content }}></div>
-      </div>
-     
+
+      ))
+
+   }
     </SectionMain>
   );
 }
