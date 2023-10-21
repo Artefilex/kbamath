@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      colors:{
+          "blog-bg" : " rgba(125, 236, 255, 0.34) "
+      },
       boxShadow:{
         "custom-box-shadow": "var(--box-shadow)"
       }

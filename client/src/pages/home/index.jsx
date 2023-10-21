@@ -30,9 +30,9 @@ export default function Home (){
 
     return (
         <SectionMain>
-          <h4>Matematikte Başarının Anahtarı Burada</h4>
+          <h4 >Matematikte Başarının Anahtarı Burada</h4>
            <AboutHeader/>
-         <div className="w-[95%]">
+         <div className="w-[95%] ">
          <LessonMain/>
          </div>
            <div className="w-full">
@@ -45,7 +45,7 @@ export default function Home (){
           ))
         )}
       </div>
-      <div className="grid    grid-cols-1  smobile:grid-cols-2 place-content-center  mobile:grid-cols-3 tablet:grid-cols-4 deskop:grid-cols-5  gap-4 ">
+      {/* <div className="grid    grid-cols-1  smobile:grid-cols-2 place-content-center  mobile:grid-cols-3 tablet:grid-cols-4 deskop:grid-cols-5  gap-4 ">
         {lessonDataLoading ? (
          <Loading/>
         ) : (
@@ -55,7 +55,7 @@ export default function Home (){
           ))
         )}
        
-      </div>
+      </div> */}
       <HomeNots />
     </SectionMain>
     )
