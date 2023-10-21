@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import HomeLessons from "./home-lessons";
 import HomeNots from "./home-nots";
 import Loading from "../../components/loading";
+import LessonMain from "../dersler/lesson-main";
 export default function Home (){
 
   const [ lessons , setLessons] = useState([])
@@ -31,6 +32,9 @@ export default function Home (){
         <SectionMain>
           <h4>Matematikte Başarının Anahtarı Burada</h4>
            <AboutHeader/>
+         <div className="w-[95%]">
+         <LessonMain/>
+         </div>
            <div className="w-full">
         {blogsDataLoading ? (
          <Loading/>

@@ -30,7 +30,6 @@ export default function LessonsDetails() {
  
   return (
     <SectionMain>
- 
    {
       pakets.filter((paket)=> paket.url === lessonid).map((detail) => (
         <div key={detail.url} className="flex items-center  flex-col w-[90%] py-2 px-2">
@@ -45,7 +44,6 @@ export default function LessonsDetails() {
         </div>
 
       ))
-
    }
     </SectionMain>
   );

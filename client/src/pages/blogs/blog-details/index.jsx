@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RightBar from "../../../components/blog-rightbar";
+import IsMobile from "../../../components/is-mobile";
 
 export default function BlogDetails() {
   const [blog, setBlog] = useState([]);
   const [blogs, setBlogs] = useState([]);
-  const [tablet, setIsTablet] = useState(window.innerWidth <= 599);
+  const {isMobile} = IsMobile()
+ 
   const [show, setShow] = useState(false);
 
   const { url } = useParams();
@@ -21,17 +23,7 @@ export default function BlogDetails() {
         setBlogs(data.blogs);
       });
   }, [url]);
-  useEffect(() => {
-    const handleResize = () => {
-      setIsTablet(window.innerWidth <= 599);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+ 
 
   return (
     <div className=" gap-4 flex w-full items-center justify-center flex-col mobile:flex-row  mobile:gap-4 mobile:items-start relative ">
@@ -54,7 +46,7 @@ export default function BlogDetails() {
           {/* <img src={blog.img2} alt=""  className="w-full h-[20rem] object-cover "/> */}
         </div>
       }
-      {tablet && (
+      {isMobile && (
         <>
           <div className="flex w-full items-center justify-center mt-6">
             <button
@@ -66,12 +58,7 @@ export default function BlogDetails() {
           </div>
           {show && (
             <div className="w-[90%] px-2 bg-[color:var(--bg-secondary)] mt-6 min-h-[20rem] overflow-auto py-2">
-              {!tablet && (
-                <h1 className="uppercase  font-extrabold leading-10 text-[1.15rem] mb-3 ">
-                  {" "}
-                  Daha Fazla blog{" "}
-                </h1>
-              )}
+         
               <div>
                 <RightBar blogs={blogs} />
               </div>
@@ -80,7 +67,7 @@ export default function BlogDetails() {
         </>
       )}
 
-      {!tablet && (
+      {!isMobile && (
         <div className="w-[90%] px-2 bg-[color:var(--bg-secondary)] mt-6 h-[20rem] overflow-auto mobile:h-[42rem] mobile:mx-2 mobile:w-[18rem]">
           <h1 className="uppercase  font-extrabold leading-10 text-[1.15rem] mb-3 ">
             {" "}
