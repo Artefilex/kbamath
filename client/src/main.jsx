@@ -1,7 +1,7 @@
 
 import ReactDOM from 'react-dom/client'
 import routes from "./routes"
-import "./styles/css/tailwind.css"
+import "./assests/css/tailwind.css"
 import { RouterProvider } from 'react-router-dom'
 import store from './store'
 import { Provider } from 'react-redux'

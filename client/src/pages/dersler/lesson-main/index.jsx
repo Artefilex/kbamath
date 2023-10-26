@@ -1,6 +1,6 @@
-import lesson from "../../../assests/lesson.svg"
-import grup from "../../../assests/grup.svg"
-import question from "../../../assests/question.svg"
+import lesson from "../../../assests/image/lesson.svg"
+import grup from "../../../assests/image/grup.svg"
+import question from "../../../assests/image/question.svg"
 
 export default function LessonMain() {
   return (
