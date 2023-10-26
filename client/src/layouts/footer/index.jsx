@@ -3,6 +3,7 @@ import { BsInstagram, BsTelephone } from "react-icons/bs";
 import { SiGmail } from "react-icons/si";
 import { getData } from "../../utils/blog";
 import { useEffect, useState } from "react";
+import MainSvg from "../../assests/image/main.svg";
 export default function Footer() {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
@@ -21,58 +22,74 @@ export default function Footer() {
   };
   return (
     <footer className="border-1  w-full laptop:max-w-[80%] gap-4 flex-col flex items-center justify-center my-4 relative bg-[color:var(--bg-secondary)] px-2 py-6 mobile:">
-      <main className="border-1  w-full laptop:max-w-[80%] gap-4 flex-col flex items-center tablet:items-start tablet:flex-row  justify-center my-4 relative bg-[color:var(--bg-secondary)] px-2 py-6 mobile:">
-        <div className=" w-full justify-beetwen flex flex-col gap-2 text-[1.6rem]">
-          <div>
-            <p> Bize Ulaşın</p>
-          </div>
-          <div>
-            <div className="flex items-center   gap-4 text-[1.3rem]">
-              {" "}
-              <BsTelephone /> {connect.tel}{" "}
-            </div>
-            <div className="flex items-center   gap-4 text-[1.3rem]">
-              {" "}
-              <SiGmail /> {connect.mail}{" "}
-            </div>
-            <Link
-              to={"https://www.instagram.com/kbamatematik_/?hl=tr"}
-              className="flex items-center  gap-4 text-[1.3rem]"
-            >
-              {" "}
-              <BsInstagram /> Kba Matematik{" "}
-            </Link>
-            <Link
-              to={"https://www.instagram.com/kbageometri/?hl=tr"}
-              className="flex items-center  gap-4 text-[1.3rem]"
-            >
-              {" "}
-              <BsInstagram /> Kba Geometri{" "}
-            </Link>
-          </div>
+      <main className="w-full gap-4 flex-col flex  items-center tablet:items-start  tablet:flex-row justify-around my-4 relative max-w-[100rem] ">
+        <div className="w-full max-w-[20rem] flex justify-start">
+          <img src={MainSvg} alt="" />
         </div>
-        <div className=" w-full text-[1.3rem]">
-          <h3 className="text-[1.6rem]"> Hızlı Ulaşım </h3>
-          <nav>
-            <Link to={"/hakkımızda"}> Hakkımızda </Link>
-            <Link to={"/dersler"}> Özel Ders Programı </Link>
-            <div className="w-full flex flex-col gap-4">
-              {/* buraya ugrancak */}
-              <Link to={"/bloglar"}> Diğer Bloglar </Link>
-              {blogs.map((blog) => (
-                <div
-                  key={blog.id}
-                  className="flex items-center justify-between gap-2"
-                >  
-                  <img src={blog.img || "https://img2.bilgeyik.com/blog/770x480/1628077791_gzuttzn.jpg"} alt={blog.img || "blog.img"} className="w-full max-w-[5rem]" />
-                  <div>
-                    <h2>{blog.header} </h2>
-                    <h4> {blog.subtitle}</h4>
-                  </div>
-                </div>
-              ))}
+
+        <div className="flex flex-col w-full xtablet:flex-row max-w-[50rem] px-10 tablet:px-0">  
+          <div className=" w-full justify-beetwen  flex flex-col gap-2">
+            <div className="text-[1.6rem]">
+              <p> Bize Ulaşın</p>
             </div>
-          </nav>
+            <div>
+              <div className="flex items-center   gap-4 ">
+                {" "}
+                <BsTelephone /> {connect.tel}{" "}
+              </div>
+              <div className="flex items-center truncate w-full gap-4 ">
+                {" "}
+                <SiGmail /> {connect.mail}{" "}
+              </div>
+              <Link
+                to={"https://www.instagram.com/kbamatematik_/?hl=tr"}
+                className="flex items-center  gap-4"
+              >
+                {" "}
+                <BsInstagram /> Kba Matematik{" "}
+              </Link>
+              <Link
+                to={"https://www.instagram.com/kbageometri/?hl=tr"}
+                className="flex items-center  gap-4"
+              >
+                {" "}
+                <BsInstagram /> Kba Geometri{" "}
+              </Link>
+            </div>
+          </div>
+
+          <div className=" w-full text-[1rem]  justify-beetwen flex flex-col gap-2 ">
+            <h3 className="text-[1.6rem]"> Hızlı Ulaşım </h3>
+            <nav className="flex flex-col max-w-[20rem]">
+              <Link to={"/hakkımızda"}> Hakkımızda </Link>
+              <Link to={"/dersler"}> Özel Ders Programı </Link>
+              <div className="w-full  flex flex-col gap-4">
+                {/* buraya ugrancak */}
+                <Link to={"/bloglar"}> Diğer Bloglar </Link>
+                {blogs.map((blog) => (
+                  <div
+                    key={blog.id}
+                    className="flex items-start gap-10"
+                  >
+                    <img
+                      src={
+                        blog.img ||
+                        "https://img2.bilgeyik.com/blog/770x480/1628077791_gzuttzn.jpg"
+                      }
+                      alt={blog.img || "blog.img"}
+                      className="w-full max-w-[5rem]"
+                    />
+                
+                     <div className="truncate max-w-[10rem]">
+                     <p className="truncate ">{blog.header} </p>
+                      <p className="truncate"> {blog.subtitle}</p>
+                     </div>
+                   
+                  </div>
+                ))}
+              </div>
+            </nav>
+          </div>
         </div>
       </main>
       <span>birlikte yarınlara emin adımlarla </span>

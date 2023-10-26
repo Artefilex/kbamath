@@ -33,6 +33,9 @@ export default function MainLayout() {
       "--btn-dark-hover",
       appearance.theme.btnColor
     );
+    document.documentElement.style.setProperty(
+      "--blog-text", appearance.theme.blogText
+    )
   }, [appearance]);
   return (
     <div className="w-full flex flex-col items-center  min-h-screen">
