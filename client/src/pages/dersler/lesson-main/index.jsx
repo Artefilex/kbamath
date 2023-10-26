@@ -1,12 +1,11 @@
-import lesson from "../../../../public/lesson.svg"
-import grup from "../../../../public/grup.svg"
-import question from "../../../../public/question.svg"
+import lesson from "../../../assests/lesson.svg"
+import grup from "../../../assests/grup.svg"
+import question from "../../../assests/question.svg"
+
 export default function LessonMain() {
   return (
     <div className="py-5">
-      <header className="w-full flex items-center justify-center">
-       
-      </header>
+
       <main className="flex items-center justify-center w-full flex-col gap-4 pt-5">
       <section className="flex w-full flex-col-reverse xtablet:items-center xtablet:flex-row gap-4" >
      
