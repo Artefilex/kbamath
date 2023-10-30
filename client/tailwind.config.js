@@ -6,6 +6,11 @@ export default {
   ],
   theme: {
     extend: {
+      rotate:{
+        "50": "50deg",
+        "55": "56deg"
+      }
+      ,
       colors:{
           "blog-bg" : " rgba(125, 236, 255, 0.34) "
       },
