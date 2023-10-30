@@ -1,6 +1,6 @@
 export default function HomeMain() {
   return (
-    <main className="w-full">
+    <main className="w-full mt-[6rem]">
       Programımızın işleyiş biçimi Öğrencilerimizin kendi potansiyelini
       keşfetmesi için fırsat yaratırız. Bu, klasik online matematik kursu ve
       özel derslerden en büyük farkımızdır. Birebir online matematik özel ders

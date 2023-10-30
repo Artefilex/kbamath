@@ -24,7 +24,8 @@ export default function Footer() {
     <footer className="border-1  w-full laptop:max-w-[80%] gap-4 flex-col flex items-center justify-center my-4 relative bg-[color:var(--bg-secondary)] px-2 py-6 mobile:">
       <main className="w-full gap-4 flex-col flex  items-center tablet:items-start  tablet:flex-row justify-around my-4 relative max-w-[100rem] ">
         <div className="w-full max-w-[20rem] flex justify-start">
-          <img src={MainSvg} alt="" />
+       
+           <img  src={MainSvg} alt="sss" className=" bg-linear text-transparent text-blog-second-bg bg-[url:('../../assests/image/main.svg')]" /> 
         </div>
 
         <div className="flex flex-col w-full xtablet:flex-row max-w-[50rem] px-10 tablet:px-0">  

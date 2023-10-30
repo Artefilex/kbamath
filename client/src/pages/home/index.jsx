@@ -5,12 +5,13 @@ import LessonMain from "../dersler/lesson-main";
 import HomeMain from "./home-main";
 import HomeBlogs from "./home-blogs";
 import HomeLessons from "./home-lessons";
+import HomeHeader from "./home-header";
 import HomeDescription from "./home-description";
 export default function Home() {
   return (
     <SectionMain>
-      <HomeDescription/>
-      Sizleri önemsiyoruz çünkü hedefimiz .... 
+      <HomeHeader/>
+     <HomeDescription/>
       <HomeMain />
       <LessonMain />
       <HomeNots />
