@@ -1,5 +1,5 @@
 import SectionMain from "../../components/section-main";
-import AboutHeader from "../about/about-header";
+
 import HomeNots from "./home-nots";
 import LessonMain from "../dersler/lesson-main";
 import HomeMain from "./home-main";
@@ -10,7 +10,6 @@ export default function Home() {
   return (
     <SectionMain>
       <HomeDescription/>
-     
       Sizleri önemsiyoruz çünkü hedefimiz .... 
       <HomeMain />
       <LessonMain />
