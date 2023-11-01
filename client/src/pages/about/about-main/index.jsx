@@ -1,4 +1,6 @@
-export default function AboutMain() {
+import { memo } from "react"
+
+const AboutMain = memo(function AboutMain() {
   const date = new Date().getFullYear();
   const workTime = `${date - 2018} `;
   const bachleros = `${date - 2021} `;
@@ -58,4 +60,6 @@ export default function AboutMain() {
       </div>
     </section>
   );
-}
+})
+
+export default  AboutMain

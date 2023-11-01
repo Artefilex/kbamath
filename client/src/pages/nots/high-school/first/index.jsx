@@ -1,6 +1,7 @@
+import { memo } from "react";
 import NotsMain from "../../../../components/nots-component";
 
-export default function FirstClass () {
+const FirstClass = memo( function FirstClass () {
     return (
      <NotsMain>
       <h1> 1.Sınıf  Ders Notları </h1>
@@ -12,4 +13,6 @@ export default function FirstClass () {
 
      )
 
-}
+})
+
+export default FirstClass

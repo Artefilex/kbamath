@@ -1,8 +1,9 @@
+import { memo } from "react";
 import SectionMain from "../../components/section-main";
 import HighSchool from "./high-school";
 import LefttBar from "./left-navbar";
 
-export default function Nots() {
+const Nots = memo( function Nots() {
   
   return (
     <SectionMain>
@@ -12,4 +13,6 @@ export default function Nots() {
       </div>
     </SectionMain>
   );
-}
+})
+
+export default Nots

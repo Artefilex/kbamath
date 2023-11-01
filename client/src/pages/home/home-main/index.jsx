@@ -4,9 +4,11 @@ import focus from "../../../assests/image/personalfocus.svg";
 import potential from "../../../assests/image/potential.svg";
 import CardLeftBox from "../../../components/card-left-box";
 import CardRightBox from "../../../components/card-right-box"
-export default function HomeMain() {
+import { memo } from "react";
+const HomeMain = memo(function HomeMain() {
   return (
-    <main className="w-[95%] flex flex-col items-center mt-[6rem] deskop:max-w-[140rem]">
+
+    <main className="flex items-center justify-center w-full flex-col gap-4 pt-5">
       <CardLeftBox 
        image={potential}
       header={"Programın İşleyişi:"}
@@ -30,5 +32,8 @@ export default function HomeMain() {
       /> 
     
     </main>
-  );
-}
+    
+  )
+})
+
+export default HomeMain

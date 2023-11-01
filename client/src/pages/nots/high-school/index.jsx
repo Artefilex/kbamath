@@ -1,11 +1,14 @@
 
+import { memo } from "react";
 import { Outlet } from "react-router-dom";
 
-export default function  HighSchool  () {
+const HighSchool = memo( function  HighSchool  () {
 
-    return (
-      <main className="w-full flex">
-      <Outlet/>
-      </main>
-    )
-}
+  return (
+    <main className="w-full flex">
+    <Outlet/>
+    </main>
+  )
+})
+
+export default HighSchool

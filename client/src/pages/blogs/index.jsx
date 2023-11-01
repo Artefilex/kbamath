@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { getData } from "../../utils/blog";
 import SectionMain from "../../components/section-main";
 // import   { blog  as mocdata} from "../../mock/index.js"
 import { Link } from "react-router-dom";
 import BlogHeader from "./blog-header";
 
-export default function Blogs() {
+const Blogs = memo(function Blogs() {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       const response = await getData();
       setBlogs(response[0]);
     };
-
     fetchData();
   }, []);
   return (
@@ -45,4 +44,7 @@ export default function Blogs() {
       </main>
     </SectionMain>
   );
-}
+})
+
+
+export default  Blogs

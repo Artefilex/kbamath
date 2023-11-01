@@ -1,5 +1,6 @@
+import { memo } from "react"
 import aim from "../../../assests/image/aim2.svg"
-export default function HomeDescription() {
+const HomeDescription = memo(function HomeDescription() {
   return (
     <div className="w-full  relative flex items-center  justify-center flex-col mt-[5rem] font-semibold">
        <div className="h-[20rem] top-0 -z-[1] absolute w-[80%]">
@@ -18,4 +19,5 @@ export default function HomeDescription() {
       </div>
     </div>
   );
-}
+})
+export default  HomeDescription

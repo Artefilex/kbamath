@@ -1,6 +1,7 @@
+import { memo } from "react";
 import headerstudent from "../../../assests/image/homeheaderstudent.jpg";
 import mainimg from "../../../assests/image/mainheader.svg";
-export default function HomeHeader() {
+const HomeHeader = memo(function HomeHeader() {
   return (
   
       <header className="w-full tablet:w-[95%] relative flex items-end justify-end   mobile:flex-row">
@@ -10,12 +11,9 @@ export default function HomeHeader() {
               alt=""
               className=" h-[8rem] max-w-[12rem] mobile:max-w-[18rem]  tablet:h-[18rem]  laptop:h-[18rem]  deskop:h-[18rem] object-cover  "
             />
-           
-    
-           
-            <h1 className="w-full text-[2rem] mobile:text-[3rem] tablet:text-[4rem] laptop:text-[6rem] deskop:text-[8rem] bg-clip-text text-transparent bg-gradient-to-t from-blue-900 to-blue-300 contrast-200 ">MATEMATİK</h1> 
-          
-          
+ 
+            <h1 className="w-full text-[2rem] mobile:text-[3rem] tablet:text-[4rem] laptop:text-[6rem] deskop:text-[8rem] bg-clip-text text-transparent bg-gradient-to-t from-blue-900 to-blue-300 contrast-200  ">MATEMATİK</h1> 
+  
         </div> 
           <img
             src={headerstudent}
@@ -25,4 +23,5 @@ export default function HomeHeader() {
        
       </header>
   );
-}
+})
+export default HomeHeader

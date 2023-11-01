@@ -1,6 +1,7 @@
+import { memo } from "react";
 import NotsMain from "../../../../components/nots-component";
 
-export default function FourClass () {
+const FourClass = memo(function FourClass () {
     
     return (
      <NotsMain>
@@ -13,4 +14,6 @@ export default function FourClass () {
 
      )
 
-}
+})
+
+export default  FourClass

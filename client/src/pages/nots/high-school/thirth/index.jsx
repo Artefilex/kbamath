@@ -1,6 +1,7 @@
+import { memo } from "react";
 import NotsMain from "../../../../components/nots-component";
 
-export default function ThirthClass () {
+const ThirthClass =  memo(function ThirthClass () {
     return (
      <NotsMain>
       <h1> 3.Sınıf  Ders Notları </h1>
@@ -13,3 +14,6 @@ export default function ThirthClass () {
      )
 
 }
+)
+
+export default ThirthClass
