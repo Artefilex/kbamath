@@ -1,19 +1,34 @@
+import feadback from "../../../assests/image/teacherfead.svg";
+import onlinelear from "../../../assests/image/onlinelearn.svg";
+import focus from "../../../assests/image/personalfocus.svg";
+import potential from "../../../assests/image/potential.svg";
+import CardLeftBox from "../../../components/card-left-box";
+import CardRightBox from "../../../components/card-right-box"
 export default function HomeMain() {
   return (
-    <main className="w-full mt-[6rem]">
-      Programımızın işleyiş biçimi Öğrencilerimizin kendi potansiyelini
-      keşfetmesi için fırsat yaratırız. Bu, klasik online matematik kursu ve
-      özel derslerden en büyük farkımızdır. Birebir online matematik özel ders
-      seansları öğrencilerde iç motivasyonu arttırır. Potansiyelini keşfeden her
-      öğrenci için başarı kaçınılmazdır. Alanında uzman matematik
-      öğretmenlerimiz zaman ve mekan engelini kaldırarak dijital platformlarda
-      öğrencileri ile online matematik dersi yaparlar. Öğrencilerimizi Tanımakla
-      İşe Başlarız h2 Her öğrenciye eşit eğitim yerine kişi odaklı yaptığımız
-      çalışmalar ile hak ettiğiniz kaliteli hizmeti alırsınız. Tam Öğrenme
-      Modeli İle Çalışırız Gerekli ortam, zaman ve imkân sağlandığında her
-      öğrencimizin matematikte başarılı olabileceğini kabul ederiz. Takip ve
-      Geri Bildirimleri Paylaşırız Düzenli gelişim takibi sağlarız ve ay
-      sonlarında öğrenci izlem raporlarını değerlendirme fırsatı sunarız.
+    <main className="w-[95%] flex flex-col items-center mt-[6rem] deskop:max-w-[140rem]">
+      <CardLeftBox 
+       image={potential}
+      header={"Programın İşleyişi:"}
+      descrp={"  Öğrencilerimizin kendi potansiyelini keşfetmeleri için fırsatlar sunuyoruz. Bu, klasik online matematik kurslarından ve özel derslerden farklıdır. Birebir online matematik özel ders seansları, öğrencilerin iç motivasyonunu artırır. Potansiyelini keşfeden her öğrenci için başarı kaçınılmazdır."}
+      />
+
+    <CardRightBox 
+       image={focus}
+      header={"Kişi Odaklı Yaklaşım:"}
+      descrp={"  Her öğrenciye eşit eğitim yerine kişi odaklı çalışmalar yaparız, böylece hak ettikleri kaliteli hizmeti alırlar."}
+      />
+    <CardLeftBox 
+       image={onlinelear}
+      header={"Tam Öğrenme Modeli:"}
+      descrp={" Gerekli ortam, zaman ve imkanlar sağlandığında her öğrencimizin matematikte başarılı olabileceğine inanırız."}
+      />
+      <CardRightBox 
+       image={feadback}
+      header={"Takip ve Geri Bildirim:"}
+      descrp={" Düzenli gelişim takibi sağlarız ve her ayın sonunda öğrenci izleme raporlarını değerlendirme fırsatı sunarız. Öğrencilerimizi tanımakla işe başlarız."}
+      /> 
+    
     </main>
   );
 }

@@ -12,6 +12,7 @@ body {
     @apply  bg-[color:var(--bg-primary)] text-[color:var(--c-base)]   
 }
 
+
 .icon{
     @apply  bg-[color:var(--bg-primary)] text-[color:var(--c-base)]
 }
@@ -25,6 +26,10 @@ body {
 }
 .blog-second-bg{
     background: linear-gradient(180deg, rgba(110, 197, 238, 0.24) 0%, rgba(25, 95, 122, 0.39) 14%, rgba(34, 54, 69, 0.72) 44%, rgba(34, 54, 69, 0.562) 100%);   
+}
+
+.header-color{
+    background-color: linear-gradient(180deg, rgba(110, 197, 238, 0.24) 0%, rgba(25, 95, 122, 0.39) 14%, rgba(34, 54, 69, 0.72) 44%, rgba(34, 54, 69, 0.562) 100%);   
 }
 .blog-header {
     font-family: 'Poppins', sans-serif;

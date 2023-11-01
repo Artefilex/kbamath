@@ -6,13 +6,25 @@ export default {
   ],
   theme: {
     extend: {
+      dropShadow:{
+        "dark" : [
+          '0 25px 25px rgb(255, 255, 255, 0.01)',
+          '0 25px 25px rgb(255, 255, 255, 0.10 )'
+        ]
+        ,
+        "light": [
+          '0 25px 25px rgba(0, 0, 0, 0.35)',
+          '0 25px 25px rgba(0, 0, 0, 0.25)'
+      ]
+      },
       rotate:{
         "50": "50deg",
         "55": "56deg"
       }
       ,
       colors:{
-          "blog-bg" : " rgba(125, 236, 255, 0.34) "
+          "blog-bg" : " rgba(125, 236, 255, 0.34)"
+          
       },
       boxShadow:{
         "custom-box-shadow": "var(--box-shadow)"
