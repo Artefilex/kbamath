@@ -3,11 +3,14 @@ import Navbar from "./navbar";
 import Footer from "./footer";
 import { useAppearance } from "../store/appearance/hooks";
 import { useEffect } from "react";
-
+import AOS from "aos"
+import "aos/dist/aos.css";
 import { Toaster } from "react-hot-toast";
 export default function MainLayout() {
   const appearance = useAppearance();
-
+useEffect(()=>{
+AOS.init({ duration: 1000 })
+},[])
   useEffect(() => {
     document.documentElement.style.setProperty(
       "--bg-primary",

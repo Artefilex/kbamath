@@ -1,36 +1,53 @@
-
-import { useState , useEffect , memo} from "react";
-import  {Link} from "react-router-dom"
+import { useState, useEffect, memo } from "react";
+import { Link } from "react-router-dom";
 import { DataProvider } from "../../../utils/data";
 import Loading from "../../../components/loading";
 import { RandomDataProvider } from "../../../components/random-data";
+import AwesomeSlider from "react-awesome-slider";
+import withAutoplay from "react-awesome-slider/dist/autoplay";
+import "react-awesome-slider/dist/styles.css";
 const HomeLessons = memo(function HomeLessons() {
   const [lessons, setLessons] = useState([]);
-  const { data: lessonData, loading: lessonDataLoading } = DataProvider("skills");
+  const { data: lessonData, loading: lessonDataLoading } =
+    DataProvider("skills");
   useEffect(() => {
-    if (!lessonDataLoading ) {
+    if (!lessonDataLoading) {
       const randomSkills = RandomDataProvider(lessonData, 5);
       setLessons(randomSkills);
     }
   }, [lessonData, lessonDataLoading]);
- 
-//   lessondan bize bir adet path gelecek bunu /dersler/pathe gönderecez bir adet de resim gelmesi lazım 
-  return (
-  <div className="grid    grid-cols-1  smobile:grid-cols-2 place-content-center  mobile:grid-cols-3 tablet:grid-cols-4 deskop:grid-cols-5  gap-4">
-    {lessonDataLoading ? (
-          <Loading />
-      ) : (
-         lessons.length > 0 &&
-          lessons.map((lesson, i) => (
-          <div className="flex items-center justify-center bg-[color:var(--c-subbase)] min-w-[10rem] min-h-[10rem]"key={i} >  <Link  to={`/dersler/bakma`}>
-          {lesson.skillName} 
-         </Link></div>
-         )  )
-      )}
-  
-  </div>
-  )
- 
-})
+  const AutoplaySlider = withAutoplay(AwesomeSlider);
+  //   lessondan bize bir adet path gelecek bunu /dersler/pathe gönderecez bir adet de resim gelmesi lazım
 
-export default HomeLessons
+  return (
+    <>
+      {lessonDataLoading ? (
+        <Loading />
+      ) : ( <div className="w-[20rem]">
+      <AutoplaySlider  play={true} cancelOnInteraction={false} interval={4000} bullets={false} organicArrows={false} >
+        {lessons.length > 0 &&
+          lessons.map((lesson, i) => (
+            <div key={i}>
+              <Link  to={`/dersler/bakma`}  className="!w-[20rem] !h-[20rem]" >{lesson.skillName}</Link>
+            </div>
+          ))}
+        </AutoplaySlider>
+      
+      </div>  )}
+    </>
+
+ 
+  );
+});
+
+export default HomeLessons;
+
+
+{/* <AutoplaySlider play={true} cancelOnInteraction={false} interval={6000}>
+{lessons.length > 0 &&
+  lessons.map((lesson, i) => (
+    <div key={i}>
+      <Link  to={`/dersler/bakma`}  >{lesson.skillName}</Link>
+    </div>
+  ))}
+</AutoplaySlider> */}
