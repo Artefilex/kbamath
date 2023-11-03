@@ -5,7 +5,7 @@ export default function CardRightBox ({image ,header, descrp}) {
     const {theme}= useAppearance()
 
     return(
-        <section className="flex w-full flex-col-reverse mobile:items-center mobile:flex-row gap-2 deskop:py-5 deskop:px-4"  >
+        <section className="flex w-full flex-col-reverse mobile:items-center mobile:flex-row gap-2 deskop:py-5 deskop:px-4 my-[2rem]"  >
          <div className="flex w-full  flex-col"  data-aos="fade-right">
             <h1 className="text-[1.5rem] font-bold mb-4"> {header} </h1>
             <p className="font-semibold"> {descrp} </p>
