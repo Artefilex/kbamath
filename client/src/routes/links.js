@@ -4,6 +4,7 @@ export const mainLinks = [
     { href: "/notlar", label: "Notlar" },
     { href: "/bloglar", label: "Bloglar" },
     { href: "/hakkımızda", label: "Hakkımızda" },
+    {href: "/test-quiz" ,  label:"Quizler"}
   ];
 
   //  Admin Linkleri

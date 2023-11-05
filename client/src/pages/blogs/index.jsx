@@ -28,6 +28,7 @@ const Blogs = memo(function Blogs() {
               className=" overflow-hidden group rounded-md relative hover:-translate-y-2 gap-4 flex  flex-col justify-between  bg-[color:var(--bg-primary)] transition   min-h-[25rem] duration-700"
             >
               <div />
+              {/* opsiyonel degisecek  */}
               <img
                 src="https://img2.bilgeyik.com/blog/770x480/1628077791_gzuttzn.jpg"
                 className="transition-transform group-hover:scale-110 rounded-md absolute z-[1] top-0 left-0 w-full h-full object-cover duration-1000"

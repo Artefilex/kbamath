@@ -23,7 +23,7 @@ import Slider from "../../../components/slider";
            {
               blogs.map((blog, i) => (
                 <div key={i}  > 
-               home -blogs 
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf0yROc5FfPcvex7G3e1uPGXo3nmQMk99EKZypuarafcVtwhw/viewform?embedded=true" width="640" height="903"  />
                 </div>
               ))
            }

@@ -16,6 +16,8 @@ import ThirthClass from "../pages/nots/high-school/thirth";
 import FourClass from "../pages/nots/high-school/four";
 import LessonsDetails from "../pages/dersler/lesson-details";
 import LessonMain from "../pages/dersler/lesson-main";
+import Quizs from "../pages/quizs";
+import QuizDetails from "../pages/quizs/quiz-details";
 const routes = createBrowserRouter([
 { path : "/",
 element: <MainLayout/>,
@@ -102,6 +104,15 @@ children:[
         ]
        
        }
+     ,{
+        path: "/test-quiz",
+        element: <Quizs/>
+     },
+     {
+        path: "/test-quiz/:quizid",
+        element: <QuizDetails/>
+     }  
+
 ]
 
 },
