@@ -14,7 +14,7 @@ export default function Footer() {
 
     fetchData();
   }, []);
-  // console.log(blogs);
+
 
   const connect = {
     mail: "baris.tncdmr@gmail.com",

@@ -28,6 +28,4 @@ delete buttona id ve url gönderecegiz onsucces ne işe yaradıgını ögreneceg
 hem get hem post istegi yapıcaz bakalım hele
 utils oluşturabiliriz tüm fetcch işlemlerini ordan yapabiliriz
 
-importttt isadmini reduxa at firebaseden gelen veriye göre kontrolee ona göre true yap
 
-eger user yoksa da diger kullanıcılar admin blog panele erişimini engelleyecek bir return döndür

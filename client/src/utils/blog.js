@@ -26,7 +26,7 @@ export const getSingleBlog = async ()=>{
   })
   const response = await data.json()
 
-  return response.blog
+  return response
 }
 
 

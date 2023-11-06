@@ -10,8 +10,6 @@ Home => home/home-blogs home/home-description home/home-header home/home-lessons
 home-blogsda , home-lessons => slide ile döndük gelen verileri DataProvide ile istekte bulunduk
 home-description , home-header , home-main => statick component
 
+nots => nots/high-school , nots/left-navbar high-scholl kendi altında dallanıp budaklanmıs ugrasıcaz burada lefth-bar bir drop-down modunda calısıyor
 
-nots => nots/high-school , nots/left-navbar  high-scholl kendi altında dallanıp budaklanmıs ugrasıcaz burada lefth-bar bir drop-down modunda calısıyor 
-
-quizs => quizs-detail ve ve genel quizsden oluşyuro quizde verileri google form icin tasarladık işemler aynı mock data kullanıyoruz suanlık 
-
+quizs => quizs-detail ve ve genel quizsden oluşyuro quizde verileri google form icin tasarladık işemler aynı mock data kullanıyoruz suanlık
