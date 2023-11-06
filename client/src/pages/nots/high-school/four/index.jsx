@@ -7,9 +7,7 @@ const FourClass = memo(function FourClass () {
      <NotsMain>
       <h1> 4.Sınıf  Ders Notları </h1>
       <div>
-
       </div>
-     
      </NotsMain>
 
      )

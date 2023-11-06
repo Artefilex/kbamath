@@ -2,6 +2,7 @@
 import PropsType from "prop-types"
 
 import { Link } from "react-router-dom"
+
 export default function RightBar({blogs}){
   return (
     <div className="   mobile:w-full hover:bg-[color:var(--bg-primary)]  transition-colors  flex mobile:flex-col items-start gap-2 px-2 py-2 ">

@@ -1,6 +1,6 @@
 import SectionMain from "../../components/section-main";
 
-import HomeNots from "./home-nots";
+
 import LessonMain from "../dersler/lesson-main";
 import HomeMain from "./home-main";
 import HomeBlogs from "./home-blogs";
@@ -14,7 +14,7 @@ export default function Home() {
      <HomeDescription/>
       <HomeMain />
       <LessonMain />
-      <HomeNots />
+    
       <HomeLessons />
       Bloglarımız 
       <HomeBlogs />

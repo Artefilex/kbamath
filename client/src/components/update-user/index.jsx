@@ -5,7 +5,6 @@ import { resetPassword } from "../../../firebase";
 export default function UpdateUser(){
     const [ password, setPassword] = useState("");
      
-
        const handleSubmit = async (e)=>{
          e.preventDefault()
          const user = await resetPassword(password)

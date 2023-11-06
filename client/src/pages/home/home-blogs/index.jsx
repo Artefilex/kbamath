@@ -2,7 +2,7 @@
 import { useState,useEffect, memo } from "react";
 import { DataProvider } from "../../../utils/data";
 import { RandomDataProvider } from "../../../components/random-data";
-import Loading from "../../../components/loading";
+
 import Slider from "../../../components/slider";
 
  const HomeBlogs = memo(function HomeBlogs(){
@@ -17,7 +17,7 @@ import Slider from "../../../components/slider";
   return <div  className="w-[50%]"> 
 
    {blogsDataLoading ? (
-           <Loading />
+         <div> skeleton kullancaz </div>
         ) : (
           blogs.length > 0 && <Slider setInt={5000}>
            {

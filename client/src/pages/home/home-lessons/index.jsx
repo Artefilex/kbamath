@@ -1,7 +1,7 @@
 import { useState, useEffect, memo } from "react";
 import { Link } from "react-router-dom";
 import { DataProvider } from "../../../utils/data";
-import Loading from "../../../components/loading";
+
 import { RandomDataProvider } from "../../../components/random-data";
 import imga from "../../../assests/image/homeheaderstudent.jpg";
 
@@ -22,7 +22,7 @@ const HomeLessons = memo(function HomeLessons() {
   return (
     <div className="w-full mt-6 flex items-center flex-col px-2">
       {lessonDataLoading ? (
-        <Loading />
+       <div> skeleton kullancaz </div>
       ) : (
         <div className="w-full mt-[4rem] " data-aos="fade-up">
         
