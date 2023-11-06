@@ -15,7 +15,7 @@ const {theme}= useAppearance()
         //     <p className="font-semibold"> {descrp} </p>
         //  </div>
         // </section>
-        <section className="flex w-full flex-col items-center mobile:flex-row  justify-center gap-2 deskop:py-5 deskop:px-4 py-[2rem] overflow-hidden" > 
+        <section className="flex w-full flex-col items-center mobile:flex-row  justify-center gap-2 deskop:py-5 deskop:px-4 py-[2rem] overflow-hidden tablet:overflow-visible" > 
         <div className="w-[50%]"  data-aos="fade-right">
         <img src={image} alt="dd" className={theme.name === "dark" ? "drop-shadow-dark" : "drop-shadow-light" }  />
         </div>

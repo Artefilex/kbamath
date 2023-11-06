@@ -25,7 +25,7 @@ export default function ThemeButton(){
             <BsSun/>         
             </button>
           ) : (
-            <button type="button" className="h-9 w-9  my-2 rounded-full hover:bg-[color:var(--c-subbase)] flex items-center justify-center "
+            <button type="button" className="h-9 w-9  my-2 rounded-full hover:bg-white/40  flex items-center justify-center "
               onClick={() => {
                 setTheme({
                   name: "dark",

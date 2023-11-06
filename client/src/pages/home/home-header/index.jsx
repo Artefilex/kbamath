@@ -1,10 +1,11 @@
 import { memo } from "react";
 // import headerstudent from "../../../assests/image/homeheaderstudent.jpg";
-// import mainimg from "../../../assests/image/mainheader.svg";
-// import { useAppearance } from "../../../store/appearance/hooks";
+ import mainimg from "../../../assests/image/mainheader.svg";
+//  import { useAppearance } from "../../../store/appearance/hooks";
 // import classNames from "classnames"
+import headerimg from "../../../assests/image/header.jpg"
 const HomeHeader = memo(function HomeHeader() {
-  // const {theme}= useAppearance()
+  //  const {theme}= useAppearance()
   return (
   
       // <header className="w-full relative flex items-end justify-end   mobile:flex-row">
@@ -33,9 +34,21 @@ const HomeHeader = memo(function HomeHeader() {
       //       className="opacity-5 h-[25rem] w-full  object-cover"
       //     /> */}
       // </header>
-      <header className="w-full  flex items-end justify-end  mobile:flex-row ">
-        <div className="w-full bg-black h-[10rem]  flex flex-col justify-start items-start  absolute left-0  z-[2] ">
-        
+      <header className="w-full  flex items-end justify-end  mobile:flex-row   min-h-screen ">
+        <div className="w-full   min-h-screen bg-black/70 flex flex-col justify-start items-start  absolute left-0  z-[1] ">
+        <img src={headerimg} alt=""  className="w-full min-h-screen object-cover blur-md"/>
+           <div className="w-full  flex flex-col justify-center items-center absolute  mt-[10rem] z-[2]">
+            <img
+               src={mainimg}
+              alt=""
+             className={"w-[20rem] h-[15rem] object-cover"}
+           />
+         <div className="text-[2rem] text-capitalize  max-w-[30rem] text-center font-bold text-black/70">
+          Matematik Hiç Olmadığı Kadar Kolay
+         </div>
+              
+    
+       </div> 
         </div> 
       </header>
   );

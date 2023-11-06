@@ -3,7 +3,7 @@ export const mainLinks = [
     { href: "/dersler", label: "Dersler" },
     { href: "/notlar", label: "Notlar" },
     { href: "/bloglar", label: "Bloglar" },
-    { href: "/hakkımızda", label: "Hakkımızda" },
+    // { href: "/hakkımızda", label: "Hakkımızda" },
     {href: "/test-quiz" ,  label:"Quizler"}
   ];
 
