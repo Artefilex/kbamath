@@ -39,4 +39,12 @@ body {
     clip-path:   polygon(0 0, 100% 0, 100% 100%, 0 0);
 }
   
+.home-main-bg-light{
+ background-image:  linear-gradient(90deg, rgba(1, 78, 72, 1) 0%, rgba(10, 57, 65, 1) 100%);
+ color:white
+}
+.home-main-bg-dark{
+    background: linear-gradient(88deg, rgba(4, 35, 40, 1) 0%, rgba(4, 45, 47, 1) 50%, rgba(4, 35, 40, 1) 100%);
+    color:white
+   }
 /* @apply   bg-black  text-white */

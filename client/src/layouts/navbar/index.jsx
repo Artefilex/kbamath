@@ -28,9 +28,9 @@ export default function Navbar() {
       replace: true,
     });
   };
-
+// bg-[color:var(--bg-secondary)]
   return (
-    <header className=" w-full  flex items-center justify-center  bg-[color:var(--bg-secondary)] custom-box-shadow sticky top-0 transition-all duration-200 z-[30]">
+    <header className=" w-full bg-[color:var(--bg-secondary)]  flex items-center justify-center custom-box-shadow sticky top-0 transition-all duration-200 z-[30]">
       <nav className="flex item-center  w-full justify-center flex-col  font-bold my-2  mobile:flex-row mobile:justify-around laptop:max-w-[80%] ">
         {!isMobile && (
           <div className=" flex  items-center justify-center w-full">
@@ -126,6 +126,7 @@ export default function Navbar() {
           </div>
         )}
       </nav>
+    
     </header>
   );
 }
