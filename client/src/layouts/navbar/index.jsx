@@ -29,8 +29,8 @@ export default function Navbar() {
   };
   // bg-[color:var(--bg-secondary)]
   return (
-    <header className=" w-full  backdrop-blur-md text-white bg-black/50 flex items-center justify-center custom-box-shadow sticky top-0 transition-all duration-200 z-[30]">
-      <nav className="flex item-center  w-full justify-center flex-col  font-bold my-2  mobile:flex-row mobile:justify-around laptop:max-w-[80%] ">
+    <nav className=" w-full  backdrop-blur-md text-white bg-black/50 flex items-center justify-center custom-box-shadow sticky top-0 left-0 right-0  transition-all duration-200 z-[30] px-4">
+      <nav className="flex item-center  w-full justify-center flex-col  font-bold py-3 mobile:flex-row mobile:justify-around laptop:max-w-[80%] ">
         {!isMobile && (
           <div className=" flex  items-center justify-center w-full">
             <img
@@ -84,7 +84,6 @@ export default function Navbar() {
                       viewBox="0 0 22 22"
                       className="h-5 w-5 transition-all duration-700 "
                     >
-                      {" "}
                       <path
                         fill="currentColor"
                         d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
@@ -107,13 +106,13 @@ export default function Navbar() {
                 {active && (
                   <div
                     className={
-                      " absolute px-4 py-2 top-[4.25rem] right-[50%] rounded-md flex item-center  shadow-lg shadow-[color: var(--box-shadow)]  font-bold  gap-2 !flex-col justify-center transition-color  duration-700 transition-all bg-[color:var(--bg-secondary)]"
+                      "w-[18rem] absolute px-4 py-2 top-[4.25rem] right-[50%] rounded-md flex item-center  shadow-lg shadow-[color: var(--box-shadow)]  font-bold  gap-2 !flex-col justify-center transition-color  duration-700 transition-all bg-[color:var(--bg-secondary)]"
                     }
                   >
                     {!isAdmin &&
                       mainLinks.map((link, i) => (
                         <NavLink
-                          className="transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex items-center justify-center"
+                          className="transition-colors duration-500 text-[color:var(--c-base)] px-3  relative hover:bg-[color:var(--c-subbase)]  flex items-center justify-center"
                           key={i}
                           to={link.href}
                         >
@@ -143,6 +142,7 @@ export default function Navbar() {
           </div>
         )}
       </nav>
-    </header>
+    </nav>
   );
 }
+

@@ -47,4 +47,7 @@ body {
     background: linear-gradient(88deg, rgba(4, 35, 40, 1) 0%, rgba(4, 45, 47, 1) 50%, rgba(4, 35, 40, 1) 100%);
     color:white
    }
+.home-text-bg{
+    box-shadow: rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px;
+}   
 /* @apply   bg-black  text-white */

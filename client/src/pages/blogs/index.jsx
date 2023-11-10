@@ -14,6 +14,7 @@ const Blogs = memo(function Blogs() {
     };
     fetchData();
   }, []);
+  console.log(blogs)
   return (
     <SectionMain>
       <BlogHeader />
@@ -23,8 +24,7 @@ const Blogs = memo(function Blogs() {
             key={blog.id}
             className="flex items-center w-full rounded-md"
           >
-            <Link
-              to={`/bloglar/${blog.blogUrl}`}
+            <Link to={`/bloglar/${blog.blogUrl}`}
               className=" overflow-hidden group rounded-md relative hover:-translate-y-2 gap-4 flex  flex-col justify-between  bg-[color:var(--bg-primary)] transition   min-h-[25rem] duration-700"
             >
               <div />
