@@ -16,11 +16,12 @@ export default function Quizs () {
 // },[])
     return (
         <SectionMain>    
-      <div className="w-full flex flex-col mt-24">
-       denemee
+      <div className="w-full flex flex-row flex-wrap  gap-5  mt-2">
       {
           quizs.map((quizdata , i ) => (
-            <Link key={i} to={`/test-quiz/${quizdata.mainUrl}`} > {quizdata.header} </Link>
+            <Link key={i} to={`/test-quiz/${quizdata.mainUrl}`} > 
+            <img src= {quizdata.headerImg} alt=""  className="w-[10rem]"/>
+             {quizdata.header} </Link>
           ))    
         }
       </div>

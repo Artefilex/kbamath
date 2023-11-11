@@ -1,5 +1,5 @@
 import { memo } from "react";
-import NotsMain from "../../../../components/nots-component";
+import NotsMain from "../../nots-component";
 
 const FourClass = memo(function FourClass () {
     

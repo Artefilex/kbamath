@@ -13,7 +13,6 @@ return (
     bullets={false}
     organicArrows={false}
   >
-
     {children}
     </AutoplaySlider>
 )

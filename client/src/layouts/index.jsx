@@ -43,7 +43,7 @@ AOS.init({ duration: 1000 })
   return (
     <div className="w-full flex flex-col items-center  min-h-screen">
       <Navbar />
-      <div className=" flex items-start w-full laptop:max-w-[80%]  gap-2  overflow-hidden">
+      <div className=" flex items-start w-full laptop:max-w-[80%]  gap-2  ">
         <Toaster position="top-right" />
         <Outlet/>
       </div>

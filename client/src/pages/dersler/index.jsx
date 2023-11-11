@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom";
 const Lessons = memo( function Lessons(){
   return (
       <SectionMain>
-      <div className="w-full flex  flex-col   gap-6 mobile:flex-row">
+      <div className="w-full flex  flex-col  gap-6 mobile:flex-row">
         <LeftbarLesson/>
         <Outlet/>
       </div>

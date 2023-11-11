@@ -27,6 +27,7 @@ const LessonsDetails = memo( function LessonsDetails() {
 
   return (
     <SectionMain>
+      {/* pakets yerine lessons yani backenden gelen veriyi cekicez */}
       {pakets
         .filter((paket) => paket.url === lessonid)
         .map((detail) => (
@@ -34,9 +35,9 @@ const LessonsDetails = memo( function LessonsDetails() {
             key={detail.url}
             className="flex items-center  flex-col w-[90%] py-2 px-2"
           >
-            <header className="flex flex-col justify-between gap-5 w-full mobile:flex-row pb-10">
-              <img src={detail.img} alt="" className="max-w-[25rem]" />
-              <div className="flex items-start flex-col w-full gap-16">
+            <header className="flex flex-col justify-between gap-5 w-full xtablet:flex-row pb-10">
+              <img src={detail.img} alt="" className="w-[100%] xtablet:w-[50%]" />
+              <div className="flex items-start flex-col w-full xtablet:gap-16">
                 <h1 className="uppercase text-[2rem] font-bold ">
                   {" "}
                   {detail.title}

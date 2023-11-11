@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 export default function QuizDetails () {
     const [quiz , setQuiz] = useState({})
     const {quizid} = useParams()
-
+  
   
     useEffect(() => {
         const foundQuiz = quizs.find((item) => item.mainUrl === quizid);
@@ -18,8 +18,9 @@ export default function QuizDetails () {
  
     return (
         <div className="w-full">
-        {quiz && <iframe src={quiz.iframeUrl}  className="w-full min-h-screen overflow-hidden " />}
-         
+        {quiz && <iframe src={quiz.iframeUrl} scrolling="no" className="w-full h-full min-h-screen "  />}
+                
+                
         </div>
     )
 }

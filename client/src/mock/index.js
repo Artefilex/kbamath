@@ -78,29 +78,34 @@ export const quizs = [
     iframeUrl:
       "https://forms.gle/8jeNkQSYD8NZrQTv9",
     mainUrl: "polinom-101",
+    headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp"
   },
   {
     header: "Polinomlar 201",
     iframeUrl:
       "https://forms.gle/8jeNkQSYD8NZrQTv9",
     mainUrl: "polinom-201",
+    headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp"
   },
   {
     header: "Polinomlar 301",
     iframeUrl:
       "https://forms.gle/8jeNkQSYD8NZrQTv9",
     mainUrl: "polinom-301",
+    headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp"
   },
   {
     header: "Polinomlar 401",
     iframeUrl:
       "https://forms.gle/8jeNkQSYD8NZrQTv9",
     mainUrl: "polinom-401",
+    headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp"
   },
   {
     header: "Polinomlar 501",
     iframeUrl:
       "https://forms.gle/8jeNkQSYD8NZrQTv9",
     mainUrl: "polinom-501",
+    headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp"
   },
 ];
