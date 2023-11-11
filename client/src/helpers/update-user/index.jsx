@@ -1,6 +1,6 @@
 
 import { useState  } from "react";
-import {SectionMain} from "../section-main"
+import {SectionMain} from "../../components/section-main"
 import { resetPassword } from "../../../firebase";
 export default function UpdateUser(){
     const [ password, setPassword] = useState("");

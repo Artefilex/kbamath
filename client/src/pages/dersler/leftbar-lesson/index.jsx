@@ -1,5 +1,5 @@
 import { memo, useState } from "react";
-import IsMobile from "../../../components/is-mobile";
+import IsMobile from "../../../helpers/is-mobile";
 import { pakets } from "../../../mock";
 import { Link } from "react-router-dom";
 const LeftbarLesson = memo(function LeftbarLesson() {

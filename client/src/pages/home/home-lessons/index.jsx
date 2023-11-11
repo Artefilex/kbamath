@@ -1,11 +1,11 @@
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { DataProvider } from "../../../utils/data";
-import { RandomDataProvider } from "../../../components/random-data";
+import { RandomDataProvider } from "../../../helpers/random-data";
 import imga from "../../../assests/image/homeheaderstudent.jpg";
-import Slider from "../../../components/slider";
+import Slider from "../../../helpers/slider";
 
-const HomeLessons = memo( function HomeLessons() {
+ function HomeLessons() {
   const [lessons, setLessons] = useState([]);
   const { data: lessonData, loading: lessonDataLoading } =
     DataProvider("skills");
@@ -38,7 +38,7 @@ const HomeLessons = memo( function HomeLessons() {
      
     </div>
   )
-})
+}
 
 export default  HomeLessons
 

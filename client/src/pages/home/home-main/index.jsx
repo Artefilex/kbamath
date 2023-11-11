@@ -4,8 +4,8 @@ import focus from "../../../assests/image/personalfocus.svg";
 import potential from "../../../assests/image/potential.svg";
 import CardLeftBox from "../../../components/card-left-box";
 import CardRightBox from "../../../components/card-right-box"
-import { memo } from "react";
-const HomeMain = memo(function HomeMain() {
+
+function HomeMain() {
   return (
 
     <main className="flex items-center justify-center w-full flex-col gap-4 pt-5 mt-[20rem]">
@@ -34,6 +34,6 @@ const HomeMain = memo(function HomeMain() {
     </main>
     
   )
-})
+}
 
 export default HomeMain

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RightBar from "../../../components/blog-rightbar";
-import IsMobile from "../../../components/is-mobile";
+import IsMobile from "../../../helpers/is-mobile";
 
 export default function BlogDetails() {
   const [blog, setBlog] = useState([]);

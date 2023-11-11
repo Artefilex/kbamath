@@ -1,6 +1,6 @@
-import { memo } from "react"
+
 import aim from "../../../assests/image/aim2.svg"
-const HomeDescription = memo(function HomeDescription() {
+function HomeDescription() {
   return (
     <div className="w-full  relative flex items-center  justify-center flex-col nobile:mt-[15rem] laptop:mt-[20rem]  deskop:[24rem] font-semibold">
      <img src={aim} alt="" className=" h-[36rem] w-full opacity-20 top-0 mobile:-top-[40%] tablet:-top-[100%]  -z-[1] absolute" />
@@ -16,5 +16,5 @@ const HomeDescription = memo(function HomeDescription() {
       </div>
     </div>
   );
-})
+}
 export default  HomeDescription

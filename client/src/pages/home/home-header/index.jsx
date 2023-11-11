@@ -1,7 +1,7 @@
-import { memo } from "react";
+
 import mainimg from "../../../assests/image/mainheader.svg";
 import headerimg from "../../../assests/image/header.jpg"
-const HomeHeader = memo(function HomeHeader() {
+function HomeHeader() {
 
   return (
   
@@ -22,5 +22,5 @@ const HomeHeader = memo(function HomeHeader() {
         </div> 
       </header>
   );
-})
+}
 export default HomeHeader

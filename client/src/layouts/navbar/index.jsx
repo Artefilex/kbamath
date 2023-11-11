@@ -4,7 +4,7 @@ import ThemeButton from "./theme-button";
 import { useUser } from "../../store/auth/hooks";
 import { logout } from "../../../firebase";
 import { mainLinks, adminLinks } from "../../routes/links";
-import IsMobile from "../../components/is-mobile";
+import IsMobile from "../../helpers/is-mobile";
 
 export default function Navbar() {
   const { user } = useUser();
