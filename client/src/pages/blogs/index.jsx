@@ -38,16 +38,16 @@ const Blogs = memo(function Blogs() {
                 <h4 className="font-semibold "> {blog.subtitle}</h4>
               </div>
             </Link> */}
-                <Link to={`/bloglar/${blog.blogUrl}`} className="overflow-hidden group rounded-md  relative hover:-translate-y-1 gap-4 flex  flex-col justify-between  bg-[color:var(--bg-primary)] transition  h-[25rem] duration-700"  >
+                <Link to={`/bloglar/${blog.blogUrl}`} className="overflow-hidden group rounded-md  relative hover:-translate-y-1 gap-4 flex  flex-col justify-between  bg-[color:var(--bg-primary)] transition  h-[30rem] duration-700 "  >
             
 
             <img
               src="https://img2.bilgeyik.com/blog/770x480/1628077791_gzuttzn.jpg"
-              className="group-hover:scale-110 rounded-md relative z-[1]  w-[17rem] h-[25rem] object-cover duration-700 "
+              className="group-hover:scale-105 rounded-md relative z-[1]  w-[20rem] h-[25rem] object-cover duration-700 "
               alt=""
             />
 
-              <div className="rounded-md absolute z-[2]  group-hover:blog-second-bg bottom-0  w-[17rem] max-w-[20rem] blog-bg h-[10rem] p-4 flex text-[color:var(--blog-text)] justify-center flex-col group-hover:scale-110 duration-700">
+              <div className="rounded-md absolute z-[2]  group-hover:blog-second-bg bottom-0  w-[20rem] max-w-[20rem] blog-bg h-[10rem] p-4 flex text-[color:var(--blog-text)] justify-center flex-col group-hover:scale-105 duration-700">
               <h2 className="font-bold ">{blog.header} </h2>
               <h4 className="font-semibold "> {blog.subtitle}</h4>
             </div> 
