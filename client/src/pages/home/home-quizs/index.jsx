@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { useAppearance } from "../../../store/appearance/hooks";
 import { Link } from "react-router-dom";
-import QuizCard from "../../../components/quiz-card";
+import QuizCard from "../../../components/quiz-home-card";
 import imagetest from "../../../assests/image/exam.jpg";
 export default function HomeQuizs() {
   const { theme } = useAppearance();
