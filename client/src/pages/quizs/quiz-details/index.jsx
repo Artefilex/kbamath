@@ -18,9 +18,7 @@ export default function QuizDetails () {
  
     return (
         <div className="w-full">
-        {quiz && <iframe src={quiz.iframeUrl} scrolling="no" className="w-full h-full min-h-screen "  />}
-                
-                
+        {quiz && <iframe src={quiz.iframeUrl} scrolling="no"  className="w-full h-full min-h-screen "  />}  
         </div>
     )
 }
