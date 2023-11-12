@@ -2,33 +2,28 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RightBar from "../../../components/blog-rightbar";
 import IsMobile from "../../../helpers/is-mobile";
-
+import { getSingleBlog } from "../../../utils/blog";
 export default function BlogDetails() {
   const [blog, setBlog] = useState([]);
   const [blogs, setBlogs] = useState([]);
   const {isMobile} = IsMobile()
- 
   const [show, setShow] = useState(false);
-
   const { url } = useParams();
-
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BASE_URL}/blogs/${url}`, {
-      method: "GET",
-      headers: { "Content-Type": "application/Json" },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setBlog(data.blog);
-        setBlogs(data.blogs);
-      });
+      const  getBlog = async()=>{
+       const response = await getSingleBlog(url)
+              setBlog( response.blog);
+             setBlogs( response.blogs);
+      }
+      getBlog()
+
   }, [url]);
  
   return (
     <div className=" gap-4 flex w-full items-center justify-center flex-col mobile:flex-row  mobile:gap-4 mobile:items-start relative ">
-      {
+     {
         <div key={blog.id} className="mt-6 w-[90%]   mobile:w-9/12  ">
-          {/* <img src={blog.headerimg} alt="" className="w-full h-[20rem] object-cover " /> */}
+      
           <header className="mb-3  flex flex-col gap-1">
             <h1 className="font-bold uppercase text-[1.4rem]  tablet:text-[1.875rem] ">
               {blog.header}
@@ -42,7 +37,7 @@ export default function BlogDetails() {
             className="mt-10"
             dangerouslySetInnerHTML={{ __html: blog.content }}
           ></section>
-          {/* <img src={blog.img2} alt=""  className="w-full h-[20rem] object-cover "/> */}
+     
         </div>
       }
       {isMobile && (
@@ -52,7 +47,7 @@ export default function BlogDetails() {
               onClick={() => setShow(!show)}
               className="w-[90%] font-bold bg-[color:var(--btn-dark-hover)] border border-[color:var(--c-base)] hover:bg-[color:var(--btn-dark-hover)] transition-all duration-300 rounded-sm px-4 py-2 shadow-xl relative active:top-[0.2rem] "
             >
-              Daha Fazla Blog{" "}
+              Daha Fazla Blog
             </button>
           </div>
           {show && (
@@ -69,14 +64,14 @@ export default function BlogDetails() {
       {!isMobile && (
         <div className="w-[90%] px-2 bg-[color:var(--bg-secondary)] mt-6 h-[20rem] overflow-auto mobile:h-[42rem] mobile:mx-2 mobile:w-[18rem]">
           <h1 className="uppercase  font-extrabold leading-10 text-[1.15rem] mb-3 ">
-            {" "}
-            Daha Fazla blog{" "}
+        
+            Daha Fazla blog
           </h1>
           <div>
             <RightBar blogs={blogs} />
           </div>
         </div>
-      )}
+      )} 
     </div>
   );
 }

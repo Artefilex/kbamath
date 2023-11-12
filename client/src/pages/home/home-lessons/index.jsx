@@ -7,8 +7,7 @@ import Slider from "../../../helpers/slider";
 
  function HomeLessons() {
   const [lessons, setLessons] = useState([]);
-  const { data: lessonData, loading: lessonDataLoading } =
-    DataProvider("skills");
+  const { data: lessonData, loading: lessonDataLoading } = DataProvider("skills");
   useEffect(() => {
     if (!lessonDataLoading) {
       const randomSkills = RandomDataProvider(lessonData, 5);
@@ -21,7 +20,7 @@ import Slider from "../../../helpers/slider";
   return (
     <div className="w-full mt-6 flex items-center flex-col px-2">
         <div className="w-full mt-[4rem]">
-          <Slider setInt={4000}>
+          {/* <Slider setInt={4000}>
           {lessons.length > 0 &&
               lessons.map((lesson, i) => (
                 <div key={i}>
@@ -33,7 +32,7 @@ import Slider from "../../../helpers/slider";
                   </Link>
                 </div>
               ))}
-          </Slider>
+          </Slider> */}
         </div>
      
     </div>

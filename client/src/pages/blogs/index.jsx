@@ -1,5 +1,5 @@
 import { memo, useEffect, useState } from "react";
-import { getData } from "../../utils/blog";
+import { getBlogsData } from "../../utils/blog";
 import SectionMain from "../../components/section-main";
 // import   { blog  as mocdata} from "../../mock/index.js"
 import { Link } from "react-router-dom";
@@ -9,7 +9,7 @@ const Blogs = memo(function Blogs() {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getData();
+      const response = await getBlogsData();
       setBlogs(response[0]);
     };
     fetchData();

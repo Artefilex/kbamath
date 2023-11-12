@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import { BsInstagram, BsTelephone } from "react-icons/bs";
 import { SiGmail } from "react-icons/si";
-import { getData } from "../../utils/blog";
+import { getBlogsData } from "../../utils/blog";
 import { useEffect, useState } from "react";
 import MainSvg from "../../assests/image/main.svg";
 export default function Footer() {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getData();
+      const response = await  getBlogsData();
       setBlogs(response[0]);
     };
 

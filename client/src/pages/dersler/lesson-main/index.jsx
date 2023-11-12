@@ -3,7 +3,7 @@ import grup from "../../../assests/image/grup.svg"
 import question from "../../../assests/image/question.svg"
 import CardLeftBox from "../../../components/card-left-box";
 import CardRightBox from "../../../components/card-right-box";
-
+// şelale yapısı 
 export default function LessonMain() {
   return (
 
