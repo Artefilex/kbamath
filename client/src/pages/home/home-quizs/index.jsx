@@ -27,7 +27,7 @@ export default function HomeQuizs() {
             <Link to={"/test-quiz"}  className={classNames( "px-[3rem] py-5 rounded-full relative active:top-1 transition-all duration-300 font-bold z-[2] w-full",
                 {
                "bg-black/50 hover:bg-black" : theme.name === "dark",
-               "bg-white/30 hover:bg-white/40" : theme.name === "light",
+               "bg-white/30 hover:bg-white/40 " : theme.name === "light",
                 }
               )}
             >

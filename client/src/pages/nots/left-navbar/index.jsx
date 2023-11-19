@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 import { notsLinks } from "../../../routes/links";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import { Disclosure } from "@headlessui/react";
-import { memo } from "react";
-const LefttBar = memo(function LefttBar() {
+
+function LefttBar() {
   return (
     <div className="flex mobile:flex-col mobile:min-h-screen  mobile:border-r-2  border-r-[color:var(--c-subbase)] transition-all duration-400">
       <Disclosure
@@ -56,6 +56,6 @@ const LefttBar = memo(function LefttBar() {
       </Disclosure>
     </div>
   )
-})
+}
 
 export default LefttBar;

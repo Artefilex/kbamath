@@ -75,37 +75,76 @@ export const notlar = [
 export const quizs = [
   {
     header: "Polinomlar 101",
-    iframeUrl:
-      "https://forms.gle/8jeNkQSYD8NZrQTv9",
+    iframeUrl:"https://docs.google.com/forms/d/e/1FAIpQLSepD32r12fOBkjx03YFtUEg54Exm4hiWtuigVO-VeycdNj5Vg/viewform?usp=sf_link",
     mainUrl: "polinom-101",
-    headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp"
+    headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp",
+  height: "1330"
   },
   {
     header: "Polinomlar 201",
-    iframeUrl:
-      "https://forms.gle/8jeNkQSYD8NZrQTv9",
+    iframeUrl:"https://docs.google.com/forms/d/e/1FAIpQLSepD32r12fOBkjx03YFtUEg54Exm4hiWtuigVO-VeycdNj5Vg/viewform?usp=sf_link",
     mainUrl: "polinom-201",
-    headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp"
+    headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp",
+    height: "1330"
   },
   {
     header: "Polinomlar 301",
-    iframeUrl:
-      "https://forms.gle/8jeNkQSYD8NZrQTv9",
+    iframeUrl:"https://docs.google.com/forms/d/e/1FAIpQLSepD32r12fOBkjx03YFtUEg54Exm4hiWtuigVO-VeycdNj5Vg/viewform?usp=sf_link",
     mainUrl: "polinom-301",
-    headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp"
+    headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp",
+    height: "1330"
   },
   {
     header: "Polinomlar 401",
-    iframeUrl:
-      "https://forms.gle/8jeNkQSYD8NZrQTv9",
+    iframeUrl:"https://docs.google.com/forms/d/e/1FAIpQLSepD32r12fOBkjx03YFtUEg54Exm4hiWtuigVO-VeycdNj5Vg/viewform?usp=sf_link",
     mainUrl: "polinom-401",
-    headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp"
+    headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp",
+    height: "1330"
   },
   {
     header: "Polinomlar 501",
-    iframeUrl:
-      "https://forms.gle/8jeNkQSYD8NZrQTv9",
+    iframeUrl:"https://docs.google.com/forms/d/e/1FAIpQLSepD32r12fOBkjx03YFtUEg54Exm4hiWtuigVO-VeycdNj5Vg/viewform?usp=sf_link",
     mainUrl: "polinom-501",
-    headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp"
+    headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp",
+    height: "1330"
   },
 ];
+
+export const nots = [
+  {
+    id:"123ssfq",
+    header: "Polinomlar",
+    img: "https://img2.bilgeyik.com/blog/770x480/1628077791_gzuttzn.jpg",
+    children:[
+      {
+        id: "6sdvsdv5456885",
+        desc: "TYT Matematik 4",
+        konu: "polinom-101",
+      },
+      {
+        id: "65",
+        desc: "TYT Matematik 4",
+        konu: "polinom-201",
+
+      },
+    ]
+  },
+  {
+    id:"123423ssfq",
+    header: "Polinomlar-2",
+    img: "https://img2.bilgeyik.com/blog/770x480/1628077791_gzuttzn.jpg",
+    children:[
+      {
+        id: "6s234dvsdv5456885",
+        desc: "TYT Matematik 4",
+        konu: "üçgenler-101",
+      },
+      {
+        id: "65",
+        desc: "TYT Matematik 4",
+        konu: "üçgenler-201",
+        
+      },
+    ]
+  }
+] 
