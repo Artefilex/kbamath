@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 import { notsLinks } from "../../../routes/links";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import { Disclosure } from "@headlessui/react";
-
-function LefttBar() {
+//  şuan kullanılan mock datalar apiye cekilecek
+function LeftBar() {
   return (
     <div className="flex mobile:flex-col mobile:min-h-screen  mobile:border-r-2  border-r-[color:var(--c-subbase)] transition-all duration-400">
       <Disclosure
@@ -58,4 +58,4 @@ function LefttBar() {
   )
 }
 
-export default LefttBar;
+export default LeftBar;

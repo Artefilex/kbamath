@@ -15,7 +15,7 @@ function Blogs() {
     };
     fetchData();
   }, []);
-  console.log(blogs)
+  
   return (
     <SectionMain>
        <PageHeader image={daktilo} text={"BLOG"} /> 
