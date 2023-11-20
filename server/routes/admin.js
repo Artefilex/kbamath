@@ -16,11 +16,4 @@ router.all("/blogs", adminController.blog_list);
 
 // ADMİN PANEL
 
-router.post("/panel/portfoly/create", adminController.portfoly_create);
-router.post("/panel/portfoly/delete/:portid", adminController.portfoly_remove);
-router.all("/panel/portfoly/:portid", adminController.portfoly_edit);
-
-
-router.get("/panel", adminController.panel_list);
-
 module.exports = router;

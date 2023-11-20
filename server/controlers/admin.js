@@ -2,7 +2,7 @@ const Blog = require("../models/blog");
 const slugField = require("../middleware/slugify");
 const jwt = require("jsonwebtoken")
 const bcrypt = require('bcryptjs');
-const Portfolio = require("../models/portfolio");
+
 
 exports.blog_list = async (req, res) => {
   try {
@@ -81,76 +81,6 @@ exports.blog_delete = async (req, res) => {
 };
 
 
-
-
-
-exports.portfoly_edit = async (req, res) => {
-  if (req.method === "GET") {
-    const portid = req.params.portid;
-    try {
-      const portfoly = await Portfolio.findOne({
-        where: {
-          id: portid,
-        },
-      });
-      if (portfoly) {
-        res.json(portfoly);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  } else if (req.method === "POST") {
-    const form = req.body.form;
-
-    try {
-      const portfolio = await Portfolio.findOne({
-        where: {
-          id: form.id,
-        },
-      });
-      if (portfolio) {
-        portfolio.header = form.header;
-        portfolio.content = form.content;
-        portfolio.projecturl = form.projecturl;
-      }
-      portfolio.save();
-      res.send(`${form.id} update success`);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-};
-exports.portfoly_create = async (req, res, next) => {
-  const form = req.body.form;
-  try {
-    await Portfolio.create({
-      header: form.header,
-      content: form.content,
-      projecturl: form.projecturl,
-    });
-    res.send("portfolio Create");
-    next();
-  } catch (err) {
-    console.log(err);
-  }
-};
-exports.portfoly_remove = async (req, res) => {
-  const deleteportfoly = req.body.id;
-  try {
-    const portfoly = await Portfolio.findOne({
-      where: {
-        id: deleteportfoly,
-      },
-    });
-    if (portfoly) {
-      await portfoly.destroy();
-      res.send(`${deleteportfoly} deleting success `);
-    }
-  } catch (err) {
-    console.log(err);
-  }
-};
-
 exports.post_login = async (req, res) => {
   const admin = req.body.form;
   console.log(admin  ,res.length);
@@ -188,18 +118,5 @@ exports.get_login = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
-  }
-};
-
-exports.panel_list = async (req, res) => {
-  try {
-    const portfoly = await Portfolio.findAll();
-    const data = {
-      portfolys: portfoly,
-    };
-
-    res.json(data);
-  } catch (err) {
-    console.log();
   }
 };

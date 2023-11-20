@@ -8,7 +8,7 @@ const Education = sequelize.define(
         type: DataTypes.STRING,
         allowNull: false,
       },
-      price: {
+     price: {
         type: DataTypes.STRING,
         allowNull: false,
       },

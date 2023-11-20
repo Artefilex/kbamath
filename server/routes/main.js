@@ -1,7 +1,6 @@
 const app = require("express");
 const sendmail = require("../helpers/mailsend");
-// const PackageNameForLesson = require("../models/PackageNameForLesson");
-const Portfolio = require("../models/portfolio");
+
 const config = require("../config");
 const Blog = require("../models/blog");
 const router = app.Router();
@@ -10,11 +9,6 @@ const _ = require("lodash");
 
 
 
-
-router.get("/project", async (req, res) => {
-  const project = await Portfolio.findAll();
-  res.json(project);
-});
 router.get("/blogs/:id", async (req, res) => {
   const blogid = req.params.id;
   const blogs = await Blog.findAll({

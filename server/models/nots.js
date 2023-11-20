@@ -1,25 +1,30 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../db/sql");
 
-const Portfolio = sequelize.define(
-  "portfolio",
+const Nots = sequelize.define(
+  "nots",
   {
-    header: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    content: {
+    imgUrl: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    projecturl: {
+    category: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    // children: {
+    //   type: DataTypes.ARRAY(DataTypes.JSONB),
+    //   allowNull: false,
+    // },
   },
   {
     timestamps: false,
   }
 );
 
-module.exports = Portfolio;
+
+module.exports = Nots;
