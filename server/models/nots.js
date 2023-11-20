@@ -16,10 +16,10 @@ const Nots = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // children: {
-    //   type: DataTypes.ARRAY(DataTypes.JSONB),
-    //   allowNull: false,
-    // },
+    children: {
+      type: DataTypes.JSON,
+      allowNull: false,
+    },
   },
   {
     timestamps: false,

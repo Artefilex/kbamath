@@ -79,24 +79,24 @@ async function populate() {
         '<p><span style="color: rgb(52, 53, 65);">Herkese merhaba arkadaşlar. Bugün sizlere deprem sonrasında hayata tutunma hikayemi anlatmak istiyorum.</span></p><p><br></p><p><span style="color: rgb(52, 53, 65);">Kendimden kısaca bahsetmek gerekirse, ben Barış Tunçdemir. 23 yaşındayım. 6 Şubat\'taki depremlerde ailemle birlikte Malatya\'da yakalandık.</span></p><p><br></p><p>İlk iki gün her şey çok taze ve bulanıktı. Bunların kötü bir rüya olduğunu ve sonunda uyanacağımı düşündüm. Sonraki üç gün hep şunu dedim kendime:<strong> "Şu an sıfır noktasındayız ancak her şey geçecek."</strong></p><p><br></p><p>Depremlerden sonra evimiz yıkıldığı için İstanbul\'a ablamın yanına yerleştik. İstanbul\'a geldikten sonra bir taraftan eğitimlerime devam ettim, bir taraftan da içi boş bir CV ile önüme gelen birçok Frontend ilanına başvuru yapmaya başladım.</p><p><br></p><p>Başvurular sonucunda olumlu bir geri dönüş alamayınca, kendime <strong>"Sen olsan kendini işe alır mısın?"</strong> diye bir soru yönelttim. Bu sorunun cevabından sonra başvurulara ara verdim.</p><p><br></p><p>Cevabı değiştirebilmek için kendimi eğitimlerime ve proje geliştirmeye odakladım. Yoğun geçen 6 aylık süreç içerisinde React, Nodejs ve SQL teknolojilerini öğrenerek projeler geliştirdim.</p><p><br></p><p>İbreyi sıfır noktasından ileriye çevirdim. Geleceğime olan inancım ve çalışma azmim sayesinde başardım. Bugün sizlere bu yazıyı, her şeyini kendi yaptığım portfolyo websitemin blog kısmından paylaşıyorum.</p>',
     },
   ])
-  // const nots = await Nots.bulkCreate([
-  //   {
-  //     title:"Polinomlar" ,
-  //     imgUrl: "https://img2.bilgeyik.com/blog/770x480/1628077791_gzuttzn.jpg" ,
-  //     category : "1.sınıf" ,
-  //     children:[
-  //       {
-  //         desc: "TYT Matematik 4",
-  //         konu: "polinom-101",
-  //       },
-  //       {
-  //         desc: "TYT Matematik 4",
-  //         konu: "polinom-201",
+  const nots = await Nots.bulkCreate([
+    {
+      title:"Polinomlar" ,
+      imgUrl: "https://img2.bilgeyik.com/blog/770x480/1628077791_gzuttzn.jpg" ,
+      category : "1.sınıf" ,
+      children:[
+        {
+          desc: "TYT Matematik 4",
+          konu: "polinom-101",
+        },
+        {
+          desc: "TYT Matematik 4",
+          konu: "polinom-201",
   
-  //       },
-  //     ]
-  //   }
-  // ])
+        },
+      ]
+    }
+  ])
    
     
    

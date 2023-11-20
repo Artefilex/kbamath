@@ -1,8 +1,12 @@
 const Blog = require("../models/blog");
+const Nots = require("../models/nots");
+const Quiz = require("../models/quiz");
+const Education = require("../models/education");
 const slugField = require("../middleware/slugify");
-const jwt = require("jsonwebtoken")
-const bcrypt = require('bcryptjs');
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
+// Admin Blog  
 
 exports.blog_list = async (req, res) => {
   try {
@@ -81,9 +85,54 @@ exports.blog_delete = async (req, res) => {
 };
 
 
+// Admin Nots  
+
+exports.nots_list = async (req, res) => {
+  try {
+    const nots = await Nots.findAll();
+    res.json(nots);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
+
+
+
+
+
+// Admin Education
+
+exports.education_list = async (req, res) => {
+  try {
+    const education = await Education.findAll();
+    res.json(education);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
+
+
+
+// Admin Quiz 
+
+exports.quiz_list = async (req, res) => {
+  try {
+    const quiz = await Quiz.findAll();
+    res.json(quiz);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
+//  login logout
 exports.post_login = async (req, res) => {
   const admin = req.body.form;
-  console.log(admin  ,res.length);
+  console.log(admin, res.length);
   try {
     if (
       admin.name == process.env.ADMIN_NAME &&
@@ -102,13 +151,12 @@ exports.post_login = async (req, res) => {
 };
 exports.get_login = async (req, res) => {
   const admin = req.body.form;
-  console.log(admin  ,res.length);
+  console.log(admin, res.length);
   try {
     if (
       admin.name == process.env.ADMIN_NAME &&
       admin.password == process.env.ADMIN_PASSWORD
     ) {
-
       req.session.isAdmin = true;
       console.log("welcome boss");
       res.redirect("/");
