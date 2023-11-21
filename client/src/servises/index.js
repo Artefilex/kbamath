@@ -40,3 +40,8 @@ export const getSingleQuizs = async ( quizid)=>{
     const response = await axios.get(`${baseUrl}/quizs/${quizid}`);
     return response.data
 }
+
+export const getEducation = async ()=>{
+    const response = await axios.get(`${baseUrl}/education`);
+    return response.data
+}

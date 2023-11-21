@@ -15,10 +15,7 @@ const Education = sequelize.define(
         type: DataTypes.STRING,
         allowNull: false,
       },
-      imgUrl:{
-        type: DataTypes.BLOB, //mülter ile entegre edecenz bunu
-        allowNull: false
-      },
+     
       paramsUrl:{
         type: DataTypes.STRING,
         allowNull: false

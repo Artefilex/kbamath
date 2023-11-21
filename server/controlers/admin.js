@@ -94,17 +94,15 @@ exports.education_list = async (req, res) => {
   }
 };
 exports.education_create = async (req, res) => {
-  const form = req.body.form;
   try {
     const education = await Education.create({
       image: req.file.path,
-      title: form.title,
-      price: form.price,
-      imgUrl: form.imgUrl,
-      paramsUrl: slugField(form.title),
-      content: form.content,
+      title: req.body.title,
+      price: req.body.price,
+      paramsUrl: slugField(req.body.title),
+      content: req.body.content,
     });
-    res.send(`${form} success`);
+    res.send(`${education} success`);
   } catch (err) {
     console.log(err);
   }

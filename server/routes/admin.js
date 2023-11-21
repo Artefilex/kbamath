@@ -20,7 +20,7 @@ router.all("/blogs", adminController.blog_list);
 //  Education 
 router.delete("/education/:id",adminController.education_delete)
 router.put("/education/:id", adminController.putEducation)
-router.post("/education",upload,  adminController.education_create)
+router.post("/education",  upload, adminController.education_create) //
 router.get("/educaiton/:educationId" , adminController.getsingleEducation)
 router.get("/education" ,adminController.education_list);
 

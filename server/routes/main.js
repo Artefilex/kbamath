@@ -1,6 +1,5 @@
 const app = require("express");
 const sendmail = require("../helpers/mailsend");
-
 const config = require("../config");
 const Blog = require("../models/blog");
 const router = app.Router();
@@ -64,9 +63,9 @@ router.get("/education", async(req , res) =>{
   res.json(education)
 })
 
-router.get("/", async (req, res) => {
-  res.send(req.session.isAdmin);
-});
+// router.get("/", async (req, res) => {
+//   res.send(req.session.isAdmin);
+// });
 
 // eslint-disable-next-line no-undef
 module.exports = router;
