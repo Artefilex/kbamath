@@ -2,10 +2,14 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const session = require("express-session");
-const cookieParser = require("cookie-parser");
-const dotenv = require("dotenv");
+const multer = require("multer")
+// const session = require("express-session");
+// const cookieParser = require("cookie-parser");
 
+
+
+
+const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 
 // database connection
@@ -29,23 +33,25 @@ app.use(
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(cookieParser());
-app.use(
-  session({
-    key:  "adminİsLogin"  ,
-    secret: process.env.SECRETKEY,
-    saveUninitialized: false,
-    // saveUninitialized: true,
-    cookie: { maxAge: 1000 * 60 * 60 * 24 },
-    // cookie: { maxAge: 1000 * 60 * 60 * 24, httpOnly: true },
-    resave: false,
-  })
-);
+// app.use(cookieParser());
+// app.use(
+//   session({
+//     key:  "adminİsLogin"  ,
+//     secret: process.env.SECRETKEY,
+//     saveUninitialized: false,
+//     // saveUninitialized: true,
+//     cookie: { maxAge: 1000 * 60 * 60 * 24 },
+//     // cookie: { maxAge: 1000 * 60 * 60 * 24, httpOnly: true },
+//     resave: false,
+//   })
+// );
 
 app.use("/", main);
 app.use("/about", about);
 app.use("/admin", admin);
 app.use("/libs", express.static(path.join(__dirname, "node_modules")));
+app.use("/Images", express.static("./Images"))
+
 
 async function sync() {
   // await sequelizeDb.sync({ alter: true });

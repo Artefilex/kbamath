@@ -4,6 +4,9 @@ const sequelize = require("../db/sql");
 const Quizs = sequelize.define(
     "quizs",
     {
+      image : {
+        type: DataTypes.STRING,
+      },
      quizHeader: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -14,10 +17,9 @@ const Quizs = sequelize.define(
       },
       mainUrl:{
         type: DataTypes.STRING,
-        allowNull: false
       },
       headerImg:{
-        type: DataTypes.STRING,
+        type: DataTypes.BLOB,
         allowNull: false
       },
       height:{

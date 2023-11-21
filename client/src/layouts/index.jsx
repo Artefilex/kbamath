@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import { useAppearance } from "../store/appearance/hooks";
@@ -14,6 +14,7 @@ export default function MainLayout() {
 useEffect(()=>{
 AOS.init({ duration: 1000 })
 },[])
+const location = useLocation();
   useEffect(() => {
     document.documentElement.style.setProperty(
       "--bg-primary",
@@ -43,6 +44,9 @@ AOS.init({ duration: 1000 })
       "--blog-text", appearance.theme.blogText
     )
   }, [appearance]);
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  },[location])
   return (
     <div className="w-full flex flex-col items-center  min-h-screen">
       <Navbar />

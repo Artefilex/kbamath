@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ThemeButton from "./theme-button";
 import { useUser } from "../../store/auth/hooks";
@@ -18,6 +18,15 @@ export default function Navbar() {
       setIsAdmin(true);
     }
   }, [user]);
+
+  const location = useLocation();
+
+  useEffect(() => {
+   setActive(false)
+  }, [location]);
+
+
+
 
   const removeAdmin = async () => {
     await logout();

@@ -3,10 +3,9 @@ const Nots = require("../models/nots");
 const Quiz = require("../models/quiz");
 const Education = require("../models/education");
 const slugField = require("../middleware/slugify");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
 
-// Admin Blog  
+
+// Admin Blog
 
 exports.blog_list = async (req, res) => {
   try {
@@ -84,24 +83,6 @@ exports.blog_delete = async (req, res) => {
   }
 };
 
-
-// Admin Nots  
-
-exports.nots_list = async (req, res) => {
-  try {
-    const nots = await Nots.findAll();
-    res.json(nots);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-
-
-
-
-
-
 // Admin Education
 
 exports.education_list = async (req, res) => {
@@ -112,12 +93,110 @@ exports.education_list = async (req, res) => {
     console.log(err);
   }
 };
+exports.education_create = async (req, res) => {
+  const form = req.body.form;
+  try {
+    const education = await Education.create({
+      image: req.file.path,
+      title: form.title,
+      price: form.price,
+      imgUrl: form.imgUrl,
+      paramsUrl: slugField(form.title),
+      content: form.content,
+    });
+    res.send(`${form} success`);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.getsingleEducation = async(req,res) =>{
+  const educationId = req.params.educationId
+  try{
+   const education = Education.findOne({
+    where:{
+      paramsUrl : educationId
+    }
+   })
+   if(education){
+    res.json(education)
+   } 
+  }catch(err){
+    console.log(err)
+  }
+} 
+exports.putEducation = async(req,res) =>{
+  const forms = req.body.form
+  try{
+    const education = await Education.findOne({where:{id :forms.id}})
+     if (education){
+       education.title = forms.title
+       education.price =forms.price
+       education.imgUrl = forms.imgUrl
+       education.paramsUrl = slugField(forms.imgUrl)
+      }
+      await education.save()
+      res.send(`${forms.id} education edited`)
+  }  
+  catch(err){
+    console.log(err)
+  }
+} 
+
+exports.education_delete = async (req, res) => {
+  try {
+    const deleteUrl = req.body.educationUrl;
+
+    const education = await Education.findOne({
+      where: {
+        id: deleteUrl,
+      },
+    });
+    if (education) {
+      await education.destroy();
+    }
+    res.send("delete success");
+  } catch (err) {
+    console.log(err);
+  }
+};
+// Nots
+
+exports.nots_list = async (req, res) => {
+  try {
+    const nots = await Nots.findAll();
+    res.json(nots);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+// exports.nots_create = async (req, res) => {
+//   const form = req.body.form;
+//   try {
+//     await Nots.create({
+//       title: form.title,
+//       imgUrl: form.imgUrl,
+//       category: form.category,
+//       blogUrl:  form.blogUrl,
+//       children: form.children,
+
+//     });
+//     res.send(`${form} success`);
+
+//     slugField(form.header)
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
 
 
 
 
-// Admin Quiz 
+
+
+// Admin Quiz
 
 exports.quiz_list = async (req, res) => {
   try {
@@ -127,6 +206,17 @@ exports.quiz_list = async (req, res) => {
     console.log(err);
   }
 };
+
+
+
+
+
+
+
+
+
+
+
 
 
 //  login logout

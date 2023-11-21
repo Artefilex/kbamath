@@ -4,6 +4,9 @@ const sequelize = require("../db/sql");
 const Education = sequelize.define(
     "education",
     {
+     image : {
+        type: DataTypes.STRING,
+      }, 
     title: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -13,7 +16,7 @@ const Education = sequelize.define(
         allowNull: false,
       },
       imgUrl:{
-        type: DataTypes.STRING, //mülter ile entegre edecenz bunu
+        type: DataTypes.BLOB, //mülter ile entegre edecenz bunu
         allowNull: false
       },
       paramsUrl:{
