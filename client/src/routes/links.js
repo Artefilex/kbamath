@@ -9,10 +9,10 @@ export const mainLinks = [
 
   //  Admin Linkleri
 export  const adminLinks = [
-   { href: "/", label: "Ana Sayfa" },
     { href: "/admin/blogs", label: "Blog Panel" },
     { href: "/admin/nots", label: "Not Panel" },
-    {href: "/admin/ders-ekle" , label: "Ders Ekle"}
+    {href: "/admin/ders-ekle" , label: "Ders Ekle"},
+    {href: "/admin/quizs" , label: "Quizs"}
   ];
 
 export const notsLinks = [

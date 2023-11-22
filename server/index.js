@@ -2,7 +2,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const multer = require("multer")
+
 // const session = require("express-session");
 // const cookieParser = require("cookie-parser");
 
@@ -19,7 +19,6 @@ const bodyParser = require("body-parser");
 
 // routes
 const main = require("./routes/main");
-const about = require("./routes/about");
 const admin = require("./routes/admin");
 // Add CORS middleware to the Express application with specific options.
 const cors = require("cors");
@@ -47,7 +46,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // );
 
 app.use("/", main);
-app.use("/about", about);
 app.use("/admin", admin);
 app.use("/libs", express.static(path.join(__dirname, "node_modules")));
 app.use("/Images", express.static("./Images"))

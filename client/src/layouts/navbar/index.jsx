@@ -10,7 +10,7 @@ export default function Navbar() {
   const { user } = useUser();
   const { isMobile } = IsMobile();
   const [active, setActive] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
