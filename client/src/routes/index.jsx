@@ -13,7 +13,7 @@ import QuizDetails from "../pages/quizs/quiz-details";
 import ClassDetail from "../pages/nots/class-detail";
 import TopicDetail from "../pages/nots/topic-detail";
 
-import Admin from "../pages/admin";
+import AdminMain from "../pages/admin";
 import AdminNots from "../pages/admin/admin-nots";
 import AdminBlogs from "../pages/admin/admin-blogs";
 import AdminLessons from "../pages/admin/add-lessons";
@@ -84,7 +84,7 @@ const routes = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Admin />,
+        element: <AdminMain  />,
       },
 
       {

@@ -1,8 +1,8 @@
 import { Outlet, useLocation } from "react-router-dom";
-import Navbar from "./navbar";
 import { useAppearance } from "../store/appearance/hooks";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
+import AdminSidebar from "./admin-sidebar";
 // bootom up yaklasım
 // doamin drivin design
 // https://www.youtube.com/@JockoPodcastOfficial
@@ -44,8 +44,8 @@ const location = useLocation();
   },[location])
 
   return (
-    <div className="w-full flex flex-col items-center  min-h-screen">
-      <Navbar />
+    <div className="w-full flex flex-row items-start  min-h-screen absolute">
+      <AdminSidebar/>
       <div className=" flex items-start  w-full laptop:max-w-[80%]  gap-2  ">
         <Toaster position="top-right" />
         <Outlet/>

@@ -1,32 +1,15 @@
 import { useState } from "react";
 import axios from "axios";
 export default function AddEducation() {
-//   const [form, setForm] = useState({
-//     image: "",
-//     title: "",
-//     price: "",
-//     content: "",
-//   });
+
   const [image,setImage] = useState("")
   const [title,setTitle] = useState("")
   const [price,setPrice] = useState("")
   const [content,setContent] = useState("")
-//   const handleChange = (e) => {
-//     const { name, value, files } = e.target;
-//     setForm((prevState) => ({
-//       ...prevState,
-//     //   image:files[0],
-//       [name]: value
 
-//     }));
-//   };
   const handleSubit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    // formData.append("image", form.image);
-    // formData.append("title", form.title);
-    // formData.append("content", form.content);
-    // formData.append("price", form.price);
     formData.append("image", image);
     formData.append("title", title);
     formData.append("content", content);

@@ -6,9 +6,9 @@ import EditLesson from "./editlesson";
 export default function AdminLessons(){
     return (
         <SectionMain>
+          
            <AddLesson/> 
-          <EditLesson/>
-          <DeleteLesson/>
+        
         </SectionMain>
     )
 }

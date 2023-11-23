@@ -10,7 +10,7 @@ export default function Navbar() {
   const { user } = useUser();
   const { isMobile } = IsMobile();
   const [active, setActive] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,12 +25,8 @@ export default function Navbar() {
    setActive(false)
   }, [location]);
 
-
-
-
   const removeAdmin = async () => {
     await logout();
-
     setIsAdmin(false);
     navigate("/", {
       replace: true,
