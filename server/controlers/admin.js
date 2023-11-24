@@ -3,7 +3,7 @@ const Nots = require("../models/nots");
 const Quiz = require("../models/quiz");
 const Education = require("../models/education");
 const slugField = require("../middleware/slugify");
-
+const fs = require("fs")
 
 // Admin Blog
 
@@ -58,12 +58,18 @@ exports.blog_edit = async (req, res) => {
         },
       });
       console.log(req.body.oldImage)
-      if (blog) {
-        (blog.image = req.file.path),
-        (blog.header = req.body.header),
+      // Images\1700788172917.pdf
+
+      if (req.file) {
+           const oldImageUrl=  req.body.oldImage ;
+          (blog.image = req.file.path),
+          (blog.header = req.body.header),
           (blog.content = req.body.content),
           (blog.subtitle =req.body.subtitle),
           (blog.blogUrl = slugField(req.body.header));
+          await  fs.unlinkSync(oldImageUrl)
+        }else{
+          blog.image = req.body.oldImage
       }
      
       await blog.save();

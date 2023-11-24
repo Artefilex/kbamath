@@ -41,8 +41,8 @@ export default function AddBlog (){
      
     };
     return (
-     <div className="w-[100%] flex items-start flex-col gap-4">
-      <button className={classNames(" text-start ml-4 px-3 py-2 rounded-sm flex items-center gap-4 group",{
+     <div className="w-full flex items-start flex-col gap-4">
+      <button className={classNames(" text-start ml-7 px-3 py-2 rounded-sm flex items-center gap-4 group",{
         "border-green-900 font-bold border-2 hover:bg-green-600 text-green-400 hover:text-white transition-color duration-700": theme.name ==="dark",
         "bg-green-500 font-bold border-2   hover:bg-green-700 text-white hover:text-white transition-color duration-700": theme.name ==="light"
       })} onClick={()=> setShow(!show)}>
