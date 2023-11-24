@@ -4,12 +4,15 @@ const { DataTypes } = require("sequelize");
 const Blog = sequelize.define(
   "blog",
   {
+    image : {
+      type: DataTypes.STRING,
+    }, 
     header: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     subtitle: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     content: {

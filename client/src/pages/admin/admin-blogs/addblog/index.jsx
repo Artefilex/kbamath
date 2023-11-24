@@ -3,7 +3,7 @@ import classNames from "classnames"
 import { useState } from "react"
 import { useAppearance } from "../../../../store/appearance/hooks"
 import toast from "react-hot-toast"
-
+import { IoAdd } from "react-icons/io5";
 
 export default function AddBlog (){
     const [show, setShow] = useState(false)
@@ -11,7 +11,7 @@ export default function AddBlog (){
     const [header,setHeader] = useState("")
     const [subtitle,setSubtitle] = useState("")
     const [content,setContent] = useState("")
-   const {theme} = useAppearance()
+    const {theme} = useAppearance()
     const handleSubit = (e) => {
       e.preventDefault();
       const formData = new FormData();
@@ -32,12 +32,21 @@ export default function AddBlog (){
         }
       };
       addEducation()
+      setShow(false)
+      setImage("")
+      setHeader("")
+      setContent("")
+      setSubtitle("")
       return toast.success("Blog Eklendi")
+     
     };
     return (
      <div className="w-[100%] flex items-start flex-col gap-4">
-      <button className="w-[95%] text-start ml-4" onClick={()=> setShow(!show)}>
-          Blog ekle
+      <button className={classNames(" text-start ml-4 px-3 py-2 rounded-sm flex items-center gap-4 group",{
+        "border-green-900 font-bold border-2 hover:bg-green-600 text-green-400 hover:text-white transition-color duration-700": theme.name ==="dark",
+        "bg-green-500 font-bold border-2   hover:bg-green-700 text-white hover:text-white transition-color duration-700": theme.name ==="light"
+      })} onClick={()=> setShow(!show)}>
+       <IoAdd className="group-hover:rotate-45 transition-all duration-600 text-[1.5rem]" />    Blog ekle
       </button>
       
       {

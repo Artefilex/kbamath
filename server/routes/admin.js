@@ -8,13 +8,16 @@ dotenv.config({ path: "./config.env" });
 
 // BLOG
 
-router.post("/blogs/create", adminController.blog_create);
+
 router.post("/blogs/delete/:BlogUrl", adminController.blog_delete);
-router.all("/blogs/:blogid", adminController.blog_edit);
+
+router.post("/blogs/:blogid",upload, adminController.blog_edit);
+router.get("/blogs/:blogid", adminController.single_blog);
+router.post("/blogs", upload, adminController.blog_create);
+router.get("/blogs", adminController.blog_list);
+
 router.post("/login", adminController.post_login);
 router.get("/login", adminController.get_login);
-router.all("/blogs", adminController.blog_list);
-
 
 
 //  Education 

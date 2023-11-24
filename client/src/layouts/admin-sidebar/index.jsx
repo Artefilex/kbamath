@@ -30,7 +30,7 @@ console.log(theme.name)
               {isAdmin &&
                 adminLinks.map((link, i) => (
                   <NavLink
-                    className="w-full  transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex "
+                    className="w-full  transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex font-bold"
                     key={i}
                     to={link.href}
                   >

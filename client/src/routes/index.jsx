@@ -18,6 +18,7 @@ import AdminNots from "../pages/admin/admin-nots";
 import AdminBlogs from "../pages/admin/admin-blogs";
 import AdminLessons from "../pages/admin/add-lessons";
 import AdminLayout from "../layouts/AdminLayout";
+import EditBlog from "../pages/admin/admin-blogs/edit-blog";
 
 const routes = createBrowserRouter([
   {
@@ -94,6 +95,10 @@ const routes = createBrowserRouter([
       {
         path: "/admin/blogs",
         element: <AdminBlogs />,
+      },
+      {
+        path: "/admin/blogs/:id",
+        element: <EditBlog/>,
       },
       {
         path: "/admin/ders-ekle",
