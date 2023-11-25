@@ -41,7 +41,7 @@ export default function BlogList() {
 
 
   return (
-    <div className="w-[95%] gap-2  flex flex-col ">
+    <div className="w-full gap-2  flex flex-col ">
       {blogs.map((blog) => (
         <div
           key={blog.id}

@@ -12,7 +12,7 @@ export  const adminLinks = [
     { href: "/admin/blogs", label: "Blog Panel" },
     { href: "/admin/nots", label: "Not Panel" },
     {href: "/admin/educations" , label: "Özel Ders Panel"},
-    {href: "/admin/quizs" , label: "Quizs"}
+    {href: "/admin/quizs" , label: "Quizs Panel"}
   ];
 
 export const notsLinks = [

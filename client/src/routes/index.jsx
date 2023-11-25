@@ -12,7 +12,6 @@ import LessonMain from "../pages/dersler/lesson-main";
 import QuizDetails from "../pages/quizs/quiz-details";
 import ClassDetail from "../pages/nots/class-detail";
 import TopicDetail from "../pages/nots/topic-detail";
-
 import AdminMain from "../pages/admin";
 import AdminNots from "../pages/admin/admin-nots";
 import AdminBlogs from "../pages/admin/admin-blogs";
@@ -22,6 +21,9 @@ import AddBlog from "../pages/admin/admin-blogs/addblog";
 import AdminEducation from "../pages/admin/admin-education";
 import EditEducation from "../pages/admin/admin-education/edit-education";
 import AddEducation from "../pages/admin/admin-education/add-educatiion";
+import AdminQuizs from "../pages/admin/admin-quiz";
+import AddQuizs from "../pages/admin/admin-quiz/add-quizs";
+import EditQuizs from "../pages/admin/admin-quiz/edit-quizs";
 
 const routes = createBrowserRouter([
   {
@@ -118,6 +120,19 @@ const routes = createBrowserRouter([
       {
         path: "/admin/educations/:id",
         element: <EditEducation/>,
+      },
+
+      {
+        path: "/admin/quizs",
+        element: <AdminQuizs />,
+      },
+      {
+        path: "/admin/quizs-add",
+        element: <AddQuizs/>,
+      },
+      {
+        path: "/admin/quizs/:id",
+        element: <EditQuizs/>,
       },
     ],
   },
