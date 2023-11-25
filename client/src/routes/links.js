@@ -11,7 +11,7 @@ export const mainLinks = [
 export  const adminLinks = [
     { href: "/admin/blogs", label: "Blog Panel" },
     { href: "/admin/nots", label: "Not Panel" },
-    {href: "/admin/ders-ekle" , label: "Ders Ekle"},
+    {href: "/admin/educations" , label: "Özel Ders Panel"},
     {href: "/admin/quizs" , label: "Quizs"}
   ];
 

@@ -16,10 +16,12 @@ import TopicDetail from "../pages/nots/topic-detail";
 import AdminMain from "../pages/admin";
 import AdminNots from "../pages/admin/admin-nots";
 import AdminBlogs from "../pages/admin/admin-blogs";
-import AdminLessons from "../pages/admin/add-lessons";
 import AdminLayout from "../layouts/AdminLayout";
 import EditBlog from "../pages/admin/admin-blogs/edit-blog";
 import AddBlog from "../pages/admin/admin-blogs/addblog";
+import AdminEducation from "../pages/admin/admin-education";
+import EditEducation from "../pages/admin/admin-education/edit-education";
+import AddEducation from "../pages/admin/admin-education/add-educatiion";
 
 const routes = createBrowserRouter([
   {
@@ -106,8 +108,16 @@ const routes = createBrowserRouter([
         element: <EditBlog/>,
       },
       {
-        path: "/admin/ders-ekle",
-        element: <AdminLessons />,
+        path: "/admin/educations",
+        element: <AdminEducation />,
+      },
+      {
+        path: "/admin/educations-add",
+        element: <AddEducation />,
+      },
+      {
+        path: "/admin/educations/:id",
+        element: <EditEducation/>,
       },
     ],
   },

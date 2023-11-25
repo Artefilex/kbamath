@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import { IoAdd } from "react-icons/io5";
 import { useAppearance } from "../../../store/appearance/hooks";
-import EducationList from "./education-list";
-export default function AdminEducation() {
+import QuizsList from "./quizs-list";
+export default function AdminQuizs() {
   const navigate = useNavigate()
     const {theme} = useAppearance()
 
@@ -18,7 +18,7 @@ export default function AdminEducation() {
      })} onClick={()=>navigate("/admin/blogs-add-blog")}>
      <IoAdd className="group-hover:rotate-45 transition-all duration-600 text-[1.5rem]" />   Özel Ders Paketi Ekle 
     </button>
-    <EducationList/>
+    <QuizsList/>
     </div>
       </SectionMain>
   );
