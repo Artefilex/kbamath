@@ -19,6 +19,7 @@ import AdminBlogs from "../pages/admin/admin-blogs";
 import AdminLessons from "../pages/admin/add-lessons";
 import AdminLayout from "../layouts/AdminLayout";
 import EditBlog from "../pages/admin/admin-blogs/edit-blog";
+import AddBlog from "../pages/admin/admin-blogs/addblog";
 
 const routes = createBrowserRouter([
   {
@@ -95,6 +96,10 @@ const routes = createBrowserRouter([
       {
         path: "/admin/blogs",
         element: <AdminBlogs />,
+      },
+      {
+        path: "/admin/blogs-add-blog",
+        element: <AddBlog />,
       },
       {
         path: "/admin/blogs/:id",

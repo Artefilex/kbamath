@@ -37,7 +37,7 @@ export default function EditBlog() {
     formData.append("content", content);
     formData.append("subtitle", subtitle);
     const addEducation = async () => {
-      const response = await axios.post(
+      const response = await axios.put(
         `http://localhost:4000/admin/blogs/${id}`,
         formData
       );

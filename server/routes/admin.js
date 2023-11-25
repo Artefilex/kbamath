@@ -9,9 +9,9 @@ dotenv.config({ path: "./config.env" });
 // BLOG
 
 
-router.post("/blogs/delete/:BlogUrl", adminController.blog_delete);
+router.delete("/blogs/delete/:blogid", upload, adminController.blog_delete);
 
-router.post("/blogs/:blogid",upload, adminController.blog_edit);
+router.put("/blogs/:blogid",upload, adminController.blog_edit);
 router.get("/blogs/:blogid", adminController.single_blog);
 router.post("/blogs", upload, adminController.blog_create);
 router.get("/blogs", adminController.blog_list);

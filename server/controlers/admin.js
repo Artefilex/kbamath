@@ -51,7 +51,7 @@ exports.single_blog = async (req, res) =>{
 exports.blog_edit = async (req, res) => {
     
     try {
-      console.log(req.body)
+    
       const blog = await Blog.findOne({
         where: {
           blogUrl: req.params.blogid
@@ -61,13 +61,13 @@ exports.blog_edit = async (req, res) => {
       // Images\1700788172917.pdf
 
       if (req.file) {
-           const oldImageUrl=  req.body.oldImage ;
+           const oldImageUrl=  req.body.oldImage;
           (blog.image = req.file.path),
           (blog.header = req.body.header),
           (blog.content = req.body.content),
           (blog.subtitle =req.body.subtitle),
           (blog.blogUrl = slugField(req.body.header));
-          await  fs.unlinkSync(oldImageUrl)
+          await fs.unlinkSync(oldImageUrl)
         }else{
           blog.image = req.body.oldImage
       }
@@ -82,15 +82,17 @@ exports.blog_edit = async (req, res) => {
 
 exports.blog_delete = async (req, res) => {
   try {
-    const deleteBlog = req.body.deleteUrl;
-
+    console.log(req.params.blogid)
+    
     const blog = await Blog.findOne({
       where: {
-        id: deleteBlog,
+      blogUrl: req.params.blogid,
       },
     });
+    console.log("blog image ----" + blog.image)
     if (blog) {
-      await blog.destroy();
+      await fs.unlinkSync(blog.image)
+     await blog.destroy();
     }
     res.send("delete success");
   } catch (err) {

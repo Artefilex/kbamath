@@ -3,16 +3,17 @@ import classNames from "classnames"
 import { useState } from "react"
 import { useAppearance } from "../../../../store/appearance/hooks"
 import toast from "react-hot-toast"
-import { IoAdd } from "react-icons/io5";
+import { useNavigate } from "react-router-dom"
+
 
 export default function AddBlog (){
-    const [show, setShow] = useState(false)
     const [image,setImage] = useState("")
     const [header,setHeader] = useState("")
     const [subtitle,setSubtitle] = useState("")
     const [content,setContent] = useState("")
     const {theme} = useAppearance()
-    const handleSubit = (e) => {
+    const navigate = useNavigate()
+    const handleSubit = async (e) => {
       e.preventDefault();
       const formData = new FormData();
       if(header==="" || content ==="" || subtitle === "" ){
@@ -31,26 +32,20 @@ export default function AddBlog (){
           console.log("helal amcaoglu");
         }
       };
-      addEducation()
-      setShow(false)
+      await  addEducation()
+      navigate("/admin/blogs")
       setImage("")
       setHeader("")
       setContent("")
       setSubtitle("")
-      return toast.success("Blog Eklendi")
+      toast.success("Blog Eklendi")
      
     };
     return (
      <div className="w-full flex items-start flex-col gap-4">
-      <button className={classNames(" text-start ml-7 px-3 py-2 rounded-sm flex items-center gap-4 group",{
-        "border-green-900 font-bold border-2 hover:bg-green-600 text-green-400 hover:text-white transition-color duration-700": theme.name ==="dark",
-        "bg-green-500 font-bold border-2   hover:bg-green-700 text-white hover:text-white transition-color duration-700": theme.name ==="light"
-      })} onClick={()=> setShow(!show)}>
-       <IoAdd className="group-hover:rotate-45 transition-all duration-600 text-[1.5rem]" />    Blog ekle
-      </button>
+
       
-      {
-        show && <div className=" w-full">
+   <div className=" w-full">
            <form
       encType="multipart/form-data"
       onSubmit={handleSubit}
@@ -119,8 +114,7 @@ export default function AddBlog (){
       </button>
     </form>
         </div>
-      }
-
+    
      </div>
         
     )
