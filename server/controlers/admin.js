@@ -51,14 +51,12 @@ exports.single_blog = async (req, res) =>{
 exports.blog_edit = async (req, res) => {
     
     try {
-    
       const blog = await Blog.findOne({
         where: {
           blogUrl: req.params.blogid
         },
       });
       console.log(req.body.oldImage)
-      // Images\1700788172917.pdf
 
       if (req.file) {
            const oldImageUrl=  req.body.oldImage;
@@ -81,15 +79,12 @@ exports.blog_edit = async (req, res) => {
 };
 
 exports.blog_delete = async (req, res) => {
-  try {
-    console.log(req.params.blogid)
-    
+  try {   
     const blog = await Blog.findOne({
       where: {
       blogUrl: req.params.blogid,
       },
     });
-    console.log("blog image ----" + blog.image)
     if (blog) {
       await fs.unlinkSync(blog.image)
      await blog.destroy();
