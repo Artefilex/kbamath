@@ -4,6 +4,8 @@ import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAppearance } from "../../../../store/appearance/hooks";
 import { useEffect, useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export default function EditBlog() {
   const { id } = useParams();
@@ -14,6 +16,19 @@ export default function EditBlog() {
   const [content, setContent] = useState("");
   const { theme } = useAppearance();
   const navigate = useNavigate();
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      [{ font: []}],
+      [{ size: [] }],
+      ["bold", "italic", "underline", "strike", "blockqoute"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ indent: "-1" }, { indent: "+1" }],
+      ["link"],
+    ],
+    
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(
@@ -93,20 +108,18 @@ export default function EditBlog() {
 
           <div className="w-full flex items-center justify-start flex-col gap-2 ">
             <h4 className="w-[95%]"> Blog Alanı </h4>
-            <textarea
-              type="text"
+            <ReactQuill
+              theme="snow"
               name="content"
               value={content}
-              className={classNames(
-                "w-[95%] bg-transparent border  rounded-sm px-4 py-2 ",
-                {
-                  "border-black": theme.name === "light",
-                }
-              )}
-              onChange={(e) => setContent(e.target.value)}
+              modules={modules}
+             onChange={(content) => setContent(content)}
+              className={
+                "w-[98%] bg-transparent rounded-sm px-4 h-[20rem]"
+              }
             />
           </div>
-          <div className="w-full flex items-center justify-start flex-col gap-2 ">
+          <div className="w-full flex items-center justify-start flex-col gap-2 mt-10 ">
       <h4 className="w-[95%]"> Dosya Ekle </h4>
       <input
       type="file"
