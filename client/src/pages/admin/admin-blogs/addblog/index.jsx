@@ -37,22 +37,24 @@ export default function AddBlog() {
     formData.append("header", header);
     formData.append("content", content);
     formData.append("subtitle", subtitle);
-    const addEducation = async () => {
+    const addBlog = async () => {
       const response = await axios.post(
         "http://localhost:4000/admin/blogs",
         formData
       );
       if (response.status === 200) {
-        console.log("helal amcaoglu");
+        toast.success("Blog Eklendi");
+      }else{
+        toast.error("Blog Eklenemedi");
       }
     };
-    await addEducation();
+    await addBlog();
     navigate("/admin/blogs");
     setImage("");
     setHeader("");
     setContent("");
     setSubtitle("");
-    toast.success("Blog Eklendi");
+
   };
   return (
     <div className="w-full flex items-start flex-col gap-4">

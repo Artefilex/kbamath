@@ -118,7 +118,7 @@ const routes = createBrowserRouter([
         element: <AddEducation />,
       },
       {
-        path: "/admin/educations/:id",
+        path: "/admin/education/:id",
         element: <EditEducation/>,
       },
 
