@@ -1,84 +1,92 @@
 import { useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import {
+  FormContent,
+  FormInput,
+  FormButton,
+} from "../../../../components/form";
 export default function AddQuizs() {
+  const navigate = useNavigate();
 
-  const [image,setImage] = useState("")
-  const [title,setTitle] = useState("")
-  const [price,setPrice] = useState("")
-  const [content,setContent] = useState("")
+  const [image, setImage] = useState("");
+  const [title, setTitle] = useState("");
+  const [iframeUrl, setIframeUrl] = useState("");
+  const [ iframeHeight, setIframeHeight] = useState("");
 
-  const handleSubit = (e) => {
+  const handleSubit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("image", image);
     formData.append("title", title);
-    formData.append("content", content);
-    formData.append("price", price);
-    const addEducation = async () => {
+    formData.append("iframeUrl", iframeUrl);
+    formData.append("iframeHeight", iframeHeight);
+    const addQuizs = async () => {
       const response = await axios.post(
-        "http://localhost:4000/admin/education",
+        "http://localhost:4000/admin/quizs",
         formData
       );
       if (response.status === 200) {
-        console.log("helal amcaoglu");
+        toast.success("Özel Ders Eklendi");
+      } else {
+        toast.error("Özel Ders Eklenemedi");
       }
     };
-    addEducation();
+    await addQuizs();
+    navigate("/admin/quizs");
+    setImage("");
+    setTitle("");
+    setIframeHeight("");
+    setIframeUrl("");
   };
   return (
-    <form
-      encType="multipart/form-data"
-      onSubmit={handleSubit}
-      method="POST"
-      className="w-[80%] py-4 flex-col flex items-center justify-center bg-[color:var(--bg-secondary)] gap-3"
-    >
-   
-      <div className="w-full flex items-center justify-start flex-col gap-2 ">
-        <h4 className="w-[90%]"> Title</h4>
-        <input
-          type="text"
-          name="title"
-          value={title}
-          className="w-[90%] bg-transparent border rounded-sm px-4 py-2 "
-          onChange={(e)=> setTitle(e.target.value)}
-        />
-      </div>
+    <div className="w-[100%] flex items-start flex-col gap-4">
+      <div className=" w-full">
+        <form
+          encType="multipart/form-data"
+          onSubmit={handleSubit}
+          method="POST"
+          className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
+        >
+          <FormContent header={"Sınav Başlığı"}>
+            <FormInput
+              type="text"
+              name="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </FormContent>
 
-      <div className="w-full flex items-center justify-start flex-col gap-2 ">
-        <h4 className="w-[90%]"> Price</h4>
-        <input
-          type="text"
-          name="price"
-          value={price}
-          className="w-[90%] bg-transparent border rounded-sm px-4 py-2 "
-          onChange={(e)=> setPrice(e.target.value)}
-        />
-      </div>
+          <FormContent header={"Sınav Linki"}>
+            <FormInput
+              type="text"
+              name="iframeUrl"
+              value={iframeUrl}
+              onChange={(e) => setIframeUrl(e.target.value)}
+            />
+          </FormContent>
 
-      <div className="w-full flex items-center justify-start flex-col gap-2 ">
-        <h4 className="w-[90%]"> Content</h4>
-        <textarea
-          type="text"
-          name="content"
-          value={content}
-          className="w-[90%] bg-transparent border rounded-sm px-4 py-2 "
-          onChange={(e)=> setContent(e.target.value)}
-        />
-      </div>
+          <FormContent header={"Form Yüksekliği"}>
+          <FormInput
+              type="number"
+              name="iframeHeight"
+              value={iframeHeight}
+              onChange={(e) => setIframeHeight(e.target.value)}
+            />
+          </FormContent>
 
-       <input
-        type="file"
-        name="image"
-        className="w-[90%] bg-transparent border rounded-sm "
-   
-        onChange={(e)=> setImage(e.target.files[0])}
-      /> 
-      <button
-        type="submit"
-        className="w-[90%] bg-[color:var(--c-subbase)]   px-3 py-4"
-      >
-        Ders Ekle
-      </button>
-    </form>
+          <FormContent header={"Başlık Fotoğrafı"}>
+            <FormInput
+              type="file"
+              name="image"
+              onChange={(e) => setImage(e.target.files[0])}
+            />
+          </FormContent>
+
+          <FormButton> Sınav Ekle </FormButton>
+        </form>
+      </div>
+    </div>
   );
 }

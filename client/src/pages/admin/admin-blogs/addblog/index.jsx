@@ -72,7 +72,7 @@ export default function AddBlog() {
             />{" "}
           </FormContent>
 
-          <FormContent header={"Alt Başlık"}>
+          <FormContent header={"Açıklama"}>
             <QuillTextArea
               name="content"
               value={content}

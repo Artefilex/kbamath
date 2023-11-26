@@ -4,6 +4,7 @@ const Quiz = require("../models/quiz");
 const Education = require("../models/education");
 const slugField = require("../middleware/slugify");
 const fs = require("fs");
+const { log } = require("console");
 
 // Admin Blog
 
@@ -57,14 +58,18 @@ exports.blog_edit = async (req, res) => {
 
     if (req.file) {
       const oldImageUrl = req.body.oldImage;
-      (blog.image = req.file.path),
-        (blog.header = req.body.header),
-        (blog.content = req.body.content),
-        (blog.subtitle = req.body.subtitle),
-        (blog.blogUrl = slugField(req.body.header));
+      blog.image = req.file.path
+        blog.header = req.body.header
+        blog.content = req.body.content
+        blog.subtitle = req.body.subtitle
+        blog.blogUrl = slugField(req.body.header)
       await fs.unlinkSync(oldImageUrl);
     } else {
       blog.image = req.body.oldImage;
+      blog.header = req.body.header
+      blog.content = req.body.content
+      blog.subtitle = req.body.subtitle
+      blog.blogUrl = slugField(req.body.header)
     }
 
     await blog.save();
@@ -145,6 +150,10 @@ exports.putEducation = async (req, res) => {
       education.content = req.body.content;
       await fs.unlinkSync(oldImageUrl);
     } else {
+      education.title = req.body.title;
+      education.price = req.body.price;
+      education.paramsUrl = slugField(req.body.title);
+      education.content = req.body.content;
       education.image = req.body.oldImage;
     }
     await education.save();
@@ -211,28 +220,30 @@ exports.quiz_list = async (req, res) => {
   }
 };
 
-exports.create_quiz = async () => {
+exports.create_quiz = async (req,res) => {
   try {
-    const quiz = await Quiz.create({
+   
+    const createQuiz = await Quiz.create({
       image: req.file.path,
       title: req.body.title,
       iframeUrl: req.body.iframeUrl,
       paramsUrl: slugField(req.body.title),
-      content: req.body.content,
       iframeHeight: req.body.iframeHeight,
     });
-    res.send(`${quiz} success`);
+    console.log( "quizs" + createQuiz)
+    res.send(`${createQuiz} success`);
   } catch (err) {
     console.log(err);
   }
 };
-exports.get_single_quiz = async () => {
+exports.get_single_quiz = async  (req, res) => {
   try {
     const quiz = await Quiz.findOne({
       where: {
         paramsUrl: req.params.id,
       },
     });
+    console.log(quiz)
     if (quiz) {
       res.json(quiz);
     }
@@ -240,10 +251,12 @@ exports.get_single_quiz = async () => {
     console.log(err);
   }
 };
-exports.edit_quiz = async () => {
+exports.edit_quiz = async  (req, res) => {
   try {
     const quiz = await Quiz.findOne({ where: { paramsUrl: req.params.id } });
     const oldImageUrl = req.body.oldImage;
+    console.log(oldImageUrl)
+    console.log(quiz)
     if (req.file) {
       quiz.image = req.file.path;
       quiz.title = req.body.title;
@@ -252,17 +265,22 @@ exports.edit_quiz = async () => {
       quiz.iframeHeight = req.body.iframeHeight;
       await fs.unlinkSync(oldImageUrl);
     } else {
+      quiz.title = req.body.title;
+      quiz.iframeUrl = req.body.iframeUrl;
+      quiz.paramsUrl = slugField(req.body.title);
+      quiz.iframeHeight = req.body.iframeHeight;
       quiz.image = req.body.oldImage;
     }
     await quiz.save();
-    res.send(`${forms.id} education edited`);
+    res.send(`${quiz.paramsUrl} quiz edited`);
   } catch (err) {
     console.log(err);
   }
 };
-exports.quiz_delete = async () => { 
+exports.quiz_delete = async  (req, res) => { 
   try {
     const quiz = await Quiz.findOne({ where: { paramsUrl: req.params.id } });
+   
     if (quiz) {
       await fs.unlinkSync(quiz.image);
       await quiz.destroy();

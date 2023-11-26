@@ -66,7 +66,7 @@ export default function EditBlog() {
         >
            
            <input type="hidden" name="oldImage" value={oldImage} />
-          <FormContent header={"Başlık"}>
+          <FormContent header={"Başlığı Güncelle"}>
             {" "}
             <FormInput
               type="text"
@@ -76,7 +76,7 @@ export default function EditBlog() {
             />{" "}
           </FormContent>
 
-          <FormContent header={"Alt Başlık"}>
+          <FormContent header={"Alt Başlığı Güncelle"}>
             {" "}
             <FormInput
               type="text"
@@ -86,7 +86,7 @@ export default function EditBlog() {
             />{" "}
           </FormContent>
 
-          <FormContent header={"Alt Başlık"}>
+          <FormContent header={"Açıklamayı Güncelle"}>
             <QuillTextArea
               name="content"
               value={content}
@@ -94,7 +94,7 @@ export default function EditBlog() {
             />
           </FormContent>
 
-          <FormContent header={"Dosya Ekle"}>
+          <FormContent header={"Dosyayı Güncelle"}>
             <FormInput
               type="file"
               name="image"
@@ -102,7 +102,7 @@ export default function EditBlog() {
             />
           </FormContent>
 
-          <FormButton>DBloğu Güncelle</FormButton>
+          <FormButton> Güncelle</FormButton>
         </form>
       </div>
     </div>

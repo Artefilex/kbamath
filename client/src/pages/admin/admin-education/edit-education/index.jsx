@@ -61,7 +61,7 @@ function EditEducation() {
           className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
         >
           <input type="hidden" name="oldImage" value={oldImage} />
-          <FormContent header={"Başlık"}>
+          <FormContent header={"Başlığı Güncelle"}>
             <FormInput
               type="text"
               name="title"
@@ -70,7 +70,7 @@ function EditEducation() {
             />
           </FormContent>
 
-          <FormContent header={"Fiyat Bilgisi"}>
+          <FormContent header={"Fiyat Bilgisini  Güncelle"}>
             <FormInput
               type="text"
               name="price"
@@ -79,7 +79,7 @@ function EditEducation() {
             />
           </FormContent>
 
-          <FormContent header={"Açıklama"}>
+          <FormContent header={"Açıklamayı  Güncelle"}>
             <QuillTextArea
               name="content"
               value={content}
@@ -95,7 +95,7 @@ function EditEducation() {
             />
           </FormContent>
 
-          <FormButton> Dersi Güncelle</FormButton>
+          <FormButton> Güncelle</FormButton>
         </form>
       </div>
     </div>
