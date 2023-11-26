@@ -1,30 +1,34 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts";
-import Home from "../pages/home";
-import About from "../pages/about";
-import Lessons from "../pages/dersler";
-import Nots from "../pages/nots";
-import Blogs from "../pages/blogs";
-import Quizs from "../pages/quizs";
+import AdminLayout from "../layouts/AdminLayout";
+
 import BlogDetails from "../pages/blogs/blog-details";
 import LessonsDetails from "../pages/dersler/lesson-details";
 import LessonMain from "../pages/dersler/lesson-main";
 import QuizDetails from "../pages/quizs/quiz-details";
 import ClassDetail from "../pages/nots/class-detail";
 import TopicDetail from "../pages/nots/topic-detail";
-import AdminMain from "../pages/admin";
-import AdminNots from "../pages/admin/admin-nots";
-import AdminBlogs from "../pages/admin/admin-blogs";
-import AdminLayout from "../layouts/AdminLayout";
-import EditBlog from "../pages/admin/admin-blogs/edit-blog";
-import AddBlog from "../pages/admin/admin-blogs/addblog";
-import AdminEducation from "../pages/admin/admin-education";
-import EditEducation from "../pages/admin/admin-education/edit-education";
-import AddEducation from "../pages/admin/admin-education/add-educatiion";
-import AdminQuizs from "../pages/admin/admin-quiz";
-import AddQuizs from "../pages/admin/admin-quiz/add-quizs";
-import EditQuizs from "../pages/admin/admin-quiz/edit-quizs";
-
+import {
+  Quizs,
+  Home,
+  About,
+  Lessons,
+  Nots,
+  Blogs,
+  AdminMain,
+} from "../pages/routes";
+import {
+  AdminNots,
+  AdminBlogs,
+  EditBlog,
+  AddBlog,
+  AdminEducation,
+  EditEducation,
+  AddEducation,
+  AdminQuizs,
+  AddQuizs,
+  EditQuizs,
+} from "../pages/admin/routes";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -86,11 +90,11 @@ const routes = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <AdminLayout/>,
+    element: <AdminLayout />,
     children: [
       {
         index: true,
-        element: <AdminMain  />,
+        element: <AdminMain />,
       },
 
       {
@@ -107,7 +111,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "/admin/blogs/:id",
-        element: <EditBlog/>,
+        element: <EditBlog />,
       },
       {
         path: "/admin/educations",
@@ -119,7 +123,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "/admin/education/:id",
-        element: <EditEducation/>,
+        element: <EditEducation />,
       },
 
       {
@@ -128,11 +132,11 @@ const routes = createBrowserRouter([
       },
       {
         path: "/admin/quizs-add",
-        element: <AddQuizs/>,
+        element: <AddQuizs />,
       },
       {
         path: "/admin/quizs/:id",
-        element: <EditQuizs/>,
+        element: <EditQuizs />,
       },
     ],
   },
