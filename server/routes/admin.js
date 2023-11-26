@@ -25,8 +25,11 @@ router.post("/education", upload, adminController.education_create);
 router.get("/education", adminController.education_list);
 
 //  Quiz
-
-router.get("/quiz", adminController.quiz_list);
+router.delete("/quizs/:id", adminController.quiz_delete);
+router.put("/quizs/:id", upload, adminController.edit_quiz);
+router.get("/quizs/:id", adminController.get_single_quiz);
+router.post("/quizs", upload, adminController.create_quiz);
+router.get("/quizs", adminController.quiz_list);
 
 // Nots
 

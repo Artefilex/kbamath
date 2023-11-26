@@ -7,7 +7,7 @@ const Quizs = sequelize.define(
       image : {
         type: DataTypes.STRING,
       },
-     quizHeader: {
+      title: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -15,14 +15,10 @@ const Quizs = sequelize.define(
         type: DataTypes.STRING,
         allowNull: false,
       },
-      mainUrl:{
+      paramsUrl:{
         type: DataTypes.STRING,
       },
-      headerImg:{
-        type: DataTypes.BLOB,
-        allowNull: false
-      },
-      height:{
+      iframeHeight:{
         type: DataTypes.STRING,
         allowNull: false
       }

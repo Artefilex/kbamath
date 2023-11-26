@@ -25,43 +25,43 @@ async function populate() {
     //     blogUrl: slugField("BAŞTAN SAVMA ALIŞKANLIĞINA Son"),
     //   }
     // ]);
-    const quiz = await Quiz.bulkCreate([{
-      quizHeader: "Polinomlar 101" ,
-      iframeUrl:"https://docs.google.com/forms/d/e/1FAIpQLSepD32r12fOBkjx03YFtUEg54Exm4hiWtuigVO-VeycdNj5Vg/viewform?usp=sf_link" ,
-      mainUrl: slugField("Polinomlar 101"),
-      headerImg:"https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp",
-      height: "1330"
-    },
-    {
-      quizHeader: "Polinomlar 201",
-      iframeUrl:"https://docs.google.com/forms/d/e/1FAIpQLSepD32r12fOBkjx03YFtUEg54Exm4hiWtuigVO-VeycdNj5Vg/viewform?usp=sf_link",
-      mainUrl: slugField("Polinomlar 201"),
-      headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp",
-      height: "1330"
-    },
-    {
-      quizHeader: "Polinomlar 301",
-      iframeUrl:"https://docs.google.com/forms/d/e/1FAIpQLSepD32r12fOBkjx03YFtUEg54Exm4hiWtuigVO-VeycdNj5Vg/viewform?usp=sf_link",
-      mainUrl: slugField("Polinomlar 301"),
-      headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp",
-      height: "1330"
-    },
-    {
-      quizHeader: "Polinomlar 401",
-      iframeUrl:"https://docs.google.com/forms/d/e/1FAIpQLSepD32r12fOBkjx03YFtUEg54Exm4hiWtuigVO-VeycdNj5Vg/viewform?usp=sf_link",
-      mainUrl: slugField("Polinomlar 401"),
-      headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp",
-      height: "1330"
-    },
-    {
-      quizHeader: "Polinomlar 501",
-      iframeUrl:"https://docs.google.com/forms/d/e/1FAIpQLSepD32r12fOBkjx03YFtUEg54Exm4hiWtuigVO-VeycdNj5Vg/viewform?usp=sf_link",
-      mainUrl: slugField("Polinomlar 501"),
-      headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp",
-      height: "1330"
-    },
+  //   const quiz = await Quiz.bulkCreate([{
+  //     quizHeader: "Polinomlar 101" ,
+  //     iframeUrl:"https://docs.google.com/forms/d/e/1FAIpQLSepD32r12fOBkjx03YFtUEg54Exm4hiWtuigVO-VeycdNj5Vg/viewform?usp=sf_link" ,
+  //     mainUrl: slugField("Polinomlar 101"),
+  //     headerImg:"https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp",
+  //     height: "1330"
+  //   },
+  //   {
+  //     quizHeader: "Polinomlar 201",
+  //     iframeUrl:"https://docs.google.com/forms/d/e/1FAIpQLSepD32r12fOBkjx03YFtUEg54Exm4hiWtuigVO-VeycdNj5Vg/viewform?usp=sf_link",
+  //     mainUrl: slugField("Polinomlar 201"),
+  //     headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp",
+  //     height: "1330"
+  //   },
+  //   {
+  //     quizHeader: "Polinomlar 301",
+  //     iframeUrl:"https://docs.google.com/forms/d/e/1FAIpQLSepD32r12fOBkjx03YFtUEg54Exm4hiWtuigVO-VeycdNj5Vg/viewform?usp=sf_link",
+  //     mainUrl: slugField("Polinomlar 301"),
+  //     headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp",
+  //     height: "1330"
+  //   },
+  //   {
+  //     quizHeader: "Polinomlar 401",
+  //     iframeUrl:"https://docs.google.com/forms/d/e/1FAIpQLSepD32r12fOBkjx03YFtUEg54Exm4hiWtuigVO-VeycdNj5Vg/viewform?usp=sf_link",
+  //     mainUrl: slugField("Polinomlar 401"),
+  //     headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp",
+  //     height: "1330"
+  //   },
+  //   {
+  //     quizHeader: "Polinomlar 501",
+  //     iframeUrl:"https://docs.google.com/forms/d/e/1FAIpQLSepD32r12fOBkjx03YFtUEg54Exm4hiWtuigVO-VeycdNj5Vg/viewform?usp=sf_link",
+  //     mainUrl: slugField("Polinomlar 501"),
+  //     headerImg: "https://cdn.vectorstock.com/i/1000x1000/74/95/quiz-time-banner-template-ribbon-label-sign-vector-33567495.webp",
+  //     height: "1330"
+  //   },
   
-  ])
+  // ])
   // const education = await Education.bulkCreate([
   //   {
   //     title: "mülakat hazırlık",
