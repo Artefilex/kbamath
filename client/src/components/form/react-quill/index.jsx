@@ -3,7 +3,7 @@ import "react-quill/dist/quill.snow.css";
 
 import PropTypes from "prop-types"
 
-function QuillTextArea({onChange}) {
+function QuillTextArea({onChange,value}) {
     const modules = {
         toolbar: [
           [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -20,6 +20,7 @@ function QuillTextArea({onChange}) {
     theme="snow"
     onChange={onChange}  
     modules={modules}
+    value={value}
     className={
       "w-[98%] bg-transparent rounded-sm px-4 h-[20rem] mb-10"
     }
@@ -27,7 +28,8 @@ function QuillTextArea({onChange}) {
 
 }
 QuillTextArea.propTypes = {
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  value: PropTypes.any,
 }
 
 export default QuillTextArea;

@@ -1,32 +1,20 @@
 import axios from "axios";
-import classNames from "classnames";
 import { useState } from "react";
-import { useAppearance } from "../../../../store/appearance/hooks";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
-
+import {
+  FormContent,
+  FormInput,
+  FormButton,
+  QuillTextArea,
+} from "../../../../components/form";
 export default function AddBlog() {
   const [image, setImage] = useState("");
   const [header, setHeader] = useState("");
   const [subtitle, setSubtitle] = useState("");
   const [content, setContent] = useState("");
-  const { theme } = useAppearance();
   const navigate = useNavigate();
-  
-    const modules = {
-    toolbar: [
-      [{ header: [1, 2, 3, 4, 5, 6, false] }],
-      [{ font: []}],
-      [{ size: [] }],
-      ["bold", "italic", "underline", "strike", "blockqoute"],
-      [{ list: "ordered" }, { list: "bullet" }],
-      [{ indent: "-1" }, { indent: "+1" }],
-      ["link"],
-    ],
-    
-  };
+
   const handleSubit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -44,7 +32,7 @@ export default function AddBlog() {
       );
       if (response.status === 200) {
         toast.success("Blog Eklendi");
-      }else{
+      } else {
         toast.error("Blog Eklenemedi");
       }
     };
@@ -54,7 +42,6 @@ export default function AddBlog() {
     setHeader("");
     setContent("");
     setSubtitle("");
-
   };
   return (
     <div className="w-full flex items-start flex-col gap-4">
@@ -65,77 +52,44 @@ export default function AddBlog() {
           method="POST"
           className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
         >
-          <div className="w-full flex items-center justify-start flex-col gap-2 ">
-            <h4 className="w-[95%]"> Başlık</h4>
-            <input
+          <FormContent header={"Başlık"}>
+            {" "}
+            <FormInput
               type="text"
               name="header"
               value={header}
-              className={classNames(
-                "w-[95%] bg-transparent border  rounded-sm px-4 py-2 ",
-                {
-                  "border-black": theme.name === "light",
-                }
-              )}
               onChange={(e) => setHeader(e.target.value)}
-            />
-          </div>
+            />{" "}
+          </FormContent>
 
-          <div className="w-full flex items-center justify-start flex-col gap-2 ">
-            <h4 className="w-[95%]">Alt Başlık</h4>
-            <input
+          <FormContent header={"Alt Başlık"}>
+            {" "}
+            <FormInput
               type="text"
               name="subtitle"
               value={subtitle}
-              className={classNames(
-                "w-[95%] bg-transparent border  rounded-sm px-4 py-2 ",
-                {
-                  "border-black": theme.name === "light",
-                }
-              )}
               onChange={(e) => setSubtitle(e.target.value)}
-            />
-          </div>
+            />{" "}
+          </FormContent>
 
-          <div className="w-full flex items-center justify-start flex-col gap-2 ">
-            <h4 className="w-[95%]"> Blog Alanı </h4>
-            <ReactQuill
-              theme="snow"
+          <FormContent header={"Alt Başlık"}>
+            <QuillTextArea
               name="content"
               value={content}
-              modules={modules}
-             onChange={(content) => setContent(content)}
-              className={
-                "w-[98%] bg-transparent rounded-sm px-4 h-[20rem]"
-              }
+              onChange={(content) => setContent(content)}
             />
-          </div>
-          <div className="w-full flex items-center justify-start flex-col gap-2 mt-10">
-            <h4 className="w-[95%]"> Dosya Ekle </h4>
-            <input
+          </FormContent>
+
+          <FormContent header={"Dosya Ekle"}>
+            <FormInput
               type="file"
               name="image"
-              className={classNames(
-                "w-[95%] bg-transparent border  rounded-sm px-4 py-2 ",
-                {
-                  "border-black": theme.name === "light",
-                }
-              )}
               onChange={(e) => setImage(e.target.files[0])}
             />
-          </div>
+          </FormContent>
 
-          <button
-            type="submit"
-            className={classNames(
-              "w-[95%] px-3 py-2 relative active:translate-y-1 ",
-              {
-                "bg-black/60 text-white": theme.name === "dark",
-              }
-            )}
-          >
-            Ders Ekle
-          </button>
+          <FormButton>Blog Ekle </FormButton>
+          
         </form>
       </div>
     </div>

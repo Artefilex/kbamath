@@ -121,13 +121,15 @@ exports.education_create = async (req, res) => {
 };
 
 exports.getsingleEducation = async(req,res) =>{
-  const educationId = req.params.educationId
+
   try{
-   const education = Education.findOne({
+    console.log(req.params.id)
+   const education = await Education.findOne({
     where:{
-      paramsUrl : educationId
+      paramsUrl : req.params.id
     }
    })
+   console.log(education)
    if(education){
     res.json(education)
    } 
@@ -136,15 +138,20 @@ exports.getsingleEducation = async(req,res) =>{
   }
 } 
 exports.putEducation = async(req,res) =>{
-  const forms = req.body.form
+
   try{
-    const education = await Education.findOne({where:{id :forms.id}})
-     if (education){
-       education.title = forms.title
-       education.price =forms.price
-       education.imgUrl = forms.imgUrl
-       education.paramsUrl = slugField(forms.imgUrl)
-      }
+    const education = await Education.findOne({where:{paramsUrl :req.params.id}})
+    const oldImageUrl=  req.body.oldImage;
+    if (req.file) {
+      education.image = req.file.path
+      education.title= req.body.title
+      education.price= req.body.price
+      education.paramsUrl= slugField(req.body.title)
+      education.content= req.body.content
+      await fs.unlinkSync(oldImageUrl)
+      }else{
+        education.image = req.body.oldImage
+    }
       await education.save()
       res.send(`${forms.id} education edited`)
   }  
@@ -155,14 +162,15 @@ exports.putEducation = async(req,res) =>{
 
 exports.education_delete = async (req, res) => {
   try {
-    const deleteUrl = req.body.educationUrl;
+    
 
     const education = await Education.findOne({
       where: {
-        id: deleteUrl,
+        paramsUrl : req.params.id,
       },
     });
     if (education) {
+      await fs.unlinkSync(education.image)
       await education.destroy();
     }
     res.send("delete success");
