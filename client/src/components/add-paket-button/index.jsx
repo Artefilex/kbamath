@@ -9,7 +9,7 @@ function AddPaketButton({url,text}) {
     const {theme} = useAppearance()
 
 
-  return  <button className={classNames(" text-start  px-3 py-2 rounded-sm flex items-center gap-4 group",{
+  return  <button className={classNames(" text-start  px-3 py-2 rounded-md flex items-center gap-4 group mb-5",{
     "border-green-900 font-bold border-2 hover:bg-green-600 text-green-400 hover:text-white transition-color duration-700": theme.name ==="dark",
     "bg-green-500 font-bold border-2   hover:bg-green-700 text-white hover:text-white transition-color duration-700": theme.name ==="light"
    })} onClick={()=>navigate(url)}>

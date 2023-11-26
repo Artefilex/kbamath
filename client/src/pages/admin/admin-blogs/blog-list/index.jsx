@@ -5,6 +5,7 @@ import { useAppearance } from "../../../../store/appearance/hooks";
 import classnames from "classnames";
 import axios from "axios";
 import toast from "react-hot-toast"
+import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 export default function BlogList() {
   const [blogs, setBlogs] = useState([]);
   const { theme } = useAppearance();
@@ -38,11 +39,28 @@ export default function BlogList() {
       toast.error("Blog silme işlemi başarısız")
     }
   };
-
+  const [sortOrder, setSortOrder] = useState("inc");
+  const sortedBlogs = sortOrder === "inc" ? blogs : [...blogs].reverse();
 
   return (
     <div className="w-full gap-2  flex flex-col ">
-      {blogs.map((blog) => (
+        <button
+        onClick={() => {
+          setSortOrder(sortOrder === "inc" ? "dec" : "inc");
+        }}
+      >
+        {sortOrder === "inc" ? (
+          <div className="flex items-center justify-between font-semibold px-1">
+            <div>İlk Eklenene Göre Sırala</div> <FaChevronDown />
+          </div>
+        ) : (
+          <div className="flex items-center justify-between font-semibold px-1">
+            <div>Son Eklenene Göre Sırala </div>
+            <FaChevronUp />{" "}
+          </div>
+        )}
+      </button>
+      {sortedBlogs.map((blog) => (
         <div
           key={blog.id}
           className="w-full flex items-center justify-between flex-col border rounded-lg px-2 py-4 mobile:flex-row bg-[color:var(--bg-secondary)] gap-4 mobile:gap-0 "

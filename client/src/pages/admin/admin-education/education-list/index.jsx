@@ -4,72 +4,97 @@ import { Link } from "react-router-dom";
 import { useAppearance } from "../../../../store/appearance/hooks";
 import classnames from "classnames";
 import axios from "axios";
-import toast from "react-hot-toast"
+import toast from "react-hot-toast";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 
-function  EducationList() {
+function EducationList() {
   const [educations, setEducations] = useState([]);
   const { theme } = useAppearance();
   useEffect(() => {
     const fetchBlogs = async () => {
       // const response = await getEducations();
-      const {data}  = await axios.get("http://localhost:4000/admin/education");
-       
+      const { data } = await axios.get("http://localhost:4000/admin/education");
+
       setEducations(data);
-     
-     
     };
     fetchBlogs();
   }, []);
-  
 
   const handleDelete = async (deleteUrl) => {
     const confirms = window.confirm("Silmek istediğine emin misin");
-  
+
     if (confirms) {
       try {
-        await axios.delete(`http://localhost:4000/admin/education/${deleteUrl}`);
-        const filteredEducations= educations.filter((item) => item.paramsUrl !== deleteUrl);
+        await axios.delete(
+          `http://localhost:4000/admin/education/${deleteUrl}`
+        );
+        const filteredEducations = educations.filter(
+          (item) => item.paramsUrl !== deleteUrl
+        );
         setEducations(filteredEducations);
-        toast.success(`${deleteUrl} Özel Dersi başarılı bir şekilde silindi `)
+        toast.success(`${deleteUrl} Özel Dersi başarılı bir şekilde silindi `);
       } catch (error) {
         console.error("Error deleting blog:", error);
       }
     } else {
-      toast.error("Özel Ders Silinemedi")
+      toast.error("Özel Ders Silinemedi");
     }
   };
-  return  <div className="w-full gap-2  flex flex-col mt-2">
-  {educations.map((education) => (
-    <div
-      key={education.id}
-      className="w-full flex items-center justify-between flex-col border rounded-lg px-2 py-4 mobile:flex-row bg-[color:var(--bg-secondary)] gap-4 mobile:gap-0 "
-    >
-      <div>{education.title}</div>
-      <div className="flex items-center justify-around gap-4 w-[200px]">
-        <Link
-          to={`/admin/education/${education.paramsUrl}`}
-          className={classnames(
-            "px-6 py-2 transition-color  hover:rounded-xl",
-            {
-              " hover:bg-green-500  hover:text-white transition-color duration-300":
-                theme.name === "dark",
-              " hover:bg-green-500 hover:text-white transition-color duration-300":
-                theme.name === "light",
-            }
-          )}
+
+  const [sortOrder, setSortOrder] = useState("inc");
+  const sortedEducations =
+    sortOrder === "inc" ? educations : [...educations].reverse();
+
+  return (
+    <div className="w-full gap-2  flex flex-col ">
+      <button
+        onClick={() => {
+          setSortOrder(sortOrder === "inc" ? "dec" : "inc");
+        }}
+      >
+        {sortOrder === "inc" ? (
+          <div className="flex items-center justify-between font-semibold px-1">
+            <div>İlk Eklenene Göre Sırala</div> <FaChevronDown />
+          </div>
+        ) : (
+          <div className="flex items-center justify-between font-semibold px-1">
+            <div>Son Eklenene Göre Sırala </div>
+            <FaChevronUp />{" "}
+          </div>
+        )}
+      </button>
+      {sortedEducations.map((education) => (
+        <div
+          key={education.id}
+          className="w-full flex items-center justify-between flex-col border rounded-lg px-2 py-4 mobile:flex-row bg-[color:var(--bg-secondary)] gap-4 mobile:gap-0 "
         >
-          Edit
-        </Link>
-        <button
-          className="hover:bg-red-700 px-4 py-2 transition-color duration-300 hover:rounded-lg hover:text-white  "
-          onClick={() => handleDelete(education.paramsUrl)}
-        >
-          Delete
-        </button>
-      </div>
+          <div>{education.title}</div>
+          <div className="flex items-center justify-around gap-4 w-[200px]">
+            <Link
+              to={`/admin/education/${education.paramsUrl}`}
+              className={classnames(
+                "px-6 py-2 transition-color  hover:rounded-xl",
+                {
+                  " hover:bg-green-500  hover:text-white transition-color duration-300":
+                    theme.name === "dark",
+                  " hover:bg-green-500 hover:text-white transition-color duration-300":
+                    theme.name === "light",
+                }
+              )}
+            >
+              Edit
+            </Link>
+            <button
+              className="hover:bg-red-700 px-4 py-2 transition-color duration-300 hover:rounded-lg hover:text-white  "
+              onClick={() => handleDelete(education.paramsUrl)}
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      ))}
     </div>
-  ))}
-</div>;
+  );
 }
 
-export default  EducationList;
+export default EducationList;
