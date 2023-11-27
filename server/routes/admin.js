@@ -33,6 +33,17 @@ router.get("/quizs", adminController.quiz_list);
 
 // Nots
 
+router.delete("/nots/:id", adminController.nots_delete);
+router.put("/nots/:id", upload, adminController.edit_nots);
+router.get("/nots/:id", adminController.get_single_nots);
+router.post("/nots", upload, adminController.create_nots);
 router.get("/nots", adminController.nots_list);
+
+// Category
+
+router.delete("/category/:id", adminController.category_delete);
+router.post("/category", upload, adminController.category_add);
+router.get("/category", adminController.category_list);
+
 
 module.exports = router;

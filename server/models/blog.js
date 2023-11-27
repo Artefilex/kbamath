@@ -19,7 +19,7 @@ const Blog = sequelize.define(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    blogUrl: {
+     paramsUrl: {
       type: DataTypes.STRING,
       allowNull: false,
     },

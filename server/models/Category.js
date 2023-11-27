@@ -1,20 +1,20 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../db/sql");
 
-const Nots = sequelize.define(
-  "nots",
+const Category = sequelize.define(
+  "category",
   {
     image : {
       type: DataTypes.STRING,
     }, 
-    category: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    children: {
-      type: DataTypes.JSON,
-      allowNull: false,
-    },
+    paramsUrl:{
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
   },
   {
     timestamps: false,
@@ -22,4 +22,4 @@ const Nots = sequelize.define(
 );
 
 
-module.exports = Nots;
+module.exports = Category;

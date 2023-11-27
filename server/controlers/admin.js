@@ -4,18 +4,14 @@ const Quiz = require("../models/quiz");
 const Education = require("../models/education");
 const slugField = require("../middleware/slugify");
 const fs = require("fs");
-const { log } = require("console");
-
+const Category = require("../models/Category");
+const {deleteImageAndDestroyModel} = require("../middleware/delete/deletemodel")
+const {list} = require("../middleware/list")
+const {singleItem} = require("../middleware/single_item")
 // Admin Blog
-
 exports.blog_list = async (req, res) => {
-  try {
-    const blogs = await Blog.findAll();
-    res.json(blogs);
-  } catch (err) {
-    console.log(err);
-  }
-};
+  await list(Blog,res)
+ };
 
 exports.blog_create = async (req, res) => {
   try {
@@ -24,7 +20,7 @@ exports.blog_create = async (req, res) => {
       header: req.body.header,
       subtitle: req.body.subtitle,
       content: req.body.content,
-      blogUrl: slugField(req.body.header),
+      paramsUrl: slugField(req.body.header),
     });
     res.send(`Blog success`);
   } catch (err) {
@@ -33,25 +29,14 @@ exports.blog_create = async (req, res) => {
 };
 
 exports.single_blog = async (req, res) => {
-  try {
-    const blog = await Blog.findOne({
-      where: {
-        blogUrl: req.params.blogid,
-      },
-    });
-    if (blog) {
-      res.json(blog);
-    }
-  } catch (err) {
-    console.log(err);
-  }
+  await singleItem(Blog,req.params.blogid,res)
 };
 
 exports.blog_edit = async (req, res) => {
   try {
     const blog = await Blog.findOne({
       where: {
-        blogUrl: req.params.blogid,
+        paramsUrl: req.params.blogid,
       },
     });
     console.log(req.body.oldImage);
@@ -62,14 +47,14 @@ exports.blog_edit = async (req, res) => {
         blog.header = req.body.header
         blog.content = req.body.content
         blog.subtitle = req.body.subtitle
-        blog.blogUrl = slugField(req.body.header)
+        blog.paramsUrl = slugField(req.body.header)
       await fs.unlinkSync(oldImageUrl);
     } else {
       blog.image = req.body.oldImage;
       blog.header = req.body.header
       blog.content = req.body.content
       blog.subtitle = req.body.subtitle
-      blog.blogUrl = slugField(req.body.header)
+      blog.paramsUrl = slugField(req.body.header)
     }
 
     await blog.save();
@@ -80,31 +65,12 @@ exports.blog_edit = async (req, res) => {
 };
 
 exports.blog_delete = async (req, res) => {
-  try {
-    const blog = await Blog.findOne({
-      where: {
-        blogUrl: req.params.blogid,
-      },
-    });
-    if (blog) {
-      await fs.unlinkSync(blog.image);
-      await blog.destroy();
-    }
-    res.send("delete success");
-  } catch (err) {
-    console.log(err);
-  }
+  await deleteImageAndDestroyModel(Blog, req.params.blogid, res);
 };
-
 // Admin Education
 
 exports.education_list = async (req, res) => {
-  try {
-    const education = await Education.findAll();
-    res.json(education);
-  } catch (err) {
-    console.log(err);
-  }
+  await list(Education,res)
 };
 exports.education_create = async (req, res) => {
   try {
@@ -122,19 +88,7 @@ exports.education_create = async (req, res) => {
 };
 
 exports.getsingleEducation = async (req, res) => {
-  try {
-    console.log(req.params.id);
-    const education = await Education.findOne({
-      where: {
-        paramsUrl: req.params.id,
-      },
-    });
-    if (education) {
-      res.json(education);
-    }
-  } catch (err) {
-    console.log(err);
-  }
+  await singleItem(Education,req.params.id,res)
 };
 exports.putEducation = async (req, res) => {
   try {
@@ -157,67 +111,75 @@ exports.putEducation = async (req, res) => {
       education.image = req.body.oldImage;
     }
     await education.save();
-    res.send(`${forms.id} education edited`);
+    res.send(`${education.id} education edited`);
   } catch (err) {
     console.log(err);
   }
 };
 
+
 exports.education_delete = async (req, res) => {
-  try {
-    const education = await Education.findOne({
-      where: {
-        paramsUrl: req.params.id,
-      },
-    });
-    if (education) {
-      await fs.unlinkSync(education.image);
-      await education.destroy();
-    }
-    res.send("delete success");
-  } catch (err) {
-    console.log(err);
-  }
+  await deleteImageAndDestroyModel(Education, req.params.id, res);
 };
+
 // Nots
 
 exports.nots_list = async (req, res) => {
+  await list(Nots,res)
+};
+exports.create_nots = async (req,res) => {
   try {
-    const nots = await Nots.findAll();
-    res.json(nots);
+   
+    const createQuiz = await Quiz.create({
+      image: req.file.path,
+      title: req.body.title,
+      iframeUrl: req.body.iframeUrl,
+      paramsUrl: slugField(req.body.title),
+      iframeHeight: req.body.iframeHeight,
+    });
+    console.log( "quizs" + createQuiz)
+    res.send(`${createQuiz} success`);
+  } catch (err) {
+    console.log(err);
+  }
+};
+exports.get_single_nots = async  (req, res) => {
+  await singleItem(Nots,req.params.id,res)
+};
+exports.edit_nots = async  (req, res) => {
+  try {
+    const quiz = await Quiz.findOne({ where: { paramsUrl: req.params.id } });
+    const oldImageUrl = req.body.oldImage;
+    console.log(oldImageUrl)
+    console.log(quiz)
+    if (req.file) {
+      quiz.image = req.file.path;
+      quiz.title = req.body.title;
+      quiz.iframeUrl = req.body.iframeUrl;
+      quiz.paramsUrl = slugField(req.body.title);
+      quiz.iframeHeight = req.body.iframeHeight;
+      await fs.unlinkSync(oldImageUrl);
+    } else {
+      quiz.title = req.body.title;
+      quiz.iframeUrl = req.body.iframeUrl;
+      quiz.paramsUrl = slugField(req.body.title);
+      quiz.iframeHeight = req.body.iframeHeight;
+      quiz.image = req.body.oldImage;
+    }
+    await quiz.save();
+    res.send(`${quiz.paramsUrl} quiz edited`);
   } catch (err) {
     console.log(err);
   }
 };
 
-// exports.nots_create = async (req, res) => {
-//   const form = req.body.form;
-//   try {
-//     await Nots.create({
-//       title: form.title,
-//       imgUrl: form.imgUrl,
-//       category: form.category,
-//       blogUrl:  form.blogUrl,
-//       children: form.children,
-
-//     });
-//     res.send(`${form} success`);
-
-//     slugField(form.header)
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-
+exports.nots_delete = async (req, res) => {
+  await deleteImageAndDestroyModel(Nots, req.params.id, res);
+};
 // Admin Quiz
 
 exports.quiz_list = async (req, res) => {
-  try {
-    const quiz = await Quiz.findAll();
-    res.json(quiz);
-  } catch (err) {
-    console.log(err);
-  }
+  await list(Quiz,res)
 };
 
 exports.create_quiz = async (req,res) => {
@@ -237,19 +199,7 @@ exports.create_quiz = async (req,res) => {
   }
 };
 exports.get_single_quiz = async  (req, res) => {
-  try {
-    const quiz = await Quiz.findOne({
-      where: {
-        paramsUrl: req.params.id,
-      },
-    });
-    console.log(quiz)
-    if (quiz) {
-      res.json(quiz);
-    }
-  } catch (err) {
-    console.log(err);
-  }
+  await singleItem(Quiz,req.params.id,res)
 };
 exports.edit_quiz = async  (req, res) => {
   try {
@@ -277,15 +227,39 @@ exports.edit_quiz = async  (req, res) => {
     console.log(err);
   }
 };
-exports.quiz_delete = async  (req, res) => { 
+
+exports.quiz_delete = async (req, res) => {
+  await deleteImageAndDestroyModel(Quiz, req.params.id, res);
+};
+// admin category 
+
+exports.category_list = async (req, res) => {
+  await list(Category,res)
+};
+
+exports.category_add = async (req, res) => {
   try {
-    const quiz = await Quiz.findOne({ where: { paramsUrl: req.params.id } });
-   
-    if (quiz) {
-      await fs.unlinkSync(quiz.image);
-      await quiz.destroy();
+    const category =  await Category.create({
+      image: req.file.path,
+      title: req.body.title,
+      paramsUrl: slugField(req.body.title),
+    });
+    console.log( "quizs" + createQuiz)
+    res.send(`${category} success`);
+  } catch (err) {
+    console.log(err);
+  }
+};
+exports.category_delete = async (req, res) => {
+  try {
+
+    const category = await Category.findOne({ where: { paramsUrl: req.params.id } });
+    if (category) {
+      await fs.unlinkSync(category.image);
+      await category.destroy();
     }
     res.send("delete success");
+
   } catch (err) {
     console.log(err);
   }

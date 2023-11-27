@@ -29,7 +29,7 @@ export default function BlogList() {
     if (confirms) {
       try {
         await axios.delete(`http://localhost:4000/admin/blogs/delete/${deleteblogUrl}`);
-        const filteredBlogs = blogs.filter((item) => item.blogUrl !== deleteblogUrl);
+        const filteredBlogs = blogs.filter((item) => item.paramsUrl !== deleteblogUrl);
         setBlogs(filteredBlogs);
         toast.success(`${deleteblogUrl} blog başarılı şekilde silindi `)
       } catch (error) {
@@ -68,7 +68,7 @@ export default function BlogList() {
           <div>{blog.header}</div>
           <div className="flex items-center justify-around gap-4 w-[200px]">
             <Link
-              to={`/admin/blogs/${blog.blogUrl}`}
+              to={`/admin/blogs/${blog.paramsUrl}`}
               className={classnames(
                 "px-6 py-2 transition-color  hover:rounded-xl",
                 {
@@ -83,7 +83,7 @@ export default function BlogList() {
             </Link>
             <button
               className="hover:bg-red-700 px-4 py-2 transition-color duration-300 hover:rounded-lg hover:text-white  "
-              onClick={() => handleDelete(blog.blogUrl)}
+              onClick={() => handleDelete(blog.paramsUrl)}
             >
               Delete
             </button>
