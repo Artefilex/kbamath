@@ -176,6 +176,7 @@ exports.edit_nots = async  (req, res) => {
 exports.nots_delete = async (req, res) => {
   await deleteImageAndDestroyModel(Nots, req.params.id, res);
 };
+
 // Admin Quiz
 
 exports.quiz_list = async (req, res) => {

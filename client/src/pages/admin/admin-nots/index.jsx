@@ -1,20 +1,15 @@
-
+import AddPaketButton from "../../../components/add-paket-button";
 import SectionMain from "../../../components/section-main";
-import AddNote from "./addnote";
-import DeleteNote from "./deletenote";
-import EditNote from "./editnote";
-import { useUser } from "../../../store/auth/hooks";
 
-export default function AdminNots (){
-    const {user} = useUser() 
-    if(!user){ 
-       return <div> giriş yetkiniz yok </div>
-    }
-    return  (
-        <SectionMain>
-           <AddNote/>
-           <DeleteNote/>
-           <EditNote/>
-        </SectionMain>
-    )
+import NoteList from "./note-list";
+
+export default function AdminNots() {
+  return (
+    <SectionMain>
+      <div className="w-[95%] flex flex-col gap-2">
+        <AddPaketButton url={"/admin/educations-add"} text="Not Ekle" />
+        <NoteList />
+      </div>
+    </SectionMain>
+  );
 }

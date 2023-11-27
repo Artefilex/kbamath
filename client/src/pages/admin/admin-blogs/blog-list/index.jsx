@@ -1,43 +1,28 @@
 import { useEffect, useState } from "react";
-// import { getBlogs } from "../../../../servises";
 import { Link } from "react-router-dom";
 import { useAppearance } from "../../../../store/appearance/hooks";
 import classnames from "classnames";
-import axios from "axios";
-import toast from "react-hot-toast"
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
+import { handleDelete ,getAllItems } from "../../../../servises/admin";
 export default function BlogList() {
   const [blogs, setBlogs] = useState([]);
   const { theme } = useAppearance();
   
   useEffect(() => {
     const fetchBlogs = async () => {
-      // const response = await getBlogs();
-      const {data}  = await axios.get("http://localhost:4000/admin/blogs");
-       
-      setBlogs(data);
-     
-     
+      const getBlog = await getAllItems("blogs");
+      setBlogs(getBlog);
     };
-    fetchBlogs();
+     fetchBlogs();
   }, []);
   
-
-  const handleDelete = async (deleteblogUrl) => {
-    const confirms = window.confirm("Silmek istediğine emin misin");
-  
-    if (confirms) {
-      try {
-        await axios.delete(`http://localhost:4000/admin/blogs/delete/${deleteblogUrl}`);
-        const filteredBlogs = blogs.filter((item) => item.paramsUrl !== deleteblogUrl);
-        setBlogs(filteredBlogs);
-        toast.success(`${deleteblogUrl} blog başarılı şekilde silindi `)
-      } catch (error) {
-        console.error("Error deleting blog:", error);
-      }
-    } else {
-      toast.error("Blog silme işlemi başarısız")
-    }
+  const blogDeleteHandler = async (deleteUrl) => {
+    const url = `blogs/delete/${deleteUrl}`;
+    const successMessage = `${deleteUrl} Blog başarılı bir şekilde silindi `;
+    const errorMessage = "Blog Silinemedi";
+    const filteredBlogs = blogs.filter((item) => item.paramsUrl !== deleteUrl);    
+    await handleDelete(url, successMessage, errorMessage);
+    setBlogs(filteredBlogs);
   };
   const [sortOrder, setSortOrder] = useState("inc");
   const sortedBlogs = sortOrder === "inc" ? blogs : [...blogs].reverse();
@@ -83,7 +68,7 @@ export default function BlogList() {
             </Link>
             <button
               className="hover:bg-red-700 px-4 py-2 transition-color duration-300 hover:rounded-lg hover:text-white  "
-              onClick={() => handleDelete(blog.paramsUrl)}
+              onClick={() => blogDeleteHandler(blog.paramsUrl)}
             >
               Delete
             </button>

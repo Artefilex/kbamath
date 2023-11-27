@@ -1,44 +1,26 @@
 import { useEffect, useState } from "react";
-// import { getEducations } from "../../../../servises";
 import { Link } from "react-router-dom";
 import { useAppearance } from "../../../../store/appearance/hooks";
 import classnames from "classnames";
-import axios from "axios";
-import toast from "react-hot-toast";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
-
+import { handleDelete ,getAllItems } from "../../../../servises/admin";
 function EducationList() {
   const [educations, setEducations] = useState([]);
   const { theme } = useAppearance();
   useEffect(() => {
     const fetchBlogs = async () => {
-      // const response = await getEducations();
-      const { data } = await axios.get("http://localhost:4000/admin/education");
-
-      setEducations(data);
+      const getEducations = await getAllItems("education");
+      setEducations(getEducations);
     };
     fetchBlogs();
   }, []);
-
-  const handleDelete = async (deleteUrl) => {
-    const confirms = window.confirm("Silmek istediğine emin misin");
-
-    if (confirms) {
-      try {
-        await axios.delete(
-          `http://localhost:4000/admin/education/${deleteUrl}`
-        );
-        const filteredEducations = educations.filter(
-          (item) => item.paramsUrl !== deleteUrl
-        );
-        setEducations(filteredEducations);
-        toast.success(`${deleteUrl} Özel Dersi başarılı bir şekilde silindi `);
-      } catch (error) {
-        console.error("Error deleting blog:", error);
-      }
-    } else {
-      toast.error("Özel Ders Silinemedi");
-    }
+  const educationDeleteHandler = async (deleteUrl) => {
+    const url = `education/${deleteUrl}`;
+    const successMessage = `${deleteUrl} Özel Dersi başarılı bir şekilde silindi `;
+    const errorMessage = "Özel Ders Silinemedi";
+    const filteredEducations= educations.filter((item) => item.paramsUrl !== deleteUrl);    
+    await handleDelete(url, successMessage, errorMessage);
+    setEducations(filteredEducations);
   };
 
   const [sortOrder, setSortOrder] = useState("inc");
@@ -59,7 +41,7 @@ function EducationList() {
         ) : (
           <div className="flex items-center justify-between font-semibold px-1">
             <div>Son Eklenene Göre Sırala </div>
-            <FaChevronUp />{" "}
+            <FaChevronUp />
           </div>
         )}
       </button>
@@ -86,7 +68,7 @@ function EducationList() {
             </Link>
             <button
               className="hover:bg-red-700 px-4 py-2 transition-color duration-300 hover:rounded-lg hover:text-white  "
-              onClick={() => handleDelete(education.paramsUrl)}
+              onClick={() => educationDeleteHandler(education.paramsUrl)}
             >
               Delete
             </button>
