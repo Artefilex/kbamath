@@ -18,9 +18,13 @@ function EducationList() {
     const url = `education/${deleteUrl}`;
     const successMessage = `${deleteUrl} Özel Dersi başarılı bir şekilde silindi `;
     const errorMessage = "Özel Ders Silinemedi";
-    const filteredEducations= educations.filter((item) => item.paramsUrl !== deleteUrl);    
-    await handleDelete(url, successMessage, errorMessage);
+   const response =  await handleDelete(url, successMessage, errorMessage);
+   
+   if(response){
+    const filteredEducations= educations.filter((item) => item.paramsUrl !== deleteUrl); 
     setEducations(filteredEducations);
+   }
+   
   };
 
   const [sortOrder, setSortOrder] = useState("inc");

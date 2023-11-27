@@ -1,6 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
-import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import {
   FormContent,
@@ -8,6 +6,7 @@ import {
   FormButton,
   QuillTextArea,
 } from "../../../../components/form";
+import { addItem } from "../../../../servises/admin";
 export default function AddEducation() {
   const navigate = useNavigate();
 
@@ -24,22 +23,10 @@ export default function AddEducation() {
     formData.append("content", content);
     formData.append("price", price);
     const addEducation = async () => {
-      const response = await axios.post(
-        "http://localhost:4000/admin/education",
-        formData
-      );
-      if (response.status === 200) {
-        toast.success("Özel Ders Eklendi");
-      } else {
-        toast.error("Özel Ders Eklenemedi");
-      }
+      await addItem("education", formData , "Özel Ders")
     };
     await addEducation();
     navigate("/admin/educations");
-    setImage("");
-    setTitle("");
-    setContent("");
-    setPrice("");
   };
   return (
     <div className="w-[100%] flex items-start flex-col gap-4">

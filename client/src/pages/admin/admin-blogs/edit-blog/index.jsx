@@ -1,5 +1,3 @@
-import axios from "axios";
-import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
@@ -8,23 +6,20 @@ import {
   FormButton,
   QuillTextArea,
 } from "../../../../components/form";
+import { getSingleItem,editItem } from "../../../../servises/admin";
 export default function EditBlog() {
   const { id } = useParams();
- const [oldImage, setOldImage] = useState("")
+  const [oldImage, setOldImage] = useState("")
   const [image,setImage] = useState("")
   const [header, setHeader] = useState("");
   const [subtitle, setSubtitle] = useState("");
   const [content, setContent] = useState("");
- 
   const navigate = useNavigate();
 
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get(
-        `http://localhost:4000/admin/blogs/${id}`
-      );
-      console.log(data)
+      const  data  = await getSingleItem(`blogs/${id}`) 
       setHeader(data.header);
       setSubtitle(data.subtitle);
       setContent(data.content);
@@ -41,20 +36,14 @@ export default function EditBlog() {
     formData.append("header", header);
     formData.append("content", content);
     formData.append("subtitle", subtitle);
-    const addEducation = async () => {
-      const response = await axios.put(
-        `http://localhost:4000/admin/blogs/${id}`,
-        formData
-      );
-      if (response.status === 200) {
-        toast.success(`${header} Bloğu güncellendi `);
-        console.log("helal amcaoglu");
-        navigate("/admin/blogs");
-      }
+    const editEducation = async () => {
+      const message = "Blog"
+      await editItem(`blogs/${id}` ,formData,  message , header)
+      navigate("/admin/blogs");    
     };
-    addEducation();
+    editEducation();
   };
-  console.log(content)
+
   return (
     <div className="w-[100%] flex items-start flex-col gap-4">
       <div className=" w-full">

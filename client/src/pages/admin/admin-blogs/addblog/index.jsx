@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +7,7 @@ import {
   FormButton,
   QuillTextArea,
 } from "../../../../components/form";
+import { addItem } from "../../../../servises/admin";
 export default function AddBlog() {
   const [image, setImage] = useState("");
   const [header, setHeader] = useState("");
@@ -18,7 +18,7 @@ export default function AddBlog() {
   const handleSubit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    if (header === "" || content === "" || subtitle === "") {
+    if (header === "" || content === "" || subtitle === "" || image ==="") {
       return toast.error(`başlık ,alt başlık ve  blog alanı boş bırakılamaz`);
     }
     formData.append("image", image);
@@ -26,22 +26,11 @@ export default function AddBlog() {
     formData.append("content", content);
     formData.append("subtitle", subtitle);
     const addBlog = async () => {
-      const response = await axios.post(
-        "http://localhost:4000/admin/blogs",
-        formData
-      );
-      if (response.status === 200) {
-        toast.success("Blog Eklendi");
-      } else {
-        toast.error("Blog Eklenemedi");
-      }
+      await addItem("blogs", formData,"Blog") 
     };
     await addBlog();
     navigate("/admin/blogs");
-    setImage("");
-    setHeader("");
-    setContent("");
-    setSubtitle("");
+   
   };
   return (
     <div className="w-full flex items-start flex-col gap-4">

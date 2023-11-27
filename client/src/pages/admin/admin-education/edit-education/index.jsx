@@ -1,5 +1,3 @@
-import axios from "axios";
-import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
@@ -8,6 +6,7 @@ import {
   FormButton,
   QuillTextArea,
 } from "../../../../components/form";
+import { getSingleItem,editItem } from "../../../../servises/admin";
 function EditEducation() {
   const { id } = useParams();
 
@@ -19,9 +18,7 @@ function EditEducation() {
   const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get(
-        `http://localhost:4000/admin/education/${id}`
-      );
+      const data = await getSingleItem(`education/${id}`) 
       setTitle(data.title);
       setPrice(data.price);
       setContent(data.content);
@@ -38,17 +35,13 @@ function EditEducation() {
     formData.append("title", title);
     formData.append("content", content);
     formData.append("price", price);
-    const addEducation = async () => {
-      const response = await axios.put(
-        `http://localhost:4000/admin/education/${id}`,
-        formData
-      );
-      if (response.status === 200) {
-        toast.success(`${title} özel dersi güncellendi `);
-        navigate("/admin/educations");
-      }
+
+    const editEducation = async () => {
+      const message = "Education"
+      await editItem(`education/${id}` ,formData, message , title)
+      navigate("/admin/educations");    
     };
-    addEducation();
+    editEducation();
   };
 
   return (

@@ -1,12 +1,11 @@
 import { useState } from "react";
-import axios from "axios";
-import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import {
   FormContent,
   FormInput,
   FormButton,
 } from "../../../../components/form";
+import { addItem } from "../../../../servises/admin";
 export default function AddQuizs() {
   const navigate = useNavigate();
 
@@ -23,15 +22,8 @@ export default function AddQuizs() {
     formData.append("iframeUrl", iframeUrl);
     formData.append("iframeHeight", iframeHeight);
     const addQuizs = async () => {
-      const response = await axios.post(
-        "http://localhost:4000/admin/quizs",
-        formData
-      );
-      if (response.status === 200) {
-        toast.success("Özel Ders Eklendi");
-      } else {
-        toast.error("Özel Ders Eklenemedi");
-      }
+      await addItem("quizs" ,formData , "Quizs")
+
     };
     await addQuizs();
     navigate("/admin/quizs");

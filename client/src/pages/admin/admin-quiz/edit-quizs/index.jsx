@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   FormContent,
   FormInput,
   FormButton,
 } from "../../../../components/form";
+import { getSingleItem, editItem } from "../../../../servises/admin";
 export default function EditQuizs() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -17,9 +16,7 @@ export default function EditQuizs() {
   const [oldImage, setOldImage] = useState("");
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get(
-        `http://localhost:4000/admin/quizs/${id}`
-      );
+      const data = await  getSingleItem(`quizs/${id}`)
       setTitle(data.title);
       setIframeUrl(data.iframeUrl);
       setIframeHeight(data.iframeHeight);
@@ -36,23 +33,13 @@ export default function EditQuizs() {
     formData.append("title", title);
     formData.append("iframeUrl", iframeUrl);
     formData.append("iframeHeight", iframeHeight);
-    const addQuizs = async () => {
-      const response = await axios.put(
-        `http://localhost:4000/admin/quizs/${id}`,
-        formData
-      );
-      if (response.status === 200) {
-        toast.success(`${title} quiz güncellendi `);
-      } else {
-        toast.error("Quiz güncellenemedi");
-      }
+    const editQuizs = async () => {
+       const message = "quizs"
+       await editItem(`quizs/${id}` ,formData , message , title) 
+       navigate("/admin/quizs");
     };
-    await addQuizs();
-    navigate("/admin/quizs");
-    setImage("");
-    setTitle("");
-    setIframeHeight("");
-    setIframeUrl("");
+     editQuizs();
+   
   };
   return (
     <div className="w-[100%] flex items-start flex-col gap-4">

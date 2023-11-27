@@ -20,9 +20,13 @@ export default function BlogList() {
     const url = `blogs/delete/${deleteUrl}`;
     const successMessage = `${deleteUrl} Blog başarılı bir şekilde silindi `;
     const errorMessage = "Blog Silinemedi";
-    const filteredBlogs = blogs.filter((item) => item.paramsUrl !== deleteUrl);    
-    await handleDelete(url, successMessage, errorMessage);
-    setBlogs(filteredBlogs);
+    
+    const response = await handleDelete(url, successMessage, errorMessage);
+    if(response){
+      const filteredBlogs = blogs.filter((item) => item.paramsUrl !== deleteUrl);  
+      setBlogs(filteredBlogs);  
+    }
+
   };
   const [sortOrder, setSortOrder] = useState("inc");
   const sortedBlogs = sortOrder === "inc" ? blogs : [...blogs].reverse();

@@ -21,9 +21,11 @@ function  QuizsList() {
   const url = `quizs/${deleteUrl}`;
   const successMessage = `${deleteUrl} Qiuz başarılı bir şekilde silindi `;
   const errorMessage = "Qiuz Silinemedi";
-  const filteredQuizs = quizs.filter((item) => item.paramsUrl !== deleteUrl);    
-  await handleDelete(url, successMessage, errorMessage);
-  setQuizs(filteredQuizs);
+  const response = await handleDelete(url, successMessage, errorMessage);
+  if(response){
+    const filteredQuizs = quizs.filter((item) => item.paramsUrl !== deleteUrl);   
+    setQuizs(filteredQuizs);  
+  }
 };
   const [sortOrder, setSortOrder] = useState("inc");
   const sortedQuizs =
