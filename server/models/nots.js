@@ -11,8 +11,12 @@ const Nots = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    children: {
+    description: {
       type: DataTypes.JSON,
+      allowNull: false,
+    },
+    paramsUrl: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
   },

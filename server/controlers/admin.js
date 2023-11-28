@@ -7,8 +7,21 @@ const fs = require("fs");
 const Category = require("../models/Category");
 const {deleteImageAndDestroyModel} = require("../middleware/delete/deletemodel")
 const {list} = require("../middleware/list")
-const {singleItem} = require("../middleware/single_item")
+const {singleItem} = require("../middleware/single_item");
+
 // Admin Blog
+const date = new Date()
+const options = { 
+  year: 'numeric', 
+  month: 'numeric', 
+  day: 'numeric', 
+  hour: 'numeric', 
+  minute: 'numeric', 
+  second: 'numeric', 
+  timeZone: 'UTC' 
+};
+
+const formattedDate = date.toLocaleString('en-US', options);
 exports.blog_list = async (req, res) => {
   await list(Blog,res)
  };
@@ -129,16 +142,13 @@ exports.nots_list = async (req, res) => {
 };
 exports.create_nots = async (req,res) => {
   try {
-   
-    const createQuiz = await Quiz.create({
+    const createNots = await Nots.create({
       image: req.file.path,
-      title: req.body.title,
-      iframeUrl: req.body.iframeUrl,
-      paramsUrl: slugField(req.body.title),
-      iframeHeight: req.body.iframeHeight,
+      category: req.body.category,
+      description: req.body.description,
+      paramsUrl: slugField(req.body.description + formattedDate),
     });
-    console.log( "quizs" + createQuiz)
-    res.send(`${createQuiz} success`);
+    res.send(`${createNots} success`);
   } catch (err) {
     console.log(err);
   }
@@ -148,26 +158,22 @@ exports.get_single_nots = async  (req, res) => {
 };
 exports.edit_nots = async  (req, res) => {
   try {
-    const quiz = await Quiz.findOne({ where: { paramsUrl: req.params.id } });
+    const nots = await Nots.findOne({ where: { paramsUrl: req.params.id } });
     const oldImageUrl = req.body.oldImage;
-    console.log(oldImageUrl)
-    console.log(quiz)
     if (req.file) {
-      quiz.image = req.file.path;
-      quiz.title = req.body.title;
-      quiz.iframeUrl = req.body.iframeUrl;
-      quiz.paramsUrl = slugField(req.body.title);
-      quiz.iframeHeight = req.body.iframeHeight;
+      nots.image= req.file.path
+      nots.category= req.body.category
+      nots.description= req.body.description
+      nots.paramsUrl= slugField(req.body.description  + formattedDate)
       await fs.unlinkSync(oldImageUrl);
     } else {
-      quiz.title = req.body.title;
-      quiz.iframeUrl = req.body.iframeUrl;
-      quiz.paramsUrl = slugField(req.body.title);
-      quiz.iframeHeight = req.body.iframeHeight;
-      quiz.image = req.body.oldImage;
+      nots.category= req.body.category
+      nots.description= req.body.description
+      nots.paramsUrl= slugField(req.body.description  + formattedDate)
+      nots.image = req.body.oldImage;
     }
-    await quiz.save();
-    res.send(`${quiz.paramsUrl} quiz edited`);
+    await nots.save();
+    res.send(`${nots.description} quiz edited`);
   } catch (err) {
     console.log(err);
   }

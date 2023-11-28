@@ -29,8 +29,6 @@ export default function AddEducation() {
     navigate("/admin/educations");
   };
   return (
-    <div className="w-[100%] flex items-start flex-col gap-4">
-      <div className=" w-full">
         <form
           encType="multipart/form-data"
           onSubmit={handleSubit}
@@ -73,7 +71,5 @@ export default function AddEducation() {
 
           <FormButton> Özel Ders Ekle</FormButton>
         </form>
-      </div>
-    </div>
   );
 }

@@ -19,6 +19,8 @@ import {
 } from "../pages/routes";
 import {
   AdminNots,
+  AddNote,
+  EditNote,
   AdminBlogs,
   EditBlog,
   AddBlog,
@@ -102,11 +104,19 @@ const routes = createBrowserRouter([
         element: <AdminNots />,
       },
       {
+        path: "/admin/add-note" ,
+        element: <AddNote/>
+      },
+      {
+        path: "/admin/nots/:id" ,
+        element: <EditNote/>
+      },
+      {
         path: "/admin/blogs",
         element: <AdminBlogs />,
       },
       {
-        path: "/admin/blogs-add-blog",
+        path: "/admin/add-blog",
         element: <AddBlog />,
       },
       {

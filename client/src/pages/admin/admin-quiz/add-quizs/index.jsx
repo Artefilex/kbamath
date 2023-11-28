@@ -33,8 +33,6 @@ export default function AddQuizs() {
     setIframeUrl("");
   };
   return (
-    <div className="w-[100%] flex items-start flex-col gap-4">
-      <div className=" w-full">
         <form
           encType="multipart/form-data"
           onSubmit={handleSubit}
@@ -75,10 +73,7 @@ export default function AddQuizs() {
               onChange={(e) => setImage(e.target.files[0])}
             />
           </FormContent>
-
           <FormButton> Sınav Ekle </FormButton>
         </form>
-      </div>
-    </div>
   );
 }

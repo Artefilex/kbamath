@@ -7,7 +7,7 @@ export default function AdminNots() {
   return (
     <SectionMain>
       <div className="w-[95%] flex flex-col gap-2">
-        <AddPaketButton url={"/admin/educations-add"} text="Not Ekle" />
+        <AddPaketButton url={"/admin/add-note"} text="Not Ekle" />
         <NoteList />
       </div>
     </SectionMain>

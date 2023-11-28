@@ -45,8 +45,6 @@ function EditEducation() {
   };
 
   return (
-    <div className="w-[100%] flex items-start flex-col gap-4">
-      <div className=" w-full">
         <form
           encType="multipart/form-data"
           onSubmit={handleSubit}
@@ -90,8 +88,7 @@ function EditEducation() {
 
           <FormButton> Güncelle</FormButton>
         </form>
-      </div>
-    </div>
+     
   );
 }
 

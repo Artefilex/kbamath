@@ -1,6 +1,7 @@
 import AdminNots from "./admin-nots";
 import AdminBlogs from "./admin-blogs";
-
+import EditNote from "./admin-nots/edit-note";
+import AddNote from "./admin-nots/add-note";
 import EditBlog from "./admin-blogs/edit-blog";
 import AddBlog from "./admin-blogs/addblog";
 import AdminEducation from "./admin-education";
@@ -12,6 +13,8 @@ import EditQuizs from "./admin-quiz/edit-quizs";
 
 export {
   AdminNots,
+  AddNote,
+  EditNote,
   AdminBlogs,
   EditBlog,
   AddBlog,

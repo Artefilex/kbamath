@@ -33,8 +33,6 @@ export default function AddBlog() {
    
   };
   return (
-    <div className="w-full flex items-start flex-col gap-4">
-      <div className=" w-full">
         <form
           encType="multipart/form-data"
           onSubmit={handleSubit}
@@ -80,7 +78,5 @@ export default function AddBlog() {
           <FormButton>Blog Ekle </FormButton>
           
         </form>
-      </div>
-    </div>
-  );
+  )
 }
