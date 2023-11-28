@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 import { handleDelete ,getAllItems } from "../../../../servises/admin";
-
+import { MdDeleteForever } from "react-icons/md";
+import { BsCheckLg } from "react-icons/bs";
 function CategoryList() {
   const [categorys, setCategorys] = useState([])
-
+ const  [nots , setNots] = useState([])
   useEffect(() => {
     const fetchCategorys = async () => {
-      const getBlog = await getAllItems("category");
-      setCategorys(getBlog);
+      const getNots = await getAllItems("nots");
+      const getCategory = await getAllItems("category");
+      setCategorys(getCategory);
+      setNots(getNots)
     };
     fetchCategorys();
   }, []);
@@ -51,12 +54,17 @@ function CategoryList() {
     >
       <div>{category.title}</div>
       <div className="flex items-center justify-around gap-4 w-[200px]">
-        <button
-          className="hover:bg-red-700 px-4 py-2 transition-color duration-300 hover:rounded-lg hover:text-white  "
-          onClick={() => categoryDeleteHandler(category.paramsUrl)}
-        >
-          Delete
-        </button>
+      {nots.some((not) => not.category === category.title) ? (
+              <div className=" px-4 py-2 " >< BsCheckLg className="w-full h-[30px] text-green-700" /></div>
+            ) : (
+              <button
+                className="px-4 py-2  hover:rounded-lg "
+                onClick={() => categoryDeleteHandler(category.paramsUrl)}
+              >
+                <MdDeleteForever  className="w-full h-[30px] hover:text-red-700 transition-color duration-300" />
+              
+              </button>
+            )}
       </div>
     </div>
   ))}

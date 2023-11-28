@@ -142,13 +142,18 @@ exports.nots_list = async (req, res) => {
 };
 exports.create_nots = async (req,res) => {
   try {
+   
+  
     const createNots = await Nots.create({
       image: req.file.path,
       category: req.body.category,
+      class: req.body.class,
       description: req.body.description,
       paramsUrl: slugField(req.body.description + formattedDate),
     });
     res.send(`${createNots} success`);
+   
+  
   } catch (err) {
     console.log(err);
   }
@@ -163,12 +168,14 @@ exports.edit_nots = async  (req, res) => {
     if (req.file) {
       nots.image= req.file.path
       nots.category= req.body.category
+      nots.class = req.body.class
       nots.description= req.body.description
       nots.paramsUrl= slugField(req.body.description  + formattedDate)
       await fs.unlinkSync(oldImageUrl);
     } else {
       nots.category= req.body.category
       nots.description= req.body.description
+      nots.class = req.body.class
       nots.paramsUrl= slugField(req.body.description  + formattedDate)
       nots.image = req.body.oldImage;
     }

@@ -5,7 +5,7 @@ import {
   FormInput,
   FormButton,
 } from "../../../../components/form";
-import { getSingleItem,editItem } from "../../../../servises/admin";
+import { getSingleItem,editItem, getAllItems } from "../../../../servises/admin";
 import toast from "react-hot-toast";
 
 
@@ -13,8 +13,10 @@ export default function EditNote (){
     const { id } = useParams();
     const [oldImage, setOldImage] = useState("");
     const [image, setImage] = useState("");
-    const [category, setCategory] = useState("");
+    const [classes, setClasses] = useState("");
     const [description, setDescription] = useState("");
+    const [categorys, setCategorys] = useState([]);
+    const [category, setCategory] = useState("");
     const navigate = useNavigate();
     useEffect(() => {
         const fetchData = async () => {
@@ -22,9 +24,17 @@ export default function EditNote (){
           setCategory(data.category);
           setDescription(data.description);
           setOldImage(data.image);
+          setClasses(data.class)
         };
         fetchData();
       }, [id]);
+      useEffect(()=>{
+        const fetchCategory = async () => {
+          const data = await getAllItems("category");
+          setCategorys(data);
+        };
+        fetchCategory();
+      },[])
       const handleSubit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
@@ -33,6 +43,7 @@ export default function EditNote (){
         }
         formData.append("image", image);
         formData.append("oldImage", oldImage);
+        formData.append("class", classes);
         formData.append("category", category);
         formData.append("description", description);
         const editEducation = async () => {
@@ -51,16 +62,29 @@ export default function EditNote (){
         className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
       >
         <input type="hidden" name="oldImage" value={oldImage} />
-        <FormContent header={"Kategori"}>
-      
-          <FormInput
-            type="text"
-            name="category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          />
-        </FormContent>
-
+        <FormContent header={"Category"}>
+       
+           <select
+        name="category"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      >
+        {categorys.map((item) => (
+          <option value={item.title} key={item.id}>
+            {item.title}
+          </option>
+        ))}
+      </select>
+      </FormContent>
+   
+      <FormContent header={"Sınıf"}>
+        <FormInput
+          type="text"
+          name="class"
+          value={classes}
+          onChange={(e) => setClasses(e.target.value)}
+        />
+      </FormContent>
         <FormContent header={"Açıklama"}>
           {" "}
           <FormInput
@@ -79,7 +103,7 @@ export default function EditNote (){
           />
         </FormContent>
 
-        <FormButton>Note Ekle </FormButton>
+        <FormButton>Notu Güncelle </FormButton>
         
       </form>
     )
