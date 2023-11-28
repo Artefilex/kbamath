@@ -30,6 +30,8 @@ import {
   AdminQuizs,
   AddQuizs,
   EditQuizs,
+  AdminCategory,
+  AddCategory
 } from "../pages/admin/routes";
 const routes = createBrowserRouter([
   {
@@ -148,6 +150,14 @@ const routes = createBrowserRouter([
         path: "/admin/quizs/:id",
         element: <EditQuizs />,
       },
+      {
+        path : "/admin/category",
+        element:<AdminCategory/>
+      },
+      {
+        path : "/admin/category-add",
+        element:<AddCategory/>
+      }
     ],
   },
 ]);

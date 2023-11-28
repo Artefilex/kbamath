@@ -251,7 +251,6 @@ exports.category_add = async (req, res) => {
       title: req.body.title,
       paramsUrl: slugField(req.body.title),
     });
-    console.log( "quizs" + createQuiz)
     res.send(`${category} success`);
   } catch (err) {
     console.log(err);
