@@ -4,6 +4,7 @@ import {
   FormContent,
   FormInput,
   FormButton,
+  FormSelect
 } from "../../../../components/form";
 import { getSingleItem,editItem, getAllItems } from "../../../../servises/admin";
 import toast from "react-hot-toast";
@@ -64,7 +65,7 @@ export default function EditNote (){
         <input type="hidden" name="oldImage" value={oldImage} />
         <FormContent header={"Category"}>
        
-           <select
+           <FormSelect
         name="category"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
@@ -74,7 +75,7 @@ export default function EditNote (){
             {item.title}
           </option>
         ))}
-      </select>
+      </FormSelect>
       </FormContent>
    
       <FormContent header={"Sınıf"}>

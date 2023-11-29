@@ -5,9 +5,9 @@ import {
   FormContent,
   FormInput,
   FormButton,
+  FormSelect
 } from "../../../../components/form";
 import { addItem, getAllItems } from "../../../../servises/admin";
-
 
 export default function AddNote() {
   const [image, setImage] = useState("");
@@ -23,7 +23,7 @@ export default function AddNote() {
     };
     fetchCategory();
   }, []);
-console.log(categorys)
+
   const handleSubit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -49,7 +49,7 @@ console.log(categorys)
     >
       <FormContent header={"Kategori"}>
        
-           <select
+           <FormSelect className={"bg-black"}
         name="category"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
@@ -59,7 +59,7 @@ console.log(categorys)
             {item.title}
           </option>
         ))}
-      </select>
+      </FormSelect>
       </FormContent>
    
       <FormContent header={"Sınıf"}>

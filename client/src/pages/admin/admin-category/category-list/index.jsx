@@ -64,7 +64,7 @@ function CategoryList() {
                 <MdDeleteForever  className="w-full h-[30px] hover:text-red-700 transition-color duration-300" />
               
               </button>
-            )}
+            )} 
       </div>
     </div>
   ))}
