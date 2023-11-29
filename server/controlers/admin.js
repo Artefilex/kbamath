@@ -8,6 +8,7 @@ const Category = require("../models/Category");
 const {deleteImageAndDestroyModel} = require("../middleware/delete/deletemodel")
 const {list} = require("../middleware/list")
 const {singleItem} = require("../middleware/single_item");
+const Users = require("../models/users");
 
 // Admin Blog
 const date = new Date()
@@ -142,8 +143,7 @@ exports.nots_list = async (req, res) => {
 };
 exports.create_nots = async (req,res) => {
   try {
-   
-  
+
     const createNots = await Nots.create({
       image: req.file.path,
       category: req.body.category,
@@ -219,8 +219,6 @@ exports.edit_quiz = async  (req, res) => {
   try {
     const quiz = await Quiz.findOne({ where: { paramsUrl: req.params.id } });
     const oldImageUrl = req.body.oldImage;
-    console.log(oldImageUrl)
-    console.log(quiz)
     if (req.file) {
       quiz.image = req.file.path;
       quiz.title = req.body.title;
@@ -264,53 +262,69 @@ exports.category_add = async (req, res) => {
   }
 };
 exports.category_delete = async (req, res) => {
-  try {
-
-    const category = await Category.findOne({ where: { paramsUrl: req.params.id } });
-    if (category) {
-      await fs.unlinkSync(category.image);
-      await category.destroy();
-    }
-    res.send("delete success");
-
-  } catch (err) {
-    console.log(err);
-  }
+  await deleteImageAndDestroyModel(Category, req.params.id, res);
 };
 
-//  login logout
+//  Users  Login , Register
 exports.post_login = async (req, res) => {
-  const admin = req.body.form;
-  console.log(admin, res.length);
+ 
   try {
-    if (
-      admin.name == process.env.ADMIN_NAME &&
-      admin.password == process.env.ADMIN_PASSWORD
-    ) {
+     const user = Users.findOne({where:{
+      password: req.body.password,
+      email:req.body.email,
+     }}) 
+     if(user){
       req.session.isAdmin = true;
-      console.log("welcome boss");
       res.redirect("/");
-    } else {
-      console.log(err);
-      res.status(500).send("Internal Server Error");
-    }
+     }
+    
   } catch (err) {
     console.log(err);
   }
 };
-exports.get_login = async (req, res) => {
-  const admin = req.body.form;
+exports.register = async (req, res) => {
+ try{
+  const user =  await Users.create({
+    avatar: req.file.path,
+    username: req.body.username,
+    paramsUrl: slugField(req.body.username),
+    isAdmin: req.body.isAdmin,
+    password:req.body.password
+  });
+  res.send(`${user} success`);
+ }
+ catch(err){
+  console.log(err);
+ }
+};
+exports.users_list = async (req, res) => {
+  await list(Users,res)
+};
+exports.user_delete = async (req, res) => {
+  await deleteImageAndDestroyModel(Users, req.params.id, res);
+};
+exports.edit_users = async (req, res) => {
   try {
-    if (
-      admin.name == process.env.ADMIN_NAME &&
-      admin.password == process.env.ADMIN_PASSWORD
-    ) {
-      req.session.isAdmin = true;
-      res.redirect("/");
+    const user = await Users.findOne({ where: { paramsUrl: req.params.id } });
+    const oldImageUrl = req.body.oldImage;
+    if (req.file) {
+      user.avatar =  req.file.path,
+      user.username =  req.body.username,
+      user.paramsUrl =  slugField(req.body.username),
+      user.isAdmin =  req.body.isAdmin,
+      user.password = req.body.password
+      await fs.unlinkSync(oldImageUrl);
     } else {
-      console.log(err);
-      res.status(500).send("Internal Server Error");
+      user.avatar =   req.body.oldImage;
+      user.username =  req.body.username,
+      user.paramsUrl =  slugField(req.body.username),
+      user.isAdmin =  req.body.isAdmin,
+      user.password = req.body.password
     }
+    await user.save();
+    res.send(`${user.paramsUrl} quiz edited`);
+   
+
   } catch (err) {
     console.log(err);
   }

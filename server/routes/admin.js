@@ -14,8 +14,7 @@ router.get("/blogs/:blogid", adminController.single_blog);
 router.post("/blogs", upload, adminController.blog_create);
 router.get("/blogs", adminController.blog_list);
 
-router.post("/login", adminController.post_login);
-router.get("/login", adminController.get_login);
+
 
 //  Education
 router.delete("/education/:id", adminController.education_delete);
@@ -45,5 +44,11 @@ router.delete("/category/:id", adminController.category_delete);
 router.post("/category", upload, adminController.category_add);
 router.get("/category", adminController.category_list);
 
+router.delete("/users/:id", adminController.user_delete);
+router.put("/users/:id", upload, adminController.edit_users);
+router.post("/users", upload, adminController.register);
+router.get("/users", adminController.users_list);
+
+router.post("/login", adminController.post_login);
 
 module.exports = router;
