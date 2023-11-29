@@ -31,7 +31,11 @@ import {
   AddQuizs,
   EditQuizs,
   AdminCategory,
-  AddCategory
+  AddCategory,
+  UsersEdit,
+  AdminUsers,
+  Register,
+  Login
 } from "../pages/admin/routes";
 const routes = createBrowserRouter([
   {
@@ -100,7 +104,15 @@ const routes = createBrowserRouter([
         index: true,
         element: <AdminMain />,
       },
-
+   
+      {
+        path: "/admin/users",
+        element: <AdminUsers/>,
+      },
+      {
+        path: "/admin/users/:id",
+        element: <UsersEdit/>,
+      },
       {
         path: "/admin/nots",
         element: <AdminNots />,
@@ -159,6 +171,14 @@ const routes = createBrowserRouter([
         element:<AddCategory/>
       }
     ],
+  },
+  {
+    path: "/register",
+    element: <Register/>,
+  },
+  {
+    path: "/login",
+    element: <Login/>,
   },
 ]);
 

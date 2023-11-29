@@ -12,9 +12,12 @@ import AdminQuizs from "./admin-quiz";
 import AddQuizs from "./admin-quiz/add-quizs";
 import EditQuizs from "./admin-quiz/edit-quizs";
 import AddCategory from "./admin-category/add-category";
+import UsersEdit from "./admin-users/users-edit";
+import AdminUsers from "./admin-users";
+import Register from "./admin-users/register";
+import Login from "./admin-users/login";
 export {
   AdminNots,
- 
   AddNote,
   EditNote,
   AdminBlogs,
@@ -27,5 +30,9 @@ export {
   AddQuizs,
   EditQuizs,
   AdminCategory,
-  AddCategory
+  AddCategory,
+  UsersEdit,
+  AdminUsers,
+  Register,
+  Login
 };
