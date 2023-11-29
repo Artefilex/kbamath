@@ -1,7 +1,6 @@
 const app = require("express");
 const router = app.Router();
 
-const config = require("../config");
 const { Op } = require("sequelize");
 const _ = require("lodash");
 
@@ -100,9 +99,5 @@ router.get("/education", async(req , res) =>{
   res.json(education)
 })
 
-// router.get("/", async (req, res) => {
-//   res.send(req.session.isAdmin);
-// });
 
-// eslint-disable-next-line no-undef
 module.exports = router;

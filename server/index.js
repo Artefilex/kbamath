@@ -2,7 +2,6 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const multer = require("multer")
 // const session = require("express-session");
 // const cookieParser = require("cookie-parser");
 
@@ -20,7 +19,6 @@ const bodyParser = require("body-parser");
 // routes
 const main = require("./routes/main");
 const admin = require("./routes/admin");
-// Add CORS middleware to the Express application with specific options.
 const cors = require("cors");
 app.use(
   cors({

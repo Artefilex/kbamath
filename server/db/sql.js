@@ -2,7 +2,7 @@ const dotenv = require("dotenv")
 
 dotenv.config({ path: "./config.env" });
 const Sequelize = require("sequelize");
-// const config = require("config")
+
 const sequelize = new Sequelize(
   process.env.DB_DATABASE,
   process.env.DB_USER,
