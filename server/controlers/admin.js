@@ -3,32 +3,48 @@ const fs = require("fs");
 const {deleteImageAndDestroyModel} = require("../middleware/delete/deletemodel")
 const {list} = require("../middleware/list")
 const Users = require("../models/users");
-
+const bcrypt = require("bcrypt")
+const sessions = require('express-session');
+const saltRounds = 10;
 
 exports.post_login = async (req, res) => {
- 
   try {
-     const user = Users.findOne({where:{
-      password: req.body.password,
-      email:req.body.email,
-     }}) 
-     if(user){
-      req.session.isAdmin = true;
-      res.redirect("/");
-     }
-    
+    const user = await Users.findOne({
+      where: {
+        email: req.body.email,
+      },
+    });
+
+    if (user) {
+      const match = await bcrypt.compare(req.body.password, user.password);
+      if (match) {
+        // Oturumu başlat
+        req.session.userid = user.id;
+        return res.json({ success: true , isAdmin : user.isAdmin}); // Return a JSON response
+      } else {
+        // Hatalı şifre durumu
+        return res.status(401).json({ success: false, message: "Invalid password" });
+      }
+    } else {
+      // Kullanıcı bulunamadı durumu
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
   } catch (err) {
-    console.log(err);
+    // İç server hatası durumu
+    console.error(err);
+    return res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 };
 exports.register = async (req, res) => {
  try{
+  const salt = await bcrypt.genSalt(saltRounds);
+  const hashedPassword = await bcrypt.hash(req.body.password, salt);
   const user =  await Users.create({
-    avatar: req.file.path,
+    email : req.body.email,
     username: req.body.username,
     paramsUrl: slugField(req.body.username),
-    isAdmin: req.body.isAdmin,
-    password:req.body.password
+    password:hashedPassword,
+    isAdmin: req.body.isAdmin
   });
   res.send(`${user} success`);
  }
