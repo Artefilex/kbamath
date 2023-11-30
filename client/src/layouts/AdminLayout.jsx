@@ -1,9 +1,10 @@
-import { Outlet, useLocation } from "react-router-dom";
+import {  useLocation } from "react-router-dom";
 import { useAppearance } from "../store/appearance/hooks";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import AdminSidebar from "./admin-sidebar";
-import IsAdminAuth from "../helpers/isAdminAuth";
+import AdminLocation from "../routes/admin";
+
 
 export default function AdminLayout() {
   const appearance = useAppearance();
@@ -47,9 +48,9 @@ const location = useLocation();
       <AdminSidebar/>
       <div className=" flex items-start  w-full laptop:max-w-[80%]  gap-2  ">
         <Toaster position="top-right" />
-        <Outlet/>
+       <AdminLocation/>
       </div>
-      <IsAdminAuth/>
+  
     </div>
   );
 }

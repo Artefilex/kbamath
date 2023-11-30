@@ -1,14 +1,9 @@
-
 import ReactDOM from 'react-dom/client'
-// import routes from "./routes"
-// import "./assests/css/tailwind.css"
-// import { RouterProvider } from 'react-router-dom'
 import store from './store'
-// import admin from './routes/admin'
 import { Provider } from 'react-redux'
 import React from 'react'
-// import  useIsAdminAuth   from './helpers/isAdminAuth'
 import App from './App'
+import "./assests/css/tailwind.css"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
    <React.StrictMode>
@@ -16,4 +11,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <App />
    </Provider>
    </React.StrictMode>
-);
+)

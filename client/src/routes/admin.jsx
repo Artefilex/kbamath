@@ -1,4 +1,6 @@
-import { createBrowserRouter } from "react-router-dom";
+import {  Route, Routes } from "react-router-dom";
+import AdminMain from "../pages/admin";
+
 import {
     AdminNots,
     AddNote,
@@ -18,88 +20,31 @@ import {
     AdminUsers,
   
   } from "../pages/admin/routes";
-  import AdminLayout from "../layouts/AdminLayout";
-import AdminMain from "../pages/admin";
 
-  const admin = createBrowserRouter([
+export default function AdminLocation () {
+    return (
+        <Routes>
+      
+          <Route path="/admin" element={<AdminMain />} />
+          <Route path="/admin/users" element={<AdminUsers />} />
+          <Route path="/admin/users/:id" element={<UsersEdit />} />
+          <Route path="/admin/nots" element={<AdminNots />} />
+          <Route path="/admin/add-note" element={<AddNote />} />
+          <Route path="/admin/nots/:id" element={<EditNote />} />
+          <Route path="/admin/blogs" element={<AdminBlogs />} />
+          <Route path="/admin/add-blog" element={<AddBlog />} />
+          <Route path="/admin/blogs/:id" element={<EditBlog />} />
+          <Route path="/admin/educations" element={<AdminEducation />} />
+          <Route path="/admin/educations-add" element={<AddEducation />} />
+          <Route path="/admin/education/:id" element={<EditEducation />} />
+          <Route path="/admin/quizs" element={<AdminQuizs />} />
+          <Route path="/admin/quizs-add" element={<AddQuizs />} />
+          <Route path="/admin/quizs/:id" element={<EditQuizs />} />
+          <Route path="/admin/category" element={<AdminCategory />} />
+          <Route path="/admin/category-add" element={<AddCategory />} />
+        
+      </Routes>
+    )
 
-   {
-      path:  "/admin"  ,
-      element:  <AdminLayout/> ,
-      children: [
-        {
-          index: true,
-          element: <AdminMain />,
-        },
-     
-        {
-          path: "/admin/users",
-          element: <AdminUsers/>,
-        },
-        {
-          path: "/admin/users/:id",
-          element: <UsersEdit/>,
-        },
-        {
-          path: "/admin/nots",
-          element: <AdminNots />,
-        },
-        {
-          path: "/admin/add-note" ,
-          element: <AddNote/>
-        },
-        {
-          path: "/admin/nots/:id" ,
-          element: <EditNote/>
-        },
-        {
-          path: "/admin/blogs",
-          element: <AdminBlogs />,
-        },
-        {
-          path: "/admin/add-blog",
-          element: <AddBlog />,
-        },
-        {
-          path: "/admin/blogs/:id",
-          element: <EditBlog />,
-        },
-        {
-          path: "/admin/educations",
-          element: <AdminEducation />,
-        },
-        {
-          path: "/admin/educations-add",
-          element: <AddEducation />,
-        },
-        {
-          path: "/admin/education/:id",
-          element: <EditEducation />,
-        },
-  
-        {
-          path: "/admin/quizs",
-          element: <AdminQuizs />,
-        },
-        {
-          path: "/admin/quizs-add",
-          element: <AddQuizs />,
-        },
-        {
-          path: "/admin/quizs/:id",
-          element: <EditQuizs />,
-        },
-        {
-          path : "/admin/category",
-          element:<AdminCategory/>
-        },
-        {
-          path : "/admin/category-add",
-          element:<AddCategory/>
-        }
-      ],
-    } 
-   
-  ]);
-  
-  export default admin;
+}
+

@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom";
+import {  useLocation } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import { useAppearance } from "../store/appearance/hooks";
@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import AOS from "aos"
 import "aos/dist/aos.css";
 import { Toaster } from "react-hot-toast";
+import MainLocation from "../routes/main";
 
 export default function MainLayout() {
   const appearance = useAppearance();
@@ -51,7 +52,7 @@ const location = useLocation();
       <Navbar />
       <div className=" flex items-start  w-full laptop:max-w-[80%]  gap-2  ">
         <Toaster position="top-right" />
-        <Outlet/>
+        <MainLocation/>
       </div>
       <Footer />
     </div>

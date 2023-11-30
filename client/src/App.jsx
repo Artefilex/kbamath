@@ -1,15 +1,21 @@
-import routes from "./routes"
-import "./assests/css/tailwind.css"
-import { RouterProvider } from 'react-router-dom'
-import admin from './routes/admin'
+import { useState, useEffect } from "react";
 import { useUser } from "./store/auth/hooks";
-
-
+import { BrowserRouter as Router} from "react-router-dom";
+import AdminLayout from "./layouts/AdminLayout";
+import MainLayout from "./layouts";
 export default function App() {
-    const { user } = useUser();
-    return (
-        <> 
-         {user?.isAdmin ? <RouterProvider router={admin}/> : <RouterProvider router={routes}/>}
-        </>
-    );
-  }
+  const [logUser, setLogUser] = useState(null);
+  const { user } = useUser();
+
+  useEffect(() => {
+    if (user) {
+      setLogUser(user);
+    }
+  }, [user]);
+  console.log(logUser)
+  return (
+
+     <Router> {logUser?.isAdmin ?  <AdminLayout/>:   <MainLayout />}</Router> 
+  );
+}
+

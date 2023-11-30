@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {  useEffect, useState } from "react";
 import {
   FormContent,
   FormInput,
@@ -7,36 +7,48 @@ import {
 import { userLogin } from "../../../../servises/admin";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { setLogin } from "../../../../store/auth/action";
+import { useDispatch } from "react-redux";
+import { useUser } from "../../../../store/auth/hooks";
 
 export default function Login() {
   const navigate = useNavigate()
  const [password , setPassword] = useState("");
  const [email , setEmail] = useState("")
+  const dispatch = useDispatch()
+  const {user} = useUser()
  
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("password", password)
     formData.append("email", email)
   
-    const postRegister = async () => {
-    const response = await userLogin(formData)
-    if(response.isAdmin){
-       await localStorage.setItem("userLogin", JSON.stringify(response))    
+    try {
+      const response = await userLogin(formData);
 
-        navigate("/admin");   
-    }else{
-      toast.error("kullanıcı izniz yoktur lütfen defolun burdan")
+      if (response?.isAdmin) {
+        dispatch(setLogin());
+        navigate("/admin"); // Eğer admin ise, burada yönlendirme yap
+      } else {
+        toast.error("Kullanıcı izniniz yoktur. Lütfen defolun buradan.");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      toast.error("Bir hata oluştu. Lütfen tekrar deneyin.");
     }
-
-      
-  
-    }
-    await  postRegister()
-    
   };
 
-
+  // useEffect(()=>{
+  //   if(user?.isAdmin){
+  //     navigate("/admin");   
+  //   }else{
+  //     navigate("/"); 
+  //   }
+  // },[user])
 
   return (
     <div className="w-[95%] max-w-[600px] flex flex-col gap-2">
