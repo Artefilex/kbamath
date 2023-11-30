@@ -6,13 +6,12 @@ import { useEffect } from "react";
 import AOS from "aos"
 import "aos/dist/aos.css";
 import { Toaster } from "react-hot-toast";
-// bootom up yaklasım
-// doamin drivin design
-// https://www.youtube.com/@JockoPodcastOfficial
+
 export default function MainLayout() {
   const appearance = useAppearance();
 useEffect(()=>{
-AOS.init({ duration: 1000 })
+AOS.init({ duration: 1000 });
+
 },[])
 const location = useLocation();
   useEffect(() => {

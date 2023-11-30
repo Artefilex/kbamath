@@ -1,6 +1,6 @@
 export const RandomDataProvider =  (arr , count) => {
 
- console.log(arr ,count)
+ 
 
     const shuffled = arr.slice()
     let i = arr.length;

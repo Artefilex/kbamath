@@ -1,19 +1,25 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { logout } from "../../../firebase";
+
 import { useAppearance } from "../../store/appearance/hooks";
 import ThemeButton from "../navbar/theme-button";
 import className from "classnames"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { adminLinks } from "../../routes/links";
+import { useUser } from "../../store/auth/hooks";
 
 export default function AdminSidebar () {
     const navigate = useNavigate();
-   const [isAdmin, setIsAdmin] = useState(true)
-    console.log(isAdmin)
+   const [isAdmin, setIsAdmin] = useState(false)
+   const {user} = useUser()
+  
     const {theme} = useAppearance()
+    useEffect(()=>{
+     if(user?.isAdmin){
+      setIsAdmin(true)
+     }
+    },[user?.isAdmin])
     const removeAdmin = async () => {
-        await logout();
-    
+       
         setIsAdmin(false);
         navigate("/", {
           replace: true,

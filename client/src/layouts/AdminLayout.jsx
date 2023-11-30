@@ -3,9 +3,8 @@ import { useAppearance } from "../store/appearance/hooks";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import AdminSidebar from "./admin-sidebar";
-// bootom up yaklasım
-// doamin drivin design
-// https://www.youtube.com/@JockoPodcastOfficial
+import IsAdminAuth from "../helpers/isAdminAuth";
+
 export default function AdminLayout() {
   const appearance = useAppearance();
 
@@ -50,7 +49,7 @@ const location = useLocation();
         <Toaster position="top-right" />
         <Outlet/>
       </div>
-  
+      <IsAdminAuth/>
     </div>
   );
 }
