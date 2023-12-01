@@ -5,16 +5,21 @@ import ThemeButton from "../navbar/theme-button";
 import className from "classnames"
 import { adminLinks } from "../../routes/links";
 import { setLogout } from "../../store/auth/action";
+import toast from "react-hot-toast";
 
 export default function AdminSidebar () {
     const navigate = useNavigate();
     const {theme} = useAppearance()
   
     const removeAdmin = async () => {
+     try{
       await  setLogout()
-      navigate("/", {
-          replace: true,
-        });
+      navigate("/");
+      toast.success("Görüşmek üzere ")
+     }
+     catch(err){
+   toast.error("Çıkış Başarısız")
+     }
       };
     return(
         <nav className={className("w-[250px]  backdrop-blur-md  min-h-screen sticky z-[30] px-4  top-0 ",{
