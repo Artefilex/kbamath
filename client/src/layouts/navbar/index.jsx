@@ -2,7 +2,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ThemeButton from "./theme-button";
 import { useUser } from "../../store/auth/hooks";
-import { logout } from "../../../firebase";
+
 import { mainLinks, adminLinks } from "../../routes/links";
 import IsMobile from "../../helpers/is-mobile";
 
@@ -12,27 +12,25 @@ export default function Navbar() {
   const [active, setActive] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
-
   useEffect(() => {
-    if (user) {
+    if (user?.isAdmin) {
       setIsAdmin(true);
     }
-  }, [user]);
+  }, [user?.isAdmin]);
 
   const location = useLocation();
-
+ 
   useEffect(() => {
    setActive(false)
   }, [location]);
 
   const removeAdmin = async () => {
-    await logout();
     setIsAdmin(false);
     navigate("/", {
       replace: true,
     });
   };
-  // bg-[color:var(--bg-secondary)]
+
   return (
     <nav className=" w-full  backdrop-blur-md text-white bg-black/50 flex items-center justify-center custom-box-shadow sticky top-0 left-0 right-0  transition-all duration-200 z-[30] px-4">
       <nav className="flex item-center  w-full justify-center flex-col  font-bold py-3 mobile:flex-row mobile:justify-around laptop:max-w-[80%] ">

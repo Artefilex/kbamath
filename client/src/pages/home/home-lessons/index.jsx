@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
  import { RandomDataProvider } from "../../../helpers/random-data";
 import imga from "../../../assests/image/homeheaderstudent.jpg";
-import Slider from "../../../helpers/slider";
+
 import axios from "axios";
 
  function HomeLessons() {
@@ -30,7 +30,7 @@ import axios from "axios";
   return (
     <div className="w-full mt-6 flex items-center flex-col px-2">
         <div className="w-full mt-[4rem]">
-          <Slider setInt={4000}>
+        
           {lessons &&
               lessons.map((lesson, i) => (
                 <div key={i}>
@@ -42,7 +42,7 @@ import axios from "axios";
                   </Link>
                 </div>
               ))}
-          </Slider>
+        
         </div>
      
     </div>

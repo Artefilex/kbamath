@@ -1,33 +1,33 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { logout } from "../../../firebase";
+
 import { useAppearance } from "../../store/appearance/hooks";
 import ThemeButton from "../navbar/theme-button";
 import className from "classnames"
-import { useState } from "react";
 import { adminLinks } from "../../routes/links";
+import { setLogout } from "../../store/auth/action";
+import toast from "react-hot-toast";
 
 export default function AdminSidebar () {
     const navigate = useNavigate();
-   const [isAdmin, setIsAdmin] = useState(true)
-    console.log(isAdmin)
     const {theme} = useAppearance()
+  
     const removeAdmin = async () => {
-        await logout();
-    
-        setIsAdmin(false);
-        navigate("/", {
-          replace: true,
-        });
+     try{
+      await  setLogout()
+      navigate("/");
+      toast.success("Görüşmek üzere ")
+     }
+     catch(err){
+   toast.error("Çıkış Başarısız")
+     }
       };
-
-console.log(theme.name)    
     return(
         <nav className={className("w-[250px]  backdrop-blur-md  min-h-screen sticky z-[30] px-4  top-0 ",{
         "bg-black/50 text-white" : theme.name === "dark",
         "bg-[color:var(--c-subbase)] text-black" : theme.name === "light",
         })}>
             <div className="flex-1  flex  flex-col items-start justify-end   gap-6  w-full  whitespace-nowrap mt-4">
-              {isAdmin &&
+              {
                 adminLinks.map((link, i) => (
                   <NavLink
                     className="w-full  transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex font-bold"
@@ -42,7 +42,7 @@ console.log(theme.name)
       
       <div className="absolute bottom-0 flex items-center justify-around w-full ">
         <ThemeButton/>
-        <button className="w-full" onClick={removeAdmin}>Log Out</button>
+        <button className="w-full font-bold" onClick={removeAdmin}>Log Out</button>
         </div>
         </nav>
     )

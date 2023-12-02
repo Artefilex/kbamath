@@ -51,3 +51,19 @@ export const addItem = async( url, formData,title ) =>{
         toast.error( `${title}  Eklenemedi`);
       }
     };
+    export const userLogin = async (formData) => {
+      try {
+        const response = await axios.post(`${baseUrl}/login`, formData, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        await  localStorage.setItem("userLogin", JSON.stringify(response.data)) 
+        return response.data
+      } catch (error) {
+        console.error('Error during login:', error);
+        toast.error('An error occurred during login');
+      
+      }
+        
+    };

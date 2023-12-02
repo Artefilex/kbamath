@@ -22,7 +22,7 @@ function QuillTextArea({onChange,value}) {
     modules={modules}
     value={value}
     className={
-      "w-[98%] bg-transparent rounded-sm px-4 h-[20rem] mb-10"
+      "w-[95%] bg-transparent rounded-sm h-[20rem] mb-10"
     }
   />)
 

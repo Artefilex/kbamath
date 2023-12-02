@@ -25,7 +25,10 @@ export const getNotsClass = async (classid)=>{
     const response = await axios.get(`${baseUrl}/nots/${classid}`);
     return response.data
 }
-
+export const getClass =async ()=>{
+    const response = await axios.get(`${baseUrl}/class`);
+    return response.data
+}
 export const getNotsTopic = async (classid,topicid )=>{
     const response = await axios.get(`${baseUrl}/nots/${classid}/${topicid}`);
     return response.data

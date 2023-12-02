@@ -2,8 +2,8 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-// const session = require("express-session");
-// const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
 
 
 
@@ -30,18 +30,15 @@ app.use(
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use(cookieParser());
-// app.use(
-//   session({
-//     key:  "adminİsLogin"  ,
-//     secret: process.env.SECRETKEY,
-//     saveUninitialized: false,
-//     // saveUninitialized: true,
-//     cookie: { maxAge: 1000 * 60 * 60 * 24 },
-//     // cookie: { maxAge: 1000 * 60 * 60 * 24, httpOnly: true },
-//     resave: false,
-//   })
-// );
+app.use(cookieParser());
+app.use(
+  session({
+    secret: process.env.SECRETKEY,
+    saveUninitialized:true,
+    cookie: { maxAge: 1000 * 60 * 60  }, 
+    resave: false,
+  })
+);
 
 app.use("/", main);
 app.use("/admin", admin);

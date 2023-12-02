@@ -45,7 +45,7 @@ function  QuizsList() {
         ) : (
           <div className="flex items-center justify-between font-semibold px-1">
             <div>Son Eklenene Göre Sırala </div>
-            <FaChevronUp />{" "}
+            <FaChevronUp />
           </div>
         )}
       </button>

@@ -1,12 +1,14 @@
-
 import ReactDOM from 'react-dom/client'
-import routes from "./routes"
-import "./assests/css/tailwind.css"
-import { RouterProvider } from 'react-router-dom'
 import store from './store'
 import { Provider } from 'react-redux'
+import React from 'react'
+import App from './App'
+import "./assests/css/tailwind.css"
+
 ReactDOM.createRoot(document.getElementById('root')).render(
- <Provider store={store}>
-    <RouterProvider router={routes}/>
- </Provider>
+   <React.StrictMode>
+       <Provider store={store}>
+          <App />
+   </Provider>
+   </React.StrictMode>
 )
