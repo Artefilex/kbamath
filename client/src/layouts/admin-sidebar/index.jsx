@@ -42,7 +42,7 @@ export default function AdminSidebar () {
       
       <div className="absolute bottom-0 flex items-center justify-around w-full ">
         <ThemeButton/>
-        <button className="w-full" onClick={removeAdmin}>Log Out</button>
+        <button className="w-full font-bold" onClick={removeAdmin}>Log Out</button>
         </div>
         </nav>
     )

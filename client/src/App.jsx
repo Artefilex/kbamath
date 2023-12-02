@@ -10,9 +10,11 @@ export default function App() {
   useEffect(() => {
     if (user) {
       setLogUser(user);
+    }else{
+      setLogUser(null)
     }
   }, [user]);
-  
+ 
   return (
 
     <Router> {logUser?.isAdmin ?  <AdminLayout/>: <MainLayout />}</Router> 

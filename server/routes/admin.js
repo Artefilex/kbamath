@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+const classController = require("../controlers/class")
 const quizController = require("../controlers/quiz")
 const educationController = require("../controlers/education")
 const notController = require("../controlers/nots")
@@ -49,10 +49,15 @@ router.delete("/category/:id", categoryController.category_delete);
 router.post("/category", upload, categoryController.category_add);
 router.get("/category", categoryController.category_list);
 
+router.delete("/class/:id", classController.class_delete);
+router.post("/class", upload, classController.class_create);
+router.get("/class", classController.class_list);
+
 router.delete("/users/:id", adminController.user_delete);
 router.put("/users/:id", upload, adminController.edit_users);
 router.post("/users", upload, adminController.register);
 router.get("/users", adminController.users_list);
+
 
 router.post("/login", adminController.post_login);
 
