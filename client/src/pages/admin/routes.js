@@ -16,7 +16,12 @@ import UsersEdit from "./admin-users/users-edit";
 import AdminUsers from "./admin-users";
 import Register from "./admin-users/register";
 import Login from "./admin-users/login";
+import AdminClass from "./admin-class";
+import ClassAdd from "./admin-class/add-class";
 export {
+  AdminClass,
+
+  ClassAdd,
   AdminNots,
   AddNote,
   EditNote,

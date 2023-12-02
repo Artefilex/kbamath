@@ -2,7 +2,6 @@ const Class = require("../models/class")
 const slugField = require("../middleware/slugify");
 const {deleteImageAndDestroyModel} = require("../middleware/delete/deletemodel")
 const {list} = require("../middleware/list")
-const {singleItem} = require("../middleware/single_item");
 
 exports.class_list = async (req, res) => {
     await list(Class,res)

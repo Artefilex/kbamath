@@ -2,6 +2,8 @@ import {  Route, Routes } from "react-router-dom";
 import AdminMain from "../pages/admin";
 
 import {
+   AdminClass,
+    ClassAdd,
     AdminNots,
     AddNote,
     EditNote,
@@ -42,7 +44,8 @@ export default function AdminLocation () {
           <Route path="/admin/quizs/:id" element={<EditQuizs />} />
           <Route path="/admin/category" element={<AdminCategory />} />
           <Route path="/admin/category-add" element={<AddCategory />} />
-        
+          <Route path="/admin/class" element={<AdminClass />} />
+          <Route path="/admin/class-add" element={<ClassAdd />} />
       </Routes>
     )
 
