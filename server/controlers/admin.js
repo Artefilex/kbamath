@@ -61,14 +61,17 @@ exports.user_delete = async (req, res) => {
 exports.edit_users = async (req, res) => {
   try {
     const user = await Users.findOne({ where: { paramsUrl: req.params.id } });
+    const salt = await bcrypt.genSalt(saltRounds);
+    const hashedPassword = await bcrypt.hash(req.body.password, salt);
     const oldImageUrl = req.body.oldImage;
     if (req.file) {
-      user.avatar =  req.file.path,
+      user.avatar=  req.file.path,
       user.username =  req.body.username,
+      user.email = req.body.email
       user.paramsUrl =  slugField(req.body.username),
       user.isAdmin =  req.body.isAdmin,
-      user.password = req.body.password
-      await fs.unlinkSync(oldImageUrl);
+      user.password = hashedPassword
+      //  await fs.unlinkSync(oldImageUrl);
     } else {
       user.avatar =   req.body.oldImage;
       user.username =  req.body.username,
