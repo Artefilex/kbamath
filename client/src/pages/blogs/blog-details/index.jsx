@@ -52,7 +52,6 @@ export default function BlogDetails() {
           </div>
           {show && (
             <div className="w-[90%] px-2 bg-[color:var(--bg-secondary)] mt-6 min-h-[20rem] overflow-auto py-2">
-         
               <div>
                 <RightBar blogs={blogs} />
               </div>

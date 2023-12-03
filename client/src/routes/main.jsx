@@ -24,7 +24,6 @@ import {
 export default function MainLocation () {
     return (
         <Routes>
-      
           <Route path="/*" exact element={<Home />} />
           <Route path="/hakkımızda" element={<About />} />
           <Route path="/dersler" element={<LessonMain />}/>

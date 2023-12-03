@@ -27,7 +27,7 @@ export default function AddNote() {
   const handleSubit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    if (category === "" || image === "" || description === "" || image === "") {
+    if (category === "" || image === "" || description === "" ) {
       return toast.error(`category ,image ve  açıklama`);
     }
     formData.append("image", image);

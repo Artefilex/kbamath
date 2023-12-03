@@ -14,7 +14,7 @@ export default function App() {
       setLogUser(null)
     }
   }, [user]);
- 
+  console.log(logUser)
   return (
 
     <Router> {logUser?.isAdmin ?  <AdminLayout/>: <MainLayout />}</Router> 
