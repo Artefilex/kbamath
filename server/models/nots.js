@@ -12,11 +12,11 @@ const Nots = sequelize.define(
       allowNull: false,
     },
     class:{
-      type: DataTypes.JSON,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     description: {
-      type: DataTypes.JSON,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     paramsUrl: {
@@ -28,6 +28,7 @@ const Nots = sequelize.define(
     timestamps: false,
   }
 );
+
 
 
 module.exports = Nots;
