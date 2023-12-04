@@ -1,32 +1,38 @@
-import {  useParams } from "react-router-dom"
-import NotsMain from "../nots-component"
-import LeftBar from "../left-navbar"
-import { notsLinks } from "../../../routes/links";
+import { useParams } from "react-router-dom";
+import NotsMain from "../nots-component";
+import LeftBar from "../left-navbar";
 import { useEffect, useState } from "react";
-import { getAllItems } from "../../../servises/admin";
+import { getNotsByClassThenCategory } from "../../../servises";
 // Konuya göre filtreleyip mapleleyecigz
-export default function TopicDetail (){
-    const {topicid} = useParams()
-    const [nots , setNots] = useState([])
-    const [otherClasses, setOtherClasses] = useState([])
-    useEffect(() => {
-      const fetchCategory = async () => {
-        const notsData = await getAllItems("nots")
-        const otherClassData = await getAllItems("class");
-        setOtherClasses(otherClassData)
-        setNots(notsData)
-      };
-      fetchCategory();
-    }, []);
-    const filteredClassByCategory = nots.filter((not) => not.category === topicid )
-    console.log(filteredClassByCategory)
-    return (
-        <NotsMain>
-            <div className="flex flex-col  w-full  gap-6 mobile:flex-row">
+export default function TopicDetail() {
+  const { classid } = useParams();
+  const { topicid } = useParams();
+
+  const [notsByCategory, setNotsByCategory] = useState([]);
+
+  useEffect(() => {
+    const fetchCategory = async () => {
+      const notsCategory = await getNotsByClassThenCategory(classid, topicid);
+      setNotsByCategory(notsCategory);
+    };
+    fetchCategory();
+  }, [classid, topicid]);
+
+  return (
+    <NotsMain>
+      <div className="flex flex-col  w-full  gap-6 mobile:flex-row">
         <LeftBar />
-    
-       {topicid}
+        {notsByCategory.map((not) => (
+          <div key={not.id}>
+            <img
+              src={`${import.meta.env.VITE_BASE_URL}/${not.image}`}
+              alt={not.category}
+              className="w-[200px] xtablet:w-[200px] h-full max-h-[400px] object-cover"
+            />
+            <div>{not.category}</div>
+          </div>
+        ))}
       </div>
-        </NotsMain>
-    )
+    </NotsMain>
+  );
 }

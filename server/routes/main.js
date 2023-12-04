@@ -66,16 +66,29 @@ router.get("/quizs", async(req , res) =>{
 
 // nots
 
-router.get("/nots/:id/:id", async(req , res) =>{
-  const nots = await Nots.findOne({where:{
-    paramsUrl : req.params.id
-  }})
+router.get("/nots/:classid/:categoryid", async(req , res) =>{
+  const nots = await Nots.findAll({
+    where: {
+      class: {
+        [Op.eq]: req.params.classid
+      },
+      category: {
+        [Op.eq]: req.params.categoryid
+      }
+    }
+
+  });
+  console.log(nots)
   res.json(nots)
 })
-router.get("/nots/:id", async(req , res) =>{
-  const nots = await Nots.findOne({where:{
-    paramsUrl : req.params.id
+router.get("/nots/:classid", async(req , res) =>{
+  console.log(req.params.classid)
+  const nots = await Nots.findAll({where:{
+    class: {
+      [Op.eq]: req.params.classid
+    }
   }})
+  console.log(nots)
   res.json(nots)
 })
 router.get("/nots", async(req , res) =>{

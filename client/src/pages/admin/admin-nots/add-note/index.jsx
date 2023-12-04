@@ -32,7 +32,7 @@ export default function AddNote() {
     };
     fetchCategory();
   }, []);
-console.log(otherClasses)
+  console.log(classes ,category ,image, description)
   const handleSubit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -63,6 +63,9 @@ console.log(otherClasses)
         value={category}
         onChange={(e) => setCategory(e.target.value)}
       >
+        <option  >
+           Kategori belirle
+          </option>
         {categorys.map((item) => (
           <option value={item.title} key={item.id}>
             {item.title}
@@ -77,7 +80,9 @@ console.log(otherClasses)
         name="class"
         value={classes}
         onChange={(e) => setClasses(e.target.value)} >
-         
+           <option  >
+           Sınıf belirle
+          </option>
          { defaultClasses.map((defaultP , index )=>(
             <option value={defaultP.href} key={index}>
             {defaultP.label}

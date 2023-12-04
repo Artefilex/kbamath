@@ -20,9 +20,9 @@ export  const adminLinks = [
   ];
 
 export const notsLinks = [
-    { href: "/notlar/1-sınıf", label: "Lise 1.sınıf" },
-    { href: "/notlar/2-sınıf", label: "Lise 2.sınıf" },
-    { href: "/notlar/3-sınıf", label: "Lise 3.sınıf" },
-    {href: "/notlar/4-sınıf" , label: "Lise 4.sınıf"}
+    { href: "/notlar/1-sinif", label: "Lise 1.sinif" },
+    { href: "/notlar/2-sinif", label: "Lise 2.sinif" },
+    { href: "/notlar/3-sinif", label: "Lise 3.sinif" },
+    {href: "/notlar/4-sinif" , label: "Lise 4.sinif"}
 
 ]  

@@ -22,15 +22,16 @@ export const getNots = async ()=>{
     return response.data
 }
 
-export const getNotsClass = async (classid)=>{
+export const getNotsByClass = async (classid)=>{
     const response = await axios.get(`${baseUrl}/nots/${classid}`);
+    console.log(response)
     return response.data
 }
 export const getClass =async ()=>{
     const response = await axios.get(`${baseUrl}/class`);
     return response.data
 }
-export const getNotsTopic = async (classid,topicid )=>{
+export const getNotsByClassThenCategory = async (classid,topicid )=>{
     const response = await axios.get(`${baseUrl}/nots/${classid}/${topicid}`);
     return response.data
 }
