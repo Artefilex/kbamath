@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import quizImg from "../../assests/image/quizHead.jpg"
 import { Link } from "react-router-dom"
-// import { quizs } from "../../mock"
 import SectionMain from "../../components/section-main"
 import PageHeader from "../../components/page-heading"
 import { getQuizs } from "../../servises"
