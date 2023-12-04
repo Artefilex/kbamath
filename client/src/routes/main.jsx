@@ -1,7 +1,7 @@
 import {  Route, Routes } from "react-router-dom";
 import BlogDetails from "../pages/blogs/blog-details";
 import LessonsDetails from "../pages/dersler/lesson-details";
-import LessonMain from "../pages/dersler/lesson-main";
+
 import QuizDetails from "../pages/quizs/quiz-details";
 import ClassDetail from "../pages/nots/class-detail";
 import TopicDetail from "../pages/nots/topic-detail";
@@ -13,6 +13,7 @@ import {
   About,
   Nots,
   Blogs,
+  LessonsMain
 
 } from "../pages/routes";
 import {
@@ -24,13 +25,12 @@ import {
 export default function MainLocation () {
     return (
         <Routes>
-      
           <Route path="/*" exact element={<Home />} />
           <Route path="/hakkımızda" element={<About />} />
-          <Route path="/dersler" element={<LessonMain />}/>
+          <Route path="/dersler" element={<LessonsMain />}/>
           <Route path="/dersler/:lessonid" element={<LessonsDetails />} />
           <Route path="/bloglar" element={<Blogs />} />
-          <Route path="/bloglar/:url" element={<BlogDetails />} />
+          <Route path="/bloglar/:id" element={<BlogDetails />} />
           <Route path="/notlar" element={<Nots />} />
           <Route path="/notlar/:classid" element={<ClassDetail />} />
           <Route path="/notlar/:classid/:topicid" element={<TopicDetail />} />

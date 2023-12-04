@@ -13,27 +13,37 @@ export default function AddNote() {
   const [image, setImage] = useState("");
   const [categorys, setCategorys] = useState([]);
   const [category, setCategory] = useState("");
+ const [otherClasses, setOtherClasses] = useState([])
   const [classes, setClasses] = useState("");
   const [description, setDescription] = useState("");
+ const defaultClasses = [
+  { href: "1-sinif", label: "Lise 1.sınıf" },
+  { href: "2-sinif", label: "Lise 2.sınıf" },
+  { href: "3-sinif", label: "Lise 3.sınıf" },
+  {href: "4-sinif" , label: "Lise 4.sınıf"}
+ ]
   const navigate = useNavigate();
   useEffect(() => {
     const fetchCategory = async () => {
-      const data = await getAllItems("category");
-      setCategorys(data);
+      const categoryData = await getAllItems("category");
+      const otherClassData = await getAllItems("class");
+      setCategorys(categoryData);
+      setOtherClasses(otherClassData)
     };
     fetchCategory();
   }, []);
-
+console.log(otherClasses)
   const handleSubit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    if (category === "" || image === "" || description === "" || image === "") {
+    if (category === "" || image === "" || description === "" ) {
       return toast.error(`category ,image ve  açıklama`);
     }
     formData.append("image", image);
     formData.append("category", category);
     formData.append("class", classes);
     formData.append("description", description);
+    // slugFielda categorye göre filtreleme için gönderirken veriyi class value / description seklinde yollarız 
     const addNots = async () => {
       await addItem("nots", formData, "Nots");
     };
@@ -48,8 +58,7 @@ export default function AddNote() {
       className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
     >
       <FormContent header={"Kategori"}>
-       
-           <FormSelect className={"bg-black"}
+      <FormSelect className={"bg-black"}
         name="category"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
@@ -63,12 +72,26 @@ export default function AddNote() {
       </FormContent>
    
       <FormContent header={"Sınıf"}>
-        <FormInput
-          type="text"
-          name="class"
-          value={classes}
-          onChange={(e) => setClasses(e.target.value)}
-        />
+        <FormSelect 
+        type="text"
+        name="class"
+        value={classes}
+        onChange={(e) => setClasses(e.target.value)} >
+         
+         { defaultClasses.map((defaultP , index )=>(
+            <option value={defaultP.href} key={index}>
+            {defaultP.label}
+          </option>
+          ))}
+      {
+        otherClasses.map((otherOption  )=>(
+          <option value={otherOption.title} key={otherOption.id}>
+          {otherOption.title}
+        </option>
+        ))
+      }
+        </FormSelect>
+       
       </FormContent>
       <FormContent header={"Açıklama"}>
         {" "}

@@ -45,6 +45,7 @@ export const addItem = async( url, formData,title ) =>{
     const response = await axios.post(`${baseUrl}/${url}`,
         formData
       );
+      console.log(response)
       if (response.status === 200) {
         toast.success(`${title} Eklendi`);
       } else {

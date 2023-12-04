@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import {Link} from "react-router-dom"
 import { getAllItems, handleDelete } from "../../../../servises/admin";
 import { Tooltip } from "react-tooltip";
+import { useSelector } from "react-redux";
 export default function UsersList() {
   const [users, setUsers] = useState([])
+  const {sortOrder} = useSelector((state) => state.adminOperations)
   useEffect(()=>{
     const fetchUsers = async () =>{
     const response =  await getAllItems("users")

@@ -13,7 +13,6 @@ const auth = createSlice({
     reducers:{
         _login : (state) =>{
          state.user =  JSON.parse(localStorage.getItem("userLogin"))
-      
         },
         _logout: (state)=>{
             state.user = null

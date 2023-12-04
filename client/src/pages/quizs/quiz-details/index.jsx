@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { quizs } from "../../../mock";
 import { useEffect, useState } from "react";
+import { getSingleQuiz } from "../../../servises";
 
 export default function QuizDetails() {
   const [quiz, setQuiz] = useState({});
@@ -8,23 +8,20 @@ export default function QuizDetails() {
 
 
   useEffect(() => {
-    const foundQuiz = quizs.find((item) => item.mainUrl === quizid);
-    if (foundQuiz) {
-      setQuiz(foundQuiz);
-   
-    } else {
-      console.log("olmadı kanks");
+    const fetchQuiz = async () =>{
+      const response = await getSingleQuiz(quizid)
+       setQuiz(response)
     }
+    fetchQuiz()
   }, [quizid]);
-
   return (
-    <div className="w-full h-full">
+    <div className="w-full  h-full">
       {quiz && (
         <iframe
           src={quiz.iframeUrl}
-          scrolling="no"
-          height={`${quiz.height} px`}
-          className="w-full overflow-auto !D8bnZd"
+        scrolling="no"
+         height={`${parseInt(quiz.iframeHeight  ) + 400}px`}
+          className={`w-full `}
         />
      
       )}

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 import { handleDelete, getAllItems } from "../../../../servises/admin";
 import { MdDeleteForever } from "react-icons/md";
 import { BsCheckLg } from "react-icons/bs";
-
 import { Tooltip as ReactTooltip } from 'react-tooltip'
+import { useSelector } from "react-redux";
+import SortedList from "../../../../helpers/sorted-list";
 
 function CategoryList() {
+  const {sortOrder} = useSelector((state) => state.adminOperations)
   const [categorys, setCategorys] = useState([]);
   const [nots, setNots] = useState([]);
 
@@ -32,28 +33,13 @@ function CategoryList() {
       setCategorys(filteredBlogs);
     }
   };
-  const [sortOrder, setSortOrder] = useState("inc");
+
   const sortedCategorys =
     sortOrder === "inc" ? categorys : [...categorys].reverse();
 
   return (
     <div className="w-full gap-2  flex flex-col ">
-      <button
-        onClick={() => {
-          setSortOrder(sortOrder === "inc" ? "dec" : "inc");
-        }}
-      >
-        {sortOrder === "inc" ? (
-          <div className="flex items-center justify-between font-semibold px-1">
-            <div>İlk Eklenene Göre Sırala</div> <FaChevronDown />
-          </div>
-        ) : (
-          <div className="flex items-center justify-between font-semibold px-1">
-            <div>Son Eklenene Göre Sırala </div>
-            <FaChevronUp />{" "}
-          </div>
-        )}
-      </button>
+     <SortedList/>
       {sortedCategorys.map((category) => (
         <div
           key={category.id}

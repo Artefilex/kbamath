@@ -1,9 +1,10 @@
 import axios from "axios"
 
-const baseUrl = "https://artefilex-portfoly.onrender.com";
-// const baseUrl = "http://localhost:4000";
+// const baseUrl = "https://artefilex-portfoly.onrender.com";
+ const baseUrl = "http://localhost:4000";
 export const  getBlogs = async () => {
     const response = await axios.get(`${baseUrl}/blogs`);
+    console.log(response.data)
     return [response.data];
   };
 export const getSingleBlog= async (id)=>{
@@ -34,17 +35,22 @@ export const getNotsTopic = async (classid,topicid )=>{
     return response.data
 }
 
-export const getquizs = async ( )=>{
+export const getQuizs = async ( )=>{
     const response = await axios.get(`${baseUrl}/quizs`);
     return response.data
 }
 
-export const getSingleQuizs = async ( quizid)=>{
+export const getSingleQuiz = async ( quizid)=>{
     const response = await axios.get(`${baseUrl}/quizs/${quizid}`);
     return response.data
 }
 
 export const getEducation = async ()=>{
     const response = await axios.get(`${baseUrl}/education`);
+    return response.data
+}
+
+export const getSingleEducation = async (id)=>{
+    const response = await axios.get(`${baseUrl}/education/${id}`);
     return response.data
 }

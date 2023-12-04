@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import auth from "./auth";
 import  appearance from "./appearance"
-
+import adminOperationsReducer from "./admin-operations/AdminOperationsSlice"
 const store = configureStore({
     reducer:{
        appearance,
-       auth
+       auth,
+       adminOperations: adminOperationsReducer
     }
 })
 

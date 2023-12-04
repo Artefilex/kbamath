@@ -12,18 +12,18 @@ const Category = require("../models/Category");
 
 // blog
 router.get("/blogs/:id", async (req, res) => {
-  const blogid = req.params.id;
+ 
   const blogs = await Blog.findAll({
     where: {
-      blogUrl: {
-        [Op.ne]: blogid,
+      paramsUrl: {
+        [Op.ne]: req.params.id,
       },
     },
   });
 
   const blog = await Blog.findOne({
     where: {
-      blogUrl: blogid,
+      paramsUrl: req.params.id,
     },
   });
   let data;

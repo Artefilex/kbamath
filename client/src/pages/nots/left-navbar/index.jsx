@@ -2,8 +2,18 @@ import { NavLink } from "react-router-dom";
 import { notsLinks } from "../../../routes/links";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import { Disclosure } from "@headlessui/react";
-//  şuan kullanılan mock datalar apiye cekilecek
+import { getAllItems } from "../../../servises/admin";
+import { useEffect, useState } from "react";
+// main servises cekilecek adminden degil
 function LeftBar() {
+  const [otherClasses, setOtherClasses] = useState([])
+  useEffect(() => {
+    const fetchCategory = async () => {
+      const otherClassData = await getAllItems("class");
+      setOtherClasses(otherClassData)
+    };
+    fetchCategory();
+  }, []);
   return (
     <div className="flex mobile:flex-col mobile:min-h-screen  mobile:border-r-2  border-r-[color:var(--c-subbase)] transition-all duration-400">
       <Disclosure
@@ -40,14 +50,13 @@ function LeftBar() {
               Other {open ? <BsChevronUp /> : <BsChevronDown />}
             </Disclosure.Button>
             <Disclosure.Panel as="nav" className="flex px-5   flex-col pb-2 ">
-              {notsLinks.map((not) => (
+              {otherClasses.map((not) => (
                 <NavLink
                   className="hover:bg-[color:var(--bg-secondary)] whitespace-nowrap  py-2 pr-9 pl-2 transition-colors"
-                  key={not.href}
-                  to={not.href}
+                  key={not.id}         
+                  to={`/notlar/${not.paramsUrl}`}
                 >
-                  {" "}
-                  {not.label}{" "}
+                  {not.title}
                 </NavLink>
               ))}
             </Disclosure.Panel>

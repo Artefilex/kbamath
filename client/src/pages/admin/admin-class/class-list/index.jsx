@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 import { handleDelete, getAllItems } from "../../../../servises/admin";
 import { MdDeleteForever } from "react-icons/md";
 import { BsCheckLg } from "react-icons/bs";
-
 import { Tooltip as ReactTooltip } from 'react-tooltip'
+import { useSelector } from "react-redux";
+import SortedList from "../../../../helpers/sorted-list";
 function ClassList() {
   const [classes, setClasses] = useState([]);
   const [nots, setNots] = useState([]);
-
+  const {sortOrder} = useSelector((state) => state.adminOperations)
   useEffect(() => {
     const fetchCategorys = async () => {
       const getNots = await getAllItems("nots");
@@ -19,10 +19,10 @@ function ClassList() {
     fetchCategorys();
   }, []);
   const classesDeleteHandler = async (deleteUrl) => {
-    const url = `category/${deleteUrl}`;
+    const url = `class/${deleteUrl}`;
     const successMessage = `${deleteUrl} Category başarılı bir şekilde silindi `;
     const errorMessage = "Category Silinemedi";
-
+   
     const response = await handleDelete(url, successMessage, errorMessage);
     if (response) {
       const filteredBlogs = classes.filter(
@@ -31,28 +31,12 @@ function ClassList() {
       setClasses(filteredBlogs);
     }
   };
-  const [sortOrder, setSortOrder] = useState("inc");
   const sortedClasses =
     sortOrder === "inc" ? classes : [...classes].reverse();
 
   return (
     <div className="w-full gap-2  flex flex-col ">
-      <button
-        onClick={() => {
-          setSortOrder(sortOrder === "inc" ? "dec" : "inc");
-        }}
-      >
-        {sortOrder === "inc" ? (
-          <div className="flex items-center justify-between font-semibold px-1">
-            <div>İlk Eklenene Göre Sırala</div> <FaChevronDown />
-          </div>
-        ) : (
-          <div className="flex items-center justify-between font-semibold px-1">
-            <div>Son Eklenene Göre Sırala </div>
-            <FaChevronUp />{" "}
-          </div>
-        )}
-      </button>
+      <SortedList/>
       {sortedClasses.map((classes) => (
         <div
           key={classes.id}
