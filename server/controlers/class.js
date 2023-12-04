@@ -7,6 +7,7 @@ exports.class_list = async (req, res) => {
     await list(Class,res)
    };
   
+  
   exports.class_create = async (req, res) => {
     try {
       await Class.create({
@@ -16,6 +17,7 @@ exports.class_list = async (req, res) => {
     } catch (err) {
       console.log(err);
     }
+    
   };  
   exports.class_delete = async (req, res) => {
     await deleteImageAndDestroyModel(Class, req.params.blogid, res);

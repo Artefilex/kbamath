@@ -17,10 +17,10 @@ export default function AddNote() {
   const [classes, setClasses] = useState("");
   const [description, setDescription] = useState("");
  const defaultClasses = [
-  { href: "/notlar/1-sınıf", label: "Lise 1.sınıf" },
-  { href: "/notlar/2-sınıf", label: "Lise 2.sınıf" },
-  { href: "/notlar/3-sınıf", label: "Lise 3.sınıf" },
-  {href: "/notlar/4-sınıf" , label: "Lise 4.sınıf"}
+  { href: "1-sinif", label: "Lise 1.sınıf" },
+  { href: "2-sinif", label: "Lise 2.sınıf" },
+  { href: "3-sinif", label: "Lise 3.sınıf" },
+  {href: "4-sinif" , label: "Lise 4.sınıf"}
  ]
   const navigate = useNavigate();
   useEffect(() => {

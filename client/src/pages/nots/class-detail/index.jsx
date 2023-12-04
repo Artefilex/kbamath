@@ -18,10 +18,7 @@ export default function ClassDetail (){
       };
       fetchCategory();
     }, []);
-    console.log("nots", nots);
-    console.log("otherClasses", otherClasses);
-    console.log("classid", classid);
-    
+    console.log("nots", nots);    
     const filteredByClass = nots.filter((not) => not.class === classid )
     console.log(filteredByClass)
     return (

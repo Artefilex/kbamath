@@ -19,7 +19,7 @@ function ClassList() {
     fetchCategorys();
   }, []);
   const classesDeleteHandler = async (deleteUrl) => {
-    const url = `category/${deleteUrl}`;
+    const url = `class/${deleteUrl}`;
     const successMessage = `${deleteUrl} Category başarılı bir şekilde silindi `;
     const errorMessage = "Category Silinemedi";
    

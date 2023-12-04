@@ -18,7 +18,8 @@ export default function TopicDetail (){
       };
       fetchCategory();
     }, []);
-
+    const filteredClassByCategory = nots.filter((not) => not.category === topicid )
+    console.log(filteredClassByCategory)
     return (
         <NotsMain>
             <div className="flex flex-col  w-full  gap-6 mobile:flex-row">
