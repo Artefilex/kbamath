@@ -1,24 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense, lazy } from "react";
 import { useUser } from "./store/auth/hooks";
 import { BrowserRouter as Router} from "react-router-dom";
-import AdminLayout from "./layouts/AdminLayout";
-import MainLayout from "./layouts";
+import Loading from "./Loading";
+const AdminLayout = lazy(() => import("./layouts/AdminLayout"));
+const MainLayout = lazy(() => import("./layouts"));
 export default function App() {
   const [logUser, setLogUser] = useState(null);
   const { user } = useUser();
 
   useEffect(() => {
     if (user) {
-      setLogUser(user);
+      setLogUser(user.isAdmin);
     }else{
       setLogUser(null)
     }
   }, [user]);
-  console.log(logUser)
   return (
-
-    <Router> {logUser?.isAdmin ?  <AdminLayout/>: <MainLayout />}</Router> 
-    
+<Suspense fallback={<Loading/>}>
+<Router> {logUser?  <AdminLayout/>: <MainLayout />}</Router> 
+</Suspense>
   );
 }
 
