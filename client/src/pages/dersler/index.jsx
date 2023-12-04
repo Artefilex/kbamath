@@ -1,19 +1,18 @@
-
-import { memo } from "react";
 import SectionMain from "../../components/section-main";
 import LeftbarLesson from "./leftbar-lesson";
+import { Outlet } from "react-router-dom";
+import LessonCard from "./lesson-main";
 
-import MainLocation from "../../routes/main";
-
-const Lessons = memo( function Lessons(){
+ function LessonsMain(){
   return (
       <SectionMain>
       <div className="w-full flex  flex-col  gap-6 mobile:flex-row">
         <LeftbarLesson/>
-        <MainLocation/>
+        <LessonCard/>
+        <Outlet/>
       </div>
       </SectionMain>
   )
-})
+}
 
-export default Lessons
+export default LessonsMain

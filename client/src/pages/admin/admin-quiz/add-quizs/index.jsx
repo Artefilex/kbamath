@@ -27,10 +27,6 @@ export default function AddQuizs() {
     };
     await addQuizs();
     navigate("/admin/quizs");
-    setImage("");
-    setTitle("");
-    setIframeHeight("");
-    setIframeUrl("");
   };
   return (
         <form

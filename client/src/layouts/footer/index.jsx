@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import { BsInstagram, BsTelephone } from "react-icons/bs";
 import { SiGmail } from "react-icons/si";
-import { getBlogsData } from "../../utils/blog";
+import { getBlogs } from "../../servises";
 import { useEffect, useState } from "react";
 import MainSvg from "../../assests/image/main.svg";
 export default function Footer() {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await  getBlogsData();
+      const response = await  getBlogs();
       setBlogs(response[0]);
     };
 
@@ -93,7 +93,6 @@ export default function Footer() {
           </div>
         </div>
       </main>
-      <span>birlikte yarınlara emin adımlarla </span>
     </footer>
   );
 }

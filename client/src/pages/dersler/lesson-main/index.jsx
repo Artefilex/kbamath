@@ -3,8 +3,8 @@ import grup from "../../../assests/image/grup.svg"
 import question from "../../../assests/image/question.svg"
 import CardLeftBox from "../../../components/card-left-box";
 import CardRightBox from "../../../components/card-right-box";
-// şelale yapısı 
-export default function LessonMain() {
+
+export default function LessonCard() {
   return (
 
       <main className="flex items-center justify-center w-full flex-col gap-4 pt-5">

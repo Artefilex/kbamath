@@ -1,21 +1,30 @@
-import { memo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import IsMobile from "../../../helpers/is-mobile";
-import { pakets } from "../../../mock";
 import { Link } from "react-router-dom";
+import { getEducation } from "../../../servises";
 const LeftbarLesson = memo(function LeftbarLesson() {
   const { isMobile } = IsMobile();
+  const [educations,setEducations] = useState([])
+  useEffect(()=>{
+ const fectEducation = async () =>{
+  const response = await getEducation()
+  setEducations(response)
+ }
+ fectEducation()
+  },[])
+  console.log(educations)
   const [show, setShow] = useState(false);
   return (
     <>
       {!isMobile && (
         <nav className="flex  flex-col mobile:min-h-screen gap-3  mobile:border-r-2  border-r-[color:var(--c-subbase)] transition-all duration-400">
-          {pakets.map((paket, i) => (
+          {educations.map((education, i) => (
             <Link
               key={i}
-              to={`/dersler/${paket.url}`}
+              to={`/dersler/${education.paramsUrl}`}
               className="hover:bg-[color:var(--c-subbase)] justify-center w-full min-w-[10rem]  gap-4 flex  flex-col  px-2 min-h-[3rem]"
             >
-              <h2>{paket.title} </h2>
+              <h2>{education.title} </h2>
             </Link>
           ))}
         </nav>
@@ -33,13 +42,13 @@ const LeftbarLesson = memo(function LeftbarLesson() {
               <div className="w-[90%] px-2 bg-[color:var(--bg-secondary)] mt-6 min-h-[20rem] overflow-auto py-2">
                 {isMobile && (
                   <nav className="flex  flex-col  gap-3   border-r-[color:var(--c-subbase)] transition-all duration-400">
-                    {pakets.map((paket, i) => (
+                    {educations.map((education, i) => (
                       <Link
                         key={i}
-                        to={`/dersler/${paket.url}`}
+                        to={`/dersler/${education.paramsUrl}`}
                         className="hover:bg-[color:var(--c-subbase)] justify-center w-full min-w-[10rem]  gap-4 flex  flex-col  px-2 min-h-[3rem]"
                       >
-                        <h2>{paket.title} </h2>
+                        <h2>{education.title} </h2>
                       </Link>
                     ))}
                   </nav>
