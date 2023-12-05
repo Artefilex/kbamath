@@ -47,7 +47,7 @@ function CategoryList() {
         >
           <div>{category.title}</div>
           <div className="flex items-center justify-around gap-4 w-[200px]">
-            {nots.some((not) => not.category === category.title) ? (
+            {nots.some((not) => not.category === category.paramsUrl) ? (
               <button
               className={"px-4 py-2 opacity  duration-500 group "}>  
               <ReactTooltip anchorSelect="#ancs"  style={{background:"rgb(255,204,0)", color: "rgb(0,5,0)", fontWeight:"bold"}} content="Bu Kategoriyi silemezsin. Şuan da kullanılıyor " className="z-[99]"/>
