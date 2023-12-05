@@ -18,8 +18,8 @@ export default function TopicDetail() {
     };
     fetchCategory();
   }, [classid, topicid]);
-  const as = "Images//1701731166186.pdf";
-  console.log(as.split(".").pop());
+
+  
   const handleDownload = async (url) => {
     await axios
       .get(`${import.meta.env.VITE_BASE_URL}/${url}`, { responseType: "blob" })
