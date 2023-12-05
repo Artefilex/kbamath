@@ -44,7 +44,7 @@ export default function AddBlog() {
           <FormContent header={"Başlık"}>
             {" "}
             <FormInput
-            id={"header"}
+               id={"header"}
               type="text"
               name="header"
               value={formik.values.header}
@@ -75,9 +75,6 @@ export default function AddBlog() {
               name="content"
               value={content}
               onChange={(content) => setContent(content)}
-              // formikError={formik.touched.content && Boolean(formik.errors.content)}
-              // helperText={formik.touched.content && formik.errors.content}
-              // handleBlur={formik.handleBlur}
             />
           </FormContent>
 
