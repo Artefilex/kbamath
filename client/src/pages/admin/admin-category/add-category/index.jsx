@@ -9,6 +9,8 @@ import {
 import { addItem } from "../../../../servises/admin";
 import { useFormik } from "formik";
 import { CategoryShema } from "../../validations/CategoryAndClassShema";
+import { checkClassUniqueness } from "../../validations/isUniqHeader";
+import toast from "react-hot-toast";
 function CategoryAdd() {
   const navigate = useNavigate();
   const formik = useFormik({
@@ -24,11 +26,21 @@ function CategoryAdd() {
             const formData = new FormData();
             formData.append("image", values.image);
             formData.append("title", values.title);
-          await addItem("category", formData,"Category") 
+            try{
+              const isUnique = await checkClassUniqueness(values.title, "category");    
+              if (!isUnique) {
+                return toast.error("Başlık kullanılıyor"); 
+              }    
+              await addItem("category", formData,"Category") 
+              navigate("/admin/category");
+            } catch (error) {
+              console.error("Hata oluştu:", error);
+            }
+       
         };
     
         await addCategory();
-        navigate("/admin/category");
+      
       }
   })
 

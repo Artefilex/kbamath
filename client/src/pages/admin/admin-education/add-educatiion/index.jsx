@@ -9,24 +9,13 @@ import {
 import { useFormik } from "formik";
 import { addItem } from "../../../../servises/admin";
 import { EducationShema } from "../../validations/educationShema";
+import { checkClassUniqueness } from "../../validations/isUniqHeader";
+import toast from "react-hot-toast";
 export default function AddEducation() {
   const navigate = useNavigate();
 
   const [content, setContent] = useState("");
 
-  // const handleSubit = async (e) => {
-  //   e.preventDefault();
-  //   const formData = new FormData();
-  //   formData.append("image", image);
-  //   formData.append("title", title);
-  //   formData.append("content", content);
-  //   formData.append("price", price);
-  //   const addEducation = async () => {
-  //     await addItem("education", formData , "Özel Ders")
-  //   };
-  //   await addEducation();
-  //   navigate("/admin/educations");
-  // }; 
   const formik = useFormik({
     initialValues: {
       image: "",
@@ -35,17 +24,30 @@ export default function AddEducation() {
     },
     validationSchema: EducationShema,
     onSubmit: async (values) => {
-      const formData = new FormData();
-      formData.append("image", values.image);
-      formData.append("title", values.title);
-      formData.append("content", content);
-      formData.append("price", values.price);
+  
 
       const addEducation = async () => {
-        await addItem("education", formData , "Özel Ders")
+        const formData = new FormData();
+        formData.append("image", values.image);
+        formData.append("title", values.title);
+        formData.append("content", content);
+        formData.append("price", values.price);
+        try {
+
+          const isUnique = await checkClassUniqueness(values.title , "education");    
+          if (!isUnique) {
+            return toast.error("Başlık kullanılıyor"); 
+          } 
+          await addItem("education", formData , "Özel Ders")
+          navigate("/admin/educations");
+        } catch (error) {
+   
+          console.error("Hata oluştu:", error);
+        }
+       
       };
       await addEducation();
-      navigate("/admin/educations");
+     
     },
   });
 
