@@ -10,9 +10,6 @@ import { addItem } from "../../../../servises/admin";
 import { useFormik } from "formik";
 import { categoryShema } from "../../validations/categoryShema";
 function CategoryAdd() {
-  // const [image, setImage] = useState("");
-  // const [title, setTitle] = useState("");
-
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {

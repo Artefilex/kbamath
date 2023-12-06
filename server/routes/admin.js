@@ -49,9 +49,9 @@ router.delete("/category/:id", categoryController.category_delete);
 router.post("/category", upload, categoryController.category_add);
 router.get("/category", categoryController.category_list);
 
-router.delete("/class/:id", classController.class_delete);
-router.post("/class", upload, classController.class_create);
-router.get("/class", classController.class_list);
+router.delete("/oclass/:id", classController.class_delete);
+router.post("/oclass",  classController.class_create);
+router.get("/oclass", classController.class_list);
 
 router.delete("/users/:id", adminController.user_delete);
 router.put("/users/:id", upload, adminController.edit_users);

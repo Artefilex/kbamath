@@ -16,14 +16,19 @@ function ClassAdd() {
     e.preventDefault();
     const formData = new FormData();
     if (title === "" ) {
-      return toast.error("başlık" );
+      return toast.error("başlık boş bırakılamaz " );
     }
     formData.append("title", title);
-    const addBlog = async () => {
-      await addItem("class", formData,"Class") 
+   
+    const addClasses = async () => {
+      await addItem("oclass", formData,"Class") ;
+     
     };
-    await addBlog();
-    navigate("/admin/class");
+     addClasses();
+    setTimeout(()=>{
+      toast.success(`${title} başarıyla eklendi`)
+      navigate("/admin/class");
+    },1000)
    
   };
   return (

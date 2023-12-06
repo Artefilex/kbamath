@@ -12,13 +12,15 @@ function ClassList() {
   useEffect(() => {
     const fetchCategorys = async () => {
       const getNots = await getAllItems("nots");
-      const getCLass = await getAllItems("class");
+      const getCLass = await getAllItems("oclass");
       setClasses(getCLass);
       setNots(getNots);
     };
     fetchCategorys();
   }, []);
+  console.log(classes)
   const classesDeleteHandler = async (deleteUrl) => {
+  
     const url = `class/${deleteUrl}`;
     const successMessage = `${deleteUrl} Category başarılı bir şekilde silindi `;
     const errorMessage = "Category Silinemedi";
@@ -37,14 +39,14 @@ function ClassList() {
   return (
     <div className="w-full gap-2  flex flex-col ">
       <SortedList/>
-      {sortedClasses.map((classes) => (
+      {sortedClasses.map((classMap) => (
         <div
-          key={classes.id}
+          key={classMap.id}
           className="w-full flex items-center justify-between flex-col border rounded-lg px-2 py-4 mobile:flex-row bg-[color:var(--bg-secondary)] gap-4 mobile:gap-0 "
         >
-          <div>{classes.title}</div>
+          <div>{classMap.title}</div>
           <div className="flex items-center justify-around gap-4 w-[200px]">
-            {nots.some((not) => not.class === classes.title) ? (
+            {nots.some((not) => not.class === classMap.title) ? (
               <button
               className={"px-4 py-2 opacity  duration-500 group "}>  
               <ReactTooltip anchorSelect="#ancs"  style={{background:"rgb(255,204,0)", color: "rgb(0,5,0)", fontWeight:"bold"}} content="Bu Kategoriyi silemezsin. Şuan da kullanılıyor " className="z-[99]"/>
@@ -53,7 +55,7 @@ function ClassList() {
             ) : (
               <button
                 className="px-4 py-2  hover:rounded-lg "
-                onClick={() => classesDeleteHandler(classes.paramsUrl)}
+                onClick={() => classesDeleteHandler(classMap.paramsUrl)}
               >
                 <MdDeleteForever className="w-full h-[30px] hover:text-red-700 transition-color duration-300" />
               </button>

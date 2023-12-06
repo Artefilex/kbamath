@@ -22,7 +22,6 @@ export default function EditBlog() {
     },
     validationSchema:editBlogShema,
     onSubmit: async (values) => {
-      console.log(values)
       const addBlog = async () => {
         const formData = new FormData();
         formData.append("image", values.image);

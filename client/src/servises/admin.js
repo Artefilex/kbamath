@@ -41,11 +41,12 @@ export const editItem = async(id, formdata , message ,title)  => {
    
 }
 
-export const addItem = async( url, formData,title ) =>{
+export const addItem = async( url, formData, title ) =>{
+  console.log(url , formData ,title)
     const response = await axios.post(`${baseUrl}/${url}`,
         formData
       );
-      console.log(response)
+      
       if (response.status === 200) {
         toast.success(`${title} Eklendi`);
       } else {
