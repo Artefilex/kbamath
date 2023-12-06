@@ -1,8 +1,13 @@
 import * as Yup from "yup";
+import { getAllItems } from "../../../servises/admin";
 
 
 export const EducationShema = Yup.object().shape({
-    title:  Yup.string().required("Lütfen Bir Başlık Yazınız "),
+    title:  Yup.string().required("Lütfen Bir Başlık Yazınız ").test("is-unique", "Bu başlık zaten kullanılıyor", async function (value) {
+      const existingClasses = await getAllItems("education");
+      const isUnique = !existingClasses.some((cls) => cls.title === value);
+      return isUnique;
+    }),
     price: Yup.number().required("Lütfen Number Bir değer Giriniz"),
     image: Yup.mixed().required("Lütfen Bir Dosya Seçiniz ")
   .test("fileSize", "Dosya Çok Büyük", (value) => {
@@ -25,7 +30,7 @@ export const EditEducationShema = Yup.object().shape({
           return true;
   }).test("fileType", "Geçersiz dosya türü", (value) => {
     if (value){
-        const allowedExtensions = /(jpeg|jpg|png|gif|pdf)$/i;
+        const allowedExtensions = /(jpeg|jpg|png|gif)$/i;
         return allowedExtensions.test(value.name); 
     } 
     return true;

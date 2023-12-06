@@ -8,20 +8,22 @@ import {
 } from "../../../../components/form";
 import { addItem } from "../../../../servises/admin";
 import { useFormik } from "formik";
-import { categoryShema } from "../../validations/categoryShema";
+import { CategoryShema } from "../../validations/CategoryAndClassShema";
 function CategoryAdd() {
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-        image: "",
         title: "",
+        image: "",
+       
       },
-       validationSchema: categoryShema ,
+       validationSchema: CategoryShema ,
       onSubmit: async(values) =>{
-        const addCategory = async () => {
-           const formData = new FormData();
-          formData.append("image", values.image);
-          formData.append("title", values.title);
+
+          const addCategory = async () => {
+            const formData = new FormData();
+            formData.append("image", values.image);
+            formData.append("title", values.title);
           await addItem("category", formData,"Category") 
         };
     
@@ -38,16 +40,15 @@ function CategoryAdd() {
           className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
         >
           <FormContent header={"Category"}>
-            {" "}
             <FormInput
               type="text"
               id="title"
-              name="title"
+              name="title" 
               value={formik.values.title}
               onChange={formik.handleChange}
-              formikError={formik.touched.title && Boolean(formik.errors.title)}
+              error={formik.touched.title && Boolean(formik.errors.title)}
               helperText={formik.touched.title && formik.errors.title}
-              onBlur={formik.handleBlur}
+              handleBlur={formik.handleBlur}
             />
           </FormContent>
 

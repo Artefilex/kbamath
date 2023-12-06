@@ -1,8 +1,13 @@
 import * as Yup from "yup";
+import { getAllItems } from "../../../servises/admin";
 
 
 export const blogShema = Yup.object().shape({
-    header:  Yup.string().required("Lütfen Bir Başlık Yazınız "),
+    header:  Yup.string().required("Lütfen Bir Başlık Yazınız ").test("is-unique", "Bu başlık zaten kullanılıyor", async function (value) {
+      const existingClasses = await getAllItems("blogs");
+      const isUnique = !existingClasses.some((cls) => cls.header === value);
+      return isUnique;
+    }),
     subtitle: Yup.string().required("Lütfen Bir Alt Başlık Yazınız "),
     image: Yup.mixed().required("Lütfen Bir Dosya Seçiniz ")
   .test("fileSize", "Dosya Çok Büyük", (value) => {

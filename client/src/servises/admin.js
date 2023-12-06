@@ -9,11 +9,6 @@ export  const handleDelete = async ( url,successMessage, errorMessage) => {
   if (confirms) {
     try {
      await axios.delete(`${baseUrl}/${url}`, 
-    //  {
-    //   // headers: {
-    //   //   'Content-Type': 'application/json',
-    //   // },
-    // }
     );
       toast.success(successMessage);
     } catch (error) {
@@ -28,7 +23,7 @@ export  const handleDelete = async ( url,successMessage, errorMessage) => {
 
 export const getAllItems = async(item) => {
     const {data} = await axios.get(`${baseUrl}/${item}`)
-console.log(data)
+
     return data
 }
 
@@ -51,12 +46,11 @@ export const editItem = async(id, formdata , message ,title)  => {
 export const addItem = async( url, formData, title ) =>{
  
     const response = await axios.post(`${baseUrl}/${url}`,
-        formData,
-        {
+        formData, {
           headers: {
-            'Content-Type': 'application/json',
-          },
-        }
+            'Content-Type': 'multipart/form-data',
+          },}
+        
       );
       
       if (response.status === 200) {
@@ -65,6 +59,23 @@ export const addItem = async( url, formData, title ) =>{
         toast.error( `${title}  Eklenemedi`);
       }
     };
+    export const addClass = async( title, message ) =>{
+ 
+      const response = await axios.post(`${baseUrl}/class`,
+      {
+        title: title,
+      },{
+            headers: {
+              'Content-Type': 'application/json',
+            },});
+        
+        if (response.status === 200) {
+          toast.success(`${message} Eklendi`);
+        } else {
+          toast.error( `${message}  Eklenemedi`);
+        }
+      };
+
     export const userLogin = async (formData) => {
       try {
         const response = await axios.post(`${baseUrl}/login`, formData, {

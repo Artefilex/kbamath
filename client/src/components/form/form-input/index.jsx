@@ -15,8 +15,7 @@ function FormInput({
   const location = useLocation();
   return (
     <>
-          {formikError && <div className="text-red-500">{formikError}</div>}
-      {helperText && <div className="text-red-800">{helperText}</div>}
+       
       <input
         id={id}
         type={type}
@@ -33,6 +32,8 @@ function FormInput({
           }
         )}
       />
+        {formikError && <div className="text-red-500">{formikError}</div>}
+      {helperText && <div className="text-red-800">{helperText}</div>}
     </>
   );
 }
