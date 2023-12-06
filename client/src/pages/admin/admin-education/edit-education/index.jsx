@@ -6,89 +6,108 @@ import {
   FormButton,
   QuillTextArea,
 } from "../../../../components/form";
-import { getSingleItem,editItem } from "../../../../servises/admin";
+import { useFormik } from "formik";
+import { getSingleItem, editItem } from "../../../../servises/admin";
+import { EditEducationShema } from "../../validations/educationShema";
 function EditEducation() {
   const { id } = useParams();
-
-  const [oldImage, setOldImage] = useState("");
-  const [image, setImage] = useState("");
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
   const [content, setContent] = useState("");
   const navigate = useNavigate();
+  const formik = useFormik({
+    initialValues: {
+      image: "",
+      title: "",
+      price: "",
+      oldImage: "",
+    },
+    validationSchema: EditEducationShema,
+    onSubmit: async (values) => {
+      const formData = new FormData();
+      formData.append("image", values.image);
+      formData.append("oldImage", values.oldImage);
+      formData.append("title", values.title);
+      formData.append("content", content);
+      formData.append("price", values.price);
+
+      const editEducation = async () => {
+        const message = "Education";
+        await editItem(`education/${id}`, formData, message, values.title);
+        navigate("/admin/educations");
+      };
+      editEducation();
+    },
+  });
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getSingleItem(`education/${id}`) 
-      setTitle(data.title);
-      setPrice(data.price);
+      const data = await getSingleItem(`education/${id}`);
+      formik.setValues({
+        title: data.title,
+        price: data.price,
+        oldImage: data.image,
+      });
       setContent(data.content);
-      setOldImage(data.image);
     };
     fetchData();
   }, [id]);
 
-  const handleSubit = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("image", image);
-    formData.append("oldImage", oldImage);
-    formData.append("title", title);
-    formData.append("content", content);
-    formData.append("price", price);
-
-    const editEducation = async () => {
-      const message = "Education"
-      await editItem(`education/${id}` ,formData, message , title)
-      navigate("/admin/educations");    
-    };
-    editEducation();
-  };
-
   return (
-        <form
-          encType="multipart/form-data"
-          onSubmit={handleSubit}
-          method="POST"
-          className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
-        >
-          <input type="hidden" name="oldImage" value={oldImage} />
-          <FormContent header={"Başlığı Güncelle"}>
-            <FormInput
-              type="text"
-              name="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </FormContent>
+    <form
+      encType="multipart/form-data"
+      onSubmit={formik.handleSubmit}
+      method="POST"
+      className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
+    >
+      <input type="hidden" name="oldImage" value={formik.values.oldImage} />
+      <FormContent header={"Başlığı Güncelle"}>
+        <FormInput
+          id="title"
+          type="text"
+          name="title"
+          value={formik.values.title}
+          onChange={formik.handleChange}
+          formikError={formik.touched.title && Boolean(formik.errors.title)}
+          helperText={formik.touched.title && formik.errors.title}
+          handleBlur={formik.handleBlur}
+        />
+      </FormContent>
 
-          <FormContent header={"Fiyat Bilgisini  Güncelle"}>
-            <FormInput
-              type="text"
-              name="price"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-            />
-          </FormContent>
+      <FormContent header={"Fiyat Bilgisini  Güncelle"}>
+        <FormInput
+          id="price"
+          type="text"
+          name="price"
+          value={formik.values.price}
+          onChange={formik.handleChange}
+          formikError={formik.touched.price && Boolean(formik.errors.price)}
+          helperText={formik.touched.price && formik.errors.price}
+          handleBlur={formik.handleBlur}
+        />
+      </FormContent>
 
-          <FormContent header={"Açıklamayı  Güncelle"}>
-            <QuillTextArea
-              name="content"
-              value={content}
-              onChange={(content) => setContent(content)}
-            />
-          </FormContent>
+      <FormContent header={"Açıklamayı  Güncelle"}>
+        <QuillTextArea
+          name="content"
+          value={content}
+          onChange={(content) => setContent(content)}
+        />
+      </FormContent>
 
-          <FormContent header={"Fotoğraf Ekle "}>
-            <FormInput
-              type="file"
-              name="image"
-              onChange={(e) => setImage(e.target.files[0])}
-            />
-          </FormContent>
+      <FormContent header={"Fotoğraf Ekle "}>
+        <FormInput
+          type="file"
+          id="image"
+          name="image"
+          onChange={(e) =>
+            formik.setFieldValue("image", e.currentTarget.files[0])
+          }
+          formikError={formik.touched.image && Boolean(formik.errors.image)}
+          helperText={formik.touched.image && formik.errors.image}
+          handleBlur={formik.handleBlur}
+        />
+      </FormContent>
 
-          <FormButton> Güncelle</FormButton>
-        </form>
-     
+      <FormButton> Güncelle</FormButton>
+    </form>
   );
 }
 

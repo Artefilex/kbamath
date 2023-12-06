@@ -1,4 +1,8 @@
 const express = require("express");
+const dotenv = require("dotenv");
+const upload = require("../helpers/singleUpload");
+dotenv.config({ path: "./config.env" });
+
 const router = express.Router();
 const classController = require("../controlers/class")
 const quizController = require("../controlers/quiz")
@@ -7,9 +11,7 @@ const notController = require("../controlers/nots")
 const blogController =require("../controlers/blog")
 const categoryController =require("../controlers/category")
 const adminController = require("../controlers/admin");
-const dotenv = require("dotenv");
-const upload = require("../helpers/singleUpload");
-dotenv.config({ path: "./config.env" });
+
 
 // BLOG
 
@@ -50,7 +52,7 @@ router.post("/category", upload, categoryController.category_add);
 router.get("/category", categoryController.category_list);
 
 router.delete("/class/:id", classController.class_delete);
-router.post("/class", upload, classController.class_create);
+router.post("/class",  classController.class_create);
 router.get("/class", classController.class_list);
 
 router.delete("/users/:id", adminController.user_delete);

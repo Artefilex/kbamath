@@ -2,8 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import NotsMain from "../nots-component";
 import LeftBar from "../left-navbar";
 import { useEffect, useState } from "react";
-import { getClass, getNotsByClass } from "../../../servises";
-import { getAllItems } from "../../../servises/admin";
+import { getAllCategory, getNotsByClass } from "../../../servises";
 export default function ClassDetail() {
   // Sınıfa Göre verileri filtreleyip mapleyecegiz
   const { classid } = useParams();
@@ -12,13 +11,13 @@ const [categorys , setCategorys ] = useState([])
   useEffect(() => {
     const fetchCategory = async () => {
       const notsByClasses = await getNotsByClass(classid);
-      const categoryData = await getAllItems("category")
+      const categoryData = await getAllCategory()
       setCategorys(categoryData)
       setNotsByClass(notsByClasses);
     };
     fetchCategory();
   }, [classid]);
-
+console.log(categorys)
   const filterData =categorys.filter((category) => {
     return notsByClass.some((not) => not.category === category.paramsUrl);
   });

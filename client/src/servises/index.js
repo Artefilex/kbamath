@@ -55,3 +55,8 @@ export const getSingleEducation = async (id)=>{
     const response = await axios.get(`${baseUrl}/education/${id}`);
     return response.data
 }
+
+export const getAllCategory =async ()=>{
+    const response = await axios.get(`${baseUrl}/category`);
+    return response.data
+}

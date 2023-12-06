@@ -2,7 +2,7 @@ const {DataTypes} = require("sequelize")
 const sequelize = require("../db/sql");
 
 const Class = sequelize.define(
-    "class",
+    "otherClass",
     {
     title: {
         type: DataTypes.STRING,

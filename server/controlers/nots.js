@@ -24,7 +24,6 @@ exports.nots_list = async (req, res) => {
   };
   exports.create_nots = async (req,res) => {
     try {
-  
       const createNots = await Nots.create({
         image: req.file.path,
         category: slugField(req.body.category),
