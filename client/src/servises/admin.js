@@ -8,7 +8,13 @@ export  const handleDelete = async ( url,successMessage, errorMessage) => {
 
   if (confirms) {
     try {
-     await axios.delete(`${baseUrl}/${url}`);
+     await axios.delete(`${baseUrl}/${url}`, 
+    //  {
+    //   // headers: {
+    //   //   'Content-Type': 'application/json',
+    //   // },
+    // }
+    );
       toast.success(successMessage);
     } catch (error) {
       console.error("Error deleting item:", error);
@@ -22,6 +28,7 @@ export  const handleDelete = async ( url,successMessage, errorMessage) => {
 
 export const getAllItems = async(item) => {
     const {data} = await axios.get(`${baseUrl}/${item}`)
+console.log(data)
     return data
 }
 
@@ -42,9 +49,14 @@ export const editItem = async(id, formdata , message ,title)  => {
 }
 
 export const addItem = async( url, formData, title ) =>{
-  console.log(url , formData ,title)
+ 
     const response = await axios.post(`${baseUrl}/${url}`,
-        formData
+        formData,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
       );
       
       if (response.status === 200) {

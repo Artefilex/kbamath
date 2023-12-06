@@ -11,16 +11,16 @@ function ClassList() {
   const {sortOrder} = useSelector((state) => state.adminOperations)
   useEffect(() => {
     const fetchCategorys = async () => {
-      const getNots = await getAllItems("nots");
-      const getCLass = await getAllItems("oclass");
+      const getCLass = await getAllItems("class");
+      const getNots = await getAllItems("nots"); 
       setClasses(getCLass);
       setNots(getNots);
     };
     fetchCategorys();
   }, []);
-  console.log(classes)
-  const classesDeleteHandler = async (deleteUrl) => {
   
+  const classesDeleteHandler = async (deleteUrl) => {
+  console.log(deleteUrl)
     const url = `class/${deleteUrl}`;
     const successMessage = `${deleteUrl} Category başarılı bir şekilde silindi `;
     const errorMessage = "Category Silinemedi";

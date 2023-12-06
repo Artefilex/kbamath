@@ -1,20 +1,21 @@
-const oClass = require("../models/otherClass")
+const otherClass = require("../models/otherClass")
 const slugField = require("../middleware/slugify");
 const {deleteImageAndDestroyModel} = require("../middleware/delete/deletemodel")
 const {list} = require("../middleware/list")
 
 exports.class_list = async (req, res) => {
-    await list(oClass,res)
+    await list(otherClass,res)
    };
   
   
   exports.class_create = async (req, res) => {
+  
     try {
-      await oClass.create({
+      await otherClass.create({
         title: req.body.title,
         paramsUrl: slugField(req.body.title),
       });
-      res.send(`${oClass} success`);
+      res.send(`${otherClass} success`);
     } catch (err) {
       console.log(err);
     }
@@ -24,9 +25,9 @@ exports.class_list = async (req, res) => {
     try {
     
   
-      const hclass = await oClass.findOne({
+      const hclass = await otherClass.findOne({
         where: {
-          paramsUrl: req.body.id,
+          paramsUrl: req.params.id,
         },
       });
       if (hclass) {
