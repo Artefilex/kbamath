@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
 
 const initialState = {
-  user : JSON.parse(localStorage.getItem("userLogin")) || null ,
+   user : JSON.parse(localStorage.getItem("userLogin")) ||  null ,
 }
 
 
@@ -13,10 +14,12 @@ const auth = createSlice({
     reducers:{
         _login : (state) =>{
          state.user =  JSON.parse(localStorage.getItem("userLogin"))
+         toast.success("Hoş Geldin Kanks") 
         },
         _logout: (state)=>{
             state.user = null
-            localStorage.removeItem("userLogin")       
+            localStorage.removeItem("userLogin")      
+            toast.success("Görüşmek Üzere") 
         }
 
     }
