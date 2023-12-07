@@ -16,7 +16,9 @@ function QuillTextArea({onChange,value}) {
         ],
       };
 
-  return   (  <ReactQuill
+  return   (  
+    <div className="flex w-[95%] flex-col items-center justify-center relative ">
+    <ReactQuill
     theme="snow"
     onChange={onChange}  
     modules={modules}
@@ -24,7 +26,9 @@ function QuillTextArea({onChange,value}) {
     className={
       "w-[95%] bg-transparent rounded-sm h-[20rem] mb-10"
     }
-  />)
+  /> 
+   </div>
+  )
 
 }
 QuillTextArea.propTypes = {

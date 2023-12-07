@@ -48,9 +48,10 @@ export default function AddQuizs() {
           method="POST"
           className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
         >
-          <FormContent header={"Sınav Başlığı"}>
+          <FormContent >
             <FormInput
               id="title"
+              label={"Sınav Başlığı"}
               type="text"
               name="title"
               value={formik.values.title}
@@ -61,9 +62,10 @@ export default function AddQuizs() {
             />
           </FormContent>
 
-          <FormContent header={"Sınav Linki"}>
+          <FormContent>
             <FormInput
               id="iframeUrl"
+              label={"Sınav Linki"}
               type="text"
               name="iframeUrl"
               value={formik.values.iframeUrl}
@@ -74,9 +76,10 @@ export default function AddQuizs() {
             />
           </FormContent>
 
-          <FormContent header={"Form Yüksekliği"}>
+          <FormContent >
           <FormInput
             id="iframeHeight"
+            label={"Form Yüksekliği"}
               type="text"
               name="iframeHeight"
               value={formik.values.iframeHeight}
@@ -87,10 +90,11 @@ export default function AddQuizs() {
             />
           </FormContent>
 
-          <FormContent header={"Başlık Fotoğrafı"}>
+          <FormContent>
             <FormInput
               id="image"
               type="file"
+              label={"Başlık Fotoğrafı"}
               name="image"
               onChange={(e) =>
                 formik.setFieldValue("image", e?.currentTarget?.files[0])

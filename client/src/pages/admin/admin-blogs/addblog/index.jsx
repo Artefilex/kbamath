@@ -49,10 +49,11 @@ export default function AddBlog() {
           method="POST"
           className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
         >
-          <FormContent header={"Başlık"}>
+          <FormContent>
             {" "}
-            <FormInput
-               id={"header"}
+            <FormInput 
+              id={"header"}
+              label={"Blog Başlığı"}
               type="text"
               name="header"
               value={formik.values.header}
@@ -63,9 +64,10 @@ export default function AddBlog() {
             />{" "}
           </FormContent>
 
-          <FormContent header={"Alt Başlık"}>
+          <FormContent >
             {" "}
             <FormInput
+            label={"Alt Başlık"}
               id="subtitle"
               type="text"
               name="subtitle"
@@ -86,9 +88,10 @@ export default function AddBlog() {
             />
           </FormContent>
 
-          <FormContent header={"Dosya Ekle"}>
+          <FormContent >
             <FormInput
              id={"image"}
+             label={"Dosya Ekle"}
               type="file"
               name="image"
               onChange={(e) => formik.setFieldValue("image" ,e.currentTarget.files[0])}

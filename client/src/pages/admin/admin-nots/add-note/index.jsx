@@ -62,10 +62,11 @@ export default function AddNote() {
       method="POST"
       className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
     >
-      <FormContent header={"Kategori"}>
+      <FormContent>
         <FormSelect
           className={"bg-black"}
           id={"category"}
+          label={"Konu Belirle"}
           name="category"
           value={formik.values.category}
           onChange={formik.handleChange}
@@ -86,8 +87,9 @@ export default function AddNote() {
         </FormSelect>
       </FormContent>
 
-      <FormContent header={"Sınıf"}>
+      <FormContent >
         <FormSelect
+          label={"Sınıf Belirle"}
           id={"class"}
           type="text"
           name="class"
@@ -110,10 +112,11 @@ export default function AddNote() {
           ))}
         </FormSelect>
       </FormContent>
-      <FormContent header={"Açıklama"}>
+      <FormContent >
         {" "}
         <FormInput
           id={"description"}
+          label={"Not Açıklaması"}
           type="text"
           name="description"
           value={formik.values.description}
@@ -126,11 +129,12 @@ export default function AddNote() {
         />{" "}
       </FormContent>
 
-      <FormContent header={"Dosya Ekle"}>
+      <FormContent >
         <FormInput
           type="file"
           id="image"
           name="image"
+          label={"Dosya Ekle"}
           onChange={(e) =>
             formik.setFieldValue("image", e.currentTarget.files[0])
           }

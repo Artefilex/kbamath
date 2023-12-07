@@ -58,16 +58,17 @@ const checkUserUniqueness = async (username, email) => {
  })
   return (
     <div className="w-[95%] max-w-[500px] flex flex-col items-center justify-center gap-2 z-10  ">
-      <form  className="w-full rounded-xl  flex-col flex items-center  justify-center font-bold gap-3  backdrop-blur-2xl text-white bg-black/50 mt-16 pt-8 pb-7"
+      <form  className="w-full rounded-xl  flex-col flex items-center  justify-center font-bold gap-2  backdrop-blur-2xl text-white bg-black/50 mt-10 pt-1 pb-6"
         onSubmit={formik.handleSubmit}
         method="POST"
      >
         <h1 className="text-[2rem]">Kayıt Ol</h1>
-        <FormContent header={"Kullanıcı Adı"}>
+        <FormContent >
           <FormInput
             type="text"
             id="username"
             name="username"
+            label={"Kullanıcı Adı"}
             value={formik.values.username}
             onChange={formik.handleChange}
             formikError={formik.touched.username && Boolean(formik.errors.username)}
@@ -75,10 +76,11 @@ const checkUserUniqueness = async (username, email) => {
             handleBlur={formik.handleBlur}
           />
         </FormContent>
-        <FormContent header={"Email"}>
+        <FormContent>
           <FormInput
             type="text"
             id="email"
+            label={"Email"}
             name="email"
             value={formik.values.email}
             onChange={formik.handleChange}
@@ -87,12 +89,12 @@ const checkUserUniqueness = async (username, email) => {
             handleBlur={formik.handleBlur}
           />
         </FormContent>
-        <FormContent header={"Parola"}
+        <FormContent 
         >
           <FormInput
             type={ "password"}
             id="password"
-            header={"Parola"}
+            label={"Parola"}
             name="password"
             value={formik.values.password}
             onChange={formik.handleChange}
@@ -103,9 +105,10 @@ const checkUserUniqueness = async (username, email) => {
           
         </FormContent>
        
-        <FormContent header={"Parola Tekrar"}>
+        <FormContent >
           <FormInput
             type={"password"}
+            label={"Parola Tekrar"}
             name="passwordConfirm"
             id="passwordConfirm"
             value={formik.values.passwordConfirm}

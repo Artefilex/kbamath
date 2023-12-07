@@ -51,11 +51,12 @@ function CategoryAdd() {
           method="POST"
           className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
         >
-          <FormContent header={"Category"}>
+          <FormContent>
             <FormInput
               type="text"
               id="title"
               name="title" 
+              label={"Category"}
               value={formik.values.title}
               onChange={formik.handleChange}
               error={formik.touched.title && Boolean(formik.errors.title)}
@@ -65,11 +66,12 @@ function CategoryAdd() {
           </FormContent>
 
 
-          <FormContent header={"Başlık Resmi"}>
+          <FormContent>
             <FormInput
               type="file"
               id="image"
-              name="image"
+              name="image" 
+              label={"Başlık Resmi"}
               onChange={(e) => formik.setFieldValue("image" ,e.currentTarget.files[0])}
               formikError={formik.touched.image && Boolean(formik.errors.image)}
               helperText={formik.touched.image && formik.errors.image}

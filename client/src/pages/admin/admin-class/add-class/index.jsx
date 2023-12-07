@@ -40,11 +40,12 @@ function ClassAdd() {
       method="POST"
       className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
     >
-      <FormContent header={"Sınıf Belirle"}>
+      <FormContent >
         <FormInput
           type="text"
           id="title"
           name="title"
+          label={"Sınıf Belirle"}
           value={formik.values.title}
           onChange={formik.handleChange}
           error={formik.touched.title && Boolean(formik.errors.title)}
