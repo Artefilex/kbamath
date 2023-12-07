@@ -84,10 +84,11 @@ export const addItem = async( url, formData, title ) =>{
           },
         });
         await  localStorage.setItem("userLogin", JSON.stringify(response.data)) 
+      
         return response.data
       } catch (error) {
         console.error('Error during login:', error);
-        toast.error('An error occurred during login');
+        // toast.error('An error occurred during login');
       
       }
         

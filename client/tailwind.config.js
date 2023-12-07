@@ -18,6 +18,9 @@ export default {
       ],
       "text" : [
         '1px 1px 2px rgba(0, 0, 0, 1)'
+      ],
+      "text2" : [
+        '1px 1px 1px rgba(255,0,0,1)'
       ]
       },
       rotate:{

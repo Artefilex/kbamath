@@ -6,7 +6,9 @@ import {
 } from "../../../../components/form";
 import { addItem, getAllItems } from "../../../../servises/admin";
 import { useNavigate } from "react-router-dom";
-
+import {useFormik} from "formik"
+import { RegisterShema } from "../../validations/RegisterShema";
+import toast from "react-hot-toast";
 export default function Register() {
   const [isAdmin, setIsAdmin] = useState(true);
   useEffect(() => {
@@ -14,57 +16,105 @@ export default function Register() {
       const response = await getAllItems("users");
       if (response.length > 0) {
         setIsAdmin(false);
-      }
+       }
     };
     fetchdata();
   }, []);
-  const navigate = useNavigate();
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("username", userName);
-    formData.append("password", password);
-    formData.append("email", email);
-    formData.append("isAdmin", isAdmin);
-
-    const postRegister = async () => {
+const navigate = useNavigate();
+const checkUserUniqueness = async (username, email) => {
+  const existingUsers = await getAllItems("users");
+  const isUsernameUnique = !existingUsers.some((user) => user.username === username);
+  const isEmailUnique = !existingUsers.some((user) => user.email === email);
+  return { isUsernameUnique, isEmailUnique };
+};
+ const formik = useFormik({
+    initialValues:{
+      username:"",
+      email:"",
+      password: "",
+      passwordConfirm:"",
+    },
+    validationSchema: RegisterShema,
+    onSubmit: async (values) =>{
+      const formData = new FormData();
+      formData.append("username", values.username);
+      formData.append("password", values.password);
+      formData.append("email", values.email);
+      formData.append("isAdmin", isAdmin);
+     try{
+      const { isUsernameUnique, isEmailUnique } = await checkUserUniqueness(values.username, values.email);
+      if (!isUsernameUnique) {
+        return toast.error("Kullanıcı adı kullanılıyor");
+      }
+      if (!isEmailUnique) {
+        return toast.error("E-posta adresi kullanılıyor");
+      }
       await addItem("users", formData, `Kayıt Başarılı`);
-    };
-    await postRegister();
-    navigate("/login");
-  };
-
+      navigate("/login");
+     }catch(error){
+        toast.error(error)
+     }
+    }
+ })
   return (
     <div className="w-[95%] max-w-[500px] flex flex-col items-center justify-center gap-2 z-10  ">
-      <form
-        onSubmit={handleSubmit}
+      <form  className="w-full rounded-xl  flex-col flex items-center  justify-center font-bold gap-3  backdrop-blur-2xl text-white bg-black/50 mt-16 pt-8 pb-7"
+        onSubmit={formik.handleSubmit}
         method="POST"
-        className="w-full rounded-xl  flex-col flex items-center  justify-center font-bold gap-3  backdrop-blur-2xl text-white bg-black/50 mt-16 pt-8 pb-7"
-      >
+     >
         <h1 className="text-[2rem]">Kayıt Ol</h1>
         <FormContent header={"Kullanıcı Adı"}>
           <FormInput
             type="text"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+            id="username"
+            name="username"
+            value={formik.values.username}
+            onChange={formik.handleChange}
+            formikError={formik.touched.username && Boolean(formik.errors.username)}
+            helperText={formik.touched.username && formik.errors.username}
+            handleBlur={formik.handleBlur}
           />
         </FormContent>
         <FormContent header={"Email"}>
           <FormInput
             type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            id="email"
+            name="email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            formikError={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
+            handleBlur={formik.handleBlur}
           />
         </FormContent>
-        <FormContent header={"Parola"}>
+        <FormContent header={"Parola"}
+        >
           <FormInput
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            type={ "password"}
+            id="password"
+            header={"Parola"}
+            name="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            formikError={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
+            handleBlur={formik.handleBlur}
           />
+          
+        </FormContent>
+       
+        <FormContent header={"Parola Tekrar"}>
+          <FormInput
+            type={"password"}
+            name="passwordConfirm"
+            id="passwordConfirm"
+            value={formik.values.passwordConfirm}
+            onChange={formik.handleChange}
+            formikError={formik.touched.passwordConfirm && Boolean(formik.errors.passwordConfirm)}
+            helperText={formik.touched.passwordConfirm && formik.errors.passwordConfirm}
+            handleBlur={formik.handleBlur}
+          />
+           
         </FormContent>
 
         <FormButton> Kayıt Ol </FormButton>

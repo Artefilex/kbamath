@@ -9,6 +9,8 @@ import { addItem } from "../../../../servises/admin";
 import { useFormik } from "formik";
 import { blogShema } from "../../validations/blogShema";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import { checkCBlogUniqueness } from "../../validations/isUniqHeader";
 export default function AddBlog() {
   const navigate = useNavigate();
   const [content, setContent] = useState("")
@@ -26,14 +28,20 @@ export default function AddBlog() {
       formData.append("header", values.header);
       formData.append("content", content);
       formData.append("subtitle", values.subtitle);
-      await addItem("blogs", formData,"Blog") 
+      try{
+        const isUnique = await checkCBlogUniqueness(values.header);    
+        if (!isUnique) {
+          return toast.error("Başlık kullanılıyor"); 
+        } 
+        await addItem("blogs", formData,"Blog")
+        navigate("/admin/blogs");
+      } catch (error) {
+        console.error("Hata oluştu:", error);
+      }
     };
     await addBlog();
-    navigate("/admin/blogs");
   }
   })
-
- 
   return (
         <form
           encType="multipart/form-data"

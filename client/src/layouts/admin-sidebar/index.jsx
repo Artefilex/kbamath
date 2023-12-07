@@ -15,10 +15,9 @@ export default function AdminSidebar () {
      try{
       await  setLogout()
       navigate("/");
-      toast.success("Görüşmek üzere ")
      }
      catch(err){
-   toast.error("Çıkış Başarısız")
+     toast.error("Çıkış Başarısız")
      }
       };
     return(

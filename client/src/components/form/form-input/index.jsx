@@ -2,6 +2,11 @@ import classNames from "classnames";
 import { useAppearance } from "../../../store/appearance/hooks";
 import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
+import { IoEyeSharp } from "react-icons/io5";
+import { useState } from "react";
+import { FaEyeSlash } from "react-icons/fa";
+
+import { CgDanger } from "react-icons/cg";
 function FormInput({
   id,
   type,
@@ -13,12 +18,13 @@ function FormInput({
 }) {
   const { theme } = useAppearance();
   const location = useLocation();
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
-    <>
-       
+    <div className="flex w-[95%] flex-col items-center justify-center relative">
       <input
         id={id}
-        type={type}
+        type={type === "password" ? (showPassword ? "text" : "password") : type}
         onChange={onChange}
         value={value}
         onBlur={handleBlur}
@@ -26,15 +32,28 @@ function FormInput({
           "w-[95%] bg-transparent outline-none  border rounded-sm px-4 py-2 ",
           {
             "border-black": theme.name === "light",
-            "rounded-xl border border-slate-200  text-white ":
-              location.pathname === "/register" ||
-              location.pathname === "/login",
+            "rounded-xl border border-slate-200  text-white ": location.pathname === "/register" || location.pathname === "/login",
+            "border-red-900 border-2 text-white  rounded-xl ": formikError,
           }
         )}
       />
-        {formikError && <div className="text-red-500">{formikError}</div>}
-      {helperText && <div className="text-red-800">{helperText}</div>}
-    </>
+      {type === "password" && (
+        <button
+          type="button"
+          onClick={() => setShowPassword((prev) => !prev)}
+          className="text-gray-400 hover:text-white focus:outline-none absolute right-9  top-3"
+        >
+          {showPassword ? <IoEyeSharp /> : <FaEyeSlash />}
+        </button>
+      )}
+      {helperText && (
+        <div className="text-red-700	 px-2 py-2 w-full text-end flex items-end justify-end right-0 group relative">
+          <CgDanger className="w-[2rem] h-[1.3rem] opacity-100  group-hover:opacity-0  group-hover: cursor-pointer transition-all absolute bottom-16 right-0 drop-shadow-text" />{" "}
+          <div className="w-0 opacity-0 group-hover:w-full  group-hover:opacity-100 transition-all  absolute bottom-16 left-0 drop-shadow-text font-bold ">{helperText}</div>{" "}
+        </div>
+      )}
+        
+    </div>
   );
 }
 FormInput.propTypes = {

@@ -4,11 +4,14 @@ import {
   FormInput,
   FormButton,
 } from "../../../../components/form";
-import { addClass } from "../../../../servises/admin";
+import { addClass} from "../../../../servises/admin";
 import { useFormik } from "formik";
 import { ClassShema } from "../../validations/CategoryAndClassShema";
+import toast from "react-hot-toast";
+import { checkClassUniqueness } from "../../validations/isUniqHeader";
 
 function ClassAdd() {
+ 
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -17,11 +20,17 @@ function ClassAdd() {
     },
     validationSchema: ClassShema,
     onSubmit: async (values) => {
-      const addBlog = async () => {
-        await addClass(values.title, "Sınıf");
-      };
-      await addBlog();
-      navigate("/admin/class");
+      try {
+        const isUnique = await checkClassUniqueness(values.title , "class");    
+        if (!isUnique) {
+          return toast.error("Başlık kullanılıyor"); 
+        } 
+        await addClass(values.title, "Sınıf"); 
+        navigate("/admin/class");
+      } catch (error) {
+ 
+        console.error("Hata oluştu:", error);
+      }
     },
   });
 

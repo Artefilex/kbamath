@@ -6,10 +6,7 @@ const {list} = require("../middleware/list")
 exports.class_list = async (req, res) => {
     await list(otherClass,res)
    };
-  
-  
   exports.class_create = async (req, res) => {
-  
     try {
       await otherClass.create({
         title: req.body.title,
@@ -19,12 +16,9 @@ exports.class_list = async (req, res) => {
     } catch (err) {
       console.log(err);
     }
-    
   };  
   exports.class_delete = async (req, res) => {
     try {
-    
-  
       const hclass = await otherClass.findOne({
         where: {
           paramsUrl: req.params.id,

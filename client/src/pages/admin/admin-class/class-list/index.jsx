@@ -20,7 +20,6 @@ function ClassList() {
   }, []);
   
   const classesDeleteHandler = async (deleteUrl) => {
-  console.log(deleteUrl)
     const url = `class/${deleteUrl}`;
     const successMessage = `${deleteUrl} Category başarılı bir şekilde silindi `;
     const errorMessage = "Category Silinemedi";

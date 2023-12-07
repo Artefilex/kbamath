@@ -1,13 +1,11 @@
 
 import { useNavigate } from "react-router-dom";
-import {
-  FormContent,
-  FormInput,
-  FormButton,
-} from "../../../../components/form";
+import {FormContent, FormInput, FormButton,} from "../../../../components/form";
 import { addItem } from "../../../../servises/admin";
 import {useFormik} from "formik"
 import { QuizShema } from "../../validations/quizShema";
+import { checkClassUniqueness } from "../../validations/isUniqHeader";
+import toast from "react-hot-toast";
 export default function AddQuizs() {
   const navigate = useNavigate();
   const formik = useFormik({
@@ -19,17 +17,26 @@ export default function AddQuizs() {
     },
     validationSchema: QuizShema,
     onSubmit: async (values) =>{
-      const formData = new FormData();
-      formData.append("image", values.image);
-      formData.append("title",  values.title);
-      formData.append("iframeUrl",  values.iframeUrl);
-      formData.append("iframeHeight",  values.iframeHeight);
+     
       const addQuizs = async () => {
-        await addItem("quizs" ,formData , "Quizs")
-  
+        const formData = new FormData();
+        formData.append("image", values.image);
+        formData.append("title",  values.title);
+        formData.append("iframeUrl",  values.iframeUrl);
+        formData.append("iframeHeight",  values.iframeHeight);
+        try{
+          const isUnique = await checkClassUniqueness(values.title, "quizs");    
+          if (!isUnique) {
+            return toast.error("Başlık kullanılıyor"); 
+          } 
+          await addItem("quizs" ,formData , "Quizs")
+          navigate("/admin/quizs");
+        } catch (error) {
+          console.error("Hata oluştu:", error);
+        }
       };
       await addQuizs();
-      navigate("/admin/quizs");
+    
     }
 
   })
