@@ -58,7 +58,7 @@ export default function AdminSidebar() {
       {isMobile && (
         <>
           <button
-            className={`flex flex-col h-[30px] items-center justify-center rounded-br-lg w-[30px]  top-0  bg-slate-800 text-white ${showSidebar ? "hidden" : "sticky"}`}
+            className={`flex flex-col h-[30px] items-center justify-center rounded-br-lg w-[30px]  top-0 z-10 bg-slate-800 text-white ${showSidebar ? "hidden" : "sticky"}`}
             onClick={() => setShowSidebar(!showSidebar)}
           >
             <GiHamburgerMenu className="h-[2rem]" />

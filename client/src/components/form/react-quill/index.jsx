@@ -17,7 +17,7 @@ function QuillTextArea({onChange,value}) {
       };
 
   return   (  
-    <div className="flex w-[95%] flex-col items-center justify-center relative ">
+    <div className="flex w-[95%] flex-col items-center justify-center relative mb-10 mobile:mb-4">
     <ReactQuill
     theme="snow"
     onChange={onChange}  

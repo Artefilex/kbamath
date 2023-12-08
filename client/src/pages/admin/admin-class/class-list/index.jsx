@@ -37,13 +37,16 @@ function ClassList() {
 
   return (
     <div className="w-full gap-2  flex flex-col ">
-      <SortedList/>
+   
+      {
+        classes.length > 1  && <SortedList/>
+      }
       {sortedClasses.map((classMap) => (
         <div
           key={classMap.id}
-          className="w-full flex items-center justify-between flex-col border rounded-lg px-2 py-4 mobile:flex-row bg-[color:var(--bg-secondary)] gap-4 mobile:gap-0 "
+          className="w-full flex items-center justify-between  border rounded-lg px-2 py-4 flex-row bg-[color:var(--bg-secondary)] gap-4 mobile:gap-0 "
         >
-          <div>{classMap.title}</div>
+          <div className="truncate  hover:whitespace-normal hover:overflow-visible w-full max-w-[250px]">{classMap.title}</div>
           <div className="flex items-center justify-around gap-4 w-[200px]">
             {nots.some((not) => not.class === classMap.title) ? (
               <button

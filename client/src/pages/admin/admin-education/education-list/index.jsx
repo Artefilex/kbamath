@@ -30,7 +30,9 @@ function EducationList() {
 
   return (
     <div className="w-full gap-2  flex flex-col ">
-    <SortedList/>
+       {
+        educations.length > 1  && <SortedList/>
+      }
       {sortedEducations.map((education) => (
           <AdminListBox
           key={education.id}

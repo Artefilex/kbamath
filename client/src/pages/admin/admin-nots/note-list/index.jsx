@@ -32,7 +32,9 @@ function NoteList() {
 
 
   return  <div className="w-full gap-2  flex flex-col ">
-   <SortedList/>
+       {
+        nots.length > 1  && <SortedList/>
+      }
   {sortedNots.map((note) => (
         <AdminListBox
         key={note.id}

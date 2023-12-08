@@ -28,7 +28,10 @@ function  QuizsList() {
   const sortedQuizs = sortOrder === "inc" ? quizs : [...quizs].reverse();
   return (
     <div className="w-full gap-2  flex flex-col ">
-      <SortedList/>
+        {
+        quizs.length > 1  && <SortedList/>
+      }
+     
       {sortedQuizs.map((quiz) => (
         <AdminListBox
           key={quiz.id}

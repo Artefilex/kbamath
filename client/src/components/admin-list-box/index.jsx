@@ -6,9 +6,9 @@ function AdminListBox({header , handleDelete ,editUrl  }) {
   const { theme } = useAppearance();
   return  (
     <div
-    className="w-full flex items-center justify-between flex-col border rounded-lg px-2 py-4 mobile:flex-row bg-[color:var(--bg-secondary)] gap-4 mobile:gap-0 "
+    className="w-full flex items-center justify-between  border rounded-lg px-2 py-4 flex-row bg-[color:var(--bg-secondary)] gap-4 mobile:gap-0 "
   >
-    <div>{header}</div>
+    <div className="truncate  hover:whitespace-normal hover:overflow-visible w-full max-w-[250px]">{header}</div>
     <div className="flex items-center justify-around gap-4 w-[200px]">
       <Link
         to={`/admin/${editUrl}`}

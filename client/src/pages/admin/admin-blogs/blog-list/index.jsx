@@ -31,8 +31,10 @@ export default function BlogList() {
 
   return (
     <div className="w-full gap-2  flex flex-col ">
-      <SortedList/>
-      {sortedBlogs.map((blog) => (
+      {
+        blogs.length > 1  && <SortedList/>
+      }
+      {sortedBlogs.map((blog ) => (
         <AdminListBox
           key={blog.id}
           header={blog.header}
