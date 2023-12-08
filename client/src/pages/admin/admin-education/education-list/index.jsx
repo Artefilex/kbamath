@@ -3,6 +3,7 @@ import { handleDelete ,getAllItems } from "../../../../servises/admin";
 import { useSelector } from "react-redux";
 import SortedList from "../../../../helpers/sorted-list";
 import AdminListBox from "../../../../components/admin-list-box";
+import AdminListHeader from "../../../../components/admin-list-header";
 function EducationList() {
   const [educations, setEducations] = useState([]);
   const {sortOrder} = useSelector((state) => state.adminOperations)
@@ -33,6 +34,10 @@ function EducationList() {
        {
         educations.length > 1  && <SortedList/>
       }
+      {
+        educations.length > 0  &&  <AdminListHeader header={"Özel Ders"}/>
+      }
+      
       {sortedEducations.map((education) => (
           <AdminListBox
           key={education.id}

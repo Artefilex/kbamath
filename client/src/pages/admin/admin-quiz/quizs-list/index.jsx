@@ -3,6 +3,7 @@ import { handleDelete ,getAllItems } from "../../../../servises/admin";
 import { useSelector } from "react-redux";
 import SortedList from "../../../../helpers/sorted-list";
 import AdminListBox from "../../../../components/admin-list-box";
+import AdminListHeader from "../../../../components/admin-list-header";
 
 function  QuizsList() {
   const [quizs, setQuizs] = useState([]);
@@ -30,6 +31,9 @@ function  QuizsList() {
     <div className="w-full gap-2  flex flex-col ">
         {
         quizs.length > 1  && <SortedList/>
+      }
+      {
+        quizs.length > 0  &&   <AdminListHeader header={"Sınav"}/>
       }
      
       {sortedQuizs.map((quiz) => (

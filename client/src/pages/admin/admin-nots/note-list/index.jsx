@@ -3,6 +3,7 @@ import { handleDelete ,getAllItems } from "../../../../servises/admin";
 import SortedList from "../../../../helpers/sorted-list";
 import { useSelector } from "react-redux";
 import AdminListBox from "../../../../components/admin-list-box"
+import AdminListHeader from "../../../../components/admin-list-header";
 function NoteList() {
   const [nots , setNots] = useState([]);
 
@@ -35,6 +36,10 @@ function NoteList() {
        {
         nots.length > 1  && <SortedList/>
       }
+       {
+        nots.length > 0  && <AdminListHeader header={"Not"}/>
+      }
+        
   {sortedNots.map((note) => (
         <AdminListBox
         key={note.id}

@@ -3,6 +3,7 @@ import { handleDelete ,getAllItems } from "../../../../servises/admin";
 import SortedList from "../../../../helpers/sorted-list";
 import { useSelector } from "react-redux";
 import AdminListBox from "../../../../components/admin-list-box";
+import AdminListHeader from "../../../../components/admin-list-header";
 export default function BlogList() {
   const [blogs, setBlogs] = useState([]);
   const {sortOrder} = useSelector((state) => state.adminOperations)
@@ -34,6 +35,10 @@ export default function BlogList() {
       {
         blogs.length > 1  && <SortedList/>
       }
+          {
+        blogs.length > 1  &&   <AdminListHeader header={"Blog"}/>
+      }
+   
       {sortedBlogs.map((blog ) => (
         <AdminListBox
           key={blog.id}

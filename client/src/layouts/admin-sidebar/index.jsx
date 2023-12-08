@@ -58,10 +58,10 @@ export default function AdminSidebar() {
       {isMobile && (
         <>
           <button
-            className={`flex flex-col h-[30px] items-center justify-center rounded-br-lg w-[30px]  top-0 z-10 bg-slate-800 text-white ${showSidebar ? "hidden" : "sticky"}`}
+            className={`flex flex-col h-[30px] items-center gap-2 hover:h-[40px] hover:w-[40px] duration-200 transition-all justify-center rounded-br-lg w-[30px]  top-0 z-10 bg-slate-800 text-white ${showSidebar ? "hidden" : "sticky"}`}
             onClick={() => setShowSidebar(!showSidebar)}
           >
-            <GiHamburgerMenu className="h-[2rem]" />
+            <GiHamburgerMenu className="h-[2rem]"/> 
           </button>
     
           {showSidebar && (
@@ -77,7 +77,7 @@ export default function AdminSidebar() {
             >
               <div className="flex-1  flex  flex-col items-start justify-end   gap-6  w-full  whitespace-nowrap mt-4">
               <button
-                  className="flex flex-col h-[30px] items-center justify-center rounded-bl-lg w-[30px] absolute bg-slate-800 text-white right-0 top-0"
+                  className="flex flex-col h-[30px] items-center justify-center z-[6] rounded-bl-lg w-[30px] absolute bg-slate-800 text-white right-0 top-0"
                   onClick={() => setShowSidebar(!showSidebar)}
                 >
                   <IoClose className="h-[2rem]" />

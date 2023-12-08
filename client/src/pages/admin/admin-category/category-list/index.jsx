@@ -5,6 +5,7 @@ import { BsCheckLg } from "react-icons/bs";
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 import { useSelector } from "react-redux";
 import SortedList from "../../../../helpers/sorted-list";
+import AdminListHeader from "../../../../components/admin-list-header";
 
 function CategoryList() {
   const {sortOrder} = useSelector((state) => state.adminOperations)
@@ -42,7 +43,10 @@ function CategoryList() {
        {
         categorys.length > 1  && <SortedList/>
       }
-
+       {
+        categorys.length > 0  &&   <AdminListHeader header={"Kategori"}/>
+      }
+  
       {sortedCategorys.map((category) => (
         <div
           key={category.id}

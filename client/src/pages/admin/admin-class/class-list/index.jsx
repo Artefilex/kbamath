@@ -5,6 +5,7 @@ import { BsCheckLg } from "react-icons/bs";
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 import { useSelector } from "react-redux";
 import SortedList from "../../../../helpers/sorted-list";
+import AdminListHeader from "../../../../components/admin-list-header";
 function ClassList() {
   const [classes, setClasses] = useState([]);
   const [nots, setNots] = useState([]);
@@ -41,6 +42,10 @@ function ClassList() {
       {
         classes.length > 1  && <SortedList/>
       }
+       {
+        classes.length > 0  &&  <AdminListHeader header={"Sınıf"}/>
+      }
+               
       {sortedClasses.map((classMap) => (
         <div
           key={classMap.id}
