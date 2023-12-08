@@ -83,7 +83,10 @@ export const addItem = async( url, formData, title ) =>{
             'Content-Type': 'application/json',
           },
         });
-        await  localStorage.setItem("userLogin", JSON.stringify(response.data)) 
+        if(response.data.isAdmin){
+          await localStorage.setItem("userLogin", JSON.stringify(response.data)) 
+        }
+      
       
         return response.data
       } catch (error) {

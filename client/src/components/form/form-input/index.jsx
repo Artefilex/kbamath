@@ -13,7 +13,7 @@ function FormInput({
   type,
   onChange,
   value,
-  formikError,
+  // formikError,
   helperText,
   handleBlur,
 }) {
@@ -25,7 +25,9 @@ function FormInput({
     <div className="flex w-[95%] flex-col items-center justify-center relative ">
     
     <div className="flex items-center w-[95%] justify-between mb-2 ">
-    <h1 className="w-full whitespace-nowrap">{label}</h1>
+    <h1 className={classNames("w-full whitespace-nowrap font-bold",{
+      "text-red-700" : helperText
+    })}>{label}</h1>
        {helperText && (
         <div className="text-red-700	 px-2 py-2 w-full text-end flex items-end justify-end  group relative">
          {/* <div>
@@ -34,7 +36,9 @@ function FormInput({
          </div> */}
 
           <button onMouseEnter={() => setShowTooltip(true) } onMouseLeave={() => setShowTooltip(false) }>
-           <CgDanger className="w-[2rem] h-[1.3rem] opacity-100  transition-all absolute bottom-0 right-0 drop-shadow-text duration-500 " />
+           <CgDanger className={classNames("w-[2rem] h-[1.3rem] opacity-100  transition-all absolute bottom-0 right-0  duration-500 " ,{
+            "drop-shadow-text": theme.name === "dark"
+           })}/>
          
          </button>
     
@@ -52,11 +56,12 @@ function FormInput({
         value={value}
         onBlur={handleBlur}
         className={classNames(
-          "w-[95%] bg-transparent outline-none  border rounded-sm px-4 py-2  mb-5",
+          `w-[95%] bg-transparent outline-none  border rounded-sm px-4 py-2  mb-5 ${helperText ? "border-red-700 border-2" : null}`,
           {
             "border-black": theme.name === "light",
-            "rounded-xl border border-slate-200  text-white ": location.pathname === "/register" || location.pathname === "/login",
-            "border-red-900 border-2 text-white  rounded-xl ": formikError,
+          
+            [` rounded-xl border  text-white ${helperText ? "border-red-700 border-2" : "border-slate-200 "}` ]  : location.pathname === "/register" || location.pathname === "/login" ,
+           
           }
         )}
       />
@@ -70,7 +75,9 @@ function FormInput({
         </button>
       )}
        {
-          showTooltip &&  <div className="text-red-700 w-[95%]	px-4  xtablet:px-8 bg-blend-color transition-all  py-2  absolute left-0 -bottom-4 drop-shadow-text font-bold duration-500 z-2  whitespace-nowrap">{helperText}</div>
+          showTooltip &&  <div className={classNames("text-red-700 w-[95%]	px-4  xtablet:px-8 bg-blend-color transition-all  py-2  absolute left-0 -bottom-4  font-bold duration-500 z-2  whitespace-nowrap",{
+            "drop-shadow-text": theme.name === "dark"
+          })}>{helperText}</div>
         }
         
     </div>
