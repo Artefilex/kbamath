@@ -5,6 +5,7 @@ import { BsCheckLg } from "react-icons/bs";
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 import { useSelector } from "react-redux";
 import SortedList from "../../../../helpers/sorted-list";
+import AdminListHeader from "../../../../components/admin-list-header";
 
 function CategoryList() {
   const {sortOrder} = useSelector((state) => state.adminOperations)
@@ -39,13 +40,19 @@ function CategoryList() {
 
   return (
     <div className="w-full gap-2  flex flex-col ">
-     <SortedList/>
+       {
+        categorys.length > 1  && <SortedList/>
+      }
+       {
+        categorys.length > 0  &&   <AdminListHeader header={"Kategori"}/>
+      }
+  
       {sortedCategorys.map((category) => (
         <div
           key={category.id}
-          className="w-full flex items-center justify-between flex-col border rounded-lg px-2 py-4 mobile:flex-row bg-[color:var(--bg-secondary)] gap-4 mobile:gap-0 "
+          className="w-full flex items-center justify-between  border rounded-lg px-2 py-4 flex-row bg-[color:var(--bg-secondary)] gap-4 mobile:gap-0  "
         >
-          <div>{category.title}</div>
+          <div  className="truncate  hover:whitespace-normal hover:overflow-visible w-full max-w-[250px]">{category.title}</div>
           <div className="flex items-center justify-around gap-4 w-[200px]">
             {nots.some((not) => not.category === category.paramsUrl) ? (
               <button

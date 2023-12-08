@@ -4,21 +4,19 @@ import LeftBar from "../left-navbar";
 import { useEffect, useState } from "react";
 import { getAllCategory, getNotsByClass } from "../../../servises";
 export default function ClassDetail() {
-  // Sınıfa Göre verileri filtreleyip mapleyecegiz
   const { classid } = useParams();
   const [notsByClass, setNotsByClass] = useState([]);
-const [categorys , setCategorys ] = useState([])
+  const [categorys, setCategorys] = useState([]);
   useEffect(() => {
     const fetchCategory = async () => {
       const notsByClasses = await getNotsByClass(classid);
-      const categoryData = await getAllCategory()
-      setCategorys(categoryData)
+      const categoryData = await getAllCategory();
+      setCategorys(categoryData);
       setNotsByClass(notsByClasses);
     };
     fetchCategory();
   }, [classid]);
-console.log(categorys)
-  const filterData =categorys.filter((category) => {
+  const filterData = categorys.filter((category) => {
     return notsByClass.some((not) => not.category === category.paramsUrl);
   });
 
@@ -26,16 +24,26 @@ console.log(categorys)
     <NotsMain>
       <div className="flex flex-col  w-full  gap-6 mobile:flex-row">
         <LeftBar />
-        {filterData.map((filteredCategory) => (
-          <Link key={filteredCategory.id} to={`/notlar/${classid}/${filteredCategory.paramsUrl}`}>
-            <img
-              src={`${import.meta.env.VITE_BASE_URL}/${filteredCategory.image}`}
-              alt={filteredCategory.title}
-              className="w-[200px] xtablet:w-[200px] h-full max-h-[400px] object-cover"
-            />
-            <div>{filteredCategory.title}</div>
-          </Link>
-        ))}
+        <div className=" py-2 grid  grid-rows-1 grid-cols-1  mobile:grid-rows-2 mobile:grid-cols-2 w-full gap-3 deskop:grid-rows-3 deskop:grid-cols-3">
+          {filterData.map((filteredCategory) => (
+            <Link
+              key={filteredCategory.id}
+              to={`/notlar/${classid}/${filteredCategory.paramsUrl}`}
+              className="overflow-hidden group rounded-md items-center relative hover:-translate-y-1 gap-4 flex  flex-col justify-between  bg-[color:var(--bg-primary)] transition  h-[30rem] duration-700 "
+            >
+              <img
+                src={`${import.meta.env.VITE_BASE_URL}/${
+                  filteredCategory.image
+                }`}
+                alt={filteredCategory.title}
+                className="group-hover:scale-105 rounded-md relative z-[1]  w-[20rem] h-[30rem] object-cover duration-700 "
+              />
+              <div className="rounded-md absolute z-[2] text-[2rem]  group-hover:blog-second-bg bottom-0  w-[20rem] max-w-[20rem] blog-bg h-[10rem] p-4 flex text-[color:var(--blog-text)] justify-center flex-col group-hover:scale-105 duration-700">
+                {filteredCategory.title}
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </NotsMain>
   );

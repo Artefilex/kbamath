@@ -46,7 +46,7 @@ const location = useLocation();
   return (
     <div className="w-full flex flex-col mobile:flex-row items-start  min-h-screen absolute">
       <AdminSidebar/>
-      <div className=" flex items-start  w-full laptop:max-w-[80%]  gap-2  absolute top-3 ">
+      <div className=" flex items-start  w-full laptop:max-w-[80%]  gap-2  absolute top-8  mobile:relative mobile:top-0">
         <Toaster position="top-right" />
        <AdminLocation/>
       </div>
