@@ -29,7 +29,7 @@ export default function ClassDetail() {
             <Link
               key={filteredCategory.id}
               to={`/notlar/${classid}/${filteredCategory.paramsUrl}`}
-              className="overflow-hidden group rounded-md  relative hover:-translate-y-1 gap-4 flex  flex-col justify-between  bg-[color:var(--bg-primary)] transition  h-[30rem] duration-700 "
+              className="overflow-hidden group rounded-md items-center relative hover:-translate-y-1 gap-4 flex  flex-col justify-between  bg-[color:var(--bg-primary)] transition  h-[30rem] duration-700 "
             >
               <img
                 src={`${import.meta.env.VITE_BASE_URL}/${

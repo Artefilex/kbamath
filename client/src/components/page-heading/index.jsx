@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 export default function PageHeader({ image , text }) {
   return (
-    <header className="relative mt-5 w-full flex gap-4  justify-center min-h-[12rem]  overflow-hidden group rounded-md mb-12">
+    <header className="relative mt-5 w-full flex gap-4  min-h-[8rem]  justify-center mobile:min-h-[12rem]  overflow-hidden group rounded-md mb-12">
       <img
         src={image}
         alt="ssss"

@@ -26,13 +26,14 @@ export default  function LessonsDetails() {
             className="flex items-center  flex-col w-[90%] py-2 px-2"
           >
             <header className="flex flex-col justify-between gap-5 w-full xtablet:flex-row pb-10">
-              <img src={`${import.meta.env.VITE_BASE_URL}/${detail.image}`} alt= {detail.title} className="w-full xtablet:w-[50%] h-full max-h-[400px] object-cover" />
-              <div className="flex items-start flex-col w-full xtablet:gap-16">
+              <img src={`${import.meta.env.VITE_BASE_URL}/${detail.image}`} alt= {detail.title} className="w-full min-w-[400px] xtablet:w-[50%] min-h-[250px] max-h-[250px]  object-cover" />
+              <div className="flex items-start flex-col w-full xtablet:gap-8">
                 <h1 className="uppercase text-[2rem] font-bold ">
                   {detail.title}
                 </h1>
-                <div className="uppercase text-[2rem] font-semibold  ">
-                     {detail.price}
+                <div className="capitalize font-semibold  ">
+                    <div className="text-[2rem] "> Fiyat Bilgisi </div>
+                    <div className="uppercase text-[1.7rem] font-semibold  ">  {detail.price} TL</div>
                 </div>
               </div>
             </header>
