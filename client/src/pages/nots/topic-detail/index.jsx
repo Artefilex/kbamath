@@ -80,7 +80,7 @@ export default function TopicDetail() {
               </div>
             )}
 
-            <div>{not.description}</div>
+            <div className="w-full text-center capitalize font-bold text-[1.5rem]">{not.description}</div>
           </div>
         ))}
       </div>

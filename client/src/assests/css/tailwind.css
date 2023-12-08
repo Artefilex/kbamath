@@ -30,9 +30,6 @@ table thead {
   border: none !important;
 }
 
-/* :root{
-    --blog-bg:  linear-gradient(180deg, rgba(125, 236, 255, 0.34) 0%, rgba(14, 128, 143, 0.55) 51%, rgba(1, 13, 55, 1) 100%);
-} */
 
 body {
     @apply  bg-[color:var(--bg-primary)] text-[color:var(--c-base)]   
