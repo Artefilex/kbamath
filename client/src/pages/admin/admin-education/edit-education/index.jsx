@@ -58,11 +58,12 @@ function EditEducation() {
       className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
     >
       <input type="hidden" name="oldImage" value={formik.values.oldImage} />
-      <FormContent header={"Başlığı Güncelle"}>
+      <FormContent>
         <FormInput
           id="title"
           type="text"
-          name="title"
+          name="title" 
+          label={"Özel Ders Başlığını Güncelle"}
           value={formik.values.title}
           onChange={formik.handleChange}
           formikError={formik.touched.title && Boolean(formik.errors.title)}
@@ -71,11 +72,12 @@ function EditEducation() {
         />
       </FormContent>
 
-      <FormContent header={"Fiyat Bilgisini  Güncelle"}>
+      <FormContent >
         <FormInput
           id="price"
           type="text"
           name="price"
+          label={"Fiyat Bilgisini Güncelle"}
           value={formik.values.price}
           onChange={formik.handleChange}
           formikError={formik.touched.price && Boolean(formik.errors.price)}
@@ -92,11 +94,12 @@ function EditEducation() {
         />
       </FormContent>
 
-      <FormContent header={"Fotoğraf Ekle "}>
+      <FormContent >
         <FormInput
           type="file"
           id="image"
           name="image"
+          label={"Fotoğrafı Değiştir"}
           onChange={(e) =>
             formik.setFieldValue("image", e.currentTarget.files[0])
           }

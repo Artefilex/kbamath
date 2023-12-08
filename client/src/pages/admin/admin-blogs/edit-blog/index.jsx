@@ -57,9 +57,10 @@ export default function EditBlog() {
       className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
     >
       <input type="hidden" name="oldImage" value={formik.values.oldImage} />
-      <FormContent header={"Başlığı Güncelle"}>
+      <FormContent >
         {" "}
         <FormInput
+         label={"Blog Başlığını Güncelle"}
           id={"header"}
           type="text"
           name="header"
@@ -71,12 +72,13 @@ export default function EditBlog() {
         />{" "}
       </FormContent>
 
-      <FormContent header={"Alt Başlığı Güncelle"}>
+      <FormContent >
         {" "}
         <FormInput
           id="subtitle"
           type="text"
-          name="subtitle"
+          name="subtitle" 
+          label={"Alt Başlığı Güncelle"}
           value={formik.values.subtitle}
           onChange={formik.handleChange}
           formikError={
@@ -95,11 +97,12 @@ export default function EditBlog() {
         />
       </FormContent>
 
-      <FormContent header={"Dosyayı Güncelle"}>
+      <FormContent>
         <FormInput
           id="image"
           type="file"
           name="image"
+          label={"Dosyayı Güncelle"}
           onChange={(e) =>
             formik.setFieldValue("image", e?.currentTarget?.files[0])
           }

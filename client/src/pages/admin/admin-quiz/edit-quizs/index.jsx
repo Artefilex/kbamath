@@ -59,9 +59,10 @@ export default function EditQuizs() {
           className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
         >
        <input type="hidden" name="oldImage" value={formik.values.oldImage} />
-       <FormContent header={"Sınav Başlığını  Güncelle"}>
+       <FormContent >
        <FormInput
               id="title"
+              label={"Sınav Başlığını  Güncelle"}
               type="text"
               name="title"
               value={formik.values.title}
@@ -72,9 +73,10 @@ export default function EditQuizs() {
             />
           </FormContent>
 
-          <FormContent header={"Sınav Linkini Güncelle"}>
+          <FormContent >
           <FormInput
               id="iframeUrl"
+              label={"Sınav Linkini Güncelle"}
               type="text"
               name="iframeUrl"
               value={formik.values.iframeUrl}
@@ -85,9 +87,10 @@ export default function EditQuizs() {
             />
           </FormContent>
 
-          <FormContent header={"Form Yüksekliğini Güncelle"}>
+          <FormContent>
           <FormInput
             id="iframeHeight"
+            label={"Form Yüksekliğini Güncelle"}
               type="text"
               name="iframeHeight"
               value={formik.values.iframeHeight}
@@ -98,9 +101,10 @@ export default function EditQuizs() {
             />
           </FormContent>
 
-          <FormContent header={"Başlık Fotoğrafını Güncelle"}>
+          <FormContent >
           <FormInput
               id="image"
+              label={"Başlık Fotoğrafını Güncelle"}
               type="file"
               name="image"
               onChange={(e) =>
@@ -112,7 +116,7 @@ export default function EditQuizs() {
             />
           </FormContent>
 
-          <FormButton> Güncelle </FormButton>
+          <FormButton> Sınavı Güncelle </FormButton>
         </form>
   );
 }

@@ -60,11 +60,12 @@ export default function AddEducation() {
           method="POST"
           className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
         >
-          <FormContent header={"Başlık"}>
+          <FormContent >
           <FormInput
           id="title"
           type="text"
           name="title"
+          label={"Özel Ders Başlığı"}
           value={formik.values.title}
           onChange={formik.handleChange}
           formikError={formik.touched.title && Boolean(formik.errors.title)}
@@ -73,11 +74,12 @@ export default function AddEducation() {
         />
           </FormContent>
 
-          <FormContent header={"Fiyat Bilgisi"}>
+          <FormContent>
           <FormInput
           id="price"
           type="text"
           name="price"
+          label={"Fiyat Bilgisi"}
           value={formik.values.price}
           onChange={formik.handleChange}
           formikError={formik.touched.price && Boolean(formik.errors.price)}
@@ -94,11 +96,12 @@ export default function AddEducation() {
             />
           </FormContent>
 
-          <FormContent header={"Fotoğraf Ekle "}>
+          <FormContent >
           <FormInput
           type="file"
           id="image"
           name="image"
+          label={"Fotoğraf Ekle "}
           onChange={(e) =>
             formik.setFieldValue("image", e.currentTarget.files[0])
           }

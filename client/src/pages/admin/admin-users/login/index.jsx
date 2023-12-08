@@ -53,11 +53,12 @@ const formik = useFormik({
         className="w-full rounded-xl  flex-col flex items-center  justify-center font-bold gap-3  backdrop-blur-2xl text-white bg-black/50 mt-16 pt-8 pb-7"
       >
         <h1 className="text-[2rem]">Giriş Yap</h1>
-        <FormContent header={"Email"}>
+        <FormContent >
         <FormInput
             type="text"
             id="email"
             name="email"
+            label={"Email"}
             value={formik.values.email}
             onChange={formik.handleChange}
             formikError={formik.touched.email && Boolean(formik.errors.email)}
@@ -66,13 +67,12 @@ const formik = useFormik({
           />
         </FormContent>
       
-        <FormContent header={"Parola"}
-        >
+        <FormContent  >
           <FormInput
             type={ "password"}
             id="password"
-            header={"Parola"}
             name="password"
+            label={"Parola"}
             value={formik.values.password}
             onChange={formik.handleChange}
             formikError={formik.touched.password && Boolean(formik.errors.password)}

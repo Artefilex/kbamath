@@ -82,8 +82,9 @@ export default function EditNote() {
       className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
     >
       <input type="hidden" name="oldImage" value={formik.values.oldImage} />
-      <FormContent header={"Kategori"}>
+      <FormContent  >
         <FormSelect
+          label={"Kategori"}
           className={"bg-black"}
           id={"category"}
           name="category"
@@ -106,8 +107,9 @@ export default function EditNote() {
         </FormSelect>
       </FormContent>
 
-      <FormContent header={"Sınıf"}>
+      <FormContent >
         <FormSelect
+          label={"Sınıf"}
           id={"class"}
           type="text"
           name="class"
@@ -130,9 +132,10 @@ export default function EditNote() {
           ))}
         </FormSelect>
       </FormContent>
-      <FormContent header={"Açıklama"}>
-        {" "}
+      <FormContent>
+    
         <FormInput
+          label={"Açıklama"}
           id={"description"}
           type="text"
           name="description"
@@ -146,8 +149,9 @@ export default function EditNote() {
         />{" "}
       </FormContent>
 
-      <FormContent header={"Dosya Ekle"}>
-        <FormInput
+      <FormContent>
+        <FormInput 
+          label={"Dosya Ekle"}
           type="file"
           id="image"
           name="image"
