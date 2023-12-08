@@ -12,7 +12,6 @@ const LeftbarLesson = memo(function LeftbarLesson() {
  }
  fectEducation()
   },[])
-  console.log(educations)
   const [show, setShow] = useState(false);
   return (
     <>

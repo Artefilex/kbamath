@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getNotsByClassThenCategory } from "../../../servises";
 import axios from "axios";
 import pdf from "../../../assests/image/pdfimage.svg";
+import toast from "react-hot-toast";
 export default function TopicDetail() {
   const { classid } = useParams();
   const { topicid } = useParams();
@@ -34,7 +35,7 @@ export default function TopicDetail() {
         window.URL.revokeObjectURL(href);
       })
       .catch((error) => {
-        console.log("error: ", error);
+       toast.error( error);
       });
   };
 

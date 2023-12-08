@@ -14,7 +14,7 @@ export default function AdminSidebar() {
   const { theme } = useAppearance();
   const { isMobile } = IsMobile();
   const [showSidebar, setShowSidebar] = useState(false);
-  console.log(isMobile);
+  
   const removeAdmin = async () => {
     try {
       await setLogout();

@@ -5,7 +5,6 @@ import QuizCard from "../../../components/quiz-home-card";
 import imagetest from "../../../assests/image/exam.jpg";
 export default function HomeQuizs() {
   const { theme } = useAppearance();
-  console.log(theme.name);
   return (
     <div className="w-full  mb-[30rem]  xtablet:mb-[27rem]">
       <div

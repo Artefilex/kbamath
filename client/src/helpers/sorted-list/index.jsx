@@ -3,7 +3,6 @@ import { useSelector ,useDispatch} from "react-redux";
 import { sortOrderButtonController } from "../../store/admin-operations/AdminOperationsSlice";
 function SortedList() {
     const {sortOrder} = useSelector((state) => state.adminOperations)
-   console.log(sortOrder)
    const dispatch = useDispatch()
 
   return (

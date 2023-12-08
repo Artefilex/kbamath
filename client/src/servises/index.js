@@ -4,7 +4,6 @@ import axios from "axios"
  const baseUrl = "http://localhost:4000";
 export const  getBlogs = async () => {
     const response = await axios.get(`${baseUrl}/blogs`);
-    console.log(response.data)
     return [response.data];
   };
 export const getSingleBlog= async (id)=>{
@@ -24,7 +23,6 @@ export const getNots = async ()=>{
 
 export const getNotsByClass = async (classid)=>{
     const response = await axios.get(`${baseUrl}/nots/${classid}`);
-    console.log(response)
     return response.data
 }
 export const getClass =async ()=>{

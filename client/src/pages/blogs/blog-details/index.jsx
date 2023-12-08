@@ -18,7 +18,6 @@ export default function BlogDetails() {
       getBlog()
 
   }, [id]);
-  console.log(blog.image)
   return (
     <div className=" gap-4 flex w-full items-center justify-center flex-col mobile:flex-row  mobile:gap-4 mobile:items-start relative ">
      {
