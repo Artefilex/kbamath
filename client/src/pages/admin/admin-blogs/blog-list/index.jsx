@@ -12,7 +12,7 @@ export default function BlogList() {
       const getBlog = await getAllItems("blogs");
       const getAdmin = await JSON.parse(localStorage.getItem("userLogin"))
       const response = getBlog.filter((blogs) => blogs.author === getAdmin.email)
-      console.log(response)
+  
       setBlogs(response);
     };
      fetchBlogs();

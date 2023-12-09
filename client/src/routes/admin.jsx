@@ -1,6 +1,6 @@
 import {  Route, Routes } from "react-router-dom";
 import AdminMain from "../pages/admin";
-
+import Error from "../Error" 
 import {
    AdminClass,
     ClassAdd,
@@ -22,11 +22,15 @@ import {
     AdminUsers,
   
   } from "../pages/admin/routes";
+import SuperAdmin from "../helpers/is-super-admin";
 
 export default function AdminLocation () {
+  const {filtered} = SuperAdmin()
     return (
-        <Routes>
-      
+     <>
+      {
+        filtered && <>
+          <Routes> 
           <Route path="/admin" element={<AdminMain />} />
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/users/:id" element={<UsersEdit />} />
@@ -46,7 +50,28 @@ export default function AdminLocation () {
           <Route path="/admin/category-add" element={<AddCategory />} />
           <Route path="/admin/class" element={<AdminClass />} />
           <Route path="/admin/class-add" element={<ClassAdd />} />
+      
       </Routes>
+        
+        </>
+      }
+        {
+        !filtered && <>
+          <Routes> 
+          <Route path="*" element={<Error/>} />
+          <Route path="/admin" element={<AdminMain />} />
+          <Route path="/admin/users" element={<AdminUsers />} />
+          <Route path="/admin/users/:id" element={<UsersEdit />} />
+          <Route path="/admin/nots" element={<AdminNots />} />
+          <Route path="/admin/blogs" element={<AdminBlogs />} />
+          <Route path="/admin/add-blog" element={<AddBlog />} />
+          <Route path="/admin/blogs/:id" element={<EditBlog />} />
+      </Routes>
+        
+        </>
+      }
+     
+     </>
     )
 
 }

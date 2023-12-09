@@ -3,18 +3,21 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { useAppearance } from "../../store/appearance/hooks";
 import ThemeButton from "../navbar/theme-button";
 import className from "classnames";
-import { adminLinks } from "../../routes/links";
+import { adminLinks, superAdminLinks } from "../../routes/links";
 import { setLogout } from "../../store/auth/action";
 import toast from "react-hot-toast";
 import IsMobile from "../../helpers/is-mobile";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
+
+import SuperAdmin from "../../helpers/is-super-admin";
 export default function AdminSidebar() {
   const navigate = useNavigate();
   const { theme } = useAppearance();
   const { isMobile } = IsMobile();
   const [showSidebar, setShowSidebar] = useState(false);
-  
+
+  const {filtered} = SuperAdmin()
   const removeAdmin = async () => {
     try {
       await setLogout();
@@ -36,7 +39,7 @@ export default function AdminSidebar() {
           )}
         >
           <div className="flex-1  flex  flex-col items-start justify-end   gap-6  w-full  whitespace-nowrap mt-4">
-            {adminLinks.map((link, i) => (
+            {filtered &&  superAdminLinks.map((link, i) => (
               <NavLink
                 className="w-full  transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex font-bold"
                 key={i}
@@ -45,6 +48,17 @@ export default function AdminSidebar() {
                 {link.label}
               </NavLink>
             ))}
+            {
+              !filtered && adminLinks.map((link, i) => (
+                <NavLink
+                  className="w-full  transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex font-bold"
+                  key={i}
+                  to={link.href}
+                >
+                  {link.label}
+                </NavLink>
+              ))
+            }
           </div>
 
           <div className="absolute bottom-0 flex items-center justify-around w-full ">
@@ -82,7 +96,7 @@ export default function AdminSidebar() {
                 >
                   <IoClose className="h-[2rem]" />
                 </button>
-                {adminLinks.map((link, i) => (
+                {filtered && superAdminLinks.map((link, i) => (
                   <NavLink
                     className="w-full  transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex font-bold"
                     key={i}
@@ -92,6 +106,17 @@ export default function AdminSidebar() {
                     {link.label}
                   </NavLink>
                 ))}
+                  {
+              !filtered && adminLinks.map((link, i) => (
+                <NavLink
+                  className="w-full  transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex font-bold"
+                  key={i}
+                  to={link.href}
+                >
+                  {link.label}
+                </NavLink>
+              ))
+            }
               </div>
 
               <div

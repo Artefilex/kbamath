@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllItems, handleDelete } from "../../../../servises/admin";
 import { Tooltip } from "react-tooltip";
+import SuperAdmin from "../../../../helpers/is-super-admin";
 
 export default function UsersList() {
   const [users, setUsers] = useState([]);
@@ -29,8 +30,8 @@ export default function UsersList() {
       setUsers(filteredQuizs);
     }
   };
-  const filtered =   users.find((item) => loginUser.email ===item.email && item.superAdmin )
-  
+ 
+  const {filtered} = SuperAdmin()
   return (
     <div className="w-[95%] flex flex-col gap-2">
       User List
@@ -57,12 +58,21 @@ export default function UsersList() {
                   Edit
                 </Link>
               ):(
-                <button
+              <div className="flex items-center justify-between ">
+                <Link
+                  to={`/admin/edit-users/${user.paramsUrl}`}
+                  className=" px-4 py-2 transition-color duration-300 hover:rounded-lg hover:text-white  "
+                 
+                >
+                  Edit backenden yeni endpoint yaz ve sadece isAdmin Degerini güncellesin 
+                </Link>
+              <button
                   className="hover:bg-red-700 px-4 py-2 transition-color duration-300 hover:rounded-lg hover:text-white  "
                   onClick={() => deleteUser(user.paramsUrl)}
                 >
                   Delete
                 </button>
+              </div>
               )  }
             </div>
           </div>

@@ -10,6 +10,10 @@ export const mainLinks = [
   //  Admin Linkleri
 export  const adminLinks = [
     { href: "/admin/blogs", label: "Blog Panel" },
+    {href: "/admin/users" , label: "User Panel"}
+  ];
+  export  const superAdminLinks = [
+    { href: "/admin/blogs", label: "Blog Panel" },
     {href: "/admin/educations" , label: "Özel Ders Panel"},
     {href: "/admin/quizs" , label: "Quizs Panel"},
     {href: "/admin/class" , label: "Class Panel"},
@@ -17,7 +21,7 @@ export  const adminLinks = [
     { href: "/admin/nots", label: "Not Panel" },
     {href: "/admin/users" , label: "User Panel"}
 
-  ];
+  ];  
 
 export const notsLinks = [
     { href: "/notlar/1-sinif", label: "Lise 1.sinif" },
