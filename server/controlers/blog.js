@@ -6,7 +6,15 @@ const {list} = require("../middleware/list")
 const {singleItem} = require("../middleware/single_item");
 
 exports.blog_list = async (req, res) => {
-    await list(Blog,res)
+  try {
+    const blog = await Blog.findAll();
+    if (blog) {
+      res.json(blog);
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
    };
   
   exports.blog_create = async (req, res) => {
@@ -17,6 +25,7 @@ exports.blog_list = async (req, res) => {
         subtitle: req.body.subtitle,
         content: req.body.content,
         paramsUrl: slugField(req.body.header),
+        author: req.body.author
       });
       res.send(`Blog success`);
     } catch (err) {
@@ -39,11 +48,12 @@ exports.blog_list = async (req, res) => {
   
       if (req.file) {
         const oldImageUrl = req.body.oldImage;
-        blog.image = req.file.path
+          blog.image = req.file.path
           blog.header = req.body.header
           blog.content = req.body.content
           blog.subtitle = req.body.subtitle
           blog.paramsUrl = slugField(req.body.header)
+          blog.author = blog.author
         await fs.unlinkSync(oldImageUrl);
       } else {
         blog.image = req.body.oldImage;
@@ -51,6 +61,7 @@ exports.blog_list = async (req, res) => {
         blog.content = req.body.content
         blog.subtitle = req.body.subtitle
         blog.paramsUrl = slugField(req.body.header)
+        blog.author = blog.author
       }
   
       await blog.save();

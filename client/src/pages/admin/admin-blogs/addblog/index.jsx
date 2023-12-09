@@ -8,17 +8,27 @@ import {
 import { addItem } from "../../../../servises/admin";
 import { useFormik } from "formik";
 import { blogShema } from "../../validations/blogShema";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { checkCBlogUniqueness } from "../../validations/isUniqHeader";
 export default function AddBlog() {
   const navigate = useNavigate();
   const [content, setContent] = useState("")
+  const [adminEmail ,setAdminEmail ] = useState(null)
+  useEffect(()=>{
+    const getUser = async () =>{
+      const user =  await JSON.parse(localStorage.getItem("userLogin"))
+       setAdminEmail(user.username)
+    
+     }
+    getUser()
+ },[])
   const formik = useFormik({
     initialValues:{
       image:"",
       header: "",
       subtitle:"",
+      author: ""
     },
   validationSchema:blogShema,
   onSubmit: async (values) => {
@@ -28,6 +38,7 @@ export default function AddBlog() {
       formData.append("header", values.header);
       formData.append("content", content);
       formData.append("subtitle", values.subtitle);
+      formData.append("author", adminEmail)
       try{
         const isUnique = await checkCBlogUniqueness(values.header);    
         if (!isUnique) {
@@ -42,6 +53,7 @@ export default function AddBlog() {
     await addBlog();
   }
   })
+
   return (
         <form
           encType="multipart/form-data"

@@ -1,7 +1,7 @@
 import {FormContent, FormInput, FormButton,} from "../../../../components/form";
 import { getAllItems, userLogin } from "../../../../servises/admin";
 import { useNavigate } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { setLogin } from "../../../../store/auth/action";
 import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
@@ -45,7 +45,7 @@ const formik = useFormik({
 })
   return (
     <div className="w-[95%] max-w-[500px] flex flex-col items-center justify-center gap-2 z-10">
-      <Toaster position="top-right" />
+
 
       <form
         onSubmit={formik.handleSubmit}

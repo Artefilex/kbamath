@@ -22,6 +22,9 @@ const Users = sequelize.define(
       isAdmin: {
         type:DataTypes.BOOLEAN,
       },
+      superAdmin: {
+        type:DataTypes.BOOLEAN,
+      },
       paramsUrl:{
         type: DataTypes.STRING,
         allowNull: false,
