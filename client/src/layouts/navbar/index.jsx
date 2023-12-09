@@ -1,35 +1,19 @@
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ThemeButton from "./theme-button";
-import { useUser } from "../../store/auth/hooks";
-
-import { mainLinks, adminLinks } from "../../routes/links";
+import { mainLinks} from "../../routes/links";
 import IsMobile from "../../helpers/is-mobile";
 
 export default function Navbar() {
-  const { user } = useUser();
   const { isMobile } = IsMobile();
   const [active, setActive] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (user?.isAdmin) {
-      setIsAdmin(true);
-    }
-  }, [user?.isAdmin]);
-
   const location = useLocation();
  
   useEffect(() => {
    setActive(false)
   }, [location]);
 
-  const removeAdmin = async () => {
-    setIsAdmin(false);
-    navigate("/", {
-      replace: true,
-    });
-  };
+
 
   return (
     <nav className=" w-full  backdrop-blur-md text-white bg-black/50 flex items-center justify-center custom-box-shadow sticky top-0 left-0 right-0  transition-all duration-200 z-[30] px-4">
@@ -43,7 +27,7 @@ export default function Navbar() {
             />
 
             <div className="flex-1  flex  item-center justify-end   gap-1  h-12 w-full  whitespace-nowrap ">
-              {!isAdmin &&
+              {
                 mainLinks.map((link, i) => (
                   <NavLink
                     className="transition-colors duration-500  px-3  relative hover:bg-white/40  flex items-center justify-center"
@@ -53,18 +37,7 @@ export default function Navbar() {
                     {link.label}{" "}
                   </NavLink>
                 ))}
-              {isAdmin &&
-                adminLinks.map((link, i) => (
-                  <NavLink
-                    className="transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex items-center justify-center"
-                    key={i}
-                    to={link.href}
-                  >
-                    {" "}
-                    {link.label}{" "}
-                  </NavLink>
-                ))}
-              {isAdmin && <button onClick={removeAdmin}> Çıkış Yap </button>}
+           
 
               <ThemeButton />
             </div>
@@ -112,7 +85,7 @@ export default function Navbar() {
                       "w-[18rem] absolute px-4 py-2 top-[4.25rem] right-[50%] rounded-md flex item-center  shadow-lg shadow-[color: var(--box-shadow)]  font-bold  gap-2 !flex-col justify-center transition-color  duration-700 transition-all bg-[color:var(--bg-secondary)]"
                     }
                   >
-                    {!isAdmin &&
+                    {
                       mainLinks.map((link, i) => (
                         <NavLink
                           className="transition-colors duration-500 text-[color:var(--c-base)] px-3  relative hover:bg-[color:var(--c-subbase)]  flex items-center justify-center"
@@ -122,22 +95,9 @@ export default function Navbar() {
                           {link.label}{" "}
                         </NavLink>
                       ))}
-                    {isAdmin &&
-                      adminLinks.map((link, i) => (
-                        <NavLink
-                          className="transition-colors duration-500  px-3  relative hover:bg-[color:var(--c-subbase)]  flex items-center justify-center"
-                          key={i}
-                          to={link.href}
-                        >
-                          {" "}
-                          {link.label}{" "}
-                        </NavLink>
-                      ))}
-                    {isAdmin && (
-                      <button onClick={removeAdmin}> Çıkış Yap </button>
-                    )}
+                
 
-                    {/* {mainLinks.map((link, i) => ( <NavLink key={i} className="w-full mx-2  duration-200" to={link.href} >{link.label} </NavLink>))} */}
+                  
                   </div>
                 )}
               </div>

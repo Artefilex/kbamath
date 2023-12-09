@@ -20,12 +20,14 @@ import {
   Register,
   Login
 } from "../pages/admin/routes";
+import Error from "../Error";
 
 
 export default function MainLocation () {
     return (
         <Routes>
-          <Route path="/*" exact element={<Home />} />
+          <Route path="*" exact element={<Error />} /> 
+          <Route path="/" exact element={<Home />} />
           <Route path="/hakkımızda" element={<About />} />
           <Route path="/dersler" element={<LessonsMain />}/>
           <Route path="/dersler/:lessonid" element={<LessonsDetails />} />

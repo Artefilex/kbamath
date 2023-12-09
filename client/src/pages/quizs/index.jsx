@@ -14,7 +14,7 @@ export default function Quizs () {
  fetchQuizs()
 
 },[])
-console.log(quizs)
+
     return (
         <SectionMain>   
            <PageHeader image={quizImg} text={"SINAVLAR"} /> 
