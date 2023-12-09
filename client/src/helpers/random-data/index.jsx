@@ -1,7 +1,4 @@
 export const RandomDataProvider =  (arr , count) => {
-
- 
-
     const shuffled = arr.slice()
     let i = arr.length;
     const min = i - count;

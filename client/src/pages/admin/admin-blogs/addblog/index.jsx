@@ -18,7 +18,7 @@ export default function AddBlog() {
   useEffect(()=>{
     const getUser = async () =>{
       const user =  await JSON.parse(localStorage.getItem("userLogin"))
-       setAdminEmail(user.email)
+       setAdminEmail(user.username)
     
      }
     getUser()
