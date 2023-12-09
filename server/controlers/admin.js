@@ -18,19 +18,19 @@ exports.post_login = async (req, res) => {
     if (user) {
       const match = await bcrypt.compare(req.body.password, user.password);
       if (match) {
-        // Oturumu başlat
+      
         req.session.userid = user.id;
-        return res.json({ success: true , isAdmin : user.isAdmin}); // Return a JSON response
+        return res.json({ success: true , isAdmin : user.isAdmin , email:user.email , username: user.username}); 
       } else {
-        // Hatalı şifre durumu
+    
         return res.status(401).json({ success: false, message: "Invalid password" });
       }
     } else {
-      // Kullanıcı bulunamadı durumu
+ 
       return res.status(404).json({ success: false, message: "User not found" });
     }
   } catch (err) {
-    // İç server hatası durumu
+   
     console.error(err);
     return res.status(500).json({ success: false, message: "Internal Server Error" });
   }

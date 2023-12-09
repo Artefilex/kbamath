@@ -39,9 +39,7 @@ export default function MainLocation () {
           <Route path="/test-quiz" element={<Quizs />} />
           <Route path="/test-quiz/:quizid" element={<QuizDetails />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-
-        
+          <Route path="/login" element={<Login />} />  
       </Routes>
     )
 

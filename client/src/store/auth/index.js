@@ -14,7 +14,6 @@ const auth = createSlice({
     reducers:{
         _login : (state) =>{
          state.user =  JSON.parse(localStorage.getItem("userLogin"))
-         toast.success("Hoş Geldin Kanks") 
         },
         _logout: (state)=>{
             state.user = null
