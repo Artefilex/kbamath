@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import RightBar from "../../../components/blog-rightbar";
+import RightBar from "../blog-rightbar";
 import IsMobile from "../../../helpers/is-mobile";
 import { getSingleBlog } from "../../../servises/index"
 export default function BlogDetails() {

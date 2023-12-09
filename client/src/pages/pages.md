@@ -1,15 +1,99 @@
-# Pages acıklama
+# Pages Description
 
-about => kendi içinde about-header main ve index.jsx olarak ayrılıyor statik veriler iceriyor
-admin => ses etme buralık işimiz yok şuan kafan burda yanacak
-blogs => blog-details, blog-header index.jsx den oluşuyor index.jsde backende istek atıp blog datalarını cekiyor ve bunları bloglar pathinde blog-header ile birlikte link olarak gösteriyoruz linklere tıklanınca blog-detailse gibip ilgili bloga react-router-dom ile giriyoruz istegi direk detayın içinde atmısız bunu apiye utilse cekelim
+[About](./about/index.jsx):
 
-dersler => leftbar-lesson ,lesson-details , lesson-main ve indx.jsx den oluşuyor. leftbar-lessonda mock data kullanmısız ona gore veriler gösterip aslında blogda yaptıgımız islemin aynısını yaptık . sadece leftbar olarak yaptık. lesson-details backenden gelen verilere göre sadece bir obje alacak ve içindeki verileri dönecek pathe göre özelllesek burdaki fetch islemini de apide utilsde yapalım lesson-mainde statik bilgi var index.jsx ise Main görevinde
+1. Admin ile ilgili açıklamaları içeren bileşendir
 
-Home => home/home-blogs home/home-description home/home-header home/home-lessons home/home-main home/home-nots
-home-blogsda , home-lessons => slide ile döndük gelen verileri DataProvide ile istekte bulunduk
-home-description , home-header , home-main => statick component
+[Blogs](./blogs)
 
-nots => nots/high-school , nots/left-navbar high-scholl kendi altında dallanıp budaklanmıs ugrasıcaz burada lefth-bar bir drop-down modunda calısıyor
+1. Kullanıcılar için Blog içeriklerinin gösterildiği bileşendir
+2. Array map methodu kullanılarak blog detayına react-router-dom ile yönlendirme yapılır
 
-quizs => quizs-detail ve ve genel quizsden oluşyuro quizde verileri google form icin tasarladık işemler aynı mock data kullanıyoruz suanlık
+## Blog alt bileşenleri
+
+[BlogsDetail](./blogs/blog-details/index.jsx)
+[BlogsRightbar](./blogs/blog-rightbar/index.jsx)
+
+[Lessons](./dersler/)
+
+1. Kullanıcılar için Lessons içeriklerinin gösterildiği bileşendir
+2. Array map methodu kullanılarak Lessons detaya react-router-dom ile yönlendirme yapılır
+
+## Lessons alt bileşenleri
+
+[LessonMain](./dersler/lesson-main/index.jsx)
+[LessonDetail](./dersler/lesson-details/index.jsx)
+[LetfbarLesson](./dersler/leftbar-lesson/index.jsx)
+
+[Home](./home/)
+
+1. Kullanıcıların Web sitesine ilk girdiği zaman gösterilen bileşendir
+2. Tüm pathler kısa açıklamalar ve statick verilerin gösterildiği bileşendir
+
+## Home alt bileşenleri
+
+[HomeDescription](./home/home-description/index.jsx)
+[HomeHeader](./home/home-header/index.jsx)
+[HomeMain](./home/home-main/index.jsx)
+[HomeQuizs](./home/home-quizs/index.jsx)
+
+[Nots](./nots/)
+
+1. Kullanıcılara not içeriklerine ulaşmaları için oluşturulmuş bileşendir
+2. İlk etaptda backenden gelen Kategori bilgisini kullanarak Yine Backenden gelen Sınıf bilgisine göre filtreleme yapılıyor eğer kategori ile eşleşen bir sınıf bilgisi varsa some methodu ile ilgili sınıf altında gösteriliyor.
+3. ikinci etapta ise topic-detail klasörüne girerek nested pathe baglı olarak classid ve topicid göre filtreleme yapılır eşleşen veriler kullanıcının indirmesi için handleDowloand fonksiyonu ile indirme işlemi gerceklesiyor.
+
+4. pdf ve diger dosya tiplerine göre filtreleme yapılıyor
+
+```javascript
+const handleDownload = async (url) => {
+  await axios
+    .get(`${import.meta.env.VITE_BASE_URL}/${url}`, { responseType: "blob" })
+    .then((response) => {
+      const href = window.URL.createObjectURL(response.data);
+      const anchorElement = document.createElement("a");
+      anchorElement.href = href;
+      anchorElement.download = url.split("\\").pop();
+      document.body.appendChild(anchorElement);
+      anchorElement.click();
+      document.body.removeChild(anchorElement);
+      window.URL.revokeObjectURL(href);
+    })
+    .catch((error) => {
+      toast.error(error);
+    });
+};
+```
+
+## Nots alt başlıkları
+
+[ClassDtail](./nots/class-detail/index.jsx)
+[TopicDetail](./nots/topic-detail/index.jsx)
+[NotsComponent](./nots/nots-component/index.jsx)
+[LeftBar](./nots/left-navbar/index.jsx)
+[NotsCard](./nots/NotsCard.jsx)
+
+[Quizs](./quizs/)
+
+1. Kullanıcıların admin tarafından oluşturulan google form sınavlarını çözmelerine yarayan bileşendir
+2. react-router-dom ile quiz-detaile bileşenine geçilir
+   [QuizsDetail](./quizs/quiz-details/index.jsx)
+
+[Admin](./admin/)
+
+1. Admin için crud işlemlerinin gerçekleştirildiği buna bağlı olarak blog , category , class , education , nots ,quizs ve users için bu crud işlemlerini yaptığımız yerdir.
+2. her alt klasör kendi içinde edit list add klasörlerine sahiptir ve crud işlemleri burda gerceklestirilir ,
+3. useformik ve yup kullanarak form ve validasyon işlemlerimizi gerceklestiriyoruz.
+4. servises klasörünün altında yer alan `admin.jsx` ile backende baglantı saglıyoruz.
+5. admin users altında yer alan login ve register klasörleri ile kullanıcı girişi ve kaydını alıyoruz
+
+## Admin alt başlıkları
+
+[AdminBlogs](./admin/admin-blogs/)
+[AdminCategory](./admin/admin-category/)
+[AdminClass](./admin/admin-class/)
+[AdminEducation](./admin/admin-education/)
+[AdminNots](./admin/admin-nots/)
+[AdminQuizs](./admin/admin-quiz/)
+[AdminUsers](./admin/admin-users/)
+[Validations](./admin/validations/)
