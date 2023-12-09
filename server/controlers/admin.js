@@ -44,7 +44,8 @@ exports.register = async (req, res) => {
     username: req.body.username,
     paramsUrl: slugField(req.body.username),
     password:hashedPassword,
-    isAdmin: req.body.isAdmin
+    isAdmin: req.body.isAdmin,
+    superAdmin : req.body.superAdmin
   });
   res.send(`${user} success`);
  }

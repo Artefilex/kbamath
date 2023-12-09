@@ -11,11 +11,13 @@ import { RegisterShema } from "../../validations/RegisterShema";
 import toast from "react-hot-toast";
 export default function Register() {
   const [isAdmin, setIsAdmin] = useState(true);
+  const [superAdmin, setSuperAdmin] = useState(true)
   useEffect(() => {
     const fetchdata = async () => {
       const response = await getAllItems("users");
       if (response.length > 0) {
-        setIsAdmin(false);
+         setIsAdmin(false);
+        setSuperAdmin(false)
        }
     };
     fetchdata();
@@ -41,6 +43,7 @@ const checkUserUniqueness = async (username, email) => {
       formData.append("password", values.password);
       formData.append("email", values.email);
       formData.append("isAdmin", isAdmin);
+      formData.append("superAdmin", superAdmin)
      try{
       const { isUsernameUnique, isEmailUnique } = await checkUserUniqueness(values.username, values.email);
       if (!isUsernameUnique) {
