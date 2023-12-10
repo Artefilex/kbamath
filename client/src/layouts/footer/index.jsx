@@ -6,12 +6,14 @@ import { useEffect, useState } from "react";
 import MainSvg from "../../assests/image/main.svg";
 import {RandomDataProvider} from "../../helpers/random-data"
 export default function Footer() {
-  const [blogs, setBlogs] = useState([]);
+  const [blogs, setBlogs] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       const response = await  getBlogs();
-      const randomBlog = await RandomDataProvider(response[0], 2)
-      setBlogs(randomBlog);
+      if(response[0]){
+        const randomBlog = await RandomDataProvider(response[0], 2)
+        setBlogs(randomBlog);
+      }
     };
 
     fetchData();
@@ -69,18 +71,18 @@ export default function Footer() {
               <div className="w-full  flex flex-col gap-4">
              
                 <Link to={"/bloglar"}> Diğer Bloglar </Link>
-                {blogs.map((blog) => (
+                {blogs  && blogs.map((blog) => (
                   <div
-                    key={blog.id}
+                    key={blog?.id}
                     className="flex items-start gap-10"
                   >
-                    <img src={`${import.meta.env.VITE_BASE_URL}/${blog.image}`} alt={blog.header}
+                    <img src={`${import.meta.env.VITE_BASE_URL}/${blog?.image}`} alt={blog?.header}
                       className="w-full max-w-[5rem] h-[4rem] object-cover"
                     />
                 
-                     <Link to={`/bloglar/${blog.paramsUrl}`} className="truncate max-w-[10rem]">
-                     <p className="truncate ">{blog.header} </p>
-                      <p className="truncate"> {blog.subtitle}</p>
+                     <Link to={`/bloglar/${blog?.paramsUrl}`} className="truncate max-w-[10rem]">
+                     <p className="truncate ">{blog?.header} </p>
+                      <p className="truncate"> {blog?.subtitle}</p>
                      </Link>
                    
                   </div>

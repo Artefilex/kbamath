@@ -48,7 +48,7 @@ app.use("/Images", express.static("./Images"))
 
 async function sync() {
   // await sequelizeDb.sync({ alter: true });
-  await sequelizeDb.sync({ force: true });
+   await sequelizeDb.sync({ force: true });
   await dummyData();
 }
 sync();
