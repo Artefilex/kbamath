@@ -119,18 +119,10 @@ KBA MATH, matematik öğretmenlerine ve öğrencilere interaktif matematik dersl
 ---
 ## Örnek Kullanım 
 
-## Kullanıcılar İçin 
+## Kullanıcılar İçin
 
-Component tabanlı yaklaşım, yazılım mühendisliği ve frontend geliştirme alanlarında yaygın olarak kullanılan bir mimari yaklaşımdır. Bu yaklaşım, bir yazılımı bağımsız, yeniden kullanılabilir ve birbiriyle etkileşim halinde olan bileşenlere ayırarak geliştirme sürecini daha organize ve modüler hale getirir.
-
-
-
-Düşünün ki bir araba yapmak istiyorsunuz ve component tabanlı yaklaşımı kullanacaksınız. Bu durumda, arabayı farklı parçalara, yani bileşenlere ayırıyorsunuz. Her bir bileşen, arabada yer alan farklı özelliklere ve işlevlere sahip olan bağımsız bir yapıya sahip oluyor.
-
-
-
-Her bir bileşen, kendi işlevini bağımsız olarak yerine getirebilir ve aynı zamanda diğer bileşenlerle bir araya gelerek tam bir araba oluşturur.
-
-
-
-Bu yaklaşım sayesinde projelerim daha düzenli ve anlaşılır hale geldi. Kodları daha rahat yönetebiliyor ve projelerimi hızlıca geliştirebiliyorum. Component Tabanlı Yaklaşım'ı erken keşfetseydim, projelerimdeki karmaşıklığı önleyebilirdim. Artık daha organize ve modüler bir şekilde çalışıyorum
+[Ana-Sayfa](./file/ana-sayfa.png, "Ana Sayfa")
+[Bloglar](./file/bloglar.png, "Bloglar")
+[Notlar](./file/notlar.png, "Notlar")
+[Özel-Dersler](./file/özel-dersler.png, "Özel Dersler")
+[Quizler](./file//quizler.png, "Quizler")
