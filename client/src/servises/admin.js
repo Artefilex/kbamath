@@ -33,7 +33,10 @@ export const getSingleItem = async(item) => {
 }
 
 export const editItem = async(id, formdata , message ,title)  => {
-    const response = await axios.put(`${baseUrl}/${id}` ,formdata)
+    const response = await axios.put(`${baseUrl}/${id}` ,formdata, {
+      headers: {
+        'Content-Type': 'application/json',
+      }})
     if (response.status === 200) {
         toast.success(`${title} ${message} güncellendi `);
       } else {

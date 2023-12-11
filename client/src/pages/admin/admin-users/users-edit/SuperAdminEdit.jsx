@@ -29,7 +29,7 @@ function SuperAdminEdit({editid}) {
   return (
     <form
       onSubmit={userMakeAdmin}
-      className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3 relative"
+      className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3 relative text-white"
     >
       <FormContent>
         <div className="flex items-center justify-center gap-4">

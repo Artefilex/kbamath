@@ -62,31 +62,29 @@ exports.user_delete = async (req, res) => {
 exports.edit_users = async (req, res) => {
   try {
     const user = await Users.findOne({ where: { paramsUrl: req.params.id } });
-    const salt = await bcrypt.genSalt(saltRounds);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
-    const oldImageUrl = req.body.oldImage;
-    if (req.file) {
-      user.avatar=  req.file.path,
-      user.username =  req.body.username,
-      user.email = req.body.email
-      user.paramsUrl =  slugField(req.body.username),
-      user.isAdmin =  req.body.isAdmin,
-      user.password = hashedPassword
-      //  await fs.unlinkSync(oldImageUrl);
+    if (user) {
+      const match = await bcrypt.compare(req.body.oldPassword, user.password);
+      if (match) {
+        const salt = await bcrypt.genSalt(saltRounds);
+        const hashedPassword = await bcrypt.hash(req.body.password, salt);
+        user.password = hashedPassword     
+     
+      } else {
+    
+        return res.status(401).json({ success: false, message: "Invalid password" });
+      }
     } else {
-      user.avatar =   req.body.oldImage;
-      user.username =  req.body.username,
-      user.paramsUrl =  slugField(req.body.username),
-      user.isAdmin =  req.body.isAdmin,
-      user.password = req.body.password
+ 
+      return res.status(404).json({ success: false, message: "User not found" });
     }
-    await user.save();
-    res.send(`${user.paramsUrl} quiz edited`);
-   
-
+    await user.save()
+    res.send("update password")
   } catch (err) {
-    console.log(err);
+   
+    console.error(err);
+    return res.status(500).json({ success: false, message: "Internal Server Error" });
   }
+   
 };
 
 exports.edit_superAdmin_By_users = async (req, res) => {

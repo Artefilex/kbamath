@@ -100,7 +100,7 @@ export default function UsersList() {
                         <SuperAdminEdit editid={user.paramsUrl} />
 
                         <button
-                          className="hover:bg-red-700 px-4 py-2 transition-color duration-300 hover:rounded-lg hover:text-white "
+                          className="hover:bg-red-700 px-4 py-2 transition-color duration-300 hover:rounded-lg hover:text-white text-white "
                           onClick={() => deleteUser(user.paramsUrl)}
                         >
                           Kullanıcıyı Sil
