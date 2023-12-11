@@ -1,13 +1,8 @@
 import * as Yup from "yup";
- import { getAllItems } from "../../../servises/admin";
 
 export const NotsShema = Yup.object().shape({
     category:Yup.string().required("Kategori Boş Bırakılamaz"),
-    description: Yup.string().required("Açıklama boş bırakılamaz").test("is-unique", "Bu başlık zaten kullanılıyor", async function (value) {
-      const existingClasses = await getAllItems("nots");
-      const isUnique = !existingClasses.some((cls) => cls.title === value);
-      return isUnique;
-    }),
+     description: Yup.string().required("Açıklama boş bırakılamaz").max(12,"Açıklama 12 Karakterden Uzun"),
     image: Yup.mixed().required("Lütfen Bir Dosya Seçiniz ")
   .test("fileSize", "Dosya Çok Büyük", (value) => {
     if (!value.length) return true; 

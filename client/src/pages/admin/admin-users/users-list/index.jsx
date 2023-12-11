@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getAllItems, handleDelete } from "../../../../servises/admin";
+import {  getAllItems, handleDelete } from "../../../../servises/admin";
 import { Tooltip } from "react-tooltip";
 import SuperAdmin from "../../../../helpers/is-super-admin";
 
@@ -8,7 +8,7 @@ export default function UsersList() {
   const [users, setUsers] = useState([]);
   const [loginUser, setLoginUser] = useState(null);
 
-  useEffect(() => {
+   useEffect(() => {
     const fetchUsers = async () => {
       const getLogin = await JSON.parse(localStorage.getItem("userLogin"));
       setLoginUser(getLogin);
@@ -30,7 +30,8 @@ export default function UsersList() {
       setUsers(filteredQuizs);
     }
   };
- 
+
+
   const {filtered} = SuperAdmin()
   return (
     <div className="w-[95%] flex flex-col gap-2">
@@ -64,7 +65,7 @@ export default function UsersList() {
                   className=" px-4 py-2 transition-color duration-300 hover:rounded-lg hover:text-white  "
                  
                 >
-                  Edit backenden yeni endpoint yaz ve sadece isAdmin Degerini güncellesin 
+                  Admin Yap
                 </Link>
               <button
                   className="hover:bg-red-700 px-4 py-2 transition-color duration-300 hover:rounded-lg hover:text-white  "

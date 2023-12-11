@@ -18,9 +18,10 @@ import Register from "./admin-users/register";
 import Login from "./admin-users/login";
 import AdminClass from "./admin-class";
 import ClassAdd from "./admin-class/add-class";
+import SuperAdminEdit from "./admin-users/users-edit/SuperAdminEdit";
 export {
   AdminClass,
-
+  SuperAdminEdit,
   ClassAdd,
   AdminNots,
   AddNote,

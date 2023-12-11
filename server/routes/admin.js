@@ -54,7 +54,7 @@ router.get("/category", categoryController.category_list);
 router.delete("/class/:id", classController.class_delete);
 router.post("/class",  classController.class_create);
 router.get("/class", classController.class_list);
-
+router.put("/users/make-admin/:id", adminController.edit_superAdmin_By_users);
 router.delete("/users/:id", adminController.user_delete);
 router.put("/users/:id", upload, adminController.edit_users);
 router.post("/users", upload, adminController.register);

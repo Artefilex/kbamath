@@ -28,14 +28,16 @@ const formik = useFormik({
       const user = userData.find(
         user => user.email ===  values.email
     );
+    console.log(user)
       if (response?.isAdmin) {
         dispatch(setLogin());
         navigate("/admin"); 
-      }else if (user){
-          toast.error("Parola Yanlış ")
+      }else if (!user.isAdmin){
+        toast.error("Kullanıcı izniniz yoktur. Yetkili Biriyle İletişime Geçiniz");
+         
       }
       else {
-        toast.error("Kullanıcı izniniz yoktur. Lütfen defolun buradan.");
+        toast.error("Parola Ya Da  Email  Yanlış ")
       }
     } catch (error) {
       console.error("Login error:", error);

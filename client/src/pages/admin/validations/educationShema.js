@@ -10,7 +10,7 @@ export const EducationShema = Yup.object().shape({
     return value[0].size <= 1000000;
   }).test("fileType", "Geçersiz dosya türü", (value) => {
     if (!value) return true;
-    const allowedExtensions = /(jpeg|jpg|png|gif|pdf)$/i;
+    const allowedExtensions = /(jpeg|jpg|png|gif)$/i;
     return allowedExtensions.test(value.name); 
   }),
 })

@@ -93,3 +93,19 @@ export const addItem = async( url, formData, title ) =>{
       }
         
     };
+
+    export const editUserForSuperAdmin = async (id, formData) => {
+      try {
+        console.log(id , formData)
+        const response = await axios.put(`${baseUrl}/users/make-admin/${id}`, formData, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        console.log(response.data)
+        return response.data
+      } catch (error) {
+        console.error('Error during login:', error);  
+      }
+        
+    };

@@ -88,3 +88,22 @@ exports.edit_users = async (req, res) => {
     console.log(err);
   }
 };
+
+exports.edit_superAdmin_By_users = async (req, res) => {
+  try {
+    const user = await Users.findOne({where:{
+      paramsUrl: req.params.id
+    }})
+    if(user){
+       user.isAdmin = req.body.isAdmin
+    
+    }
+    await user.save();
+    res.send(`${user.paramsUrl} quiz edited`);
+   
+
+    
+  } catch (err) {
+    console.log(err);
+  }
+};

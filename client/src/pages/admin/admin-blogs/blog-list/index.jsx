@@ -11,9 +11,9 @@ export default function BlogList() {
     const fetchBlogs = async () => {
       const getBlog = await getAllItems("blogs");
       const getAdmin = await JSON.parse(localStorage.getItem("userLogin"))
-      // const response = getBlog.filter((blogs) => blogs.author === getAdmin.email) 
-       console.log(getBlog)
-      setBlogs(getBlog);
+      const response = getBlog.filter((blogs) => blogs.author === getAdmin.username) 
+      console.log(response)
+      setBlogs(response);
     };
      fetchBlogs();
   }, []);

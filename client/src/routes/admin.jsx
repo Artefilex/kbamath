@@ -20,6 +20,7 @@ import {
     AddCategory,
     UsersEdit,
     AdminUsers,
+    SuperAdminEdit
   
   } from "../pages/admin/routes";
 import SuperAdmin from "../helpers/is-super-admin";
@@ -34,6 +35,7 @@ export default function AdminLocation () {
           <Route path="/admin" element={<AdminMain />} />
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/users/:id" element={<UsersEdit />} />
+          <Route path="/admin/edit-users/:editid" element={<SuperAdminEdit />} />
           <Route path="/admin/nots" element={<AdminNots />} />
           <Route path="/admin/add-note" element={<AddNote />} />
           <Route path="/admin/nots/:id" element={<EditNote />} />
