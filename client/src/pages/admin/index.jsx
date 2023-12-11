@@ -44,7 +44,7 @@ export default function AdminMain() {
         <h2>Şimdiye Kadar</h2>
         <div>
             Blog Yazdın 
-            {blogs.length}
+            {blogs?.length}
         </div>
       </div> : <div> baba gitti</div>}</main>
     </SectionMain>
