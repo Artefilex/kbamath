@@ -121,8 +121,10 @@ KBA MATH, matematik öğretmenlerine ve öğrencilere interaktif matematik dersl
 
 ## Kullanıcılar İçin
 
-[Ana-Sayfa](./file/ana-sayfa.png, "Ana Sayfa")
-[Bloglar](./file/bloglar.png, "Bloglar")
-[Notlar](./file/notlar.png, "Notlar")
-[Özel-Dersler](./file/özel-dersler.png, "Özel Dersler")
-[Quizler](./file//quizler.png, "Quizler")
+[![Ana-Sayfa](./file/ana-sayfa.png, "Ana Sayfa")]
+[![Bloglar](./file/bloglar.png, "Bloglar")]
+[![Notlar](./file/notlar.png, "Notlar")]
+[![Özel-Dersler](./file/özel-dersler.png, "Özel Dersler")]
+[![Quizler](./file//quizler.png, "Quizler")]
+
+[![Ön İzleme](https://img.youtube.com/vi/rF2likJegIg/0.jpg)](https://www.youtube.com/watch?v=rF2likJegIg)
