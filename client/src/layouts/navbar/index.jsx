@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import ThemeButton from "./theme-button";
 import { mainLinks} from "../../routes/links";
 import IsMobile from "../../helpers/is-mobile";
-
+import KBA from "../../assests/image/mainheader.svg"
 export default function Navbar() {
   const { isMobile } = IsMobile();
   const [active, setActive] = useState(false);
@@ -21,9 +21,9 @@ export default function Navbar() {
         {!isMobile && (
           <div className=" flex  items-center justify-center w-full">
             <img
-              className="h-10 rounded-full object-cover"
-              src="https://pbs.twimg.com/profile_images/1663136976327811072/p2zKMWq2_bigger.jpg"
-              alt=""
+              className="h-12 rounded-full object-cover"
+              src={KBA}
+              alt="logo"
             />
 
             <div className="flex-1  flex  item-center justify-end   gap-1  h-12 w-full  whitespace-nowrap ">
@@ -46,10 +46,10 @@ export default function Navbar() {
 
         {isMobile && (
           <div className="flex items-center justify-center flex-row">
-            <img
-              className="h-10 rounded-full object-cover"
-              src="https://pbs.twimg.com/profile_images/1663136976327811072/p2zKMWq2_bigger.jpg"
-              alt=""
+             <img
+              className="h-12 rounded-full object-cover"
+              src={KBA}
+              alt="logo"
             />
             <div className="flex-1 flex items-center justify-end  gap-3">
               <ThemeButton />
