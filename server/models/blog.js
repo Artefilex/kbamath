@@ -5,7 +5,7 @@ const Blog = sequelize.define(
   "blog",
   {
     image : {
-      type: DataTypes.STRING,
+      type: DataTypes.BLOB('long'),
     }, 
     header: {
       type: DataTypes.STRING,

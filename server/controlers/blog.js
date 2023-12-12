@@ -19,14 +19,16 @@ exports.blog_list = async (req, res) => {
   
   exports.blog_create = async (req, res) => {
     try {
+      
       await Blog.create({
-        image: req.file.path,
+        image: req.file.buffer,
         header: req.body.header,
         subtitle: req.body.subtitle,
         content: req.body.content,
         paramsUrl: slugField(req.body.header),
         author: req.body.author
       });
+      
       res.send(`Blog success`);
     } catch (err) {
       console.log(err);
