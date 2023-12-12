@@ -12,7 +12,7 @@ exports.education_list = async (req, res) => {
   exports.education_create = async (req, res) => {
     try {
       const education = await Education.create({
-        image: req.file.path,
+        image: req.file.buffer,
         title: req.body.title,
         price: req.body.price,
         paramsUrl: slugField(req.body.title),
@@ -32,20 +32,19 @@ exports.education_list = async (req, res) => {
       const education = await Education.findOne({
         where: { paramsUrl: req.params.id },
       });
-      const oldImageUrl = req.body.oldImage;
+ 
       if (req.file) {
-        education.image = req.file.path;
+        education.image =req.file.buffer
         education.title = req.body.title;
         education.price = req.body.price;
         education.paramsUrl = slugField(req.body.title);
         education.content = req.body.content;
-        await fs.unlinkSync(oldImageUrl);
       } else {
         education.title = req.body.title;
         education.price = req.body.price;
         education.paramsUrl = slugField(req.body.title);
         education.content = req.body.content;
-        education.image = req.body.oldImage;
+        education.image = education.image;
       }
       await education.save();
       res.send(`${education.id} education edited`);

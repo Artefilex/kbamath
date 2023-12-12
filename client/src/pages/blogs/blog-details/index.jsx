@@ -10,7 +10,6 @@ export default function BlogDetails() {
   const [blogs, setBlogs] = useState([]);
   const { isMobile } = IsMobile();
   const [show, setShow] = useState(false);
-  // const [imageUrl , setImageUrl] = useState(null)
   const { id } = useParams();
   const [imageSrc, setImageSrc] = useState(null);
   useEffect(() => {

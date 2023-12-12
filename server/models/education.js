@@ -5,7 +5,7 @@ const Education = sequelize.define(
     "education",
     {
      image : {
-        type: DataTypes.STRING,
+      type: DataTypes.BLOB('long'),
       }, 
     title: {
         type: DataTypes.STRING,
