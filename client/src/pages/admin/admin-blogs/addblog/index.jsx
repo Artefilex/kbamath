@@ -33,6 +33,7 @@ export default function AddBlog() {
   validationSchema:blogShema,
   onSubmit: async (values) => {
     const addBlog = async () => {
+      console.log(formik.values.image)
       const formData = new FormData();
       formData.append("image", values.image);
       formData.append("header", values.header);

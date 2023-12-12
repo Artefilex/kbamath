@@ -36,28 +36,13 @@ export default function BlogDetails() {
 
     loadImage();
   }, [blog?.image ]);
-  // const getImage =  getImageDataUrl(imageObject)
-  // const getImageDataUrl = async (imageObject) => {
-  //   if (!imageObject || imageObject.type !== 'Buffer' || !imageObject.data) {
-  //     return null;
-  //   }
 
-  //   const uint8Array = new Uint8Array(imageObject.data);
-  //   const blob = new Blob([uint8Array], { type: 'image/jpeg' });
-
-  //   return new Promise((resolve, reject) => {
-  //     const reader = new FileReader();
-  //     reader.onloadend = () => resolve(reader.result);
-  //     reader.onerror = reject;
-  //     reader.readAsDataURL(blob);
-  //   });
-  // };
   
   return (
     <div className=" gap-4 min-h-screen flex w-full items-center justify-center flex-col mobile:flex-row  mobile:gap-4 mobile:items-start relative ">
       {
         <div key={blog.id} className="mt-6 w-[90%]   mobile:w-9/12  ">
-           {imageSrc && <img src={ imageSrc} alt="Content" className="w-full h-full max-h-[20rem] object-cover" /> }
+           {imageSrc && <img src={imageSrc} alt="Content" className="w-full h-full max-h-[20rem] object-cover" /> }
           <header className="mb-3  flex flex-col gap-1">
             <h1 className="font-bold uppercase text-[1.4rem]  tablet:text-[1.875rem] ">
               {blog.header}

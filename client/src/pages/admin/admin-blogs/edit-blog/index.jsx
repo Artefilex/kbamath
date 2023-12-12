@@ -17,23 +17,26 @@ export default function EditBlog() {
     initialValues: {
       image: "",
       header: "",
-      subtitle: "",
-      oldImage:"",
+      subtitle: "", 
+      // oldImage:"", 
     },
     validationSchema:editBlogShema,
     onSubmit: async (values) => {
+     
       const addBlog = async () => {
+       
         const formData = new FormData();
         formData.append("image", values.image);
-        formData.append("oldImage",values.oldImage);
+        // formData.append("oldImage",values.oldImage);
         formData.append("header", values.header);
         formData.append("content", content);
         formData.append("subtitle", values.subtitle);
         const message = "Blog";
         await editItem(`blogs/${id}`, formData, message, values.header);
+        
       };
       await addBlog();
-      navigate("/admin/blogs");
+     navigate("/admin/blogs");
     },
   });
   useEffect(() => {
@@ -42,7 +45,7 @@ export default function EditBlog() {
       formik.setValues({
         header: data.header,
         subtitle: data.subtitle,
-        oldImage: data.image
+        // oldImage: data.image 
       });
       setContent(data.content);
     };
@@ -53,10 +56,10 @@ export default function EditBlog() {
     <form
       encType="multipart/form-data"
       onSubmit={formik.handleSubmit}
-      method="POST"
+      method="PUT"
       className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
     >
-      <input type="hidden" name="oldImage" value={formik.values.oldImage} />
+      {/* <input type="hidden" name="oldImage" value={formik.values.oldImage} />  */}
       <FormContent >
         {" "}
         <FormInput
@@ -104,7 +107,7 @@ export default function EditBlog() {
           name="image"
           label={"Dosyayı Güncelle"}
           onChange={(e) =>
-            formik.setFieldValue("image", e?.currentTarget?.files[0])
+            formik.setFieldValue("image", e.currentTarget.files[0])
           }
           formikError={formik.touched.image && Boolean(formik.errors.image)}
           helperText={formik.touched.image && formik.errors.image}

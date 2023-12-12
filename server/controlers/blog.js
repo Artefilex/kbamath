@@ -46,19 +46,17 @@ exports.blog_list = async (req, res) => {
           paramsUrl: req.params.blogid,
         },
       });
-      console.log(req.body.oldImage);
-  
+    
+     
       if (req.file) {
-        const oldImageUrl = req.body.oldImage;
-          blog.image = req.file.path
+          blog.image = req.file.buffer
           blog.header = req.body.header
           blog.content = req.body.content
           blog.subtitle = req.body.subtitle
           blog.paramsUrl = slugField(req.body.header)
-          blog.author = blog.author
-        await fs.unlinkSync(oldImageUrl);
+          blog.author = blog.author        
       } else {
-        blog.image = req.body.oldImage;
+        blog.image = blog.image
         blog.header = req.body.header
         blog.content = req.body.content
         blog.subtitle = req.body.subtitle
