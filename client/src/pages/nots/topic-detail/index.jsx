@@ -31,7 +31,17 @@ export default function TopicDetail() {
   }, [classid, topicid]);
   const date = new Date()
   const handleDownload =  (dataURI) => {
-    const base64Data = dataURI?.image.replace(/^data:image\/\w+;base64,/, '');
+    if (!dataURI || !dataURI.image) {
+      toast.error("Geçersiz dataURI veya dataURI.image değeri");
+      return;
+    }
+  
+    const base64Data = dataURI.image.replace(/^data:image\/\w+;base64,/, '');
+  
+    if (!base64Data) {
+      toast.error("Geçersiz base64 verisi");
+      return;
+    }
   const binaryData = atob(base64Data);
   const arrayBuffer = new ArrayBuffer(binaryData?.length);
   const uint8Array = new Uint8Array(arrayBuffer);
@@ -43,7 +53,7 @@ export default function TopicDetail() {
   const href = window.URL.createObjectURL(blob);
   const anchorElement = document.createElement('a');
   anchorElement.href = href;
-  anchorElement.download = `${date.getTime()}.${dataURI?.mimetype.split("/").pop()}`;
+  anchorElement.download = `${date.getTime()}.${dataURI?.mimetype?.split("/").pop()}`;
   document.body.appendChild(anchorElement);
   anchorElement.click();
   document.body.removeChild(anchorElement);
