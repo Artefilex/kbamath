@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import PageHeader from "../../components/page-heading";
 import daktilo from "../../assests/image/daktilo.jpg"
 import { getImageDataUrl } from "../../helpers/get-image-blob";
+import toast from "react-hot-toast";
 function Blogs() {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
@@ -17,13 +18,12 @@ function Blogs() {
         }));
         setBlogs(updatedBlogs);
       } catch (error) {
-        console.error('Error fetching blogs:', error);
+        toast.error('Error fetching blogs:', error);
       }
     };
   
     fetchData();
   }, []);
-console.log(blogs)
   return (
     <SectionMain>
        <PageHeader image={daktilo} text={"BLOG"} /> 

@@ -5,6 +5,7 @@ import SectionMain from "../../components/section-main"
 import PageHeader from "../../components/page-heading"
 import { getQuizs } from "../../servises"
 import { getImageDataUrl } from "../../helpers/get-image-blob"
+import toast from "react-hot-toast"
 export default function Quizs () {
  const [quizs , setQuizs] = useState([])
     useEffect(()=>{
@@ -20,7 +21,7 @@ export default function Quizs () {
   
     setQuizs(updatedQuizs)
    }catch(error){
-    console.log(error)
+    toast.log(error)
    }   };
  fetchQuizs()
 

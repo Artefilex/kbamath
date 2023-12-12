@@ -4,6 +4,7 @@ import {useEffect, useState } from "react";
 import { getSingleEducation } from "../../../servises";
 import LeftbarLesson from "../leftbar-lesson";
 import { getImageDataUrl } from "../../../helpers/get-image-blob";
+import toast from "react-hot-toast";
 
 export default  function LessonsDetails() {
   const { lessonid } = useParams();
@@ -23,7 +24,7 @@ export default  function LessonsDetails() {
         const base64Image = await getImageDataUrl(detail?.image);
         setImageSrc(base64Image);
       } catch (error) {
-        console.error('Error loading image:', error);
+        toast.error('Error loading image:', error);
       }
     }; loadImage();
   }, [detail?.image]);

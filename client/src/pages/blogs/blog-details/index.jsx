@@ -5,6 +5,7 @@ import IsMobile from "../../../helpers/is-mobile";
 import { getSingleBlog } from "../../../servises/index";
 import { FaUser } from "react-icons/fa";
 import { getImageDataUrl } from "../../../helpers/get-image-blob";
+import toast from "react-hot-toast";
 export default function BlogDetails() {
   const [blog, setBlog] = useState([]);
   const [blogs, setBlogs] = useState([]);
@@ -29,7 +30,7 @@ export default function BlogDetails() {
         const base64Image = await getImageDataUrl(blog?.image);
         setImageSrc(base64Image);
       } catch (error) {
-        console.error('Error loading image:', error);
+        toast.error('Error loading image:', error);
       }
     };
 

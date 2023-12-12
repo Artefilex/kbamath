@@ -33,7 +33,6 @@ export default function AddBlog() {
   validationSchema:blogShema,
   onSubmit: async (values) => {
     const addBlog = async () => {
-      console.log(formik.values.image)
       const formData = new FormData();
       formData.append("image", values.image);
       formData.append("header", values.header);
@@ -48,7 +47,7 @@ export default function AddBlog() {
         await addItem("blogs", formData,"Blog")
         navigate("/admin/blogs");
       } catch (error) {
-        console.error("Hata oluştu:", error);
+        toast.error("Hata oluştu:", error);
       }
     };
     await addBlog();

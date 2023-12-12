@@ -4,6 +4,7 @@ import LeftBar from "../left-navbar";
 import { useEffect, useState } from "react";
 import { getAllCategory, getNotsByClass } from "../../../servises";
 import { getImageDataUrl } from "../../../helpers/get-image-blob";
+import toast from "react-hot-toast";
 export default function ClassDetail() {
   const { classid } = useParams();
   const [notsByClass, setNotsByClass] = useState([]);
@@ -20,7 +21,7 @@ export default function ClassDetail() {
         }));
         setCategorys(updatedCategorys);
       } catch (error) {
-        console.error('Error fetching blogs:', error);
+        toast.error('Error fetching blogs:', error);
       }
       
       setNotsByClass(notsByClasses);
@@ -36,12 +37,12 @@ export default function ClassDetail() {
     <NotsMain>
       <div className="flex flex-col  w-full  gap-6 mobile:flex-row">
         <LeftBar />
-        <div className=" py-2 grid  grid-rows-1 grid-cols-1  mobile:grid-rows-2 mobile:grid-cols-2 w-full gap-3 deskop:grid-rows-3 deskop:grid-cols-3">
+        <div className=" py-2 grid content-center  justify-items-center  grid-rows-1 grid-cols-1  tablet:grid-rows-2 tablet:grid-cols-2 w-full gap-3 deskop:grid-rows-3 deskop:grid-cols-3">
           {filterData.map((filteredCategory) => (
             <Link
               key={filteredCategory.id}
               to={`/notlar/${classid}/${filteredCategory.paramsUrl}`}
-              className="overflow-hidden group rounded-md items-center relative hover:-translate-y-1 gap-4 flex  flex-col justify-between  bg-[color:var(--bg-primary)] transition  h-[30rem] duration-700 "
+              className="overflow-hidden group rounded-md items-center relative hover:-translate-y-1 gap-4 flex  flex-col justify-between  bg-[color:var(--bg-primary)] transition  h-[30rem] duration-700 w-[20rem]"
             >
               <img
                 src={`${filteredCategory.image}`}

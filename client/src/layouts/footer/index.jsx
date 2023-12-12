@@ -5,17 +5,25 @@ import { getBlogs } from "../../servises";
 import { useEffect, useState } from "react";
 import MainSvg from "../../assests/image/main.svg";
 import {RandomDataProvider} from "../../helpers/random-data"
+import { getImageDataUrl } from "../../helpers/get-image-blob";
+import toast from "react-hot-toast";
 export default function Footer() {
-  const [blogs, setBlogs] = useState(null);
+  const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await  getBlogs();
-      if(response[0]){
-        const randomBlog = await RandomDataProvider(response[0], 2)
-        setBlogs(randomBlog);
+      try {
+        const response = await getBlogs();
+        const updatedBlogs = await Promise.all(response[0].map(async (blog) => {
+          const base64Image = await getImageDataUrl(blog.image);
+          return { ...blog, image: base64Image };
+        }));
+        const randomBlogs =   await RandomDataProvider(updatedBlogs, 2)
+        setBlogs(randomBlogs);
+      } catch (error) {
+        toast.error('Error fetching blogs:', error);
       }
     };
-
+      
     fetchData();
   }, []);
 
@@ -76,7 +84,7 @@ export default function Footer() {
                     key={blog?.id}
                     className="flex items-start gap-10"
                   >
-                    <img src={`${import.meta.env.VITE_BASE_URL}/${blog?.image}`} alt={blog?.header}
+                    <img  src={blog?.image}  alt={blog?.header}
                       className="w-full max-w-[5rem] h-[4rem] object-cover"
                     />
                 

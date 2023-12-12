@@ -34,7 +34,7 @@ function CategoryAdd() {
               await addItem("category", formData,"Category") 
               navigate("/admin/category");
             } catch (error) {
-              console.error("Hata oluştu:", error);
+              toast.error("Hata oluştu:", error);
             }
        
         };

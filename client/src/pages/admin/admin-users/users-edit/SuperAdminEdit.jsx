@@ -20,7 +20,6 @@ function SuperAdminEdit({editid}) {
     e.preventDefault();
     const formData = new FormData();
     formData.append("isAdmin", makeAdminBySuper);
-    console.log(editid, formData);
     await editUserForSuperAdmin(editid, formData);
      navigate("/admin/users");
   };

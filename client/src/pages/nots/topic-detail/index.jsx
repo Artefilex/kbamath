@@ -31,19 +31,19 @@ export default function TopicDetail() {
   }, [classid, topicid]);
   const date = new Date()
   const handleDownload =  (dataURI) => {
-    const base64Data = dataURI.image.replace(/^data:image\/\w+;base64,/, '');
+    const base64Data = dataURI?.image.replace(/^data:image\/\w+;base64,/, '');
   const binaryData = atob(base64Data);
-  const arrayBuffer = new ArrayBuffer(binaryData.length);
+  const arrayBuffer = new ArrayBuffer(binaryData?.length);
   const uint8Array = new Uint8Array(arrayBuffer);
 
   for (let i = 0; i < binaryData.length; i++) {
     uint8Array[i] = binaryData.charCodeAt(i);
   }
-  const blob = new Blob([arrayBuffer], { type: dataURI.mimetype });
+  const blob = new Blob([arrayBuffer], { type: dataURI?.mimetype });
   const href = window.URL.createObjectURL(blob);
   const anchorElement = document.createElement('a');
   anchorElement.href = href;
-  anchorElement.download = `${date.getTime()}.${dataURI.mimetype.split("/").pop()}`;
+  anchorElement.download = `${date.getTime()}.${dataURI?.mimetype.split("/").pop()}`;
   document.body.appendChild(anchorElement);
   anchorElement.click();
   document.body.removeChild(anchorElement);

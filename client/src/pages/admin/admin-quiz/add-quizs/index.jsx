@@ -32,7 +32,7 @@ export default function AddQuizs() {
           await addItem("quizs" ,formData , "Quizs")
           navigate("/admin/quizs");
         } catch (error) {
-          console.error("Hata oluştu:", error);
+         toast.error("Hata oluştu:", error);
         }
       };
       await addQuizs();
