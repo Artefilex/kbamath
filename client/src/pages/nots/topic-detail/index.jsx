@@ -14,7 +14,6 @@ export default function TopicDetail() {
 
   useEffect(() => {
     const fetchCategory = async () => {
-    
       try{
         const notsCategory = await getNotsByClassThenCategory(classid, topicid);
         const updatedCategorys = await Promise.all(notsCategory.map(async (category) => {
@@ -31,7 +30,7 @@ export default function TopicDetail() {
   }, [classid, topicid]);
   const date = new Date()
   const handleDownload =  (dataURI) => {
-    if (!dataURI || !dataURI.image) {
+    if (!dataURI ) {
       toast.error("Geçersiz dataURI veya dataURI.image değeri");
       return;
     }

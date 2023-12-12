@@ -115,7 +115,7 @@ export default function UsersList() {
         ))}
       {!filtered &&
         users
-          .filter((user) => user.email === loginUser.email)
+          .filter((user) => user.email === loginUser?.email)
           .map((singleUser) => (
             <div
               key={singleUser.id}

@@ -14,7 +14,7 @@ export default function SuperAdmin (){
       };
       fetchUsers();
     }, []);
-    const filtered = users.find((item) => loginUser.email ===item.email && item.superAdmin )
+    const filtered = users.find((item) => loginUser?.email ===item?.email && item?.superAdmin )
   
     return {filtered}
 

@@ -17,7 +17,7 @@ export default function App() {
   }, [user]);
   return (
 <Suspense fallback={<Loading/>}>
-<Router> {logUser?  <AdminLayout/>: <MainLayout />}</Router> 
+<Router> {logUser ?  <AdminLayout/>: <MainLayout />}</Router> 
 </Suspense>
   );
 }
