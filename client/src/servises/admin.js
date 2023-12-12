@@ -2,7 +2,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 
-const baseUrl = "http://localhost:4000/admin"
+const baseUrl = "https://sisterslab.onrender.com"
 export  const handleDelete = async ( url,successMessage, errorMessage) => {
   const confirms = window.confirm("Silmek istediğine emin misin");
 
