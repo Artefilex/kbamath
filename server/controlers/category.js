@@ -11,7 +11,7 @@ exports.category_list = async (req, res) => {
   exports.category_add = async (req, res) => {
     try {
       const category =  await Category.create({
-        image: req.file.path,
+        image: req.file.buffer,
         title: req.body.title,
         paramsUrl: slugField(req.body.title),
       });

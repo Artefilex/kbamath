@@ -4,14 +4,18 @@ const sequelize = require("../db/sql");
 const Nots = sequelize.define(
   "nots",
   {
-    image : {
-      type: DataTypes.STRING,
-    }, 
+    image: {
+      type: DataTypes.BLOB("long"),
+    },
+   mimetype: {
+    type: DataTypes.STRING,
+    allowNull: false,
+   },
     category: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    class:{
+    class: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -28,7 +32,5 @@ const Nots = sequelize.define(
     timestamps: false,
   }
 );
-
-
 
 module.exports = Nots;

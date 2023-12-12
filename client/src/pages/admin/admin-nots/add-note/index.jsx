@@ -34,6 +34,7 @@ export default function AddNote() {
     onSubmit: async (values) => {
   
       const addNots = async () => {
+        console.log(values.image)
         const formData = new FormData();
         formData.append("image", values.image);
         formData.append("category", values.category);

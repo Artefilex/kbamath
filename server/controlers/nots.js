@@ -25,7 +25,8 @@ exports.nots_list = async (req, res) => {
   exports.create_nots = async (req,res) => {
     try {
       const createNots = await Nots.create({
-        image: req.file.path,
+        image: req.file.buffer,
+       mimetype : req.file.mimetype,
         category: slugField(req.body.category),
         class: slugField(req.body.class),
         description: req.body.description,
@@ -44,20 +45,22 @@ exports.nots_list = async (req, res) => {
   exports.edit_nots = async  (req, res) => {
     try {
       const nots = await Nots.findOne({ where: { paramsUrl: req.params.id } });
-      const oldImageUrl = req.body.oldImage;
+      console.log(req.file)
       if (req.file) {
-        nots.image= req.file.path
+        nots.image= req.file.buffer
+        nots.mimetype = req.file.mimetype
         nots.category= slugField(req.body.category)
         nots.class = slugField(req.body.class)
         nots.description= req.body.description
         nots.paramsUrl= slugField(req.body.description  + formattedDate)
-        await fs.unlinkSync(oldImageUrl);
+      
       } else {
         nots.category=  slugField(req.body.category)
         nots.description= req.body.description
         nots.class = slugField(req.body.class)
         nots.paramsUrl= slugField(req.body.description  + formattedDate)
-        nots.image = req.body.oldImage;
+        nots.image =  nots.image;
+        mimetype = nots.mimetype
       }
       await nots.save();
       res.send(`${nots.description} quiz edited`);

@@ -3,6 +3,7 @@ import NotsMain from "../nots-component";
 import LeftBar from "../left-navbar";
 import { useEffect, useState } from "react";
 import { getAllCategory, getNotsByClass } from "../../../servises";
+import { getImageDataUrl } from "../../../helpers/get-image-blob";
 export default function ClassDetail() {
   const { classid } = useParams();
   const [notsByClass, setNotsByClass] = useState([]);
@@ -10,9 +11,20 @@ export default function ClassDetail() {
   useEffect(() => {
     const fetchCategory = async () => {
       const notsByClasses = await getNotsByClass(classid);
-      const categoryData = await getAllCategory();
-      setCategorys(categoryData);
+      
+      try {
+        const categoryData = await getAllCategory();
+        const updatedCategorys = await Promise.all(categoryData.map(async (category) => {
+          const base64Image = await getImageDataUrl(category.image);
+          return { ...category, image: base64Image };
+        }));
+        setCategorys(updatedCategorys);
+      } catch (error) {
+        console.error('Error fetching blogs:', error);
+      }
+      
       setNotsByClass(notsByClasses);
+     
     };
     fetchCategory();
   }, [classid]);
@@ -32,9 +44,7 @@ export default function ClassDetail() {
               className="overflow-hidden group rounded-md items-center relative hover:-translate-y-1 gap-4 flex  flex-col justify-between  bg-[color:var(--bg-primary)] transition  h-[30rem] duration-700 "
             >
               <img
-                src={`${import.meta.env.VITE_BASE_URL}/${
-                  filteredCategory.image
-                }`}
+                src={`${filteredCategory.image}`}
                 alt={filteredCategory.title}
                 className="group-hover:scale-105 rounded-md relative z-[1]  w-[20rem] h-[30rem] object-cover duration-700 "
               />

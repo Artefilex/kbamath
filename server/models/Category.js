@@ -5,8 +5,8 @@ const Category = sequelize.define(
   "category",
   {
     image : {
-      type: DataTypes.STRING,
-    }, 
+      type: DataTypes.BLOB('long'),
+      }, 
     title: {
       type: DataTypes.STRING,
       allowNull: false,

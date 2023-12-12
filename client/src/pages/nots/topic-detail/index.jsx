@@ -3,9 +3,9 @@ import NotsMain from "../nots-component";
 import LeftBar from "../left-navbar";
 import { useEffect, useState } from "react";
 import { getNotsByClassThenCategory } from "../../../servises";
-import axios from "axios";
 import pdf from "../../../assests/image/pdfimage.svg";
 import toast from "react-hot-toast";
+import { getImageDataUrl } from "../../../helpers/get-image-blob";
 export default function TopicDetail() {
   const { classid } = useParams();
   const { topicid } = useParams();
@@ -14,41 +14,52 @@ export default function TopicDetail() {
 
   useEffect(() => {
     const fetchCategory = async () => {
-      const notsCategory = await getNotsByClassThenCategory(classid, topicid);
-      setNotsByCategory(notsCategory);
+    
+      try{
+        const notsCategory = await getNotsByClassThenCategory(classid, topicid);
+        const updatedCategorys = await Promise.all(notsCategory.map(async (category) => {
+          const base64Image = await getImageDataUrl(category.image);
+          return { ...category, image: base64Image };
+        }));
+        setNotsByCategory(updatedCategorys);
+      }catch(error){
+        toast.error(error)
+      }
+     
     };
     fetchCategory();
   }, [classid, topicid]);
+  const date = new Date()
+  const handleDownload =  (dataURI) => {
+    const base64Data = dataURI.image.replace(/^data:image\/\w+;base64,/, '');
+  const binaryData = atob(base64Data);
+  const arrayBuffer = new ArrayBuffer(binaryData.length);
+  const uint8Array = new Uint8Array(arrayBuffer);
 
-  
-  const handleDownload = async (url) => {
-    await axios
-      .get(`${import.meta.env.VITE_BASE_URL}/${url}`, { responseType: "blob" })
-      .then((response) => {
-        const href = window.URL.createObjectURL(response.data);
-        const anchorElement = document.createElement("a");
-        anchorElement.href = href;
-        anchorElement.download = url.split("\\").pop();
-        document.body.appendChild(anchorElement);
-        anchorElement.click();
-        document.body.removeChild(anchorElement);
-        window.URL.revokeObjectURL(href);
-      })
-      .catch((error) => {
-       toast.error( error);
-      });
+  for (let i = 0; i < binaryData.length; i++) {
+    uint8Array[i] = binaryData.charCodeAt(i);
+  }
+  const blob = new Blob([arrayBuffer], { type: dataURI.mimetype });
+  const href = window.URL.createObjectURL(blob);
+  const anchorElement = document.createElement('a');
+  anchorElement.href = href;
+  anchorElement.download = `${date.getTime()}.${dataURI.mimetype.split("/").pop()}`;
+  document.body.appendChild(anchorElement);
+  anchorElement.click();
+  document.body.removeChild(anchorElement);
+  window.URL.revokeObjectURL(href);
   };
-
+  
   return (
     <NotsMain>
       <div className="flex flex-col  w-full  gap-6 mobile:flex-row">
         <LeftBar />
         {notsByCategory.map((not) => (
           <div key={not.id}>
-            {not?.image.split(".").pop() === ("pdf" || "PDF") ? (
+            {not?.mimetype.split("/").pop() === ("pdf" || "PDF") ? (
               <div>
                 <button
-                  onClick={() => handleDownload(not.image)}
+                  onClick={() => handleDownload(not)}
                   className="relative group"
                 >
                   <img
@@ -69,7 +80,7 @@ export default function TopicDetail() {
                   className="relative group"
                 >
                   <img
-                    src={`${import.meta.env.VITE_BASE_URL}/${not.image}`}
+                    src={`${not.image}`}
                     alt={not.category}
                     className="w-[200px] xtablet:w-[200px] h-[260px] object-cover group-hover:opacity-25 transition-opacity duration-300"
                   />
