@@ -35,8 +35,8 @@ export default function TopicDetail() {
       return;
     }
   
-    const base64Data = dataURI.image.replace(/^data:image\/\w+;base64,/, '');
-  
+    const base64Data = dataURI.image.replace(/^data:image\/\w+;base64,/,"");
+
     if (!base64Data) {
       toast.error("Geçersiz base64 verisi");
       return;
@@ -49,6 +49,7 @@ export default function TopicDetail() {
     uint8Array[i] = binaryData.charCodeAt(i);
   }
   const blob = new Blob([arrayBuffer], { type: dataURI?.mimetype });
+  console.log(blob)
   const href = window.URL.createObjectURL(blob);
   const anchorElement = document.createElement('a');
   anchorElement.href = href;
@@ -85,7 +86,7 @@ export default function TopicDetail() {
             ) : (
               <div>
                 <button
-                  onClick={() => handleDownload(not.image)}
+                  onClick={() => handleDownload(not)}
                   className="relative group"
                 >
                   <img

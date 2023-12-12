@@ -25,10 +25,10 @@ const formik = useFormik({
     try {
       const response = await userLogin(formData);
       const  userData= await getAllItems("users")
-      const user = userData.find(
+      const user = await userData.find(
         user => user.email ===  values.email
     );
-    toast.log(user)
+
       if (response?.isAdmin) {
         dispatch(setLogin());
         navigate("/admin"); 
