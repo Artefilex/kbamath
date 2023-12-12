@@ -15,7 +15,7 @@ exports.quiz_list = async (req, res) => {
     try {
      
       const createQuiz = await Quiz.create({
-        image: req.file.path,
+        image: req.file.buffer,
         title: req.body.title,
         iframeUrl: req.body.iframeUrl,
         paramsUrl: slugField(req.body.title),
@@ -33,20 +33,19 @@ exports.quiz_list = async (req, res) => {
   exports.edit_quiz = async  (req, res) => {
     try {
       const quiz = await Quiz.findOne({ where: { paramsUrl: req.params.id } });
-      const oldImageUrl = req.body.oldImage;
+   
       if (req.file) {
-        quiz.image = req.file.path;
+        quiz.image = req.file.buffer;
         quiz.title = req.body.title;
         quiz.iframeUrl = req.body.iframeUrl;
         quiz.paramsUrl = slugField(req.body.title);
         quiz.iframeHeight = req.body.iframeHeight;
-        await fs.unlinkSync(oldImageUrl);
       } else {
         quiz.title = req.body.title;
         quiz.iframeUrl = req.body.iframeUrl;
         quiz.paramsUrl = slugField(req.body.title);
         quiz.iframeHeight = req.body.iframeHeight;
-        quiz.image = req.body.oldImage;
+        quiz.image =  quiz.image
       }
       await quiz.save();
       res.send(`${quiz.paramsUrl} quiz edited`);

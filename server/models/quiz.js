@@ -5,8 +5,8 @@ const Quizs = sequelize.define(
     "quizs",
     {
       image : {
-        type: DataTypes.STRING,
-      },
+        type: DataTypes.BLOB('long'),
+        }, 
       title: {
         type: DataTypes.STRING,
         allowNull: false,

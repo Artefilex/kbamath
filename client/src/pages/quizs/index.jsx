@@ -4,13 +4,24 @@ import { Link } from "react-router-dom"
 import SectionMain from "../../components/section-main"
 import PageHeader from "../../components/page-heading"
 import { getQuizs } from "../../servises"
+import { getImageDataUrl } from "../../helpers/get-image-blob"
 export default function Quizs () {
  const [quizs , setQuizs] = useState([])
     useEffect(()=>{
    const fetchQuizs = async() =>{
-    const response = await  getQuizs()
-    setQuizs(response)
-   }
+
+    try {
+      const response = await  getQuizs()
+      const updatedQuizs = await Promise.all(response.map(async (quiz) => {
+        const base64Image = await getImageDataUrl(quiz.image);
+        return { ...quiz, image: base64Image };
+      }));
+     
+  
+    setQuizs(updatedQuizs)
+   }catch(error){
+    console.log(error)
+   }   };
  fetchQuizs()
 
 },[])
@@ -22,7 +33,7 @@ export default function Quizs () {
       {
           quizs.map((quiz , i ) => (
             <Link key={i} to={`/test-quiz/${quiz.paramsUrl}`} className="relative flex flex-col gap-2 max-w-[13rem] w-full hover:bottom-1 transition-all duration-300" > 
-            <img src= {`${import.meta.env.VITE_BASE_URL}/${quiz.image}`} alt={quiz.title}  className="rounded"/>
+            <img src= {`${quiz.image}`} alt={quiz.title}  className="rounded"/>
              {quiz.title} </Link>
           ))    
         }

@@ -14,6 +14,7 @@ export default function QuizDetails() {
     }
     fetchQuiz()
   }, [quizid]);
+
   return (
     <div className="w-full  h-full">
       {quiz && (
