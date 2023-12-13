@@ -59,7 +59,7 @@ export default function BlogDetails() {
           )}
         </>
       )}
-        <div key={blog.id} className="mt-6 w-[90%] px-2  mobile:w-9/12  ">
+        <div key={blog.id} className="mt-6 w-[90%] px-2  flex flex-col  mobile:w-9/12    ">
            {imageSrc && <img src={imageSrc} alt="Content" className="w-full h-full max-h-[20rem] object-cover" /> }
           <header className="mb-3  flex flex-col gap-1">
             <h1 className="font-bold uppercase text-[1.4rem]  tablet:text-[1.875rem] ">
