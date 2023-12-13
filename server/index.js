@@ -22,7 +22,7 @@ const admin = require("./routes/admin");
 const cors = require("cors");
 app.use(
   cors({
-    origin: "*", //https://kba-math.onrender.com,
+    origin: "https://kba-math.onrender.com", 
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
