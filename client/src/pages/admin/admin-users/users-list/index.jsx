@@ -113,10 +113,22 @@ export default function UsersList() {
               key={singleUser.id}
               className="w-full flex items-center justify-between flex-col border rounded-lg px-2 py-4 mobile:flex-row bg-[color:var(--bg-secondary)] gap-4 mobile:gap-0 "
             >
-              <div className="flex items-center justify-around gap-4 w-full">
-                <div>{singleUser.username}</div>
-                <div>{singleUser.email}</div>
-              </div>
+              <div className="flex items-center justify-around gap-4 w-full flex-col mobile:flex-row">
+              <div className="w-full flex items-center gap-2 ">  
+              <span className="block mobile:hidden font-bold">Kullanıcı Adı:</span>
+              {singleUser.username}</div>
+              <div className="w-full flex items-center   gap-2 "> 
+              <span className="block mobile:hidden font-bold">Email:</span>
+              <div className="truncate w-[14rem]">{singleUser.email}</div></div>
+            </div>
+              <div className="flex items-center justify-around gap-4 w-full flex-col mobile:flex-row">
+              <div className="w-full flex items-center gap-2 ">  
+              <span className="block mobile:hidden font-bold">Kullanıcı Adı:</span>
+              {singleUser.username}</div>
+              <div className="w-full flex items-center   gap-2 "> 
+              <span className="block mobile:hidden font-bold">Email:</span>
+              <div className="truncate w-[14rem]">{singleUser.email}</div></div>
+            </div>
               <div>
                 <Tooltip
                   content="Admin Yetkisi var sadece editleyebilirsin"
