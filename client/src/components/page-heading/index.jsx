@@ -1,8 +1,13 @@
 import PropTypes from "prop-types";
+import { useAppearance } from "../../store/appearance/hooks";
+import classNames from "classnames";
 
 export default function PageHeader({ image , text }) {
+  const {theme} = useAppearance()
   return (
-    <header className="relative mt-5 w-full flex gap-4  min-h-[8rem]  justify-center mobile:min-h-[12rem]  overflow-hidden group rounded-md mb-12">
+    <header className={classNames("relative mt-5 w-full flex gap-4  min-h-[8rem]  justify-center mobile:min-h-[12rem]  overflow-hidden group rounded-md mb-12",{
+      "text-white/70" : theme.name === "light"
+    })}>
       <img
         src={image}
         alt="ssss"

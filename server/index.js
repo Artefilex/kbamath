@@ -22,7 +22,7 @@ const admin = require("./routes/admin");
 const cors = require("cors");
 app.use(
   cors({
-    origin: "https://kba-math.onrender.com",
+    origin: "*", //https://kba-math.onrender.com,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
@@ -47,8 +47,8 @@ app.use("/Images", express.static("./Images"))
 
 
 async function sync() {
-  await sequelizeDb.sync({ alter: true });
-  //  await sequelizeDb.sync({ force: true });
+  await sequelizeDb.sync({ alter: true }); 
+  // await sequelizeDb.sync({ force: true });
   await dummyData();
 }
 sync();

@@ -1,7 +1,8 @@
 import axios from "axios"
 
-// const baseUrl = "https://artefilex-portfoly.onrender.com";
+
  const baseUrl = "https://sisterslab.onrender.com";
+// const baseUrl = "http://localhost:4000";
 export const  getBlogs = async () => {
     const response = await axios.get(`${baseUrl}/blogs`);
     return [response.data];

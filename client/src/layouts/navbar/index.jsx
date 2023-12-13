@@ -16,15 +16,17 @@ export default function Navbar() {
 
 
   return (
-    <nav className=" w-full  backdrop-blur-md text-white bg-black/50 flex items-center justify-center custom-box-shadow sticky top-0 left-0 right-0  transition-all duration-200 z-[30] px-4">
-      <nav className="flex item-center  w-full justify-center flex-col  font-bold py-3 mobile:flex-row mobile:justify-around laptop:max-w-[80%] ">
+    <nav className=" w-full  backdrop-blur-md text-white bg-black/80 flex items-center justify-center custom-box-shadow sticky top-0 left-0 right-0  transition-all duration-200 z-[30] px-4">
+      <nav className="flex item-center  w-full justify-center flex-col py-3 font-bold  mobile:flex-row mobile:justify-around laptop:max-w-[80%] ">
         {!isMobile && (
           <div className=" flex  items-center justify-center w-full">
-            <img
-              className="h-12 rounded-full object-cover"
+         
+        <NavLink to={"/"}>   <img
+              className="h-14  object-cover "
               src={KBA}
               alt="logo"
             />
+       </NavLink>
 
             <div className="flex-1  flex  item-center justify-end   gap-1  h-12 w-full  whitespace-nowrap ">
               {

@@ -17,13 +17,13 @@ function LeftBar() {
     fetchCategory();
   }, []);
   return (
-    <div className=" flex mobile:flex-col mobile:min-h-screen  mobile:border-r-2  border-r-[color:var(--c-subbase)] transition-all duration-400">
+    <div className=" flex mobile:flex-col mobile:min-h-screen  mobile:border-r-2  border-r-gray-400 transition-all duration-400">
       {!isMobile && (
         <>
           <div className="min-w-[6rem] smobile:min-w-[10rem] flex gap-2  flex-col transition-all  duration-400">
             {notsLinks.map((not) => (
               <NavLink
-                className="hover:bg-[color:var(--bg-secondary)] whitespace-nowrap  py-2 pr-9 pl-2 transition-colors"
+                className="hover:bg-[color:var(--bg-secondary)] whitespace-nowrap  py-2 pr-9 pl-2 transition-colors font-bold"
                 key={not.href}
                 to={not.href}
               >

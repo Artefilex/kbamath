@@ -15,13 +15,13 @@ const LeftbarLesson = memo(function LeftbarLesson() {
   const [show, setShow] = useState(false);
   return (
     <>
-      {!isMobile && (
-        <nav className="flex  flex-col mobile:min-h-screen gap-3  mobile:border-r-2  border-r-[color:var(--c-subbase)] transition-all duration-400">
+      {!isMobile && educations?.length > 0 &&(
+        <nav className="flex  flex-col mobile:min-h-screen gap-3  mobile:border-r-2  border-r-gray-400  transition-all duration-400">
           {educations.map((education, i) => (
             <Link
               key={i}
               to={`/dersler/${education.paramsUrl}`}
-              className="hover:bg-[color:var(--c-subbase)] justify-center w-full min-w-[10rem]  gap-4 flex  flex-col  px-2 min-h-[3rem]"
+              className="hover:bg-[color:var(--c-subbase)] justify-center w-full min-w-[10rem]  gap-4 flex  flex-col  px-2 min-h-[3rem] font-bold" 
             >
               <h2>{education.title} </h2>
             </Link>

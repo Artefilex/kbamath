@@ -33,7 +33,7 @@ export default function Footer() {
     tel: "0506-121-06-25",
   };
   return (
-    <footer className="border-1  w-full laptop:max-w-[80%] gap-4 flex-col flex items-center justify-center ysbşet:my-4 relative bg-[color:var(--bg-secondary)] px-2 py-6 mobile:mb-6">
+    <footer className="border-1  w-full laptop:max-w-[80%] gap-4 flex-col flex items-center justify-center ysbşet:my-4 relative  backdrop-blur-md text-white bg-black/80 px-2 py-6 mobile:mb-6">
       <main className="w-full gap-4 flex-col flex  items-center tablet:items-start  tablet:flex-row justify-around my-4 relative max-w-[100rem] ">
         <div className="w-full max-w-[20rem] flex justify-start">
        

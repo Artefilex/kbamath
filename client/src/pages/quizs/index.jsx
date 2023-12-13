@@ -6,6 +6,8 @@ import PageHeader from "../../components/page-heading"
 import { getQuizs } from "../../servises"
 import { getImageDataUrl } from "../../helpers/get-image-blob"
 import toast from "react-hot-toast"
+import classNames from "classnames"
+import { useAppearance } from "../../store/appearance/hooks"
 export default function Quizs () {
  const [quizs , setQuizs] = useState([])
     useEffect(()=>{
@@ -26,16 +28,20 @@ export default function Quizs () {
  fetchQuizs()
 
 },[])
-
+ const {theme} = useAppearance()
     return (
         <SectionMain>   
            <PageHeader image={quizImg} text={"SINAVLAR"} /> 
-      <main className="w-full flex flex-row flex-wrap  items-center justify-center gap-8 mt-2  ">
+      <main className="w-full flex flex-row flex-wrap  items-start justify-center min-h-screen gap-8 mt-2  ">
       {
           quizs.map((quiz , i ) => (
-            <Link key={i} to={`/test-quiz/${quiz.paramsUrl}`} className="relative flex flex-col gap-2 max-w-[13rem] w-full hover:bottom-1 transition-all duration-300" > 
-            <img src= {`${quiz.image}`} alt={quiz.title}  className="rounded"/>
-             {quiz.title} </Link>
+            <Link key={i} to={`/test-quiz/${quiz.paramsUrl}`} className={classNames("h-[25em] justify-between relative flex flex-col gap-4 max-w-[16rem] w-full hover:bottom-1 transition-all duration-300",{
+              "border-gray-800 " : theme.name === "light"
+            }
+            )} >
+               <div className="w-[16rem]  font-semibold text-center ">  {quiz.title} </div> 
+            <img src= {`${quiz.image}`} alt={quiz.title}  className={"rounded w-[16rem] min-h-[20rem] object-cover drop-shadow-text"}/>
+          </Link>
           ))    
         }
       </main>       
