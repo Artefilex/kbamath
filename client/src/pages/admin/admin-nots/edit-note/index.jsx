@@ -13,7 +13,7 @@ import {
 } from "../../../../servises/admin";
 // import toast from "react-hot-toast";
 import { useFormik } from "formik";
-import { NotsShema } from "../../validations/NotsShema";
+import { NotsShemaEdit } from "../../validations/NotsShema";
 export default function EditNote() {
   const defaultClasses = [
     { href: "1-sinif", label: "Lise 1.sınıf" },
@@ -40,7 +40,6 @@ export default function EditNote() {
     const fetchData = async () => {
       const data = await getSingleItem(`nots/${id}`);
       formik.setValues({
-        oldImage: data.image,
         category: data.category,
         description: data.description,
       })
@@ -52,13 +51,12 @@ export default function EditNote() {
 
   const formik = useFormik({
     initialValues: {
-      oldImage:"",
       image: "",
       category: "",
       description: "",
     },
     
-    validationSchema: NotsShema,
+    validationSchema: NotsShemaEdit,
     onSubmit: async (values) => {
       const editEducation = async () => {
         const formData = new FormData();
@@ -66,6 +64,7 @@ export default function EditNote() {
         formData.append("category", values.category);
         formData.append("class", classes);
         formData.append("description", values.description);
+      
       await editItem(`nots/${id}`, formData, "Nots", values.description);
       navigate("/admin/nots");
     };
@@ -81,7 +80,6 @@ export default function EditNote() {
       method="POST"
       className="w-full rounded-xl py-4 flex-col flex items-center justify-center  gap-3"
     >
-      <input type="hidden" name="oldImage" value={formik.values.oldImage} />
       <FormContent  >
         <FormSelect
           label={"Kategori"}

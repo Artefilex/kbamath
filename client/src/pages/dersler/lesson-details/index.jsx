@@ -31,14 +31,14 @@ export default  function LessonsDetails() {
    
   return (
     <SectionMain>
-       <div className="w-full flex  flex-col  gap-6 mobile:flex-row">
+       <div className="w-full flex items-center mobile:items-start flex-col  gap-6 mobile:flex-row mb-6">
       <LeftbarLesson/>
       
           <div
-            className="flex items-center  flex-col w-[90%] py-2 px-2"
+            className="flex items-center justify-center  flex-col w-[95%] py-2 px-2"
           >
             <header className="flex flex-col justify-between gap-5 w-full xtablet:flex-row pb-10">
-            {imageSrc && <img src={imageSrc}  alt= {detail.title} className="w-full min-w-[400px] xtablet:w-[50%] min-h-[250px] max-h-[250px]  object-cover" />}
+            {imageSrc && <img src={imageSrc}  alt= {detail.title} className="w-full min-w-[300px] xtablet:w-[50%] min-h-[250px] max-h-[250px]  object-cover" />}
               <div className="flex items-start flex-col w-full xtablet:gap-8">
                 <h1 className="uppercase text-[2rem] font-bold ">
                   {detail.title}

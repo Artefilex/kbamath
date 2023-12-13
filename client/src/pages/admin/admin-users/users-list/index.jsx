@@ -32,7 +32,7 @@ export default function UsersList() {
   };
   const handleToggleModal = (userId) => {
     setShowModal((prevShowModal) => ({
-      ...prevShowModal,
+     
       [userId]: !prevShowModal[userId]
     }));
   };
@@ -41,7 +41,7 @@ export default function UsersList() {
   const { filtered } = SuperAdmin();
   return (
     <div className="w-[95%] flex flex-col gap-2">
-      <div className="w-full flex items-center justify-between px-4 py-2 bg-slate-700 text-white rounded-t-lg font-bold  "> <div> Kullanıcı Adı</div> <div>Email</div> <div> Aksiyon</div> </div>
+      <div className="w-full hidden mobile:flex items-center justify-between px-4 py-2 bg-slate-700 text-white rounded-t-lg font-bold  "> <div> Kullanıcı Adı</div> <div>Email</div> <div> Aksiyon</div> </div>
       {filtered &&
         users.map((user) => (
           <div
@@ -50,11 +50,11 @@ export default function UsersList() {
           >
             <div className="flex items-center justify-around gap-4 w-full flex-col mobile:flex-row">
               <div className="w-full flex items-center gap-2 ">  
-              <span className="block mobile:hidden font-bold">username:</span>
+              <span className="block mobile:hidden font-bold">Kullanıcı Adı:</span>
               {user.username}</div>
-              <div className="w-full flex items-center  gap-2 "> 
+              <div className="w-full flex items-center   gap-2 "> 
               <span className="block mobile:hidden font-bold">Email:</span>
-              {user.email}</div>
+              <div className="truncate w-[14rem]">{user.email}</div></div>
             </div>
             <div>
               <Tooltip
@@ -83,7 +83,7 @@ export default function UsersList() {
                     <div className="absolute w-full min-h-[6rem] min-w-[12rem] mobile:min-w-[18rem] flex flex-col top-8 -right-20  mobile:top-0  mobile:right-[100px] bg-black border border-slate-800 z-50 ">
                       <button
                         className="flex flex-col h-[30px] items-center justify-center z-[6] rounded-bl-lg w-[30px] absolute bg-slate-800 text-white right-0 top-0"
-                        onClick={() => handleToggleModal({})}
+                        onClick={() => handleToggleModal(user.paramsUrl)}
                       >
                         <IoClose className="h-[2rem]" />
                       </button>

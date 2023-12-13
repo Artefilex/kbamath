@@ -39,8 +39,26 @@ export default function BlogDetails() {
 
   
   return (
-    <div className=" gap-4 min-h-screen flex w-full items-center justify-between  flex-col mobile:flex-row  mobile:gap-4 mobile:items-start relative ">
-      
+    <div className=" gap-4 min-h-screen flex w-full items-center justify-between  flex-col mobile:flex-row  mobile:gap-4 mobile:items-start relative mb-7">
+       {isMobile && (
+        <>
+          <div className="flex w-full items-center  justify-center my-6">
+            <button
+              onClick={() => setShow(!show)}
+              className="w-[90%] font-bold bg-[color:var(--btn-dark-hover)] border border-[color:var(--c-base)] hover:bg-[color:var(--btn-dark-hover)] transition-all duration-300 rounded-sm px-4 py-2 shadow-xl absolute active:top-[0.2rem] mt-4"
+            >
+              Daha Fazla Blog
+            </button>
+          </div>
+          {show && (
+            <div className="w-[90%] px-2 bg-[color:var(--bg-secondary)] mt-6 min-h-[20rem] overflow-auto py-2 z-20">
+              <div>
+                <RightBar blogs={blogs} />
+              </div>
+            </div>
+          )}
+        </>
+      )}
         <div key={blog.id} className="mt-6 w-[90%] px-2  mobile:w-9/12  ">
            {imageSrc && <img src={imageSrc} alt="Content" className="w-full h-full max-h-[20rem] object-cover" /> }
           <header className="mb-3  flex flex-col gap-1">
@@ -64,25 +82,7 @@ export default function BlogDetails() {
           ></section>
         </div>
       
-      {isMobile && (
-        <>
-          <div className="flex w-full items-center  justify-center my-6">
-            <button
-              onClick={() => setShow(!show)}
-              className="w-[90%] font-bold bg-[color:var(--btn-dark-hover)] border border-[color:var(--c-base)] hover:bg-[color:var(--btn-dark-hover)] transition-all duration-300 rounded-sm px-4 py-2 shadow-xl absolute active:top-[0.2rem] mt-4"
-            >
-              Daha Fazla Blog
-            </button>
-          </div>
-          {show && (
-            <div className="w-[90%] px-2 bg-[color:var(--bg-secondary)] mt-6 min-h-[20rem] overflow-auto py-2">
-              <div>
-                <RightBar blogs={blogs} />
-              </div>
-            </div>
-          )}
-        </>
-      )}
+     
 
       {!isMobile && (
         <div className="w-[90%] px-4 pb-10 py-4 bg-[color:var(--bg-secondary)] mt-6 h-[20rem] overflow-auto mobile:h-fit mobile:mx-2 mobile:w-[18rem]">

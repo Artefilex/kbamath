@@ -8,7 +8,7 @@ import CardRightBox from "../../../components/card-right-box"
 function HomeMain() {
   return (
 
-    <main className="flex items-center justify-center w-full flex-col gap-4 pt-5 mt-[20rem]">
+    <main className="flex items-center justify-center w-full flex-col gap-4 pt-5 mt-[2rem] laptop:mt-[8rem]">
       <CardLeftBox 
        image={potential}
       header={"Programın İşleyişi:"}

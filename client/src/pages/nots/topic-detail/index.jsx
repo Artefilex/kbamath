@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import { getImageDataUrl } from "../../../helpers/get-image-blob";
 import { useAppearance } from "../../../store/appearance/hooks";
 import classNames from "classnames";
-
+import { MdFileDownload } from "react-icons/md";
 export default function TopicDetail() {
   const { classid } = useParams();
   const { topicid } = useParams();
@@ -90,9 +90,9 @@ export default function TopicDetail() {
                     )}
                   />
 
-                  <span
+                 <div
                     className={classNames(
-                      "absolute left-0 right-0 bottom-[50%] opacity-0 group-hover:opacity-90 transition-opacity duration-300 font-extrabold text-[1.5rem] ",
+                      "absolute left-0 right-0 top-4 h-[14rem] opacity-0 group-hover:opacity-90 transition-opacity duration-300 font-extrabold text-[1.5rem] flex flex-col items-center justify-between ",
                       {
                         "text-stone-950 ": theme.name === "light",
                       }
@@ -101,8 +101,13 @@ export default function TopicDetail() {
                     <div className="w-full text-center capitalize font-semibold text-[1.5rem]">
                       {not.description}
                     </div>
-                    Dowloand
-                  </span>
+
+                    <div className="w-full flex-col flex items-center justify-center">
+                      {" "}
+                      <div>Dowloand </div>{" "}
+                      <MdFileDownload className="h-[4rem] w-[4rem]" />
+                    </div>
+                  </div>
                 </button>
               </div>
             ) : (
@@ -125,20 +130,24 @@ export default function TopicDetail() {
                       }
                     )}
                   />
-
-                  <span
+                  <div
                     className={classNames(
-                      "absolute left-0 right-0 bottom-[50%] opacity-0 group-hover:opacity-90 transition-opacity duration-300 font-extrabold text-[1.5rem] ",
+                      "absolute left-0 right-0 top-0 h-[14rem] opacity-0 group-hover:opacity-90 transition-opacity duration-300 font-extrabold text-[1.5rem] flex flex-col items-center justify-between ",
                       {
                         "text-stone-950 ": theme.name === "light",
                       }
                     )}
                   >
-                      <div className="w-full text-center capitalize font-semibold text-[1.5rem]">
+                    <div className="w-full text-center capitalize font-semibold text-[1.5rem]">
                       {not.description}
                     </div>
-                    Dowloand
-                  </span>
+
+                    <div className="w-full flex-col flex items-center justify-center">
+                      {" "}
+                      <div>Dowloand </div>{" "}
+                      <MdFileDownload className="h-[4rem] w-[4rem]" />
+                    </div>
+                  </div>
                 </button>
               </div>
             )}

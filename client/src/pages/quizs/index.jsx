@@ -32,14 +32,14 @@ export default function Quizs () {
     return (
         <SectionMain>   
            <PageHeader image={quizImg} text={"SINAVLAR"} /> 
-      <main className="w-full flex flex-row flex-wrap  items-start justify-center min-h-screen gap-8 mt-2  ">
+      <main className="w-full flex flex-row flex-wrap  items-start justify-center laptop:justify-start min-h-screen gap-8 mt-2  mb-6 ">
       {
           quizs.map((quiz , i ) => (
-            <Link key={i} to={`/test-quiz/${quiz.paramsUrl}`} className={classNames("h-[25em] justify-between relative flex flex-col gap-4 max-w-[16rem] w-full hover:bottom-1 transition-all duration-300",{
+            <Link key={i} to={`/test-quiz/${quiz.paramsUrl}`} className={classNames("h-[22em] justify-between relative flex flex-col  max-w-[16rem] w-full hover:bottom-1 transition-all duration-300",{
               "border-gray-800 " : theme.name === "light"
             }
             )} >
-               <div className="w-[16rem]  font-semibold text-center ">  {quiz.title} </div> 
+               <div className="w-[16rem]  font-semibold text-center truncate capitalize"> {quiz.title} </div> 
             <img src= {`${quiz.image}`} alt={quiz.title}  className={"rounded w-[16rem] min-h-[20rem] object-cover drop-shadow-text"}/>
           </Link>
           ))    

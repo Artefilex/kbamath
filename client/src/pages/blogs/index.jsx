@@ -28,11 +28,11 @@ function Blogs() {
     <SectionMain>
        <PageHeader image={daktilo} text={"BLOG"} /> 
      
-      <main className=" py-2 grid  grid-rows-1 grid-cols-1  mobile:grid-rows-2 mobile:grid-cols-2 w-full gap-3 deskop:grid-rows-3 deskop:grid-cols-3">
+      <main className="w-full py-2 flex flex-wrap items-center justify-center laptop:justify-start gap-4">
         {blogs.map((blog) => (
           <div
             key={blog.id}
-            className="flex items-center justify-center w-full rounded-md  relative"
+            className="flex items-center justify-center w-[20rem] rounded-md  relative"
           >  
                 <Link to={`/bloglar/${blog.paramsUrl}`} className="overflow-hidden group rounded-md  relative hover:-translate-y-1 gap-4 flex  flex-col justify-between  bg-[color:var(--bg-primary)] transition  h-[30rem] duration-700 "  >
              <img 

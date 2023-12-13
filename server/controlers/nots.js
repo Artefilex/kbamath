@@ -45,7 +45,6 @@ exports.nots_list = async (req, res) => {
   exports.edit_nots = async  (req, res) => {
     try {
       const nots = await Nots.findOne({ where: { paramsUrl: req.params.id } });
-      console.log(req.file)
       if (req.file) {
         nots.image= req.file.buffer
         nots.mimetype = req.file.mimetype
