@@ -75,7 +75,7 @@ function FormInput({
         <button
           type="button"
           onClick={() => setShowPassword((prev) => !prev)}
-          className={`text-gray-400 hover:text-white focus:outline-none absolute right-9 top-11`}
+          className={`text-gray-400 hover:text-white focus:outline-none absolute right-[5%] top-11`}
         >
           {showPassword ? <IoEyeSharp /> : <FaEyeSlash />}
         </button>

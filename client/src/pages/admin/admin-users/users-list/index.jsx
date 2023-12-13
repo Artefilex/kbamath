@@ -32,16 +32,17 @@ export default function UsersList() {
   };
   const handleToggleModal = (userId) => {
     setShowModal((prevShowModal) => ({
-     
-      [userId]: !prevShowModal[userId]
+      [userId]: !prevShowModal[userId],
     }));
   };
-
 
   const { filtered } = SuperAdmin();
   return (
     <div className="w-[95%] flex flex-col gap-2">
-      <div className="w-full hidden mobile:flex items-center justify-between px-4 py-2 bg-slate-700 text-white rounded-t-lg font-bold  "> <div> Kullanıcı Adı</div> <div>Email</div> <div> Aksiyon</div> </div>
+      <div className="w-full hidden mobile:flex items-center justify-between px-4 py-2 bg-slate-700 text-white rounded-t-lg font-bold  ">
+        {" "}
+        <div> Kullanıcı Adı</div> <div>Email</div> <div> Aksiyon</div>{" "}
+      </div>
       {filtered &&
         users.map((user) => (
           <div
@@ -49,12 +50,16 @@ export default function UsersList() {
             className="w-full flex items-center justify-between flex-col border rounded-lg px-2 py-4 mobile:flex-row bg-[color:var(--bg-secondary)] gap-4 mobile:gap-0 "
           >
             <div className="flex items-center justify-around gap-4 w-full flex-col mobile:flex-row">
-              <div className="w-full flex items-center gap-2 ">  
-              <span className="block mobile:hidden font-bold">Kullanıcı Adı:</span>
-              {user.username}</div>
-              <div className="w-full flex items-center   gap-2 "> 
-              <span className="block mobile:hidden font-bold">Email:</span>
-              <div className="truncate w-[14rem]">{user.email}</div></div>
+              <div className="w-full flex items-center gap-2 ">
+                <span className="block mobile:hidden font-bold">
+                  Kullanıcı Adı:
+                </span>
+                {user.username}
+              </div>
+              <div className="w-full flex items-center   gap-2 ">
+                <span className="block mobile:hidden font-bold">Email:</span>
+                <div className="truncate w-[14rem]">{user.email}</div>
+              </div>
             </div>
             <div>
               <Tooltip
@@ -75,7 +80,7 @@ export default function UsersList() {
                 <div className="flex items-center justify-between relative">
                   <button
                     className="mr-4"
-                    onClick={() =>  handleToggleModal(user.paramsUrl)}
+                    onClick={() => handleToggleModal(user.paramsUrl)}
                   >
                     Edit
                   </button>
@@ -114,21 +119,17 @@ export default function UsersList() {
               className="w-full flex items-center justify-between flex-col border rounded-lg px-2 py-4 mobile:flex-row bg-[color:var(--bg-secondary)] gap-4 mobile:gap-0 "
             >
               <div className="flex items-center justify-around gap-4 w-full flex-col mobile:flex-row">
-              <div className="w-full flex items-center gap-2 ">  
-              <span className="block mobile:hidden font-bold">Kullanıcı Adı:</span>
-              {singleUser.username}</div>
-              <div className="w-full flex items-center   gap-2 "> 
-              <span className="block mobile:hidden font-bold">Email:</span>
-              <div className="truncate w-[14rem]">{singleUser.email}</div></div>
-            </div>
-              <div className="flex items-center justify-around gap-4 w-full flex-col mobile:flex-row">
-              <div className="w-full flex items-center gap-2 ">  
-              <span className="block mobile:hidden font-bold">Kullanıcı Adı:</span>
-              {singleUser.username}</div>
-              <div className="w-full flex items-center   gap-2 "> 
-              <span className="block mobile:hidden font-bold">Email:</span>
-              <div className="truncate w-[14rem]">{singleUser.email}</div></div>
-            </div>
+                <div className="w-full flex items-center gap-2 ">
+                  <span className="block mobile:hidden font-bold">
+                    Kullanıcı Adı:
+                  </span>
+                  {singleUser.username}
+                </div>
+                <div className="w-full flex items-center   gap-2 ">
+                  <span className="block mobile:hidden font-bold">Email:</span>
+                  <div className="truncate w-[14rem]">{singleUser.email}</div>
+                </div>
+              </div>
               <div>
                 <Tooltip
                   content="Admin Yetkisi var sadece editleyebilirsin"
