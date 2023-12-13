@@ -37,7 +37,7 @@ export default function ClassDetail() {
     <NotsMain>
       <div className="flex flex-col  w-full  gap-6 mobile:flex-row">
         <LeftBar />
-        <div className=" py-2 grid content-center  justify-items-center  grid-rows-1 grid-cols-1  tablet:grid-rows-2 tablet:grid-cols-2 w-full gap-3 deskop:grid-rows-3 deskop:grid-cols-3">
+        <div className=" py-2 flex flex-wrap justify-center mobile:justify-start">
           {filterData.map((filteredCategory) => (
             <Link
               key={filteredCategory.id}

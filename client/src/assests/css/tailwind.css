@@ -44,7 +44,7 @@ body {
 }
 
 .blog-bg{
-    background: linear-gradient(180deg, rgba(8, 31, 34, 0.24) 0%, rgba(8, 31, 34, 0.39) 14%, rgba(34, 54, 69, 0.95) 44%, rgba(34, 54, 69, 1) 100%);   
+    background: linear-gradient(180deg, rgba(8, 31, 34, 0.3) 0%, rgba(8, 31, 34, 0.39) 14%, rgba(34, 54, 69, 0.95) 44%, rgba(34, 54, 69, 1) 100%);   
   
 }
 .blog-second-bg{

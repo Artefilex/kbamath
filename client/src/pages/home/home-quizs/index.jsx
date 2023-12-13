@@ -40,7 +40,7 @@ export default function HomeQuizs() {
                 "bg-white/10": theme.name === "light",
             
           })}>
-            <QuizCard count={1} text={"Hızlı Geribildirim"} />
+            <QuizCard count={1} text={"Hızlı Geri Bildirim"} />
             <QuizCard count={2} text={"Pratik Uygulama"} />
             <QuizCard count={3} text={"İndirim Fırsatı"} />
             <QuizCard count={4} text={"kendini test etme"} />

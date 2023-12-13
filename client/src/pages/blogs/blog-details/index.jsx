@@ -39,9 +39,9 @@ export default function BlogDetails() {
 
   
   return (
-    <div className=" gap-4 min-h-screen flex w-full items-center justify-center flex-col mobile:flex-row  mobile:gap-4 mobile:items-start relative ">
-      {
-        <div key={blog.id} className="mt-6 w-[90%]   mobile:w-9/12  ">
+    <div className=" gap-4 min-h-screen flex w-full items-center justify-between  flex-col mobile:flex-row  mobile:gap-4 mobile:items-start relative ">
+      
+        <div key={blog.id} className="mt-6 w-[90%] px-2  mobile:w-9/12  ">
            {imageSrc && <img src={imageSrc} alt="Content" className="w-full h-full max-h-[20rem] object-cover" /> }
           <header className="mb-3  flex flex-col gap-1">
             <h1 className="font-bold uppercase text-[1.4rem]  tablet:text-[1.875rem] ">
@@ -63,13 +63,13 @@ export default function BlogDetails() {
             dangerouslySetInnerHTML={{ __html: blog.content }}
           ></section>
         </div>
-      }
+      
       {isMobile && (
         <>
           <div className="flex w-full items-center  justify-center my-6">
             <button
               onClick={() => setShow(!show)}
-              className="w-[90%] font-bold bg-[color:var(--btn-dark-hover)] border border-[color:var(--c-base)] hover:bg-[color:var(--btn-dark-hover)] transition-all duration-300 rounded-sm px-4 py-2 shadow-xl relative active:top-[0.2rem] mt-4"
+              className="w-[90%] font-bold bg-[color:var(--btn-dark-hover)] border border-[color:var(--c-base)] hover:bg-[color:var(--btn-dark-hover)] transition-all duration-300 rounded-sm px-4 py-2 shadow-xl absolute active:top-[0.2rem] mt-4"
             >
               Daha Fazla Blog
             </button>
