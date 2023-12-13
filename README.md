@@ -128,3 +128,7 @@ KBA MATH, matematik öğretmenlerine ve öğrencilere interaktif matematik dersl
 ![Quizler](./file//quizler.png, "Quizler")
 
 [![Ön İzleme](https://img.youtube.com/vi/rF2likJegIg/0.jpg)](https://www.youtube.com/watch?v=rF2likJegIg)
+
+
+
+

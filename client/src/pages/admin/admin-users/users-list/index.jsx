@@ -8,7 +8,7 @@ import { IoClose } from "react-icons/io5";
 export default function UsersList() {
   const [users, setUsers] = useState([]);
   const [loginUser, setLoginUser] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState({});
   useEffect(() => {
     const fetchUsers = async () => {
       const getLogin = await JSON.parse(localStorage.getItem("userLogin"));
@@ -30,6 +30,13 @@ export default function UsersList() {
       setUsers(filteredQuizs);
     }
   };
+  const handleToggleModal = (userId) => {
+    setShowModal((prevShowModal) => ({
+      ...prevShowModal,
+      [userId]: !prevShowModal[userId]
+    }));
+  };
+
 
   const { filtered } = SuperAdmin();
   return (
@@ -66,32 +73,17 @@ export default function UsersList() {
                 </div>
               ) : (
                 <div className="flex items-center justify-between relative">
-                  {/* {
-                user.isAdmin ? (  <Link
-                  to={`/admin/edit-users/${user.paramsUrl}`}
-                  className=" px-4 py-2 transition-color duration-300 hover:rounded-lg hover:text-white  "
-                 
-                >
-                  Admin
-                </Link>) : (  <Link
-                  to={`/admin/edit-users/${user.paramsUrl}`}
-                  className=" px-4 py-2 transition-color duration-300 hover:rounded-lg hover:text-white  "
-                 
-                >
-                  Admin Yap
-                </Link>)
-              } */}
                   <button
                     className="mr-4"
-                    onClick={() => setShowModal(!showModal)}
+                    onClick={() =>  handleToggleModal(user.paramsUrl)}
                   >
                     Edit
                   </button>
-                  {showModal && (
+                  {showModal[user.paramsUrl] && (
                     <div className="absolute w-full min-h-[6rem] min-w-[12rem] mobile:min-w-[18rem] flex flex-col top-8 -right-20  mobile:top-0  mobile:right-[100px] bg-black border border-slate-800 z-50 ">
                       <button
                         className="flex flex-col h-[30px] items-center justify-center z-[6] rounded-bl-lg w-[30px] absolute bg-slate-800 text-white right-0 top-0"
-                        onClick={() => setShowModal(false)}
+                        onClick={() => handleToggleModal({})}
                       >
                         <IoClose className="h-[2rem]" />
                       </button>
