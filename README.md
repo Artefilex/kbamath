@@ -4,7 +4,7 @@ KBA MATH, Matematik öğretmenleri ve öğrencileri için özel olarak tasarlanm
 
 ---
 
-<a href="https://www.youtube.com/watch?v=rF2likJegIg" style="display: flex; align-items: center; justify-content: center; width: 100%;">
+<a href="https://www.youtube.com/watch?v=rF2likJegIg">
   <img src="./file/youtube.png" alt="Ön İzleme" width="400" height="400">
 </a>
 
@@ -133,26 +133,26 @@ KBA MATH, matematik öğretmenlerine ve öğrencilere interaktif matematik dersl
 <br/><br/><br/>
 <h1> Özel Ders | Özel Ders Detay </h1>
 <div style="display: flex; flex-direction: row;  width: 100% ; gap: 2rem"> 
-<img src="./file/özel-ders.png" alt="Özel-Dersler"  style="width:500px ; height:100%; object-fit: cover;">  
-<img src="./file/o-d.png" alt="Özel-Ders-Detay"  style="width:500px ; height:100%; object-fit: cover;"> 
+<img src="./file/özel-ders.png" alt="Özel-Dersler"  style="width:400px ; height:100%; object-fit: cover;">  
+<img src="./file/o-d.png" alt="Özel-Ders-Detay"  style="width:400px ; height:100%; object-fit: cover;"> 
  </div> 
 
 <h1> Bloglar | Blog Detay </h1>
 <div style="display: flex; flex-direction: row;  width: 100% ; gap: 2rem"> 
-<img src="./file/bloglar.png" alt="Bloglar"  style="width:500px ; height:100%; object-fit: cover;">  
-<img src="./file/blog-detay.png" alt="Blog-Detay"  style="width:500px ; height:100%; object-fit: cover;"> 
+<img src="./file/bloglar.png" alt="Bloglar"  style="width:400px ; height:100%; object-fit: cover;">  
+<img src="./file/blog-detay.png" alt="Blog-Detay"  style="width:400px ; height:100%; object-fit: cover;"> 
  </div> 
 
 <h1> Notlar | Not Detay </h1>
 <div style="display: flex; flex-direction: row;  width: 100% ; gap: 2rem"> 
-<img src="./file/not-1.png" alt="Notlar"  style="width:500px ; height:100%; object-fit: cover;">  
-<img src="./file/not-detay.png" alt="Not-Detay"  style="width:500px ; height:100%; object-fit: cover;"> 
+<img src="./file/not-1.png" alt="Notlar"  style="width:400px ; height:100%; object-fit: cover;">  
+<img src="./file/not-detay.png" alt="Not-Detay"  style="width:400px ; height:100%; object-fit: cover;"> 
  </div> 
 
 <h1> Quizler | Quiz Detay </h1>
 <div style="display: flex; flex-direction: row;  width: 100% ; gap: 2rem"> 
-<img src="./file/quizler.png" alt="Quizler"  style="width:500px ; height:100%; object-fit: cover;">  
-<img src="./file/quiz-detay.png" alt="Quiz-Detay"  style="width:500px ; height:100%; object-fit: cover;"> 
+<img src="./file/quizler.png" alt="Quizler"  style="width:400px ; height:100%; object-fit: cover;">  
+<img src="./file/quiz-detay.png" alt="Quiz-Detay"  style="width:400px ; height:100%; object-fit: cover;"> 
  </div> 
 
 

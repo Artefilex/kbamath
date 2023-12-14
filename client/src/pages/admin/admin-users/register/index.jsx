@@ -4,7 +4,7 @@ import {
   FormInput,
   FormButton,
 } from "../../../../components/form";
-import { addItem, getAllItems } from "../../../../servises/admin";
+import {  addUser, getAllItems } from "../../../../servises/admin";
 import { useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { RegisterShema } from "../../validations/RegisterShema";
@@ -52,7 +52,7 @@ const checkUserUniqueness = async (username, email) => {
       if (!isEmailUnique) {
         return toast.error("E-posta adresi kullanılıyor");
       }
-      await addItem("users", formData, `Kayıt Başarılı`);
+      await addUser( formData, `Kayıt Başarılı`);
       navigate("/login");
      }catch(error){
         toast.error(error)

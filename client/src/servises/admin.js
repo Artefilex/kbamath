@@ -113,3 +113,20 @@ export const addItem = async( url, formData, title ) =>{
       }
         
     };
+
+    export const addUser  = async( formData, title ) =>{
+ 
+      const response = await axios.post(`${baseUrl}/users`,
+          formData, {
+            headers: {
+              'Content-Type': 'application/json',
+            },}
+          
+        );
+        
+        if (response.status === 200) {
+          toast.success(`${title} Eklendi`);
+        } else {
+          toast.error( `${title}  Eklenemedi`);
+        }
+      };
